@@ -1,0 +1,55 @@
+name: parky
+description: "A new Flutter project."
+
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  flutter_native_splash: ^2.4.4
+  internet_connection_checker: ^3.0.1
+  flutter_svg: ^2.0.17
+  intl: ^0.19.0
+  flutter_screenutil: ^5.9.3
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+  json_annotation: ^4.9.0
+  freezed_annotation: ^3.0.0
+  flutter_launcher_icons: ^0.14.3
+  permission_handler: ^11.3.1
+  flutter_dotenv: ^5.2.1
+  flutter_gen: ^5.10.0
+  flutter_localizations:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+  build_runner: ^2.4.14
+  injectable_generator: ^2.6.2
+  riverpod_generator: ^2.6.4
+  custom_lint: ^0.7.1
+  riverpod_lint: ^2.6.4
+  freezed: ^3.0.3
+  json_serializable: ^6.9.3
+
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/images/
+    - assets/svgs/
+    - assets/icons/
+    - assets/fonts/
+    - .env                                      

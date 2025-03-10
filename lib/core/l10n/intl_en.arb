@@ -1,0 +1,43 @@
+{
+    "@@locale": "en",
+  
+    "noData": "No data",
+  
+    "login": "Login",
+    "orLoginAs": "Or login as",
+    "out" : "Exit",
+    "logout" : "Logout",
+    "logoutModalDesc": "Are you sure you want to log out?",
+
+    "mustNotBeEmpty" : "{field} must not be empty!",
+    "atLeastLengthCharacters" : "{field} must be at least {length} characters!",
+    "invalidFormat" : "The {field} you entered is invalid!",
+
+    "serverError": "Server error",
+    "networkError": "Unstable network",
+    "unexpectedError": "Unexpected error",
+    "loginError": "Login failed. Please try again!",
+
+    "and": "and",
+    "or": "or",
+  
+    "confirm": "Confirm",
+    "save" : "Save",
+    "cancel" : "Cancel",
+    "start": "Start",
+    "search": "Search",
+    "end": "End",
+  
+    "january": "January",
+    "february": "February",
+    "march": "March",
+    "april": "April",
+    "may": "May",
+    "june": "June",
+    "july": "July",
+    "august": "August",
+    "september": "September",
+    "october": "October",
+    "november": "November",
+    "december": "December"
+}

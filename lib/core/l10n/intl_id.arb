@@ -1,0 +1,43 @@
+{
+  "@@locale": "id",
+
+  "noData": "Belum ada data",
+
+  "login": "Masuk",
+  "orLoginAs": "Atau masuk sebagai",
+  "out" : "Keluar",
+  "logout" : "Keluar Akun",
+  "logoutModalDesc": "Apakah Anda yakin ingin keluar?",
+  
+  "mustNotBeEmpty" : "{field} tidak boleh kosong!",
+  "atLeastLengthCharacters" : "{field} minimal {length} karakter!",
+  "invalidFormat" : "{field} yang anda masukkan tidak valid!",
+  
+  "serverError": "Kesalahan server",
+  "networkError": "Jaringan tidak stabil",
+  "unexpectedError": "Kesalahan tak terduga",
+  "loginError": "Login gagal. Mohon coba lagi!",
+  
+  "and": "dan",
+  "or": "atau",
+
+  "confirm": "Konfirmasi",
+  "save" : "Simpan",
+  "cancel" : "Batal",
+  "start": "Mulai",
+  "search": "Cari",
+  "end": "Akhiri",
+
+  "january": "Januari",
+  "february": "Februari",
+  "march": "Maret",
+  "april": "April",
+  "may": "Mei",
+  "june": "Juni",
+  "july": "Juli",
+  "august": "Agustus",
+  "september": "September",
+  "october": "Oktober",
+  "november": "November",
+  "december": "Desember"
+}
