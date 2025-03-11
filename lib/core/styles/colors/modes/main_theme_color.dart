@@ -3,7 +3,7 @@ part of '../theme_color.dart';
 class MainThemeColor implements ThemeColor {
   // ========= Primary colors
   @override
-  Color get primary => const Color(0xFF013C5A); // Warna utama aplikasi (sering digunakan di AppBar atau tombol utama)
+  Color get primary => const Color(0xFF2F80ED); // Warna utama aplikasi (sering digunakan di AppBar atau tombol utama)
 
   @override
   Color get onPrimary => brightnessColor; // Warna teks atau ikon di atas warna primary
@@ -18,17 +18,17 @@ class MainThemeColor implements ThemeColor {
   Color get primaryFixed => primaryContainer; // Variasi tetap dari primary untuk konsistensi di area tertentu
 
   @override
-  Color get primaryFixedDim => const Color(0xFF001E2D); // Versi redup dari primaryFixed
+  Color get primaryFixedDim => const Color(0xFF74AFFF); // Versi redup dari primaryFixed
 
   @override
   Color get inversePrimary => brightnessColor; // Warna kontras dengan primary (biasanya terang)
 
   // ========= Secondary colors
   @override
-  Color get secondary => const Color(0xFFA7C958); // Warna sekunder untuk elemen pendukung (misalnya chip)
+  Color get secondary => const Color(0xFFEAEAEA); // Warna sekunder untuk elemen pendukung (misalnya chip)
 
   @override
-  Color get onSecondary => brightnessColor; // Warna teks atau ikon di atas warna secondary
+  Color get onSecondary => const Color(0xFF5E5E5E); // Warna teks atau ikon di atas warna secondary
 
   @override
   Color get secondaryContainer => const Color(0xFFEDF4DE); // Warna container untuk elemen sekunder
@@ -132,10 +132,10 @@ class MainThemeColor implements ThemeColor {
   Color get grey => const Color(0xFF1F1F1F); // Warna abu-abu gelap untuk elemen netral
 
   @override
-  Color get brightnessColor => Colors.white; // Warna putih umum
+  Color get brightnessColor => const Color(0xFFF3F2F7); // Warna putih umum
 
   @override
-  Color get onBrightnessColor => Colors.black; // Warna hitam umum
+  Color get onBrightnessColor => const Color(0xFF1D1D1F); // Warna hitam umum
 
   @override
   Color get text => onBrightnessColor; // Warna teks umum

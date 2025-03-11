@@ -4,5 +4,5 @@ class ImageAssetConstant {
 
   //  TODO: Menambahkan nama gambar dengan format selain svg dan icon
   // CONTOH
-  //  static const String appLogo = "${basePath}app-logo.png";
+   static const String appLogo = "${basePath}app-logo.png";
 }
