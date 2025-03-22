@@ -5,7 +5,7 @@ import '../../../../core/styles/colors/theme_color.dart';
 part 'theme_state.freezed.dart';
 
 @freezed
-class ThemeState with _$ThemeState {
+abstract class ThemeState with _$ThemeState {
   const factory ThemeState({required ThemeModeType themeModeType}) =
       _ThemeState;
 }

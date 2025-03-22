@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:parky/core/constants/common/margin_constant.dart';
-import 'package:parky/core/constants/styles/style_constant.dart';
-import 'package:parky/core/styles/colors/app_color.dart';
-import 'package:parky/core/styles/fonts/app_font.dart';
-import 'package:parky/core/utils/lang.dart';
-import 'package:parky/features/auth/presentation/widgets/remember_me.dart';
 
 import '../../../../core/constants/assets/icon_asset_constant.dart';
+import '../../../../core/constants/common/margin_constant.dart';
+import '../../../../core/constants/styles/style_constant.dart';
+import '../../../../core/styles/colors/app_color.dart';
+import '../../../../core/styles/fonts/app_font.dart';
+import '../../../../core/utils/lang.dart';
 import '../../../common/widgets/svg_asset.dart';
+import 'remember_me.dart';
 
 class LoginForm extends ConsumerStatefulWidget {
   const LoginForm({super.key});
@@ -22,6 +22,8 @@ class _LoginFormState extends ConsumerState<LoginForm> {
   late final TextEditingController _emailController;
   late final TextEditingController _passController;
   late final GlobalKey<FormState> _formKey;
+
+  bool isPassVisible = false;
 
   @override
   void initState() {
@@ -38,6 +40,8 @@ class _LoginFormState extends ConsumerState<LoginForm> {
     _passController.dispose();
   }
 
+  void _togglePassword() => setState(() => isPassVisible = !isPassVisible);
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -50,17 +54,28 @@ class _LoginFormState extends ConsumerState<LoginForm> {
           spacing: 15.h,
           children: [
             TextFormField(
+              controller: _emailController,
               style: StyleConstant.inputStyle(context),
+              keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                 prefixIcon: _buildIcon(IconAssetConstant.email),
                 hintText: Lang.of(context).enterYourEmail,
               ),
             ),
             TextFormField(
+              controller: _passController,
               style: StyleConstant.inputStyle(context),
+              keyboardType: TextInputType.visiblePassword,
+              obscureText: !isPassVisible,
               decoration: InputDecoration(
                 prefixIcon: _buildIcon(IconAssetConstant.password),
-                suffixIcon: _buildIcon(IconAssetConstant.visiblePass),
+                suffixIcon: GestureDetector(
+                  onTap: () => _togglePassword(),
+                  child:
+                      isPassVisible
+                          ? _buildIcon(IconAssetConstant.visiblePass)
+                          : _buildIcon(IconAssetConstant.invisiblePass),
+                ),
                 hintText: Lang.of(context).enterYourPassword,
               ),
             ),

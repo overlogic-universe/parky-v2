@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:parky/core/constants/common/margin_constant.dart';
-import 'package:parky/core/styles/fonts/app_font.dart';
-import 'package:parky/core/utils/lang.dart';
+
+import '../../../../core/constants/assets/image_asset_constant.dart';
+import '../../../../core/constants/common/margin_constant.dart';
+import '../../../../core/styles/fonts/app_font.dart';
+import '../../../../core/utils/lang.dart';
 
 class LoginWithStudentEmailButton extends ConsumerWidget {
   const LoginWithStudentEmailButton({super.key});
@@ -20,7 +22,7 @@ class LoginWithStudentEmailButton extends ConsumerWidget {
         onPressed: () {},
         child: Row(
           children: [
-            Icon(Icons.person),
+            Image.asset(ImageAssetConstant.googleLogo, height: 20.h),
             SizedBox(width: 10.w),
             Text(
               Lang.of(context).loginWithStudentEmail,

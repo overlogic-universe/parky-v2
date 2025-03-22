@@ -5,14 +5,22 @@ import 'package:parky/core/styles/colors/app_color.dart';
 import 'package:parky/core/styles/fonts/app_font.dart';
 import 'package:parky/core/utils/lang.dart';
 
-class RememberMe extends ConsumerWidget {
+class RememberMe extends ConsumerStatefulWidget {
   const RememberMe({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _RememberMeState();
+}
+
+class _RememberMeState extends ConsumerState<RememberMe> {
+  bool isChecked = false;
+
+  void _toggleChechBox() => setState(() => isChecked = !isChecked);
+  @override
+  Widget build(BuildContext context) {
     final double checkBoxSize = 20.w;
     return GestureDetector(
-      onTap: () {},
+      onTap: () => _toggleChechBox(),
       child: Padding(
         padding: EdgeInsets.only(left: 10.w),
         child: Row(
@@ -22,14 +30,19 @@ class RememberMe extends ConsumerWidget {
               height: checkBoxSize,
               width: checkBoxSize,
               decoration: BoxDecoration(
+                border: Border.all(width: isChecked ? 0 : 0.5.w),
                 borderRadius: BorderRadius.circular(5.r),
-                color: AppColor.primary(context),
+                color:
+                    isChecked ? AppColor.primary(context) : Colors.transparent,
               ),
-              child: Icon(
-                Icons.check_rounded,
-                color: AppColor.onPrimary(context),
-                size: 15.r,
-              ),
+              child:
+                  isChecked
+                      ? Icon(
+                        Icons.check_rounded,
+                        color: AppColor.onPrimary(context),
+                        size: 15.r,
+                      )
+                      : SizedBox.shrink(),
             ),
             Text(
               Lang.of(context).rememberMe,
