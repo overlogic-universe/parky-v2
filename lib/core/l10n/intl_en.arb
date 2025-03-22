@@ -1,5 +1,15 @@
 {
     "@@locale": "en",
+
+    "loginGreetingTitle" : "Welcome Back!",
+    "loginGreetingDesc" : "Login in to your existant account",
+    "email" : "Email",
+    "password" : "Password",
+    "enterYourEmail": "Enter Your email",
+    "enterYourPassword": "Enter Your password",
+    "rememberMe" : "Remember me",
+    "forgotYourPassword" : "Forgot your password?",
+    "loginWithStudentEmail" : "Login with student email",
   
     "noData": "No data",
   

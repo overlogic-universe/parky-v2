@@ -9,6 +9,33 @@ class AppLocalizationsId extends AppLocalizations {
   AppLocalizationsId([String locale = 'id']) : super(locale);
 
   @override
+  String get loginGreetingTitle => 'Selamat Datang!';
+
+  @override
+  String get loginGreetingDesc => 'Masuk ke akun Anda yang telah terdaftar';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get password => 'Kata Sandi';
+
+  @override
+  String get enterYourEmail => 'Masukkan email Anda';
+
+  @override
+  String get enterYourPassword => 'Masukkan kata sandi Anda';
+
+  @override
+  String get rememberMe => 'Ingat saya';
+
+  @override
+  String get forgotYourPassword => 'Lupa kata sandi?';
+
+  @override
+  String get loginWithStudentEmail => 'Masuk dengan email mahasiswa';
+
+  @override
   String get noData => 'Belum ada data';
 
   @override

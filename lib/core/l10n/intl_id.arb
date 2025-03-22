@@ -1,6 +1,16 @@
 {
   "@@locale": "id",
 
+  "loginGreetingTitle": "Selamat Datang!",
+  "loginGreetingDesc": "Masuk ke akun Anda yang telah terdaftar",
+  "email": "Email",
+  "password": "Kata Sandi",
+  "enterYourEmail": "Masukkan email Anda",
+  "enterYourPassword": "Masukkan kata sandi Anda",
+  "rememberMe": "Ingat saya",
+  "forgotYourPassword": "Lupa kata sandi?",
+  "loginWithStudentEmail": "Masuk dengan email mahasiswa",
+
   "noData": "Belum ada data",
 
   "login": "Masuk",

@@ -45,4 +45,7 @@ class AppColor {
   static Color outlineLightGrey(BuildContext context) => theme(context).outlineVariant;
   static Color shadow(BuildContext context) =>theme(context).shadow;
 
+  static Color inputBackground(BuildContext context) => theme(context).primaryFixedDim;
+
+
 }

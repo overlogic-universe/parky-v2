@@ -95,6 +95,60 @@ abstract class AppLocalizations {
     Locale('id')
   ];
 
+  /// No description provided for @loginGreetingTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Selamat Datang!'**
+  String get loginGreetingTitle;
+
+  /// No description provided for @loginGreetingDesc.
+  ///
+  /// In id, this message translates to:
+  /// **'Masuk ke akun Anda yang telah terdaftar'**
+  String get loginGreetingDesc;
+
+  /// No description provided for @email.
+  ///
+  /// In id, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @password.
+  ///
+  /// In id, this message translates to:
+  /// **'Kata Sandi'**
+  String get password;
+
+  /// No description provided for @enterYourEmail.
+  ///
+  /// In id, this message translates to:
+  /// **'Masukkan email Anda'**
+  String get enterYourEmail;
+
+  /// No description provided for @enterYourPassword.
+  ///
+  /// In id, this message translates to:
+  /// **'Masukkan kata sandi Anda'**
+  String get enterYourPassword;
+
+  /// No description provided for @rememberMe.
+  ///
+  /// In id, this message translates to:
+  /// **'Ingat saya'**
+  String get rememberMe;
+
+  /// No description provided for @forgotYourPassword.
+  ///
+  /// In id, this message translates to:
+  /// **'Lupa kata sandi?'**
+  String get forgotYourPassword;
+
+  /// No description provided for @loginWithStudentEmail.
+  ///
+  /// In id, this message translates to:
+  /// **'Masuk dengan email mahasiswa'**
+  String get loginWithStudentEmail;
+
   /// No description provided for @noData.
   ///
   /// In id, this message translates to:

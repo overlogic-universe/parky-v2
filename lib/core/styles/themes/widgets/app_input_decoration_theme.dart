@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:parky/core/constants/common/global_constant.dart';
 
 import '../../colors/app_color.dart';
 import '../../colors/theme_color.dart';
@@ -11,30 +12,33 @@ class AppInputDecorationTheme {
   static InputDecorationTheme of(BuildContext context, ThemeColor color) =>
       InputDecorationTheme(
         errorMaxLines: 3,
-        contentPadding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 8.h),
-        hintStyle: AppFont.bodyMedium(context)?.copyWith(color: Colors.grey),
+        contentPadding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 12.h),
+        hintStyle: AppFont.bodySmall(context)?.copyWith(
+          color: Colors.grey,
+          fontFamily: GlobalConstant.mainFontFamily,
+        ),
         helperStyle: AppFont.bodyMedium(context),
-        errorStyle: AppFont.bodySmall(context)
-            ?.copyWith(color: AppColor.error(context)),
-        fillColor: Colors.transparent,
-        labelStyle: AppFont.labelMedium(context)
-            ?.copyWith(color: AppColor.textColor(context)),
+        errorStyle: AppFont.bodySmall(context)?.copyWith(color: color.error),
+        fillColor: color.primaryFixedDim,
+        labelStyle: AppFont.labelMedium(
+          context,
+        )?.copyWith(color: AppColor.textColor(context)),
         filled: true,
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30.r),
-          borderSide: BorderSide(width: 0.8.w, color: color.error),
+          borderSide: BorderSide.none,
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30.r),
-          borderSide: BorderSide(width: 0.8.w, color: color.error),
+          borderSide: BorderSide.none,
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30.r),
-          borderSide: BorderSide(width: 0.8.w, color: color.outline),
+          borderSide: BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30.r),
-          borderSide: BorderSide(width: 0.8.w, color: color.onBrightnessColor),
+          borderSide: BorderSide.none,
         ),
       );
 }

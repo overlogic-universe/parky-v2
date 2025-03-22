@@ -24,7 +24,7 @@ class AppTheme {
         cardColor: color.brightnessColor,
         brightness: Brightness.light,
         shadowColor: color.shadow,
-        dividerColor: color.lightGrey,
+        dividerColor: color.grey,
         dialogBackgroundColor: color.brightnessColor,
         unselectedWidgetColor: color.grey,
         appBarTheme: AppAppBarTheme.of(context),

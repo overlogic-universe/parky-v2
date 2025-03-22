@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../constants/common/global_constant.dart';
 import '../colors/app_color.dart';
 
 class AppFont {
@@ -36,8 +37,9 @@ class AppFont {
   static TextStyle? labelLarge(BuildContext context) => theme(context).labelLarge;
 
   static TextStyle baseText(BuildContext context) => TextStyle(
-        fontFamily: "Inter",
+        fontFamily: GlobalConstant.mainFontFamily,
         color: AppColor.textColor(context),
+        fontSize: 14.sp
       );
 
   static TextStyle text7(BuildContext context) =>
