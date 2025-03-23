@@ -11,6 +11,13 @@
   "forgotYourPassword": "Lupa kata sandi?",
   "loginWithStudentEmail": "Masuk dengan email mahasiswa",
 
+  "homeGreeting": "Selamat {time},",
+  "entryExitTime": "Waktu Masuk/Keluar",
+  "nim": "NIM",
+  "status": "Status",
+  "plate": "Plat",
+  "scanHere": "SCAN DI SINI",
+
   "noData": "Belum ada data",
 
   "login": "Masuk",
@@ -37,6 +44,11 @@
   "start": "Mulai",
   "search": "Cari",
   "end": "Akhiri",
+
+  "morning": "Pagi",
+  "afternoon": "Siang",
+  "evening": "Sore",
+  "night": "Malam",
 
   "january": "Januari",
   "february": "Februari",

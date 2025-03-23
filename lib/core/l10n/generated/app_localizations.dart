@@ -149,6 +149,42 @@ abstract class AppLocalizations {
   /// **'Masuk dengan email mahasiswa'**
   String get loginWithStudentEmail;
 
+  /// No description provided for @homeGreeting.
+  ///
+  /// In id, this message translates to:
+  /// **'Selamat {time},'**
+  String homeGreeting(Object time);
+
+  /// No description provided for @entryExitTime.
+  ///
+  /// In id, this message translates to:
+  /// **'Waktu Masuk/Keluar'**
+  String get entryExitTime;
+
+  /// No description provided for @nim.
+  ///
+  /// In id, this message translates to:
+  /// **'NIM'**
+  String get nim;
+
+  /// No description provided for @status.
+  ///
+  /// In id, this message translates to:
+  /// **'Status'**
+  String get status;
+
+  /// No description provided for @plate.
+  ///
+  /// In id, this message translates to:
+  /// **'Plat'**
+  String get plate;
+
+  /// No description provided for @scanHere.
+  ///
+  /// In id, this message translates to:
+  /// **'SCAN DI SINI'**
+  String get scanHere;
+
   /// No description provided for @noData.
   ///
   /// In id, this message translates to:
@@ -274,6 +310,30 @@ abstract class AppLocalizations {
   /// In id, this message translates to:
   /// **'Akhiri'**
   String get end;
+
+  /// No description provided for @morning.
+  ///
+  /// In id, this message translates to:
+  /// **'Pagi'**
+  String get morning;
+
+  /// No description provided for @afternoon.
+  ///
+  /// In id, this message translates to:
+  /// **'Siang'**
+  String get afternoon;
+
+  /// No description provided for @evening.
+  ///
+  /// In id, this message translates to:
+  /// **'Sore'**
+  String get evening;
+
+  /// No description provided for @night.
+  ///
+  /// In id, this message translates to:
+  /// **'Malam'**
+  String get night;
 
   /// No description provided for @january.
   ///

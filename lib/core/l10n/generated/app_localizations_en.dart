@@ -36,6 +36,26 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginWithStudentEmail => 'Login with student email';
 
   @override
+  String homeGreeting(Object time) {
+    return 'Good $time,';
+  }
+
+  @override
+  String get entryExitTime => 'Entry/Exit Time';
+
+  @override
+  String get nim => 'NIM';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get plate => 'Plate';
+
+  @override
+  String get scanHere => 'SCAN HERE';
+
+  @override
   String get noData => 'No data';
 
   @override
@@ -103,6 +123,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get end => 'End';
+
+  @override
+  String get morning => 'Morning';
+
+  @override
+  String get afternoon => 'Afternoon';
+
+  @override
+  String get evening => 'Evening';
+
+  @override
+  String get night => 'Night';
 
   @override
   String get january => 'January';

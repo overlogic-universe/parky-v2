@@ -5,8 +5,8 @@ class SlideHorizontal<T> extends PageRouteBuilder<T> {
 
   SlideHorizontal({required this.page, required super.settings})
     : super(
-        transitionDuration: const Duration(milliseconds: 700),
-        reverseTransitionDuration: const Duration(milliseconds: 500),
+        transitionDuration: const Duration(milliseconds: 300),
+        reverseTransitionDuration: const Duration(milliseconds: 300),
         pageBuilder:
             (
               BuildContext context,

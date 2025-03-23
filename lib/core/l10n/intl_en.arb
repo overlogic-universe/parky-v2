@@ -10,6 +10,13 @@
     "rememberMe" : "Remember me",
     "forgotYourPassword" : "Forgot your password?",
     "loginWithStudentEmail" : "Login with student email",
+
+    "homeGreeting": "Good {time},",
+    "entryExitTime": "Entry/Exit Time",
+    "nim": "NIM",
+    "status": "Status",
+    "plate": "Plate",
+    "scanHere": "SCAN HERE",
   
     "noData": "No data",
   
@@ -37,6 +44,11 @@
     "start": "Start",
     "search": "Search",
     "end": "End",
+
+    "morning": "Morning",
+    "afternoon": "Afternoon",
+    "evening": "Evening",
+    "night": "Night",
   
     "january": "January",
     "february": "February",

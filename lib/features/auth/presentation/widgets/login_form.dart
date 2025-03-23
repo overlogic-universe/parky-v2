@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:parky/core/routes/route_name.dart';
 
 import '../../../../core/constants/assets/icon_asset_constant.dart';
 import '../../../../core/constants/common/margin_constant.dart';
@@ -93,7 +94,7 @@ class _LoginFormState extends ConsumerState<LoginForm> {
             ),
             SizedBox.shrink(),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => Navigator.pushNamed(context, RouteName.home),
               child: Center(child: Text(Lang.of(context).login)),
             ),
           ],
