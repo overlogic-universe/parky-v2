@@ -6,6 +6,7 @@ import '../../../../core/styles/colors/app_color.dart';
 import '../../../common/screens/base_screen.dart';
 import '../widgets/home_content.dart';
 import '../widgets/home_decoration.dart';
+import '../widgets/home_drawer.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -14,6 +15,7 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return BaseScreen(
       horizontalPadding: 0,
+      drawer: HomeDrawer(),
       child: SizedBox(
         height: 1.sh,
         width: 1.sw,

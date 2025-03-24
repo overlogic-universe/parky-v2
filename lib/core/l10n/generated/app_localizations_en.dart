@@ -56,6 +56,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get scanHere => 'SCAN HERE';
 
   @override
+  String get setting => 'Setting';
+
+  @override
   String get noData => 'No data';
 
   @override

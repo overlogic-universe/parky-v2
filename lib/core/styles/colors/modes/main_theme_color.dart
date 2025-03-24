@@ -100,7 +100,7 @@ class MainThemeColor implements ThemeColor {
 
   // ========= Error colors
   @override
-  Color get error => const Color(0xFFCB3A31); // Warna untuk status error
+  Color get error => const Color(0xFFFA896B); // Warna untuk status error
 
   @override
   Color get onError => brightnessColor; // Warna teks atau ikon di atas warna error

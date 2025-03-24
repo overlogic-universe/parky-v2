@@ -53,7 +53,10 @@ class AppLocalizationsId extends AppLocalizations {
   String get plate => 'Plat';
 
   @override
-  String get scanHere => 'SCAN DI SINI';
+  String get scanHere => 'PINDAI DI SINI';
+
+  @override
+  String get setting => 'Pengaturan';
 
   @override
   String get noData => 'Belum ada data';

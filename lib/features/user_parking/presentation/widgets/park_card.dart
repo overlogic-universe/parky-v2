@@ -80,10 +80,9 @@ class ParkCard extends ConsumerWidget {
           SizedBox(height: 10.h),
           Text(
             Lang.of(context).scanHere,
-            style: AppFont.labelSmall(context)?.copyWith(
-              color: AppColor.onPrimary(context),
-              fontWeight: FontWeight.w600,
-            ),
+            style: AppFont.labelSmall(
+              context,
+            )?.medium.copyWith(color: AppColor.onPrimary(context)),
           ),
         ],
       ),
@@ -100,10 +99,9 @@ class ParkCard extends ConsumerWidget {
       children: [
         Text(
           label,
-          style: AppFont.bodySmall(context)?.copyWith(
-            color: AppColor.onPrimary(context),
-            fontWeight: FontWeight.w700,
-          ),
+          style: AppFont.bodySmall(
+            context,
+          )?.medium.copyWith(color: AppColor.onPrimary(context)),
         ),
         SizedBox(height: 5.h),
         // isStatus
@@ -114,12 +112,7 @@ class ParkCard extends ConsumerWidget {
             color: AppColor.onPrimary(context),
             borderRadius: BorderRadius.circular(5.r),
           ),
-          child: Text(
-            value,
-            style: AppFont.labelSmall(
-              context,
-            )?.copyWith(fontWeight: FontWeight.w700),
-          ),
+          child: Text(value, style: AppFont.labelSmall(context)?.medium),
         ),
         // : Text(
         //   value,

@@ -16,7 +16,9 @@
   "nim": "NIM",
   "status": "Status",
   "plate": "Plat",
-  "scanHere": "SCAN DI SINI",
+  "scanHere": "PINDAI DI SINI",
+
+  "setting": "Pengaturan",
 
   "noData": "Belum ada data",
 

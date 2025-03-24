@@ -21,8 +21,10 @@ class SlideHorizontal<T> extends PageRouteBuilder<T> {
         ) {
           final CurvedAnimation curvedAnimation = CurvedAnimation(
             parent: animation1,
-            curve: Curves.ease,
+            curve: Curves.easeOut,
+            reverseCurve: Curves.easeIn,
           );
+
           return SlideTransition(
             position: Tween<Offset>(
               begin: const Offset(1.0, 0.0),

@@ -182,8 +182,14 @@ abstract class AppLocalizations {
   /// No description provided for @scanHere.
   ///
   /// In id, this message translates to:
-  /// **'SCAN DI SINI'**
+  /// **'PINDAI DI SINI'**
   String get scanHere;
+
+  /// No description provided for @setting.
+  ///
+  /// In id, this message translates to:
+  /// **'Pengaturan'**
+  String get setting;
 
   /// No description provided for @noData.
   ///

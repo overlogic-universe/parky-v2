@@ -5,6 +5,7 @@ import '../../../../core/constants/common/margin_constant.dart';
 
 class BaseScreen extends StatelessWidget {
   final PreferredSizeWidget? appBar;
+  final Widget? drawer;
   final Widget child;
   final bool resizeToAvoidBottomInset;
   final double? horizontalPadding;
@@ -12,6 +13,7 @@ class BaseScreen extends StatelessWidget {
   const BaseScreen({
     super.key,
     this.appBar,
+    this.drawer,
     required this.child,
     this.resizeToAvoidBottomInset = false,
     this.horizontalPadding,
@@ -23,6 +25,7 @@ class BaseScreen extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,
       appBar: appBar,
+      drawer: drawer,
       body: useSafeArea ? SafeArea(child: _buildBody()) : _buildBody(),
     );
   }

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:parky/core/constants/common/margin_constant.dart';
-import 'package:parky/core/styles/colors/app_color.dart';
-import 'package:parky/features/auth/presentation/widgets/login_form.dart';
-import 'package:parky/features/auth/presentation/widgets/login_with_student_email_button.dart';
-import 'package:parky/features/common/widgets/line.dart';
 
 import '../../../../core/constants/assets/image_asset_constant.dart';
+import '../../../../core/constants/common/margin_constant.dart';
+import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/lang.dart';
 import '../../../common/screens/base_screen.dart';
+import '../../../common/widgets/line.dart';
+import '../../../common/widgets/margin_bottom.dart';
+import '../widgets/login_form.dart';
+import '../widgets/login_with_student_email_button.dart';
 
 class LoginScreen extends ConsumerWidget {
   const LoginScreen({super.key});
@@ -18,6 +19,7 @@ class LoginScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return BaseScreen(
+      resizeToAvoidBottomInset: true,
       horizontalPadding: 0,
       child: SingleChildScrollView(
         child: Column(
@@ -60,7 +62,7 @@ class LoginScreen extends ConsumerWidget {
             ),
             SizedBox(height: 15.h),
             LoginWithStudentEmailButton(),
-            SizedBox(height: MarginConstant.marginBottom),
+            MarginBottom(),
           ],
         ),
       ),
