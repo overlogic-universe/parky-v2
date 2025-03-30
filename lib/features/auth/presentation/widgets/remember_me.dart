@@ -30,7 +30,10 @@ class _RememberMeState extends ConsumerState<RememberMe> {
               height: checkBoxSize,
               width: checkBoxSize,
               decoration: BoxDecoration(
-                border: Border.all(width: isChecked ? 0 : 0.5.w),
+                border: Border.all(
+                  width: isChecked ? 0 : 0.5.w,
+                  color: AppColor.onBackgroundApp(context),
+                ),
                 borderRadius: BorderRadius.circular(5.r),
                 color:
                     isChecked ? AppColor.primary(context) : Colors.transparent,
