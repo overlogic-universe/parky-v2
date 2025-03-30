@@ -1,18 +1,18 @@
 part of '../theme_color.dart';
 
-class MainThemeColor implements ThemeColor {
+class MainDarkThemeColor implements ThemeColor {
   // ========= Primary colors
   @override
   Color get primary => const Color(0xFF5D87FF); // Warna utama aplikasi (sering digunakan di AppBar atau tombol utama)
 
   @override
-  Color get onPrimary => brightnessColor; // Warna teks atau ikon di atas warna primary
+  Color get onPrimary => onBrightnessColor; // Warna teks atau ikon di atas warna primary
 
   @override
-  Color get primaryContainer => brightnessColor; // Warna elemen pendukung (misalnya card atau container sekunder)
+  Color get primaryContainer => onBrightnessColor; // Warna elemen pendukung (misalnya card atau container sekunder)
 
   @override
-  Color get onPrimaryContainer => onBrightnessColor; // Warna teks atau ikon di atas elemen primaryContainer
+  Color get onPrimaryContainer => brightnessColor; // Warna teks atau ikon di atas elemen primaryContainer
 
   @override
   Color get primaryFixed => const Color(0xFF74AFFF); // Variasi tetap dari primary untuk konsistensi di area tertentu
@@ -132,10 +132,10 @@ class MainThemeColor implements ThemeColor {
   Color get grey => const Color(0xFF1F1F1F); // Warna abu-abu gelap untuk elemen netral
 
   @override
-  Color get brightnessColor => const Color(0xFFF3F2F7); // Warna putih umum
+  Color get brightnessColor => const Color(0xFF1D1D1F); // Warna putih umum
 
   @override
-  Color get onBrightnessColor => const Color(0xFF1D1D1F); // Warna hitam umum
+  Color get onBrightnessColor => const Color(0xFFF3F2F7); // Warna hitam umum
 
   @override
   Color get text => onBrightnessColor; // Warna teks umum

@@ -19,6 +19,13 @@
   "scanHere": "PINDAI DI SINI",
 
   "setting": "Pengaturan",
+  "settingDesc": "Sesuaikan pengalamanmu dengan mudah! Pilih bahasa favorit dan atur tema sesuai kenyamananmu",
+  "account": "Akun",
+  "updatePassword": "Perbarui kata sandi",
+  "personalized": "Personalisasi",
+  "chooseTheme": "Pilih tema",
+  "chooseLanguage": "Pilih bahasa",
+
 
   "noData": "Belum ada data",
 

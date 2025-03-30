@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../colors/theme_color.dart';
-import '../../fonts/app_font.dart';
 
 class AppElevatedButtonTheme {
   const AppElevatedButtonTheme._();
@@ -17,7 +16,6 @@ class AppElevatedButtonTheme {
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.w),
           foregroundColor: color.onPrimary,
           elevation: 0.5,
-          textStyle: AppFont.bodyMedium(context)?.semiBold,
           backgroundColor: color.primary,
         ),
       );

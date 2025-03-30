@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
+part 'modes/main_dark_theme_color.dart';
 part 'modes/main_theme_color.dart';
 
-enum ThemeModeType { main, teal, red, blue, custom }
+enum ThemeModeType { main, mainDark }
 
 abstract class ThemeColor {
   static ThemeColor of(ThemeModeType themeModeType) {
     switch (themeModeType) {
       case ThemeModeType.main:
         return MainThemeColor();
-      default:
-        return MainThemeColor();
+      case ThemeModeType.mainDark:
+        return MainDarkThemeColor();
     }
   }
 

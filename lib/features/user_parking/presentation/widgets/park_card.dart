@@ -64,7 +64,11 @@ class ParkCard extends ConsumerWidget {
           Row(
             children: [
               _buildCardDecoration(context, offsetX: -22.w),
-              Expanded(child: DottedLine()),
+              Expanded(
+                child: DottedLine(
+                  color: AppColor.containerColorPrimary(context),
+                ),
+              ),
               _buildCardDecoration(context, offsetX: 22.w),
             ],
           ),
@@ -73,7 +77,7 @@ class ParkCard extends ConsumerWidget {
             height: 200.w,
             width: 200.w,
             decoration: BoxDecoration(
-              color: AppColor.backgroundApp(context),
+              color: AppColor.containerColorPrimary(context),
               borderRadius: BorderRadius.circular(15.r),
             ),
           ),
@@ -109,10 +113,15 @@ class ParkCard extends ConsumerWidget {
         Container(
           padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
           decoration: BoxDecoration(
-            color: AppColor.onPrimary(context),
+            color: AppColor.containerColorPrimary(context),
             borderRadius: BorderRadius.circular(5.r),
           ),
-          child: Text(value, style: AppFont.labelSmall(context)?.medium),
+          child: Text(
+            value,
+            style: AppFont.labelSmall(context)?.medium.copyWith(
+              color: AppColor.onContainerColorPrimary(context),
+            ),
+          ),
         ),
         // : Text(
         //   value,

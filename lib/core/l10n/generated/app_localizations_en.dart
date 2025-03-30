@@ -59,6 +59,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get setting => 'Setting';
 
   @override
+  String get settingDesc => 'Customize your experience with ease! Choose your preferred language and set the theme to your liking';
+
+  @override
+  String get account => 'Account';
+
+  @override
+  String get updatePassword => 'Update your password';
+
+  @override
+  String get personalized => 'Personalized';
+
+  @override
+  String get chooseTheme => 'Choose theme';
+
+  @override
+  String get chooseLanguage => 'Choose language';
+
+  @override
   String get noData => 'No data';
 
   @override

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../constants/common/global_constant.dart';
-import '../colors/app_color.dart';
+import '../colors/theme_color.dart';
 
 class AppFont {
   const AppFont._();
@@ -36,70 +36,70 @@ class AppFont {
   static TextStyle? labelMedium(BuildContext context) => theme(context).labelMedium;
   static TextStyle? labelLarge(BuildContext context) => theme(context).labelLarge;
 
-  static TextStyle baseText(BuildContext context) => TextStyle(
+  static TextStyle baseText(BuildContext context, ThemeColor color) => TextStyle(
         fontFamily: GlobalConstant.mainFontFamily,
-        color: AppColor.textColor(context),
+        color: color.text,
         fontSize: 14.sp
       );
 
-  static TextStyle text7(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 7.sp * _scale);
-  static TextStyle text8(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 8.sp * _scale);
-  static TextStyle text9(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 9.sp * _scale);
-  static TextStyle text10(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 10.sp * _scale);
-  static TextStyle text11(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 11.sp * _scale);
-  static TextStyle text12(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 12.sp * _scale);
-  static TextStyle text13(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 13.sp * _scale);
-  static TextStyle text14(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 14.sp * _scale);
-  static TextStyle text15(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 15.sp * _scale);
-  static TextStyle text16(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 16.sp * _scale);
-  static TextStyle text17(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 17.sp * _scale);
-  static TextStyle text18(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 18.sp * _scale);
-  static TextStyle text19(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 19.sp * _scale);
-  static TextStyle text20(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 20.sp * _scale);
-  static TextStyle text21(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 21.sp * _scale);
-  static TextStyle text22(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 22.sp * _scale);
-  static TextStyle text23(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 23.sp * _scale);
-  static TextStyle text24(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 24.sp * _scale);
-  static TextStyle text25(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 25.sp * _scale);
-  static TextStyle text26(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 26.sp * _scale);
-  static TextStyle text27(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 27.sp * _scale);
-  static TextStyle text28(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 28.sp * _scale);
-  static TextStyle text29(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 29.sp * _scale);
-  static TextStyle text30(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 30.sp * _scale);
-  static TextStyle text32(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 32.sp * _scale);
-  static TextStyle text38(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 38.sp * _scale);
-  static TextStyle text40(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 40.sp * _scale);
-  static TextStyle text50(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 50.sp * _scale);
-  static TextStyle text60(BuildContext context) =>
-      baseText(context).copyWith(fontSize: 60.sp * _scale);
+  static TextStyle text7(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 7.sp * _scale);
+  static TextStyle text8(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 8.sp * _scale);
+  static TextStyle text9(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 9.sp * _scale);
+  static TextStyle text10(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 10.sp * _scale);
+  static TextStyle text11(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 11.sp * _scale);
+  static TextStyle text12(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 12.sp * _scale);
+  static TextStyle text13(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 13.sp * _scale);
+  static TextStyle text14(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 14.sp * _scale);
+  static TextStyle text15(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 15.sp * _scale);
+  static TextStyle text16(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 16.sp * _scale);
+  static TextStyle text17(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 17.sp * _scale);
+  static TextStyle text18(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 18.sp * _scale);
+  static TextStyle text19(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 19.sp * _scale);
+  static TextStyle text20(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 20.sp * _scale);
+  static TextStyle text21(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 21.sp * _scale);
+  static TextStyle text22(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 22.sp * _scale);
+  static TextStyle text23(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 23.sp * _scale);
+  static TextStyle text24(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 24.sp * _scale);
+  static TextStyle text25(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 25.sp * _scale);
+  static TextStyle text26(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 26.sp * _scale);
+  static TextStyle text27(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 27.sp * _scale);
+  static TextStyle text28(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 28.sp * _scale);
+  static TextStyle text29(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 29.sp * _scale);
+  static TextStyle text30(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 30.sp * _scale);
+  static TextStyle text32(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 32.sp * _scale);
+  static TextStyle text38(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 38.sp * _scale);
+  static TextStyle text40(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 40.sp * _scale);
+  static TextStyle text50(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 50.sp * _scale);
+  static TextStyle text60(BuildContext context, ThemeColor color) =>
+      baseText(context, color).copyWith(fontSize: 60.sp * _scale);
 
 }
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:parky/core/constants/assets/image_asset_constant.dart';
-import 'package:parky/core/styles/fonts/app_font.dart';
 
+import '../../../../core/constants/assets/image_asset_constant.dart';
 import '../../../../core/styles/colors/app_color.dart';
+import '../../../../core/styles/fonts/app_font.dart';
 import 'home_drawer_item.dart';
 
 class HomeDrawer extends StatelessWidget {

@@ -18,6 +18,8 @@ class ThemeViewModel extends _$ThemeViewModel {
     switch (theme) {
       case 'main':
         return ThemeModeType.main;
+      case 'mainDark':
+        return ThemeModeType.mainDark;
       default:
         return ThemeModeType.main;
     }

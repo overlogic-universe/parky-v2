@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:parky/features/auth/presentation/screens/login_screen.dart';
+import 'package:parky/features/setting/presentation/pages/setting_screen.dart';
 import 'package:parky/features/user_parking/presentation/screens/home_screen.dart';
 
 import '../utils/slide_horizontal.dart';
@@ -19,6 +20,11 @@ class RouteGenerator {
         return SlideHorizontal(
           page: HomeScreen(),
           settings: RouteSettings(name: RouteName.home),
+        );
+      case RouteName.setting:
+        return SlideHorizontal(
+          page: SettingScreen(),
+          settings: RouteSettings(name: RouteName.setting),
         );
       default:
         return MaterialPageRoute(builder: (context) => const LoginScreen());

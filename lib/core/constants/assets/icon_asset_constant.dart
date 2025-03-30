@@ -9,6 +9,7 @@ class IconAssetConstant {
   static const String visiblePass = "${basePath}visible-pass.svg";
   static const String invisiblePass = "${basePath}invisible-pass.svg";
   static const String arrowForward = "${basePath}arrow-forward.svg";
+  static const String arrowSquareLeft = "${basePath}arrow-square-left.svg";
   static const String setting = "${basePath}setting.svg";
   static const String logout = "${basePath}logout.svg";
   static const String menu = "${basePath}menu.svg";

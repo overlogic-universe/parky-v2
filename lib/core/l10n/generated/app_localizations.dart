@@ -191,6 +191,42 @@ abstract class AppLocalizations {
   /// **'Pengaturan'**
   String get setting;
 
+  /// No description provided for @settingDesc.
+  ///
+  /// In id, this message translates to:
+  /// **'Sesuaikan pengalamanmu dengan mudah! Pilih bahasa favorit dan atur tema sesuai kenyamananmu'**
+  String get settingDesc;
+
+  /// No description provided for @account.
+  ///
+  /// In id, this message translates to:
+  /// **'Akun'**
+  String get account;
+
+  /// No description provided for @updatePassword.
+  ///
+  /// In id, this message translates to:
+  /// **'Perbarui kata sandi'**
+  String get updatePassword;
+
+  /// No description provided for @personalized.
+  ///
+  /// In id, this message translates to:
+  /// **'Personalisasi'**
+  String get personalized;
+
+  /// No description provided for @chooseTheme.
+  ///
+  /// In id, this message translates to:
+  /// **'Pilih tema'**
+  String get chooseTheme;
+
+  /// No description provided for @chooseLanguage.
+  ///
+  /// In id, this message translates to:
+  /// **'Pilih bahasa'**
+  String get chooseLanguage;
+
   /// No description provided for @noData.
   ///
   /// In id, this message translates to:

@@ -59,6 +59,24 @@ class AppLocalizationsId extends AppLocalizations {
   String get setting => 'Pengaturan';
 
   @override
+  String get settingDesc => 'Sesuaikan pengalamanmu dengan mudah! Pilih bahasa favorit dan atur tema sesuai kenyamananmu';
+
+  @override
+  String get account => 'Akun';
+
+  @override
+  String get updatePassword => 'Perbarui kata sandi';
+
+  @override
+  String get personalized => 'Personalisasi';
+
+  @override
+  String get chooseTheme => 'Pilih tema';
+
+  @override
+  String get chooseLanguage => 'Pilih bahasa';
+
+  @override
   String get noData => 'Belum ada data';
 
   @override

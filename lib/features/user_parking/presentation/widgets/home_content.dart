@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:parky/core/constants/assets/icon_asset_constant.dart';
 
+import '../../../../core/constants/assets/icon_asset_constant.dart';
 import '../../../../core/constants/assets/image_asset_constant.dart';
 import '../../../../core/constants/common/margin_constant.dart';
 import '../../../../core/styles/colors/app_color.dart';
+import '../../../../core/styles/colors/theme_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../common/widgets/margin_bottom.dart';
 import '../../../common/widgets/svg_asset.dart';
+import '../../../setting/presentation/view_models/theme_view_model.dart';
 import '../../core/utils/home_util.dart';
 import 'park_card.dart';
 
@@ -34,10 +37,13 @@ class HomeContent extends StatelessWidget {
                   child: SizedBox(
                     width: menuIconSize,
                     height: menuIconSize,
-                    child: SvgAsset(asset: IconAssetConstant.menu),
+                    child: SvgAsset(
+                      asset: IconAssetConstant.menu,
+                      color: AppColor.onBackgroundApp(context),
+                    ),
                   ),
                 ),
-                Image.asset(ImageAssetConstant.appLogo, height: 35.h),
+                Consumer(builder: (context, ref, child) => _buildAppLogo(ref)),
                 SizedBox(width: menuIconSize),
               ],
             ),
@@ -60,4 +66,19 @@ class HomeContent extends StatelessWidget {
       ),
     );
   }
+
+  Widget _buildAppLogo(WidgetRef ref) {
+    final state = ref.watch(themeViewModelProvider).themeModeType;
+    switch (state) {
+      case ThemeModeType.main:
+        return _buildAppLogoBlack();
+      case ThemeModeType.mainDark:
+        return _buildAppLogoWhite();
+    }
+  }
+
+  Widget _buildAppLogoBlack() =>
+      Image.asset(ImageAssetConstant.appLogo, height: 35.h);
+  Widget _buildAppLogoWhite() =>
+      Image.asset(ImageAssetConstant.appLogoWhite, height: 35.h);
 }

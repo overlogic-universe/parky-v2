@@ -3,14 +3,14 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HomeDecoration extends StatelessWidget {
+class ScreenDecoration extends StatelessWidget {
   final double size;
   final Color color;
   final double? top;
   final double? bottom;
   final double? left;
   final double? right;
-  const HomeDecoration({
+  const ScreenDecoration({
     super.key,
     required this.size,
     required this.color,
