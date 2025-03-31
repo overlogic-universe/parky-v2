@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'theme_view_model.dart';
+part of 'setting_view_model.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$themeViewModelHash() => r'0f51744beb7f5be26b567d1a024b8e7c1caf3455';
+String _$settingViewModelHash() => r'9f5474ed125a8ec7903c9654bd562bb26614f8ca';
 
-/// See also [ThemeViewModel].
-@ProviderFor(ThemeViewModel)
-final themeViewModelProvider =
-    AutoDisposeNotifierProvider<ThemeViewModel, ThemeState>.internal(
-      ThemeViewModel.new,
-      name: r'themeViewModelProvider',
+/// See also [SettingViewModel].
+@ProviderFor(SettingViewModel)
+final settingViewModelProvider =
+    AutoDisposeAsyncNotifierProvider<SettingViewModel, SettingState>.internal(
+      SettingViewModel.new,
+      name: r'settingViewModelProvider',
       debugGetCreateSourceHash:
           const bool.fromEnvironment('dart.vm.product')
               ? null
-              : _$themeViewModelHash,
+              : _$settingViewModelHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
 
-typedef _$ThemeViewModel = AutoDisposeNotifier<ThemeState>;
+typedef _$SettingViewModel = AutoDisposeAsyncNotifier<SettingState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

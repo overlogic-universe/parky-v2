@@ -74,7 +74,31 @@ class AppLocalizationsId extends AppLocalizations {
   String get chooseTheme => 'Pilih tema';
 
   @override
+  String get chooseThemeDesc => 'Sesuaikan tampilan aplikasi dengan tema yang kamu suka!';
+
+  @override
   String get chooseLanguage => 'Pilih bahasa';
+
+  @override
+  String get chooseLanguageDesc => 'Pilih bahasa yang paling nyaman untuk pengalaman terbaik';
+
+  @override
+  String get successChangeTheme => 'Berhasil mengganti tema';
+
+  @override
+  String get successChangeLanguage => 'Berhasil mengganti bahasa';
+
+  @override
+  String get mainTheme => 'Tema Utama';
+
+  @override
+  String get orbTheme => 'Tema Orb';
+
+  @override
+  String get indonesia => 'Bahasa Indonesia';
+
+  @override
+  String get english => 'English';
 
   @override
   String get noData => 'Belum ada data';
@@ -135,6 +159,9 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get cancel => 'Batal';
+
+  @override
+  String get back => 'Kembali';
 
   @override
   String get start => 'Mulai';

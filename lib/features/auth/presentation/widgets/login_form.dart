@@ -9,7 +9,7 @@ import '../../../../core/constants/styles/style_constant.dart';
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/lang.dart';
-import '../../../common/widgets/svg_asset.dart';
+import '../../../shared/presentation/widgets/svg_asset.dart';
 import 'remember_me.dart';
 
 class LoginForm extends ConsumerStatefulWidget {
@@ -104,6 +104,9 @@ class _LoginFormState extends ConsumerState<LoginForm> {
   }
 
   Padding _buildIcon(String icon) {
-    return Padding(padding: EdgeInsets.all(13.r), child: SvgAsset(asset: icon));
+    return Padding(
+      padding: EdgeInsets.all(13.r),
+      child: SvgAsset(asset: icon),
+    );
   }
 }

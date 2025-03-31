@@ -1,6 +1,6 @@
 part of '../theme_color.dart';
 
-class MainDarkThemeColor implements ThemeColor {
+class OrbThemeColor implements ThemeColor {
   // ========= Primary colors
   @override
   Color get primary => const Color(0xFF5D87FF); // Warna utama aplikasi (sering digunakan di AppBar atau tombol utama)
@@ -18,7 +18,7 @@ class MainDarkThemeColor implements ThemeColor {
   Color get primaryFixed => const Color(0xFF74AFFF); // Variasi tetap dari primary untuk konsistensi di area tertentu
 
   @override
-  Color get primaryFixedDim => const Color.fromARGB(255, 239, 244, 255); // Versi redup dari primaryFixed
+  Color get primaryFixedDim => const Color.fromARGB(255, 65, 66, 70); // Versi redup dari primaryFixed
 
   @override
   Color get inversePrimary => brightnessColor; // Warna kontras dengan primary (biasanya terang)
@@ -40,7 +40,7 @@ class MainDarkThemeColor implements ThemeColor {
   Color get secondaryFixed => secondaryContainer; // Variasi tetap dari secondary
 
   @override
-  Color get secondaryFixedDim => secondaryContainer.withValues( alpha: 0.8); // Versi redup dari secondaryFixed
+  Color get secondaryFixedDim => secondaryContainer.withValues(alpha: 0.8); // Versi redup dari secondaryFixed
 
   // ========= Tertiary colors
   @override
@@ -93,10 +93,10 @@ class MainDarkThemeColor implements ThemeColor {
   Color get surfaceTint => primary; // Warna aksen pada elemen surface
 
   @override
-  Color get inverseSurface => onBrightnessColor; // Warna kontras dengan surface
+  Color get inverseSurface => surface; // Warna kontras dengan surface
 
   @override
-  Color get onInverseSurface => brightnessColor; // Warna teks atau ikon di atas inverseSurface
+  Color get onInverseSurface => onSuccess; // Warna teks atau ikon di atas inverseSurface
 
   // ========= Error colors
   @override
@@ -111,6 +111,13 @@ class MainDarkThemeColor implements ThemeColor {
   @override
   Color get onErrorContainer => brightnessColor; // Warna teks atau ikon di atas errorContainer
 
+  // ========= Error colors
+  @override
+  Color get success => const Color(0xFF13DEB9); // Warna untuk status success
+
+  @override
+  Color get onSuccess => brightnessColor; // Warna teks atau ikon di atas warna success
+
   // ========= Outline and shadow
   @override
   Color get outline => const Color(0xFFAABEC8); // Warna garis batas elemen
@@ -122,7 +129,7 @@ class MainDarkThemeColor implements ThemeColor {
   Color get shadow => onBrightnessColor.withValues(alpha: 0.1); // Warna bayangan elemen
 
   @override
-  Color get scrim => onBrightnessColor.withValues( alpha: 0.5); // Warna overlay semi-transparan, contoh: background dialog
+  Color get scrim => onBrightnessColor.withValues(alpha: 0.5); // Warna overlay semi-transparan, contoh: background dialog
 
   // ========= Background and neutral colors
   @override
@@ -140,4 +147,3 @@ class MainDarkThemeColor implements ThemeColor {
   @override
   Color get text => onBrightnessColor; // Warna teks umum
 }
-

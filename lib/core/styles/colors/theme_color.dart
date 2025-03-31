@@ -1,17 +1,30 @@
 import 'package:flutter/material.dart';
 
-part 'modes/main_dark_theme_color.dart';
+import '../../utils/lang.dart';
+
+part 'modes/orb_theme_color.dart';
 part 'modes/main_theme_color.dart';
 
-enum ThemeModeType { main, mainDark }
+enum ThemeModeType { main, orb }
+
+extension ThemeModeTypeExtension on ThemeModeType {
+  String displayName(BuildContext context) {
+    switch (this) {
+      case ThemeModeType.main:
+        return Lang.of(context).mainTheme;
+      case ThemeModeType.orb:
+        return Lang.of(context).orbTheme;
+    }
+  }
+}
 
 abstract class ThemeColor {
   static ThemeColor of(ThemeModeType themeModeType) {
     switch (themeModeType) {
       case ThemeModeType.main:
         return MainThemeColor();
-      case ThemeModeType.mainDark:
-        return MainDarkThemeColor();
+      case ThemeModeType.orb:
+        return OrbThemeColor();
     }
   }
 
@@ -59,6 +72,10 @@ abstract class ThemeColor {
   Color get onError;
   Color get errorContainer;
   Color get onErrorContainer;
+
+  // Success colors
+  Color get success;
+  Color get onSuccess;
 
   // Outline and shadow
   Color get outline;

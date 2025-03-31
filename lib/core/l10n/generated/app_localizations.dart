@@ -221,11 +221,59 @@ abstract class AppLocalizations {
   /// **'Pilih tema'**
   String get chooseTheme;
 
+  /// No description provided for @chooseThemeDesc.
+  ///
+  /// In id, this message translates to:
+  /// **'Sesuaikan tampilan aplikasi dengan tema yang kamu suka!'**
+  String get chooseThemeDesc;
+
   /// No description provided for @chooseLanguage.
   ///
   /// In id, this message translates to:
   /// **'Pilih bahasa'**
   String get chooseLanguage;
+
+  /// No description provided for @chooseLanguageDesc.
+  ///
+  /// In id, this message translates to:
+  /// **'Pilih bahasa yang paling nyaman untuk pengalaman terbaik'**
+  String get chooseLanguageDesc;
+
+  /// No description provided for @successChangeTheme.
+  ///
+  /// In id, this message translates to:
+  /// **'Berhasil mengganti tema'**
+  String get successChangeTheme;
+
+  /// No description provided for @successChangeLanguage.
+  ///
+  /// In id, this message translates to:
+  /// **'Berhasil mengganti bahasa'**
+  String get successChangeLanguage;
+
+  /// No description provided for @mainTheme.
+  ///
+  /// In id, this message translates to:
+  /// **'Tema Utama'**
+  String get mainTheme;
+
+  /// No description provided for @orbTheme.
+  ///
+  /// In id, this message translates to:
+  /// **'Tema Orb'**
+  String get orbTheme;
+
+  /// No description provided for @indonesia.
+  ///
+  /// In id, this message translates to:
+  /// **'Bahasa Indonesia'**
+  String get indonesia;
+
+  /// No description provided for @english.
+  ///
+  /// In id, this message translates to:
+  /// **'English'**
+  String get english;
 
   /// No description provided for @noData.
   ///
@@ -334,6 +382,12 @@ abstract class AppLocalizations {
   /// In id, this message translates to:
   /// **'Batal'**
   String get cancel;
+
+  /// No description provided for @back.
+  ///
+  /// In id, this message translates to:
+  /// **'Kembali'**
+  String get back;
 
   /// No description provided for @start.
   ///

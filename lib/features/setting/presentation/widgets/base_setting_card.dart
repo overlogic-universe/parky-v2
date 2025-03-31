@@ -3,22 +3,29 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
-import '../../../common/widgets/line.dart';
+import '../../../shared/presentation/widgets/line.dart';
 import '../models/setting_item_model.dart';
 
 class BaseSettingCard extends StatelessWidget {
   final List<SettingItemModel> settingItemList;
   final String? label;
-  const BaseSettingCard({super.key, required this.settingItemList, this.label});
+  final void Function(SettingItemModel item)? onTap;
+
+  const BaseSettingCard({
+    super.key,
+    required this.settingItemList,
+    this.label,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 1.sw,
-      padding: EdgeInsets.all(12.r),
+      width: double.infinity,
+      padding: EdgeInsets.all(15.r),
       decoration: BoxDecoration(
         color: AppColor.backgroundApp(context),
-        borderRadius: BorderRadius.circular(20.r),
+        borderRadius: BorderRadius.circular(15.r),
         border: Border.all(width: 0.1.w),
       ),
       child: Column(
@@ -28,33 +35,36 @@ class BaseSettingCard extends StatelessWidget {
             Text(label!, style: AppFont.titleMedium(context)),
             SizedBox(height: 15.h),
           ],
-          Column(
-            children: List.generate(
-              settingItemList.length,
-              (index) => _buildColumnItem(context, index, settingItemList),
-            ),
+          ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: settingItemList.length,
+            itemBuilder:
+                (context, index) =>
+                    _buildColumnItem(context, settingItemList[index]),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildColumnItem(
-    BuildContext context,
-    int index,
-    List<SettingItemModel> items,
-  ) {
-    final SettingItemModel item = items[index];
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [Text(item.name), item.suffixWidget],
+  Widget _buildColumnItem(BuildContext context, SettingItemModel item) {
+    return GestureDetector(
+      onTap: () => onTap?.call(item),
+      child: Container(
+        color: Colors.transparent,
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [Text(item.name), item.suffixWidget],
+            ),
+            SizedBox(height: 5.h),
+            Line(),
+            SizedBox(height: 15.h),
+          ],
         ),
-        SizedBox(height: 5.h),
-        Line(),
-        SizedBox(height: 12.h),
-      ],
+      ),
     );
   }
 }

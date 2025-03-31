@@ -41,11 +41,13 @@ class AppColor {
   static Color containerColorError(BuildContext context) => theme(context).errorContainer;
   static Color onError(BuildContext context) => theme(context).onError;
 
+  static Color success(BuildContext context) => theme(context).inverseSurface;
+  static Color onSuccess(BuildContext context) => theme(context).onInverseSurface;
+  
   static Color outlineGrey(BuildContext context) => theme(context).outline;
   static Color outlineLightGrey(BuildContext context) => theme(context).outlineVariant;
   static Color shadow(BuildContext context) =>theme(context).shadow;
 
   static Color inputBackground(BuildContext context) => theme(context).primaryFixedDim;
-
 
 }

@@ -24,7 +24,17 @@
     "updatePassword": "Update your password",
     "personalized": "Personalized",
     "chooseTheme": "Choose theme",
+    "chooseThemeDesc": "Customize the app's look with your favorite theme!",
     "chooseLanguage": "Choose language",
+    "chooseLanguageDesc": "Select the language you're most comfortable with for the best experience",
+    "successChangeTheme": "Successfully change theme",
+    "successChangeLanguage": "Successfully change language",
+
+    "mainTheme": "Main Theme",
+    "orbTheme": "Orb Theme",
+
+    "indonesia": "Bahasa Indonesia",
+    "english": "English",
   
     "noData": "No data",
   
@@ -49,6 +59,7 @@
     "confirm": "Confirm",
     "save" : "Save",
     "cancel" : "Cancel",
+    "back" : "Back",
     "start": "Start",
     "search": "Search",
     "end": "End",

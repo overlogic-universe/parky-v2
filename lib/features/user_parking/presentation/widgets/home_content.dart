@@ -8,9 +8,9 @@ import '../../../../core/constants/common/margin_constant.dart';
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/colors/theme_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
-import '../../../common/widgets/margin_bottom.dart';
-import '../../../common/widgets/svg_asset.dart';
-import '../../../setting/presentation/view_models/theme_view_model.dart';
+import '../../../setting/presentation/view_models/setting_view_model.dart';
+import '../../../shared/presentation/widgets/margin_bottom.dart';
+import '../../../shared/presentation/widgets/svg_asset.dart';
 import '../../core/utils/home_util.dart';
 import 'park_card.dart';
 
@@ -68,13 +68,19 @@ class HomeContent extends StatelessWidget {
   }
 
   Widget _buildAppLogo(WidgetRef ref) {
-    final state = ref.watch(themeViewModelProvider).themeModeType;
-    switch (state) {
-      case ThemeModeType.main:
-        return _buildAppLogoBlack();
-      case ThemeModeType.mainDark:
-        return _buildAppLogoWhite();
-    }
+    final state = ref.watch(settingViewModelProvider);
+    return state.when(
+      data: (data) {
+        switch (data.themeModeType) {
+          case ThemeModeType.main:
+            return _buildAppLogoBlack();
+          case ThemeModeType.orb:
+            return _buildAppLogoWhite();
+        }
+      },
+      error: (_, _) => _buildAppLogoBlack(),
+      loading: () => SizedBox.shrink(),
+    );
   }
 
   Widget _buildAppLogoBlack() =>

@@ -78,11 +78,11 @@ as Widget,
 
 
 class _SettingItemModel implements SettingItemModel {
-  const _SettingItemModel({required this.name, required this.suffixWidget});
+  const _SettingItemModel({required this.name, this.suffixWidget = const SvgAsset(asset: IconAssetConstant.arrowForward, size: 20)});
   
 
 @override final  String name;
-@override final  Widget suffixWidget;
+@override@JsonKey() final  Widget suffixWidget;
 
 /// Create a copy of SettingItemModel
 /// with the given fields replaced by the non-null parameter values.

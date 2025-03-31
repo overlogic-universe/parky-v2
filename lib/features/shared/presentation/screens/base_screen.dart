@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/constants/common/margin_constant.dart';
+import '../../../../../core/constants/common/margin_constant.dart';
 
 class BaseScreen extends StatelessWidget {
   final PreferredSizeWidget? appBar;

@@ -74,7 +74,31 @@ class AppLocalizationsEn extends AppLocalizations {
   String get chooseTheme => 'Choose theme';
 
   @override
+  String get chooseThemeDesc => 'Customize the app\'s look with your favorite theme!';
+
+  @override
   String get chooseLanguage => 'Choose language';
+
+  @override
+  String get chooseLanguageDesc => 'Select the language you\'re most comfortable with for the best experience';
+
+  @override
+  String get successChangeTheme => 'Successfully change theme';
+
+  @override
+  String get successChangeLanguage => 'Successfully change language';
+
+  @override
+  String get mainTheme => 'Main Theme';
+
+  @override
+  String get orbTheme => 'Orb Theme';
+
+  @override
+  String get indonesia => 'Bahasa Indonesia';
+
+  @override
+  String get english => 'English';
 
   @override
   String get noData => 'No data';
@@ -135,6 +159,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cancel => 'Cancel';
+
+  @override
+  String get back => 'Back';
 
   @override
   String get start => 'Start';

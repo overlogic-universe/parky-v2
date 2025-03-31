@@ -7,10 +7,9 @@ import '../../../../core/constants/common/margin_constant.dart';
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/lang.dart';
-import '../../../common/screens/base_screen.dart';
-import '../../../common/widgets/line.dart';
-import '../../../common/widgets/margin_bottom.dart';
-import '../../../setting/presentation/view_models/theme_view_model.dart';
+import '../../../shared/presentation/screens/base_screen.dart';
+import '../../../shared/presentation/widgets/line.dart';
+import '../../../shared/presentation/widgets/margin_bottom.dart';
 import '../widgets/login_form.dart';
 import '../widgets/login_with_student_email_button.dart';
 
@@ -19,9 +18,6 @@ class LoginScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Future.microtask(() {
-    //     ref.read(themeViewModelProvider.notifier).setTheme("mainDark");
-    // });
     return BaseScreen(
       resizeToAvoidBottomInset: true,
       horizontalPadding: 0,

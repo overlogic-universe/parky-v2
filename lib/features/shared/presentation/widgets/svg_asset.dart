@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../core/styles/colors/app_color.dart';
+
 class SvgAsset extends StatelessWidget {
   final String asset;
   final Color? color;
@@ -15,8 +17,10 @@ class SvgAsset extends StatelessWidget {
       width: size.w,
       child: SvgPicture.asset(
         asset,
-        colorFilter:
-            color == null ? null : ColorFilter.mode(color!, BlendMode.srcIn),
+        colorFilter: ColorFilter.mode(
+          color ?? AppColor.textColor(context),
+          BlendMode.srcIn,
+        ),
       ),
     );
   }

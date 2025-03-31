@@ -24,8 +24,17 @@
   "updatePassword": "Perbarui kata sandi",
   "personalized": "Personalisasi",
   "chooseTheme": "Pilih tema",
+  "chooseThemeDesc": "Sesuaikan tampilan aplikasi dengan tema yang kamu suka!",
   "chooseLanguage": "Pilih bahasa",
+  "chooseLanguageDesc": "Pilih bahasa yang paling nyaman untuk pengalaman terbaik",
+  "successChangeTheme": "Berhasil mengganti tema",
+  "successChangeLanguage": "Berhasil mengganti bahasa",
 
+  "mainTheme": "Tema Utama",
+  "orbTheme": "Tema Orb",
+
+  "indonesia": "Bahasa Indonesia",
+  "english": "English",
 
   "noData": "Belum ada data",
 
@@ -50,6 +59,7 @@
   "confirm": "Konfirmasi",
   "save" : "Simpan",
   "cancel" : "Batal",
+  "back" : "Kembali",
   "start": "Mulai",
   "search": "Cari",
   "end": "Akhiri",

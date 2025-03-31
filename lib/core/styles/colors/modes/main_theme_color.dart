@@ -93,10 +93,10 @@ class MainThemeColor implements ThemeColor {
   Color get surfaceTint => primary; // Warna aksen pada elemen surface
 
   @override
-  Color get inverseSurface => onBrightnessColor; // Warna kontras dengan surface
+  Color get inverseSurface => success; // Warna kontras dengan surface
 
   @override
-  Color get onInverseSurface => brightnessColor; // Warna teks atau ikon di atas inverseSurface
+  Color get onInverseSurface => onSuccess; // Warna teks atau ikon di atas inverseSurface
 
   // ========= Error colors
   @override
@@ -110,6 +110,13 @@ class MainThemeColor implements ThemeColor {
 
   @override
   Color get onErrorContainer => brightnessColor; // Warna teks atau ikon di atas errorContainer
+
+    // ========= Success colors
+  @override
+  Color get success => const Color(0xFF13DEB9); // Warna untuk status success
+
+  @override
+  Color get onSuccess => brightnessColor; // Warna teks atau ikon di atas warna success
 
   // ========= Outline and shadow
   @override

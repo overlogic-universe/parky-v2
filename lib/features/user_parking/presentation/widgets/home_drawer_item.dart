@@ -6,8 +6,8 @@ import '../../../../core/routes/route_name.dart';
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/lang.dart';
-import '../../../common/widgets/line.dart';
-import '../../../common/widgets/svg_asset.dart';
+import '../../../shared/presentation/widgets/line.dart';
+import '../../../shared/presentation/widgets/svg_asset.dart';
 import '../models/drawer_item_model.dart';
 
 class HomeDrawerItem extends StatelessWidget {
