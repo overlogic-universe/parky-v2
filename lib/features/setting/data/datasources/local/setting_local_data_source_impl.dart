@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../core/constants/common/locale_id_constant.dart';
@@ -28,6 +30,7 @@ class SettingLocalDataSourceImpl implements SettingLocalDataSource {
 
   @override
   Future<void> saveLanguage(String languageId) async {
+    log("SAVE LANG");
     await sharedPreferences.setString(_languageKey, languageId);
   }
 

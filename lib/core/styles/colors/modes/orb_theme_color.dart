@@ -93,7 +93,7 @@ class OrbThemeColor implements ThemeColor {
   Color get surfaceTint => primary; // Warna aksen pada elemen surface
 
   @override
-  Color get inverseSurface => surface; // Warna kontras dengan surface
+  Color get inverseSurface => success; // Warna kontras dengan surface
 
   @override
   Color get onInverseSurface => onSuccess; // Warna teks atau ikon di atas inverseSurface
@@ -113,7 +113,7 @@ class OrbThemeColor implements ThemeColor {
 
   // ========= Error colors
   @override
-  Color get success => const Color(0xFF13DEB9); // Warna untuk status success
+  Color get success => const Color.fromARGB(255, 19, 222, 131); // Warna untuk status success
 
   @override
   Color get onSuccess => brightnessColor; // Warna teks atau ikon di atas warna success

@@ -18,7 +18,7 @@ class MainThemeColor implements ThemeColor {
   Color get primaryFixed => const Color(0xFF74AFFF); // Variasi tetap dari primary untuk konsistensi di area tertentu
 
   @override
-  Color get primaryFixedDim => const Color.fromARGB(255, 239, 244, 255); // Versi redup dari primaryFixed
+  Color get primaryFixedDim => const Color.fromARGB(255, 230, 238, 255); // Versi redup dari primaryFixed
 
   @override
   Color get inversePrimary => brightnessColor; // Warna kontras dengan primary (biasanya terang)
@@ -113,7 +113,7 @@ class MainThemeColor implements ThemeColor {
 
     // ========= Success colors
   @override
-  Color get success => const Color(0xFF13DEB9); // Warna untuk status success
+  Color get success => const Color.fromARGB(255, 19, 222, 131); // Warna untuk status success
 
   @override
   Color get onSuccess => brightnessColor; // Warna teks atau ikon di atas warna success

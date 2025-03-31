@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,6 +25,7 @@ class _MyAppState extends ConsumerState<MyApp> {
     super.initState();
     Future.microtask(() async {
       await ref.read(settingViewModelProvider.notifier).getTheme();
+      await ref.read(settingViewModelProvider.notifier).getLanguage();
     });
   }
 
@@ -41,6 +40,13 @@ class _MyAppState extends ConsumerState<MyApp> {
   }
 
   MaterialApp _buildMaterialApp(BuildContext context) {
+    final state = ref.watch(settingViewModelProvider);
+
+    final locale = state.maybeWhen(
+      data: (data) => data.localeId,
+      orElse: () => LocaleIdConstant.EN,
+    );
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
@@ -50,26 +56,23 @@ class _MyAppState extends ConsumerState<MyApp> {
         GlobalWidgetsLocalizations.delegate,
       ],
       builder: (ctx, child) {
-        final state = ref.watch(settingViewModelProvider);
-
-        final themeColor = state.when(
+        final prevState = ref.read(settingViewModelProvider).valueOrNull;
+        final themeColor = state.maybeWhen(
           data: (data) => ThemeColor.of(data.themeModeType),
-          error: (e, s) {
-            log("THEME ERROR $e");
-           return ThemeColor.of(ThemeModeType.main);
-          },
-          loading: () {
-            log("LOAINH");
-            return ThemeColor.of(ThemeModeType.main);
-          },
+          orElse:
+              () =>
+                  prevState != null
+                      ? ThemeColor.of(prevState.themeModeType)
+                      : ThemeColor.of(ThemeModeType.main),
         );
+
         ScreenUtil.init(ctx);
         return Theme(data: AppTheme.of(context, themeColor), child: child!);
       },
       onGenerateRoute: RouteGenerator.onGenerateRoute,
       initialRoute: RouteName.login,
       supportedLocales: L10n.all,
-      locale: Locale(LocaleIdConstant.ID),
+      locale: Locale(locale),
     );
   }
 }

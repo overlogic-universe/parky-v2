@@ -43,7 +43,10 @@ class SettingViewModel extends _$SettingViewModel {
     state = AsyncValue.loading();
     try {
       await _saveThemeUseCase.call(theme.name);
-      state = AsyncValue.data(state.value!.copyWith(themeModeType: theme));
+      final currentState = state.value;
+      if (currentState != null) {
+        state = AsyncValue.data(currentState.copyWith(themeModeType: theme));
+      }
     } catch (e, stackTrace) {
       state = AsyncValue.error(e, stackTrace);
     }
@@ -66,7 +69,10 @@ class SettingViewModel extends _$SettingViewModel {
     state = AsyncValue.loading();
     try {
       await _saveLanguageUseCase.call(localeId);
-      state = AsyncValue.data(state.value!.copyWith(localeId: localeId));
+      final currentState = state.value;
+      if (currentState != null) {
+        state = AsyncValue.data(currentState.copyWith(localeId: localeId));
+      }
     } catch (e, stackTrace) {
       state = AsyncValue.error(e, stackTrace);
     }

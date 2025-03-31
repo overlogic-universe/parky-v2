@@ -26,7 +26,10 @@ class BaseSettingCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColor.backgroundApp(context),
         borderRadius: BorderRadius.circular(15.r),
-        border: Border.all(width: 0.1.w),
+        border: Border.all(
+          width: 0.1.w,
+          color: AppColor.disableTextOrIcon(context),
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

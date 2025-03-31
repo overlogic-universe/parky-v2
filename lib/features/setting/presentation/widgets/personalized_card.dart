@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:parky/features/shared/presentation/widgets/custom_toast.dart';
 
+import '../../../../core/constants/common/locale_id_constant.dart';
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/colors/theme_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/lang.dart';
+import '../../../shared/presentation/widgets/custom_toast.dart';
 import '../models/setting_item_model.dart';
 import '../view_models/setting_view_model.dart';
 import 'base_setting_card.dart';
@@ -16,6 +17,32 @@ class PersonalizedCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen(settingViewModelProvider, (previous, next) {
+      next.maybeWhen(
+        data: (data) {
+          if (previous != null) {
+            final prevData = previous.valueOrNull;
+            if (prevData != null) {
+              if (prevData.themeModeType != data.themeModeType) {
+                CustomToast.showToast(
+                  context,
+                  message: Lang.of(context).successChangeTheme,
+                  backgroundColor: AppColor.success(context),
+                );
+              } else if (prevData.localeId != data.localeId) {
+                CustomToast.showToast(
+                  context,
+                  message: Lang.of(context).successChangeLanguage,
+                  backgroundColor: AppColor.success(context),
+                );
+              }
+            }
+          }
+        },
+        orElse: () {},
+      );
+    });
+
     List<SettingItemModel> settingItemList = [
       SettingItemModel(name: Lang.of(context).chooseTheme),
       SettingItemModel(name: Lang.of(context).chooseLanguage),
@@ -35,48 +62,82 @@ class PersonalizedCard extends ConsumerWidget {
   ) {
     final name = item.name;
     if (name == Lang.of(context).chooseTheme) {
-      showDialog(
-        context: context,
-        builder:
-            (context) => _buildPopUp(
-              context,
-              ref,
-              title: Lang.of(context).chooseTheme,
-              description: Lang.of(context).chooseThemeDesc,
-            ),
-      );
+      _handleChooseTheme(context, ref);
     } else if (name == Lang.of(context).chooseLanguage) {
-      showDialog(
-        context: context,
-        builder:
-            (context) => _buildPopUp(
-              context,
-              ref,
-              title: Lang.of(context).chooseLanguage,
-              description: Lang.of(context).chooseLanguageDesc,
-            ),
-      );
+      _handleChooseLanguage(context, ref);
     }
   }
 
-  Widget _buildPopUp(
+  void _handleChooseLanguage(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(settingViewModelProvider);
+    String? selectedValue = state.maybeWhen(
+      data: (data) => data.localeId,
+      orElse: () => LocaleIdConstant.ID,
+    );
+
+    showDialog(
+      context: context,
+      builder:
+          (context) => _buildPopUp<String>(
+            context,
+            ref,
+            title: Lang.of(context).chooseLanguage,
+            description: Lang.of(context).chooseLanguageDesc,
+            selectedValue: selectedValue,
+            options: [LocaleIdConstant.ID, LocaleIdConstant.EN],
+            onChanged: (value) => _onLanguageChange(context, ref, value),
+            displayText: (value) => _getDisplayLanguageText(context, value),
+          ),
+    );
+  }
+
+  String _getDisplayLanguageText(BuildContext context, String? value) {
+    if (value == LocaleIdConstant.ID) {
+      return Lang.of(context).indonesia;
+    } else if (value == LocaleIdConstant.EN) {
+      return Lang.of(context).english;
+    } else {
+      return Lang.of(context).indonesia;
+    }
+  }
+
+  void _handleChooseTheme(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(settingViewModelProvider);
+    ThemeModeType? selectedValue = state.maybeWhen(
+      data: (data) => data.themeModeType,
+      orElse: () => ThemeModeType.main,
+    );
+
+    showDialog(
+      context: context,
+      builder:
+          (context) => _buildPopUp<ThemeModeType>(
+            context,
+            ref,
+            title: Lang.of(context).chooseTheme,
+            description: Lang.of(context).chooseThemeDesc,
+            selectedValue: selectedValue,
+            options: [ThemeModeType.main, ThemeModeType.orb],
+            onChanged: (value) => _onThemeChange(context, ref, value),
+            displayText: (value) => value.displayName(context),
+          ),
+    );
+  }
+
+  Widget _buildPopUp<T>(
     BuildContext context,
     WidgetRef ref, {
     required String title,
     required String description,
+    required T? selectedValue,
+    required List<T> options,
+    required void Function(T?) onChanged,
+    required String Function(T) displayText,
   }) {
-    final state = ref.watch(settingViewModelProvider);
-
-    ThemeModeType? selectedValue = state.maybeWhen(
-      data: (data) => data.themeModeType,
-      orElse: () => null,
-    );
-
-    List<ThemeModeType> dropDownList = [ThemeModeType.main, ThemeModeType.orb];
     return AlertDialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.r)),
       content: StatefulBuilder(
-        builder: (context, _) {
+        builder: (context, setState) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
@@ -90,27 +151,26 @@ class PersonalizedCard extends ConsumerWidget {
                 )?.copyWith(color: AppColor.disableTextOrIcon(context)),
               ),
               SizedBox(height: 15.h),
-              DropdownButton<ThemeModeType>(
+              DropdownButton<T>(
                 isExpanded: true,
                 value: selectedValue,
                 hint: Text(
-                  selectedValue?.displayName(context) ?? title,
+                  selectedValue != null ? displayText(selectedValue) : title,
                   style: AppFont.bodyMedium(
                     context,
                   )?.copyWith(color: AppColor.disableButton(context)),
                 ),
-
                 items:
-                    dropDownList.map((value) {
+                    options.map((value) {
                       return DropdownMenuItem(
                         value: value,
                         child: Text(
-                          value.displayName(context),
+                          displayText(value),
                           style: AppFont.bodyMedium(context),
                         ),
                       );
                     }).toList(),
-                onChanged: (value) => _onThemeChange(context, ref, value),
+                onChanged: (value) => onChanged(value),
               ),
             ],
           );
@@ -138,19 +198,13 @@ class PersonalizedCard extends ConsumerWidget {
     ref
         .read(settingViewModelProvider.notifier)
         .setTheme(value ?? ThemeModeType.main);
-    final state = ref.watch(settingViewModelProvider);
-    state.maybeWhen(
-      data:
-          (_) => CustomToast.showToast(
-            message: Lang.of(context).successChangeTheme,
-            backgroundColor: AppColor.success(context),
-          ),
-      loading: () {},
-      orElse:
-          () => CustomToast.showToast(
-            message: Lang.of(context).successChangeLanguage,
-          ),
-    );
+    Navigator.pop(context);
+  }
+
+  void _onLanguageChange(BuildContext context, WidgetRef ref, String? value) {
+    ref
+        .read(settingViewModelProvider.notifier)
+        .setLanguage(value ?? LocaleIdConstant.ID);
     Navigator.pop(context);
   }
 }
