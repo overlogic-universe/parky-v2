@@ -40,11 +40,14 @@ class _MyAppState extends ConsumerState<MyApp> {
   }
 
   MaterialApp _buildMaterialApp(BuildContext context) {
+    final prevState = ref.read(settingViewModelProvider).valueOrNull;
+
     final state = ref.watch(settingViewModelProvider);
 
     final locale = state.maybeWhen(
       data: (data) => data.localeId,
-      orElse: () => LocaleIdConstant.EN,
+      orElse:
+          () => prevState != null ? prevState.localeId : LocaleIdConstant.ID,
     );
 
     return MaterialApp(
