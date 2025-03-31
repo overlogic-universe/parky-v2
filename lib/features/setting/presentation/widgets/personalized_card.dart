@@ -1,13 +1,16 @@
+import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/constants/assets/icon_asset_constant.dart';
 import '../../../../core/constants/common/locale_id_constant.dart';
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/colors/theme_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/lang.dart';
 import '../../../shared/presentation/widgets/custom_toast.dart';
+import '../../../shared/presentation/widgets/svg_asset.dart';
 import '../models/setting_item_model.dart';
 import '../view_models/setting_view_model.dart';
 import 'base_setting_card.dart';
@@ -151,25 +154,41 @@ class PersonalizedCard extends ConsumerWidget {
                 )?.copyWith(color: AppColor.disableTextOrIcon(context)),
               ),
               SizedBox(height: 15.h),
-              DropdownButton<T>(
-                isExpanded: true,
-                value: selectedValue,
-                hint: Text(
-                  selectedValue != null ? displayText(selectedValue) : title,
-                  style: AppFont.bodyMedium(
+              CustomDropdown<T>(
+                decoration: CustomDropdownDecoration(
+                  closedSuffixIcon: SvgAsset(
+                    asset: IconAssetConstant.arrowDown,
+                    size: 20,
+                  ),
+                  expandedSuffixIcon: SvgAsset(
+                    asset: IconAssetConstant.arrowUp,
+                    size: 20,
+                  ),
+                  listItemStyle: AppFont.bodyMedium(context),
+                  headerStyle: AppFont.bodyMedium(context),
+                  hintStyle: AppFont.bodyMedium(
                     context,
                   )?.copyWith(color: AppColor.disableButton(context)),
+                  closedFillColor: AppColor.inputBackground(context),
+                  expandedFillColor: AppColor.inputBackground(context),
+                  closedBorder: Border.all(
+                    color: AppColor.inputBackground(context),
+                  ),
                 ),
-                items:
-                    options.map((value) {
-                      return DropdownMenuItem(
-                        value: value,
-                        child: Text(
-                          displayText(value),
-                          style: AppFont.bodyMedium(context),
-                        ),
-                      );
-                    }).toList(),
+                hintText:
+                    selectedValue != null ? displayText(selectedValue) : title,
+                controller: SingleSelectController(selectedValue),
+                headerBuilder:
+                    (context, selectedItem, enabled) => Text(
+                      displayText(selectedItem),
+                      style: AppFont.bodyMedium(context),
+                    ),
+                items: options,
+                listItemBuilder:
+                    (context, item, isSelected, onItemSelect) => Text(
+                      displayText(item),
+                      style: AppFont.bodyMedium(context),
+                    ),
                 onChanged: (value) => onChanged(value),
               ),
             ],

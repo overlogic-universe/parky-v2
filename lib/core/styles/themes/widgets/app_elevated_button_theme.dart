@@ -15,6 +15,7 @@ class AppElevatedButtonTheme {
           ),
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.w),
           foregroundColor: color.onPrimary,
+          
           elevation: 0.5,
           backgroundColor: color.primary,
         ),
