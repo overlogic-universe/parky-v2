@@ -1,12 +1,11 @@
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
-import '../failures/exception.dart';
+import '../../../../core/constants/failures/exception_message_constant.dart';
+import '../../../../core/failures/exception.dart';
 
 abstract class NetworkInfo {
   Future<bool> get isConnected;
-  Future<T> safeNetworkRequest<T>({
-    required Future<T> Function() result,
-  });
+  Future<T> safeNetworkRequest<T>({required Future<T> Function() result});
 }
 
 class NetworkInfoImpl implements NetworkInfo {
@@ -20,12 +19,16 @@ class NetworkInfoImpl implements NetworkInfo {
   Future<bool> get isConnected => _internetConnectionChecker.hasConnection;
 
   @override
-  Future<T> safeNetworkRequest<T>(
-      {required Future<T> Function() result}) async {
+  Future<T> safeNetworkRequest<T>({
+    required Future<T> Function() result,
+  }) async {
     if (await isConnected) {
       return await result();
     } else {
-      throw OfflineException();
+      throw CommonException(
+        message: ExceptionMessageConstant.networkError,
+        type: CommonFailureType.networkError,
+      );
     }
   }
 }
