@@ -9,6 +9,98 @@ class AppLocalizationsId extends AppLocalizations {
   AppLocalizationsId([String locale = 'id']) : super(locale);
 
   @override
+  String get loginGreetingTitle => 'Selamat Datang!';
+
+  @override
+  String get loginGreetingDesc => 'Masuk ke akun Anda yang telah terdaftar';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get password => 'Kata Sandi';
+
+  @override
+  String get enterYourEmail => 'Masukkan email Anda';
+
+  @override
+  String get enterYourPassword => 'Masukkan kata sandi Anda';
+
+  @override
+  String get rememberMe => 'Ingat saya';
+
+  @override
+  String get forgotYourPassword => 'Lupa kata sandi?';
+
+  @override
+  String get loginWithStudentEmail => 'Masuk dengan email mahasiswa';
+
+  @override
+  String homeGreeting(Object time) {
+    return 'Selamat $time,';
+  }
+
+  @override
+  String get entryExitTime => 'Waktu Masuk/Keluar';
+
+  @override
+  String get nim => 'NIM';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get plate => 'Plat';
+
+  @override
+  String get scanHere => 'PINDAI DI SINI';
+
+  @override
+  String get setting => 'Pengaturan';
+
+  @override
+  String get settingDesc => 'Sesuaikan pengalamanmu dengan mudah! Pilih bahasa favorit dan atur tema sesuai kenyamananmu';
+
+  @override
+  String get account => 'Akun';
+
+  @override
+  String get updatePassword => 'Perbarui kata sandi';
+
+  @override
+  String get personalized => 'Personalisasi';
+
+  @override
+  String get chooseTheme => 'Pilih tema';
+
+  @override
+  String get chooseThemeDesc => 'Sesuaikan tampilan aplikasi dengan tema yang kamu suka!';
+
+  @override
+  String get chooseLanguage => 'Pilih bahasa';
+
+  @override
+  String get chooseLanguageDesc => 'Pilih bahasa yang paling nyaman untuk pengalaman terbaik';
+
+  @override
+  String get successChangeTheme => 'Berhasil mengganti tema';
+
+  @override
+  String get successChangeLanguage => 'Berhasil mengganti bahasa';
+
+  @override
+  String get mainTheme => 'Tema Utama';
+
+  @override
+  String get orbTheme => 'Tema Orb';
+
+  @override
+  String get indonesia => 'Bahasa Indonesia';
+
+  @override
+  String get english => 'English';
+
+  @override
   String get noData => 'Belum ada data';
 
   @override
@@ -69,6 +161,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get cancel => 'Batal';
 
   @override
+  String get back => 'Kembali';
+
+  @override
   String get start => 'Mulai';
 
   @override
@@ -76,6 +171,18 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get end => 'Akhiri';
+
+  @override
+  String get morning => 'Pagi';
+
+  @override
+  String get afternoon => 'Siang';
+
+  @override
+  String get evening => 'Sore';
+
+  @override
+  String get night => 'Malam';
 
   @override
   String get january => 'Januari';

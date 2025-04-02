@@ -9,6 +9,98 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
+  String get loginGreetingTitle => 'Welcome Back!';
+
+  @override
+  String get loginGreetingDesc => 'Login in to your existant account';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get enterYourEmail => 'Enter Your email';
+
+  @override
+  String get enterYourPassword => 'Enter Your password';
+
+  @override
+  String get rememberMe => 'Remember me';
+
+  @override
+  String get forgotYourPassword => 'Forgot your password?';
+
+  @override
+  String get loginWithStudentEmail => 'Login with student email';
+
+  @override
+  String homeGreeting(Object time) {
+    return 'Good $time,';
+  }
+
+  @override
+  String get entryExitTime => 'Entry/Exit Time';
+
+  @override
+  String get nim => 'NIM';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get plate => 'Plate';
+
+  @override
+  String get scanHere => 'SCAN HERE';
+
+  @override
+  String get setting => 'Setting';
+
+  @override
+  String get settingDesc => 'Customize your experience with ease! Choose your preferred language and set the theme to your liking';
+
+  @override
+  String get account => 'Account';
+
+  @override
+  String get updatePassword => 'Update your password';
+
+  @override
+  String get personalized => 'Personalized';
+
+  @override
+  String get chooseTheme => 'Choose theme';
+
+  @override
+  String get chooseThemeDesc => 'Customize the app\'s look with your favorite theme!';
+
+  @override
+  String get chooseLanguage => 'Choose language';
+
+  @override
+  String get chooseLanguageDesc => 'Select the language you\'re most comfortable with for the best experience';
+
+  @override
+  String get successChangeTheme => 'Successfully change theme';
+
+  @override
+  String get successChangeLanguage => 'Successfully change language';
+
+  @override
+  String get mainTheme => 'Main Theme';
+
+  @override
+  String get orbTheme => 'Orb Theme';
+
+  @override
+  String get indonesia => 'Bahasa Indonesia';
+
+  @override
+  String get english => 'English';
+
+  @override
   String get noData => 'No data';
 
   @override
@@ -69,6 +161,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cancel => 'Cancel';
 
   @override
+  String get back => 'Back';
+
+  @override
   String get start => 'Start';
 
   @override
@@ -76,6 +171,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get end => 'End';
+
+  @override
+  String get morning => 'Morning';
+
+  @override
+  String get afternoon => 'Afternoon';
+
+  @override
+  String get evening => 'Evening';
+
+  @override
+  String get night => 'Night';
 
   @override
   String get january => 'January';

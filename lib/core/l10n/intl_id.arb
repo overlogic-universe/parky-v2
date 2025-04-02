@@ -1,6 +1,41 @@
 {
   "@@locale": "id",
 
+  "loginGreetingTitle": "Selamat Datang!",
+  "loginGreetingDesc": "Masuk ke akun Anda yang telah terdaftar",
+  "email": "Email",
+  "password": "Kata Sandi",
+  "enterYourEmail": "Masukkan email Anda",
+  "enterYourPassword": "Masukkan kata sandi Anda",
+  "rememberMe": "Ingat saya",
+  "forgotYourPassword": "Lupa kata sandi?",
+  "loginWithStudentEmail": "Masuk dengan email mahasiswa",
+
+  "homeGreeting": "Selamat {time},",
+  "entryExitTime": "Waktu Masuk/Keluar",
+  "nim": "NIM",
+  "status": "Status",
+  "plate": "Plat",
+  "scanHere": "PINDAI DI SINI",
+
+  "setting": "Pengaturan",
+  "settingDesc": "Sesuaikan pengalamanmu dengan mudah! Pilih bahasa favorit dan atur tema sesuai kenyamananmu",
+  "account": "Akun",
+  "updatePassword": "Perbarui kata sandi",
+  "personalized": "Personalisasi",
+  "chooseTheme": "Pilih tema",
+  "chooseThemeDesc": "Sesuaikan tampilan aplikasi dengan tema yang kamu suka!",
+  "chooseLanguage": "Pilih bahasa",
+  "chooseLanguageDesc": "Pilih bahasa yang paling nyaman untuk pengalaman terbaik",
+  "successChangeTheme": "Berhasil mengganti tema",
+  "successChangeLanguage": "Berhasil mengganti bahasa",
+
+  "mainTheme": "Tema Utama",
+  "orbTheme": "Tema Orb",
+
+  "indonesia": "Bahasa Indonesia",
+  "english": "English",
+
   "noData": "Belum ada data",
 
   "login": "Masuk",
@@ -24,9 +59,15 @@
   "confirm": "Konfirmasi",
   "save" : "Simpan",
   "cancel" : "Batal",
+  "back" : "Kembali",
   "start": "Mulai",
   "search": "Cari",
   "end": "Akhiri",
+
+  "morning": "Pagi",
+  "afternoon": "Siang",
+  "evening": "Sore",
+  "night": "Malam",
 
   "january": "Januari",
   "february": "Februari",

@@ -7,6 +7,7 @@ class L10n {
 
   static final all = [
     const Locale(LocaleIdConstant.ID),
+    const Locale(LocaleIdConstant.EN),
     // TODO: Menambahkan Locale ID yang disupport oleh aplikasi
   ];
 }

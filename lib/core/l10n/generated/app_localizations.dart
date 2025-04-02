@@ -95,6 +95,186 @@ abstract class AppLocalizations {
     Locale('id')
   ];
 
+  /// No description provided for @loginGreetingTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Selamat Datang!'**
+  String get loginGreetingTitle;
+
+  /// No description provided for @loginGreetingDesc.
+  ///
+  /// In id, this message translates to:
+  /// **'Masuk ke akun Anda yang telah terdaftar'**
+  String get loginGreetingDesc;
+
+  /// No description provided for @email.
+  ///
+  /// In id, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @password.
+  ///
+  /// In id, this message translates to:
+  /// **'Kata Sandi'**
+  String get password;
+
+  /// No description provided for @enterYourEmail.
+  ///
+  /// In id, this message translates to:
+  /// **'Masukkan email Anda'**
+  String get enterYourEmail;
+
+  /// No description provided for @enterYourPassword.
+  ///
+  /// In id, this message translates to:
+  /// **'Masukkan kata sandi Anda'**
+  String get enterYourPassword;
+
+  /// No description provided for @rememberMe.
+  ///
+  /// In id, this message translates to:
+  /// **'Ingat saya'**
+  String get rememberMe;
+
+  /// No description provided for @forgotYourPassword.
+  ///
+  /// In id, this message translates to:
+  /// **'Lupa kata sandi?'**
+  String get forgotYourPassword;
+
+  /// No description provided for @loginWithStudentEmail.
+  ///
+  /// In id, this message translates to:
+  /// **'Masuk dengan email mahasiswa'**
+  String get loginWithStudentEmail;
+
+  /// No description provided for @homeGreeting.
+  ///
+  /// In id, this message translates to:
+  /// **'Selamat {time},'**
+  String homeGreeting(Object time);
+
+  /// No description provided for @entryExitTime.
+  ///
+  /// In id, this message translates to:
+  /// **'Waktu Masuk/Keluar'**
+  String get entryExitTime;
+
+  /// No description provided for @nim.
+  ///
+  /// In id, this message translates to:
+  /// **'NIM'**
+  String get nim;
+
+  /// No description provided for @status.
+  ///
+  /// In id, this message translates to:
+  /// **'Status'**
+  String get status;
+
+  /// No description provided for @plate.
+  ///
+  /// In id, this message translates to:
+  /// **'Plat'**
+  String get plate;
+
+  /// No description provided for @scanHere.
+  ///
+  /// In id, this message translates to:
+  /// **'PINDAI DI SINI'**
+  String get scanHere;
+
+  /// No description provided for @setting.
+  ///
+  /// In id, this message translates to:
+  /// **'Pengaturan'**
+  String get setting;
+
+  /// No description provided for @settingDesc.
+  ///
+  /// In id, this message translates to:
+  /// **'Sesuaikan pengalamanmu dengan mudah! Pilih bahasa favorit dan atur tema sesuai kenyamananmu'**
+  String get settingDesc;
+
+  /// No description provided for @account.
+  ///
+  /// In id, this message translates to:
+  /// **'Akun'**
+  String get account;
+
+  /// No description provided for @updatePassword.
+  ///
+  /// In id, this message translates to:
+  /// **'Perbarui kata sandi'**
+  String get updatePassword;
+
+  /// No description provided for @personalized.
+  ///
+  /// In id, this message translates to:
+  /// **'Personalisasi'**
+  String get personalized;
+
+  /// No description provided for @chooseTheme.
+  ///
+  /// In id, this message translates to:
+  /// **'Pilih tema'**
+  String get chooseTheme;
+
+  /// No description provided for @chooseThemeDesc.
+  ///
+  /// In id, this message translates to:
+  /// **'Sesuaikan tampilan aplikasi dengan tema yang kamu suka!'**
+  String get chooseThemeDesc;
+
+  /// No description provided for @chooseLanguage.
+  ///
+  /// In id, this message translates to:
+  /// **'Pilih bahasa'**
+  String get chooseLanguage;
+
+  /// No description provided for @chooseLanguageDesc.
+  ///
+  /// In id, this message translates to:
+  /// **'Pilih bahasa yang paling nyaman untuk pengalaman terbaik'**
+  String get chooseLanguageDesc;
+
+  /// No description provided for @successChangeTheme.
+  ///
+  /// In id, this message translates to:
+  /// **'Berhasil mengganti tema'**
+  String get successChangeTheme;
+
+  /// No description provided for @successChangeLanguage.
+  ///
+  /// In id, this message translates to:
+  /// **'Berhasil mengganti bahasa'**
+  String get successChangeLanguage;
+
+  /// No description provided for @mainTheme.
+  ///
+  /// In id, this message translates to:
+  /// **'Tema Utama'**
+  String get mainTheme;
+
+  /// No description provided for @orbTheme.
+  ///
+  /// In id, this message translates to:
+  /// **'Tema Orb'**
+  String get orbTheme;
+
+  /// No description provided for @indonesia.
+  ///
+  /// In id, this message translates to:
+  /// **'Bahasa Indonesia'**
+  String get indonesia;
+
+  /// No description provided for @english.
+  ///
+  /// In id, this message translates to:
+  /// **'English'**
+  String get english;
+
   /// No description provided for @noData.
   ///
   /// In id, this message translates to:
@@ -203,6 +383,12 @@ abstract class AppLocalizations {
   /// **'Batal'**
   String get cancel;
 
+  /// No description provided for @back.
+  ///
+  /// In id, this message translates to:
+  /// **'Kembali'**
+  String get back;
+
   /// No description provided for @start.
   ///
   /// In id, this message translates to:
@@ -220,6 +406,30 @@ abstract class AppLocalizations {
   /// In id, this message translates to:
   /// **'Akhiri'**
   String get end;
+
+  /// No description provided for @morning.
+  ///
+  /// In id, this message translates to:
+  /// **'Pagi'**
+  String get morning;
+
+  /// No description provided for @afternoon.
+  ///
+  /// In id, this message translates to:
+  /// **'Siang'**
+  String get afternoon;
+
+  /// No description provided for @evening.
+  ///
+  /// In id, this message translates to:
+  /// **'Sore'**
+  String get evening;
+
+  /// No description provided for @night.
+  ///
+  /// In id, this message translates to:
+  /// **'Malam'**
+  String get night;
 
   /// No description provided for @january.
   ///

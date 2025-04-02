@@ -1,56 +1,57 @@
 import 'package:flutter/material.dart';
 
+import '../colors/theme_color.dart';
 import 'app_font.dart';
 
 class AppTextTheme {
   const AppTextTheme._();
 
-  static TextTheme of(BuildContext context) =>
+  static TextTheme of(BuildContext context, ThemeColor color) =>
       TextTheme(
             // headlineSmall: Biasanya digunakan untuk heading kecil, seperti subjudul atau bagian dalam kartu kecil.
-            headlineSmall: AppFont.text14(context).semiBold,
+            headlineSmall: AppFont.text14(context, color).semiBold,
 
             // headlineMedium: Digunakan untuk heading dengan ukuran sedang, seperti judul di halaman kecil.
-            headlineMedium: AppFont.text16(context).semiBold,
+            headlineMedium: AppFont.text16(context, color).semiBold,
 
             // headlineLarge: Untuk heading besar, biasanya digunakan untuk judul utama di halaman atau bagian besar.
-            headlineLarge: AppFont.text24(context).semiBold,
+            headlineLarge: AppFont.text24(context, color).semiBold,
 
             // titleSmall: Digunakan untuk teks judul kecil, seperti bagian deskripsi singkat atau label item kecil.
-            titleSmall: AppFont.text14(context).bold,
+            titleSmall: AppFont.text14(context, color).bold,
 
             // titleMedium: Digunakan untuk judul dengan ukuran sedang, misalnya nama elemen atau menu utama.
-            titleMedium: AppFont.text16(context).bold,
+            titleMedium: AppFont.text16(context, color).bold,
 
             // titleLarge: Untuk judul besar, seperti heading utama atau nama produk/halaman penting.
-            titleLarge: AppFont.text20(context).bold,
+            titleLarge: AppFont.text20(context, color).bold,
 
             // bodySmall: Untuk teks body kecil, biasanya digunakan untuk catatan atau teks tambahan.
-            bodySmall: AppFont.text10(context),
+            bodySmall: AppFont.text10(context, color),
 
             // bodyMedium: Digunakan untuk teks body standar, seperti paragraf utama atau konten umum.
-            bodyMedium: AppFont.text14(context),
+            bodyMedium: AppFont.text14(context, color),
 
             // bodyLarge: Untuk teks body besar, seperti paragraf yang ingin lebih menonjol atau teks penting.
-            bodyLarge: AppFont.text16(context),
+            bodyLarge: AppFont.text16(context, color),
 
             // displayLarge: Biasanya digunakan untuk teks tampilan besar, seperti angka besar atau heading yang sangat menonjol.
-            displayLarge: AppFont.text32(context).semiBold,
+            displayLarge: AppFont.text32(context, color).semiBold,
 
             // displayMedium: Digunakan untuk teks tampilan sedang, bisa untuk heading sekunder yang cukup besar.
-            displayMedium: AppFont.text28(context).semiBold,
+            displayMedium: AppFont.text28(context, color).semiBold,
 
             // displaySmall: Untuk teks tampilan kecil, seperti subheading di halaman dengan desain besar.
-            displaySmall: AppFont.text24(context).semiBold,
+            displaySmall: AppFont.text24(context, color).semiBold,
 
             // labelLarge: Biasanya digunakan untuk label tombol besar atau label yang menonjol.
-            labelLarge: AppFont.text15(context).regular,
+            labelLarge: AppFont.text15(context, color).regular,
 
             // labelMedium: Digunakan untuk label standar, seperti label tombol dengan ukuran default.
-            labelMedium: AppFont.text13(context).regular,
+            labelMedium: AppFont.text13(context, color).regular,
 
             // labelSmall: Untuk label kecil, misalnya teks kecil di bawah elemen interaktif.
-            labelSmall: AppFont.text11(context).regular,
+            labelSmall: AppFont.text11(context, color).regular,
           );
 
   // TODO: menginisialisasi class tema text

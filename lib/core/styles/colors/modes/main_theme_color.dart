@@ -3,22 +3,22 @@ part of '../theme_color.dart';
 class MainThemeColor implements ThemeColor {
   // ========= Primary colors
   @override
-  Color get primary => const Color(0xFF2F80ED); // Warna utama aplikasi (sering digunakan di AppBar atau tombol utama)
+  Color get primary => const Color(0xFF5D87FF); // Warna utama aplikasi (sering digunakan di AppBar atau tombol utama)
 
   @override
   Color get onPrimary => brightnessColor; // Warna teks atau ikon di atas warna primary
 
   @override
-  Color get primaryContainer => const Color(0xFFE4E9EC); // Warna elemen pendukung (misalnya card atau container sekunder)
+  Color get primaryContainer => brightnessColor; // Warna elemen pendukung (misalnya card atau container sekunder)
 
   @override
-  Color get onPrimaryContainer => brightnessColor; // Warna teks atau ikon di atas elemen primaryContainer
+  Color get onPrimaryContainer => onBrightnessColor; // Warna teks atau ikon di atas elemen primaryContainer
 
   @override
-  Color get primaryFixed => primaryContainer; // Variasi tetap dari primary untuk konsistensi di area tertentu
+  Color get primaryFixed => const Color(0xFF74AFFF); // Variasi tetap dari primary untuk konsistensi di area tertentu
 
   @override
-  Color get primaryFixedDim => const Color(0xFF74AFFF); // Versi redup dari primaryFixed
+  Color get primaryFixedDim => const Color.fromARGB(255, 230, 238, 255); // Versi redup dari primaryFixed
 
   @override
   Color get inversePrimary => brightnessColor; // Warna kontras dengan primary (biasanya terang)
@@ -63,10 +63,10 @@ class MainThemeColor implements ThemeColor {
 
   // ========= Surface colors
   @override
-  Color get surface => const Color(0xFFFFFDF6); // Warna latar belakang utama
+  Color get surface => brightnessColor; // Warna latar belakang utama
 
   @override
-  Color get onSurface => const Color(0xFF252525); // Warna teks atau ikon di atas latar belakang utama
+  Color get onSurface => onBrightnessColor; // Warna teks atau ikon di atas latar belakang utama
 
   @override
   Color get surfaceBright => brightnessColor; // Warna terang untuk elemen seperti kartu
@@ -93,14 +93,14 @@ class MainThemeColor implements ThemeColor {
   Color get surfaceTint => primary; // Warna aksen pada elemen surface
 
   @override
-  Color get inverseSurface => onBrightnessColor; // Warna kontras dengan surface
+  Color get inverseSurface => success; // Warna kontras dengan surface
 
   @override
-  Color get onInverseSurface => brightnessColor; // Warna teks atau ikon di atas inverseSurface
+  Color get onInverseSurface => onSuccess; // Warna teks atau ikon di atas inverseSurface
 
   // ========= Error colors
   @override
-  Color get error => const Color(0xFFCB3A31); // Warna untuk status error
+  Color get error => const Color(0xFFFA896B); // Warna untuk status error
 
   @override
   Color get onError => brightnessColor; // Warna teks atau ikon di atas warna error
@@ -110,6 +110,13 @@ class MainThemeColor implements ThemeColor {
 
   @override
   Color get onErrorContainer => brightnessColor; // Warna teks atau ikon di atas errorContainer
+
+    // ========= Success colors
+  @override
+  Color get success => const Color.fromARGB(255, 19, 222, 131); // Warna untuk status success
+
+  @override
+  Color get onSuccess => brightnessColor; // Warna teks atau ikon di atas warna success
 
   // ========= Outline and shadow
   @override

@@ -1,5 +1,40 @@
 {
     "@@locale": "en",
+
+    "loginGreetingTitle" : "Welcome Back!",
+    "loginGreetingDesc" : "Login in to your existant account",
+    "email" : "Email",
+    "password" : "Password",
+    "enterYourEmail": "Enter Your email",
+    "enterYourPassword": "Enter Your password",
+    "rememberMe" : "Remember me",
+    "forgotYourPassword" : "Forgot your password?",
+    "loginWithStudentEmail" : "Login with student email",
+
+    "homeGreeting": "Good {time},",
+    "entryExitTime": "Entry/Exit Time",
+    "nim": "NIM",
+    "status": "Status",
+    "plate": "Plate",
+    "scanHere": "SCAN HERE",
+
+    "setting": "Setting",
+    "settingDesc": "Customize your experience with ease! Choose your preferred language and set the theme to your liking",
+    "account": "Account",
+    "updatePassword": "Update your password",
+    "personalized": "Personalized",
+    "chooseTheme": "Choose theme",
+    "chooseThemeDesc": "Customize the app's look with your favorite theme!",
+    "chooseLanguage": "Choose language",
+    "chooseLanguageDesc": "Select the language you're most comfortable with for the best experience",
+    "successChangeTheme": "Successfully change theme",
+    "successChangeLanguage": "Successfully change language",
+
+    "mainTheme": "Main Theme",
+    "orbTheme": "Orb Theme",
+
+    "indonesia": "Bahasa Indonesia",
+    "english": "English",
   
     "noData": "No data",
   
@@ -24,9 +59,15 @@
     "confirm": "Confirm",
     "save" : "Save",
     "cancel" : "Cancel",
+    "back" : "Back",
     "start": "Start",
     "search": "Search",
     "end": "End",
+
+    "morning": "Morning",
+    "afternoon": "Afternoon",
+    "evening": "Evening",
+    "night": "Night",
   
     "january": "January",
     "february": "February",
