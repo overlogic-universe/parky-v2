@@ -4,12 +4,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/constants/assets/image_asset_constant.dart';
 import '../../../../core/constants/common/margin_constant.dart';
+import '../../../../core/failures/exception_handler.dart';
+import '../../../../core/routes/route_name.dart';
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/lang.dart';
 import '../../../shared/presentation/screens/base_screen.dart';
+import '../../../shared/presentation/widgets/custom_toast.dart';
+import '../../../shared/presentation/widgets/dialog_loader.dart';
 import '../../../shared/presentation/widgets/line.dart';
 import '../../../shared/presentation/widgets/margin_bottom.dart';
+import '../view_models/login_state.dart';
+import '../view_models/login_view_model.dart';
 import '../widgets/login_form.dart';
 import '../widgets/login_with_student_email_button.dart';
 
@@ -18,6 +24,8 @@ class LoginScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    _loginActionListener(context, ref);
+
     return BaseScreen(
       resizeToAvoidBottomInset: true,
       horizontalPadding: 0,
@@ -67,5 +75,32 @@ class LoginScreen extends ConsumerWidget {
         ),
       ),
     );
+  }
+
+  void _loginActionListener(BuildContext context, WidgetRef ref) {
+    ref.listen<LoginState>(loginViewModelProvider, (previous, next) {
+      final loginState = ref.watch(loginViewModelProvider);
+
+      loginState.userUiModel.whenOrNull(
+        data: (data) {
+          DialogLoader.stopLoading(context);
+          CustomToast.showToast(
+            context,
+            message: Lang.of(context).loginSuccess,
+            backgroundColor: AppColor.success(context),
+          );
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            RouteName.home,
+            (Route<dynamic> route) => false,
+          );
+        },
+        loading: () => DialogLoader.startLoading(context),
+        error: (err, _) {
+          ExceptionHandler.of(context, err);
+          DialogLoader.stopLoading(context);
+        },
+      );
+    });
   }
 }

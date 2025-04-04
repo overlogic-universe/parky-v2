@@ -9,6 +9,7 @@ class DialogLoader {
     return await showDialog<void>(
       context: context,
       barrierDismissible: false,
+      useSafeArea: false,
       builder: (BuildContext context) => BlurLoading(),
     );
   }

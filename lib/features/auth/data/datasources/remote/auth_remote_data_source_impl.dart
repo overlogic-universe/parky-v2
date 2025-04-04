@@ -31,6 +31,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         );
       }
     }
+
+    await signOut();
     throw AuthException(
       message: AuthExceptionMessageConstant.userNotFound,
       type: AuthFailureType.userNotFound,
@@ -72,7 +74,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     final user = userCredential.user;
     if (user != null) {
       if (!user.email!.endsWith("@student.ums.ac.id")) {
-        await firebaseAuth.signOut();
+        await signOut();
         throw AuthException(
           message: AuthExceptionMessageConstant.invalidEmailDomain,
           type: AuthFailureType.invalidEmailDomain,
@@ -91,5 +93,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<void> signOut() async {
     await firebaseAuth.signOut();
+    await googleSignIn.signOut();
   }
 }

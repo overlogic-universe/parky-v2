@@ -51,7 +51,7 @@ class AppTextTheme {
             labelMedium: themeFont.text13.regular,
 
             // labelSmall: Untuk label kecil, misalnya teks kecil di bawah elemen interaktif.
-            labelSmall: themeFont.text11.regular,
+            labelSmall: themeFont.text12.regular,
           );
 
   // TODO: menginisialisasi class tema text

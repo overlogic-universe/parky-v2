@@ -68,7 +68,11 @@ class LogoutAlertDialog extends ConsumerWidget {
             message: Lang.of(context).logoutSuccess,
             backgroundColor: AppColor.success(context),
           );
-          Navigator.pushReplacementNamed(context, RouteName.login);
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            RouteName.login,
+            (Route<dynamic> route) => false,
+          );
         },
         loading: () => DialogLoader.startLoading(context),
         error: (err, _) {

@@ -43,7 +43,11 @@ class SplashScreen extends ConsumerWidget {
 
   void _goToInitialRoute(BuildContext context, String routeName) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Navigator.pushReplacementNamed(context, routeName);
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        routeName,
+        (Route<dynamic> route) => false,
+      );
     });
   }
 }

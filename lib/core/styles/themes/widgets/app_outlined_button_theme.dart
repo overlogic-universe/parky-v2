@@ -5,12 +5,12 @@ import 'package:parky/core/styles/fonts/app_font.dart';
 
 import '../../colors/theme_color.dart';
 
-class AppElevatedButtonTheme {
-  const AppElevatedButtonTheme._();
+class AppOutlinedButtonTheme {
+  const AppOutlinedButtonTheme._();
 
-  static ElevatedButtonThemeData of(BuildContext context, ThemeColor color) =>
-      ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
+  static OutlinedButtonThemeData of(BuildContext context, ThemeColor color) =>
+      OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
           textStyle: AppFont.bodyMedium(
             context,
           )?.copyWith(fontFamily: GlobalConstant.mainFontFamily),
@@ -19,10 +19,9 @@ class AppElevatedButtonTheme {
             borderRadius: BorderRadius.circular(30.r),
           ),
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.w),
-          foregroundColor: color.onPrimary,
-
+          foregroundColor: color.onBrightnessColor,
           elevation: 0.5,
-          backgroundColor: color.primary,
+          backgroundColor: Colors.transparent,
         ),
       );
 }

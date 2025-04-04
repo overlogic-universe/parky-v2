@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:parky/features/shared/presentation/widgets/custom_toast.dart';
 
 import '../../../../core/constants/assets/icon_asset_constant.dart';
 import '../../../../core/constants/common/margin_constant.dart';
 import '../../../../core/constants/styles/style_constant.dart';
-import '../../../../core/failures/exception_handler.dart';
-import '../../../../core/routes/route_name.dart';
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/input_validator.dart';
 import '../../../../core/utils/lang.dart';
-import '../../../shared/presentation/widgets/dialog_loader.dart';
 import '../../../shared/presentation/widgets/svg_asset.dart';
 import '../../core/utils/auth_input_validator.dart';
 import '../../domain/entities/login_with_email_password_request.dart';
-import '../view_models/login_state.dart';
 import '../view_models/login_view_model.dart';
 import 'remember_me.dart';
 
@@ -64,34 +59,8 @@ class _LoginFormState extends ConsumerState<LoginForm> {
     }
   }
 
-  void _loginActionListener() {
-    ref.listen<LoginState>(loginViewModelProvider, (previous, next) {
-      final context = this.context;
-
-      final loginState = ref.watch(loginViewModelProvider);
-
-      loginState.userUiModel.whenOrNull(
-        data: (data) {
-          DialogLoader.stopLoading(context);
-          CustomToast.showToast(
-            context,
-            message: Lang.of(context).loginSuccess,
-            backgroundColor: AppColor.success(context),
-          );
-          Navigator.pushReplacementNamed(context, RouteName.home);
-        },
-        loading: () => DialogLoader.startLoading(context),
-        error: (err, _) {
-          ExceptionHandler.of(context, err);
-          DialogLoader.stopLoading(context);
-        },
-      );
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    _loginActionListener();
 
     return Form(
       key: _formKey,
