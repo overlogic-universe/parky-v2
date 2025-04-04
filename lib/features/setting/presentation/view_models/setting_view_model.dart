@@ -1,7 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/styles/colors/theme_color.dart';
-import '../../core/di/setting_injection.dart';
+import '../../core/di/setting_provider.dart';
 import '../../domain/usecases/get_language_use_case.dart';
 import '../../domain/usecases/get_theme_use_case.dart';
 import '../../domain/usecases/save_language_use_case.dart';

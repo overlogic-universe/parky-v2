@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../core/di/provider.dart';
 import '../../data/datasources/local/setting_local_data_source.dart';
 import '../../data/datasources/local/setting_local_data_source_impl.dart';
 import '../../data/repositories/setting_repository_impl.dart';
@@ -9,10 +9,6 @@ import '../../domain/usecases/get_language_use_case.dart';
 import '../../domain/usecases/get_theme_use_case.dart';
 import '../../domain/usecases/save_language_use_case.dart';
 import '../../domain/usecases/save_theme_use_case.dart';
-
-final sharedPreferencesProvider = Provider<SharedPreferences>(
-  (ref) => throw UnimplementedError(),
-);
 
 final settingLocalDataSourceProvider = Provider<SettingLocalDataSource>((ref) {
   final sharedPreferences = ref.watch(sharedPreferencesProvider);
