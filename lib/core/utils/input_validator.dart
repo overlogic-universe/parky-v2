@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'lang.dart';
+import '../../../../core/utils/lang.dart';
 
 class InputValidator {
   const InputValidator._();
@@ -12,7 +12,11 @@ class InputValidator {
   }
 
   static String? fieldRequired(
-      BuildContext context, String? value, String field, int length) {
+    BuildContext context, {
+    required String? value,
+    required String field,
+    required int length,
+  }) {
     if (value == null || value.isEmpty) {
       return Lang.of(context).mustNotBeEmpty(field);
     } else if (value.length <= length) {
@@ -20,5 +24,4 @@ class InputValidator {
     }
     return null;
   }
-
 }

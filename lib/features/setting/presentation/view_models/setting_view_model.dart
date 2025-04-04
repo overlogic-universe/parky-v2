@@ -42,7 +42,7 @@ class SettingViewModel extends _$SettingViewModel {
   Future<void> setTheme(ThemeModeType theme) async {
     state = AsyncValue.loading();
     try {
-      await _saveThemeUseCase.call(theme.name);
+      await _saveThemeUseCase.call(params: theme.name);
       final currentState = state.value;
       if (currentState != null) {
         state = AsyncValue.data(currentState.copyWith(themeModeType: theme));
@@ -68,7 +68,7 @@ class SettingViewModel extends _$SettingViewModel {
   Future<void> setLanguage(String localeId) async {
     state = AsyncValue.loading();
     try {
-      await _saveLanguageUseCase.call(localeId);
+      await _saveLanguageUseCase.call(params: localeId);
       final currentState = state.value;
       if (currentState != null) {
         state = AsyncValue.data(currentState.copyWith(localeId: localeId));

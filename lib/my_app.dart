@@ -9,6 +9,7 @@ import 'core/l10n/l10n.dart';
 import 'core/routes/route_generator.dart';
 import 'core/routes/route_name.dart';
 import 'core/styles/colors/theme_color.dart';
+import 'core/styles/fonts/theme_font.dart';
 import 'core/styles/themes/modes/app_theme.dart';
 import 'features/setting/presentation/view_models/setting_view_model.dart';
 
@@ -70,7 +71,11 @@ class _MyAppState extends ConsumerState<MyApp> {
         );
 
         ScreenUtil.init(ctx);
-        return Theme(data: AppTheme.of(context, themeColor), child: child!);
+        final themeFont = ThemeFont(context: context, color: themeColor);
+        return Theme(
+          data: AppTheme.of(context, themeColor, themeFont),
+          child: child!,
+        );
       },
       onGenerateRoute: RouteGenerator.onGenerateRoute,
       initialRoute: RouteName.login,

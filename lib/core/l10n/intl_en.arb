@@ -44,14 +44,27 @@
     "logout" : "Logout",
     "logoutModalDesc": "Are you sure you want to log out?",
 
+    "loginSuccess": "Login successful",
+
     "mustNotBeEmpty" : "{field} must not be empty!",
+    "mustUseStudentEmail" : "Please use a student email!",
     "atLeastLengthCharacters" : "{field} must be at least {length} characters!",
     "invalidFormat" : "The {field} you entered is invalid!",
 
     "serverError": "Server error",
     "networkError": "Unstable network",
-    "unexpectedError": "Unexpected error",
-    "loginError": "Login failed. Please try again!",
+    "unknownError": "Unknown error",
+    "userNotFound": "User not found",
+    "passwordIsNull": "Password is null",
+    "emailAlreadyRegistered": "Email already registered",
+    "loginWithGoogleAbortedByUser": "Google sign-in aborted",
+    "loginWithGoogleFailed": "Google sign-in failed",
+    "invalidCredentials": "Email or password is incorrect",
+    "emailAlreadyExists": "This email is already in use",
+    "signOutFailed": "Sign out failed",
+    "loginFailed": "Login failed, Please try again!",
+
+    "loading" : "Loading",
 
     "and": "and",
     "or": "or",

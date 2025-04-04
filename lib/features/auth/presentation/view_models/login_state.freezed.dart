@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$LoginState {
 
- RequestState get requestState;
+ AsyncValue<UserUiModel?> get userUiModel;
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $LoginStateCopyWith<LoginState> get copyWith => _$LoginStateCopyWithImpl<LoginSt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginState&&(identical(other.requestState, requestState) || other.requestState == requestState));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginState&&(identical(other.userUiModel, userUiModel) || other.userUiModel == userUiModel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,requestState);
+int get hashCode => Object.hash(runtimeType,userUiModel);
 
 @override
 String toString() {
-  return 'LoginState(requestState: $requestState)';
+  return 'LoginState(userUiModel: $userUiModel)';
 }
 
 
@@ -46,7 +46,7 @@ abstract mixin class $LoginStateCopyWith<$Res>  {
   factory $LoginStateCopyWith(LoginState value, $Res Function(LoginState) _then) = _$LoginStateCopyWithImpl;
 @useResult
 $Res call({
- RequestState requestState
+ AsyncValue<UserUiModel?> userUiModel
 });
 
 
@@ -63,10 +63,10 @@ class _$LoginStateCopyWithImpl<$Res>
 
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? requestState = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? userUiModel = null,}) {
   return _then(_self.copyWith(
-requestState: null == requestState ? _self.requestState : requestState // ignore: cast_nullable_to_non_nullable
-as RequestState,
+userUiModel: null == userUiModel ? _self.userUiModel : userUiModel // ignore: cast_nullable_to_non_nullable
+as AsyncValue<UserUiModel?>,
   ));
 }
 
@@ -77,10 +77,10 @@ as RequestState,
 
 
 class _LoginState implements LoginState {
-  const _LoginState({required this.requestState});
+  const _LoginState({required this.userUiModel});
   
 
-@override final  RequestState requestState;
+@override final  AsyncValue<UserUiModel?> userUiModel;
 
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
@@ -92,16 +92,16 @@ _$LoginStateCopyWith<_LoginState> get copyWith => __$LoginStateCopyWithImpl<_Log
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoginState&&(identical(other.requestState, requestState) || other.requestState == requestState));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoginState&&(identical(other.userUiModel, userUiModel) || other.userUiModel == userUiModel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,requestState);
+int get hashCode => Object.hash(runtimeType,userUiModel);
 
 @override
 String toString() {
-  return 'LoginState(requestState: $requestState)';
+  return 'LoginState(userUiModel: $userUiModel)';
 }
 
 
@@ -112,7 +112,7 @@ abstract mixin class _$LoginStateCopyWith<$Res> implements $LoginStateCopyWith<$
   factory _$LoginStateCopyWith(_LoginState value, $Res Function(_LoginState) _then) = __$LoginStateCopyWithImpl;
 @override @useResult
 $Res call({
- RequestState requestState
+ AsyncValue<UserUiModel?> userUiModel
 });
 
 
@@ -129,10 +129,10 @@ class __$LoginStateCopyWithImpl<$Res>
 
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? requestState = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? userUiModel = null,}) {
   return _then(_LoginState(
-requestState: null == requestState ? _self.requestState : requestState // ignore: cast_nullable_to_non_nullable
-as RequestState,
+userUiModel: null == userUiModel ? _self.userUiModel : userUiModel // ignore: cast_nullable_to_non_nullable
+as AsyncValue<UserUiModel?>,
   ));
 }
 

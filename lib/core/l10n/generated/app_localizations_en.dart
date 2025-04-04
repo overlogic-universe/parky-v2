@@ -119,9 +119,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logoutModalDesc => 'Are you sure you want to log out?';
 
   @override
+  String get loginSuccess => 'Login successful';
+
+  @override
   String mustNotBeEmpty(Object field) {
     return '$field must not be empty!';
   }
+
+  @override
+  String get mustUseStudentEmail => 'Please use a student email!';
 
   @override
   String atLeastLengthCharacters(Object field, Object length) {
@@ -140,10 +146,37 @@ class AppLocalizationsEn extends AppLocalizations {
   String get networkError => 'Unstable network';
 
   @override
-  String get unexpectedError => 'Unexpected error';
+  String get unknownError => 'Unknown error';
 
   @override
-  String get loginError => 'Login failed. Please try again!';
+  String get userNotFound => 'User not found';
+
+  @override
+  String get passwordIsNull => 'Password is null';
+
+  @override
+  String get emailAlreadyRegistered => 'Email already registered';
+
+  @override
+  String get loginWithGoogleAbortedByUser => 'Google sign-in aborted';
+
+  @override
+  String get loginWithGoogleFailed => 'Google sign-in failed';
+
+  @override
+  String get invalidCredentials => 'Email or password is incorrect';
+
+  @override
+  String get emailAlreadyExists => 'This email is already in use';
+
+  @override
+  String get signOutFailed => 'Sign out failed';
+
+  @override
+  String get loginFailed => 'Login failed, Please try again!';
+
+  @override
+  String get loading => 'Loading';
 
   @override
   String get and => 'and';

@@ -10,11 +10,11 @@ class LoginWithEmailAndPasswordUseCase
   const LoginWithEmailAndPasswordUseCase({required this.repository});
 
   @override
-  Future<UserEntity> call(
-    LoginWithEmailPasswordRequest loginWithEmailPasswordRequest,
-  ) async {
+  Future<UserEntity> call({
+    required LoginWithEmailPasswordRequest params,
+  }) async {
     return repository.loginWithEmailAndPassword(
-      loginWithEmailPasswordRequest: loginWithEmailPasswordRequest,
+      loginWithEmailPasswordRequest: params,
     );
   }
 }
