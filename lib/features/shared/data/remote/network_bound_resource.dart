@@ -1,40 +1,36 @@
-// import '../../../../core/failures/exception.dart';
-// import 'network_info.dart';
-// import '../../../../core/utils/resource_state.dart';
+import '../../../../core/utils/resource_state.dart';
+import 'network_info.dart';
 
-// abstract class NetworkBoundResource<ResultType, RequestType> {
-//   final NetworkInfo networkInfo;
+class NetworkBoundResource<ResultType, RequestType> {
+  final NetworkInfo networkInfo;
+  final Future<ResultType?> Function() loadFromDB;
+  final bool Function(ResultType? data) shouldFetch;
+  final Future<RequestType> Function() createCall;
+  final Future<void> Function(RequestType data) saveCallResult;
 
-//   NetworkBoundResource(this.networkInfo);
+  NetworkBoundResource({
+    required this.networkInfo,
+    required this.loadFromDB,
+    required this.shouldFetch,
+    required this.createCall,
+    required this.saveCallResult,
+  });
 
-//   Future<ResourceState<ResultType>> fetchData() async {
-//     try {
-//       // Ambil data dari database terlebih dahulu
-//       ResultType? dbSource = await loadFromDB();
-//       if (shouldFetch(dbSource)) {
-//         // Cek koneksi internet sebelum memanggil API
-//         final RequestType apiResponse = await networkInfo.safeNetworkRequest(
-//           result: createCall,
-//         );
+  Future<ResourceState<ResultType>> fetchData() async {
+    try {
+      ResultType? dbSource = await loadFromDB();
+      if (shouldFetch(dbSource)) {
+        final RequestType apiResponse = await networkInfo.safeNetworkRequest(
+          result: createCall,
+        );
 
-//         // Simpan hasil API ke database
-//         await saveCallResult(apiResponse);
+        await saveCallResult(apiResponse);
+        dbSource = await loadFromDB();
+      }
 
-//         // Ambil data terbaru dari database
-//         dbSource = await loadFromDB();
-//       }
-
-//       return ResourceState.success(dbSource as ResultType);
-//     } on CommonException {
-//       if()
-//       return ResourceState.error("No internet connection.");
-//     } catch (e) {
-//       return ResourceState.error(e.toString());
-//     }
-//   }
-
-//   Future<ResultType?> loadFromDB();
-//   bool shouldFetch(ResultType? data);
-//   Future<RequestType> createCall();
-//   Future<void> saveCallResult(RequestType data);
-// }
+      return ResourceState.success(dbSource as ResultType);
+    } catch (_) {
+      rethrow;
+    }
+  }
+}

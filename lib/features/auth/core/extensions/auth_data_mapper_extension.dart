@@ -1,22 +1,24 @@
-import '../../data/models/auth_model.dart';
-import '../../domain/entities/auth_entity.dart';
+import '../../data/models/user_model.dart';
+import '../../domain/entities/user_entity.dart';
 
-extension AuthModelToEntity on AuthModel {
-  AuthEntity toEntity() {
-    return AuthEntity(
+extension UserModelToEntity on UserModel {
+  UserEntity toEntity() {
+    return UserEntity(
       id: id,
-      username: username,
+      studentId: studentId,
+      name: name,
       email: email,
       password: password,
     );
   }
 }
 
-extension AuthEntityToModel on AuthEntity {
-  AuthModel toModel() {
-    return AuthModel(
+extension UserEntityToModel on UserEntity {
+  UserModel toModel() {
+    return UserModel(
       id: id,
-      username: username,
+      studentId: studentId,
+      name: name,
       email: email,
       password: password,
     );

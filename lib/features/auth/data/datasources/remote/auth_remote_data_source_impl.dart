@@ -5,7 +5,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 import '../../../../../core/extensions/firebase_extension.dart';
 import '../../../core/constants/failures/auth_exception_message_constant.dart';
 import '../../../core/failures/auth_exception.dart';
-import '../../models/auth_model.dart';
+import '../../../domain/entities/login_with_email_password_request.dart';
+import '../../models/user_model.dart';
 import 'auth_remote_data_source.dart';
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
@@ -20,12 +21,12 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   });
 
   @override
-  Future<AuthModel> getAuthModel() async {
+  Future<UserModel> getUserModel() async {
     final user = firebaseAuth.currentUser;
     if (user != null) {
       final snapshot = await firestore.usersCollection.doc(user.uid).get();
       if (snapshot.exists) {
-        return AuthModelFirestore.fromFirestore(
+        return UserModel.fromFirestore(
           snapshot as DocumentSnapshot<Map<String, dynamic>>,
         );
       }
@@ -37,24 +38,18 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<AuthModel> loginWithEmailAndPassword({
-    required AuthModel authModel,
+  Future<UserModel> loginWithEmailAndPassword({
+    required LoginWithEmailPasswordRequest loginWithEmailPasswordRequest,
   }) async {
-    if (authModel.password == null) {
-      throw AuthException(
-        message: AuthExceptionMessageConstant.passwordIsNull,
-        type: AuthFailureType.passwordIsNull,
-      );
-    }
     await firebaseAuth.signInWithEmailAndPassword(
-      email: authModel.email,
-      password: authModel.password!,
+      email: loginWithEmailPasswordRequest.email,
+      password: loginWithEmailPasswordRequest.password,
     );
-    return getAuthModel();
+    return getUserModel();
   }
 
   @override
-  Future<AuthModel> loginWithGoogle() async {
+  Future<UserModel> loginWithGoogle() async {
     final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
     if (googleUser == null) {
       throw AuthException(
@@ -84,17 +79,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         );
       }
 
-      final authModel = AuthModel(
-        id: user.uid,
-        username: user.displayName ?? "",
-        email: user.email ?? "",
-      );
-
-      await firestore.usersCollection
-          .doc(user.uid)
-          .set(authModel.toFirestore());
-
-      return authModel;
+      return getUserModel();
     }
 
     throw AuthException(

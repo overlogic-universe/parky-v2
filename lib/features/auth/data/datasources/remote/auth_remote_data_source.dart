@@ -1,8 +1,11 @@
-import '../../models/auth_model.dart';
+import '../../../domain/entities/login_with_email_password_request.dart';
+import '../../models/user_model.dart';
 
 abstract class AuthRemoteDataSource {
   Future<void> signOut();
-  Future<AuthModel> loginWithGoogle();
-  Future<AuthModel> loginWithEmailAndPassword({required AuthModel authModel});
-  Future<AuthModel?> getAuthModel();
+  Future<UserModel> loginWithGoogle();
+  Future<UserModel> loginWithEmailAndPassword({
+   required LoginWithEmailPasswordRequest loginWithEmailPasswordRequest,
+  });
+  Future<UserModel?> getUserModel();
 }

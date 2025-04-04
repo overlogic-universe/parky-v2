@@ -1,15 +1,20 @@
 import '../../../shared/domain/usecases/use_case.dart';
-import '../entities/auth_entity.dart';
+import '../entities/user_entity.dart';
+import '../entities/login_with_email_password_request.dart';
 import '../repositories/auth_repository.dart';
 
 class LoginWithEmailAndPasswordUseCase
-    implements UseCase<AuthEntity, AuthEntity> {
+    implements UseCase<UserEntity, LoginWithEmailPasswordRequest> {
   final AuthRepository repository;
 
   const LoginWithEmailAndPasswordUseCase({required this.repository});
 
   @override
-  Future<AuthEntity> call(AuthEntity authEntity) async {
-    return repository.loginWithEmailAndPassword(authEntity: authEntity);
+  Future<UserEntity> call(
+    LoginWithEmailPasswordRequest loginWithEmailPasswordRequest,
+  ) async {
+    return repository.loginWithEmailAndPassword(
+      loginWithEmailPasswordRequest: loginWithEmailPasswordRequest,
+    );
   }
 }
