@@ -185,6 +185,18 @@ abstract class AppLocalizations {
   /// **'PINDAI DI SINI'**
   String get scanHere;
 
+  /// No description provided for @parking.
+  ///
+  /// In id, this message translates to:
+  /// **'Sedang parkir'**
+  String get parking;
+
+  /// No description provided for @parked.
+  ///
+  /// In id, this message translates to:
+  /// **'Keluar'**
+  String get parked;
+
   /// No description provided for @setting.
   ///
   /// In id, this message translates to:

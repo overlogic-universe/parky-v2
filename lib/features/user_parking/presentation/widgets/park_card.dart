@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
@@ -110,6 +111,7 @@ class ParkCard extends ConsumerWidget {
         SizedBox(height: 5.h),
         // isStatus
         //     ?
+        _buildLoadingUserDataShimmer(context),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
           decoration: BoxDecoration(
@@ -131,6 +133,22 @@ class ParkCard extends ConsumerWidget {
         //   ),
         // ),
       ],
+    );
+  }
+
+  Widget _buildLoadingUserDataShimmer(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
+      child: Shimmer.fromColors(
+        baseColor: Colors.red,
+        highlightColor: Colors.yellow,
+        child: Text(
+          '',
+          style: AppFont.labelSmall(
+            context,
+          )?.medium.copyWith(color: AppColor.onContainerColorPrimary(context)),
+        ),
+      ),
     );
   }
 

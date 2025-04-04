@@ -5,7 +5,7 @@ import '../../domain/entities/park_entity.dart';
 class ParkModel {
   final String id;
   final ParkStatus status;
-  final String lastActivity;
+  final Timestamp lastActivity;
   final String userId;
 
   ParkModel({
@@ -22,7 +22,9 @@ class ParkModel {
         (e) => e.name == json['status'],
         orElse: () => ParkStatus.parking,
       ),
-      lastActivity: json['lastActivity'] as String,
+      lastActivity: Timestamp.fromMillisecondsSinceEpoch(
+        json['lastActivity'] as int,
+      ),
       userId: json['userId'] as String,
     );
   }
@@ -31,7 +33,7 @@ class ParkModel {
     return {
       'id': id,
       'status': status.name,
-      'lastActivity': lastActivity,
+      'lastActivity': lastActivity.millisecondsSinceEpoch,
       'userId': userId,
     };
   }
@@ -44,7 +46,7 @@ class ParkModel {
         (e) => e.name == data['status'],
         orElse: () => ParkStatus.parking,
       ),
-      lastActivity: data['lastActivity'] as String,
+      lastActivity: data['lastActivity'] as Timestamp,
       userId: data['userId'] as String,
     );
   }
