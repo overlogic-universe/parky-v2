@@ -55,6 +55,7 @@
   "serverError": "Kesalahan server",
   "networkError": "Jaringan tidak stabil",
   "unknownError": "Kesalahan tak terduga",
+
   "userNotFound": "Pengguna tidak ditemukan. Silakan coba lagi!",
   "passwordIsNull": "Kata sandi tidak boleh kosong",
   "emailAlreadyRegistered": "Email sudah terdaftar",
@@ -64,6 +65,9 @@
   "emailAlreadyExists": "Email ini sudah digunakan",
   "signOutFailed": "Gagal keluar. Silakan coba lagi!",
   "loginFailed": "Gagal masuk. Silakan coba lagi!",
+
+  "getParkFailed": "Gagal mendapatkan data parkir",
+  "getVehicleFailed": "Gagal mendapatkan data kendaraan",
 
   "loading" : "Memuat",
   

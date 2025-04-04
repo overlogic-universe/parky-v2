@@ -55,6 +55,7 @@
     "serverError": "Server error",
     "networkError": "Unstable network",
     "unknownError": "Unknown error",
+
     "userNotFound": "User not found",
     "passwordIsNull": "Password is null",
     "emailAlreadyRegistered": "Email already registered",
@@ -64,6 +65,9 @@
     "emailAlreadyExists": "This email is already in use",
     "signOutFailed": "Sign out failed",
     "loginFailed": "Login failed, Please try again!",
+
+    "getParkFailed": "Failed to retrieve parking data",
+    "getVehicleFailed": "Failed to retrieve vehicle data",
 
     "loading" : "Loading",
 

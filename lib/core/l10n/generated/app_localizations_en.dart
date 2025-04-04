@@ -179,6 +179,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginFailed => 'Login failed, Please try again!';
 
   @override
+  String get getParkFailed => 'Failed to retrieve parking data';
+
+  @override
+  String get getVehicleFailed => 'Failed to retrieve vehicle data';
+
+  @override
   String get loading => 'Loading';
 
   @override

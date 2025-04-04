@@ -179,6 +179,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get loginFailed => 'Gagal masuk. Silakan coba lagi!';
 
   @override
+  String get getParkFailed => 'Gagal mendapatkan data parkir';
+
+  @override
+  String get getVehicleFailed => 'Gagal mendapatkan data kendaraan';
+
+  @override
   String get loading => 'Memuat';
 
   @override

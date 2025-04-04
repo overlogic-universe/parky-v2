@@ -2,7 +2,7 @@ class AuthException implements Exception {
   final String message;
   final AuthFailureType type;
 
-  AuthException({required this.message, required this.type});
+  const AuthException({required this.message, required this.type});
 }
 
 enum AuthFailureType {

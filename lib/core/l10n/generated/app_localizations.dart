@@ -419,6 +419,18 @@ abstract class AppLocalizations {
   /// **'Gagal masuk. Silakan coba lagi!'**
   String get loginFailed;
 
+  /// No description provided for @getParkFailed.
+  ///
+  /// In id, this message translates to:
+  /// **'Gagal mendapatkan data parkir'**
+  String get getParkFailed;
+
+  /// No description provided for @getVehicleFailed.
+  ///
+  /// In id, this message translates to:
+  /// **'Gagal mendapatkan data kendaraan'**
+  String get getVehicleFailed;
+
   /// No description provided for @loading.
   ///
   /// In id, this message translates to:
