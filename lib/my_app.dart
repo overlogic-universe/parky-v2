@@ -7,11 +7,15 @@ import 'core/constants/common/locale_id_constant.dart';
 import 'core/l10n/generated/app_localizations.dart';
 import 'core/l10n/l10n.dart';
 import 'core/routes/route_generator.dart';
-import 'core/routes/route_name.dart';
 import 'core/styles/colors/theme_color.dart';
 import 'core/styles/fonts/theme_font.dart';
 import 'core/styles/themes/modes/app_theme.dart';
+import 'features/auth/presentation/screens/login_screen.dart';
+import 'features/setting/presentation/view_models/setting_state.dart';
 import 'features/setting/presentation/view_models/setting_view_model.dart';
+import 'features/shared/presentation/screens/splash_screen.dart';
+import 'features/shared/presentation/view_models/init_view_model.dart';
+import 'features/user_parking/presentation/screens/home_screen.dart';
 
 class MyApp extends ConsumerStatefulWidget {
   const MyApp({super.key});
@@ -59,28 +63,43 @@ class _MyAppState extends ConsumerState<MyApp> {
         GlobalCupertinoLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
-      builder: (ctx, child) {
-        final prevState = ref.read(settingViewModelProvider).valueOrNull;
-        final themeColor = state.maybeWhen(
-          data: (data) => ThemeColor.of(data.themeModeType),
-          orElse:
-              () =>
-                  prevState != null
-                      ? ThemeColor.of(prevState.themeModeType)
-                      : ThemeColor.of(ThemeModeType.main),
-        );
-
-        ScreenUtil.init(ctx);
-        final themeFont = ThemeFont(context: context, color: themeColor);
-        return Theme(
-          data: AppTheme.of(context, themeColor, themeFont),
-          child: child!,
-        );
-      },
+      builder: (ctx, child) => _buildMaterialAppBuilder(ctx, child, state),
       onGenerateRoute: RouteGenerator.onGenerateRoute,
-      initialRoute: RouteName.login,
+      home: _getInitialScreen(),
       supportedLocales: L10n.all,
       locale: Locale(locale),
+    );
+  }
+
+  Widget _getInitialScreen() {
+    final isLogin = ref.watch(initViewModelProvider);
+    return isLogin.when(
+      data: (data) => data ? HomeScreen() : LoginScreen(),
+      error: (_, _) => LoginScreen(),
+      loading: () => SplashScreen(),
+    );
+  }
+
+  Widget _buildMaterialAppBuilder(
+    BuildContext ctx,
+    Widget? child,
+    AsyncValue<SettingState> state,
+  ) {
+    final prevState = ref.read(settingViewModelProvider).valueOrNull;
+    final themeColor = state.maybeWhen(
+      data: (data) => ThemeColor.of(data.themeModeType),
+      orElse:
+          () =>
+              prevState != null
+                  ? ThemeColor.of(prevState.themeModeType)
+                  : ThemeColor.of(ThemeModeType.main),
+    );
+
+    ScreenUtil.init(ctx);
+    final themeFont = ThemeFont(context: context, color: themeColor);
+    return Theme(
+      data: AppTheme.of(context, themeColor, themeFont),
+      child: child!,
     );
   }
 }

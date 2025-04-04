@@ -3,6 +3,7 @@ import 'package:page_transition/page_transition.dart';
 
 import '../../features/auth/presentation/screens/login_screen.dart';
 import '../../features/setting/presentation/pages/setting_screen.dart';
+import '../../features/shared/presentation/screens/splash_screen.dart';
 import '../../features/user_parking/presentation/screens/home_screen.dart';
 import 'route_name.dart';
 
@@ -13,6 +14,16 @@ class RouteGenerator {
     const int duration = 300;
     const Curve curve = Curves.easeIn;
     switch (settings.name) {
+      case RouteName.splashScreen:
+        return PageTransition(
+          child: const SplashScreen(),
+          type: PageTransitionType.rightToLeft,
+          settings: settings,
+          duration: const Duration(milliseconds: duration),
+          curve: curve,
+          isIos: true,
+        );
+        
       case RouteName.login:
         return PageTransition(
           child: const LoginScreen(),

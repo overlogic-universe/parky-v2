@@ -1,6 +1,9 @@
 part of '../theme_color.dart';
 
 class MainThemeColor implements ThemeColor {
+  @override
+  Brightness get brightness => Brightness.light;
+  
   // ========= Primary colors
   @override
   Color get primary => const Color(0xFF5D87FF); // Warna utama aplikasi (sering digunakan di AppBar atau tombol utama)

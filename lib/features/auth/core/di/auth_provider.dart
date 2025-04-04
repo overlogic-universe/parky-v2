@@ -8,6 +8,7 @@ import '../../data/datasources/remote/auth_remote_data_source_impl.dart';
 import '../../data/repositories/auth_repository_impl.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../../domain/usecases/get_user_entity_use_case.dart';
+import '../../domain/usecases/is_login_use_case.dart';
 import '../../domain/usecases/login_with_email_and_password_use_case.dart';
 import '../../domain/usecases/login_with_google_use_case.dart';
 import '../../domain/usecases/sign_out_use_case.dart';
@@ -63,4 +64,9 @@ final loginWithGoogleUseCaseProvider = Provider<LoginWithGoogleUseCase>((ref) {
 final signOutUseCaseProvider = Provider<SignOutUseCase>((ref) {
   final repository = ref.watch(authRepositoryProvider);
   return SignOutUseCase(repository: repository);
+});
+
+final isLoginUseCaseProvider = Provider<IsLoginUseCase>((ref) {
+  final repository = ref.watch(authRepositoryProvider);
+  return IsLoginUseCase(repository: repository);
 });

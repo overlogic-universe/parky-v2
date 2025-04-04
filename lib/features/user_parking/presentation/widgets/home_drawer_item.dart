@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/constants/assets/icon_asset_constant.dart';
@@ -6,15 +7,16 @@ import '../../../../core/routes/route_name.dart';
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/lang.dart';
+import '../../../auth/presentation/view_models/login_view_model.dart';
 import '../../../shared/presentation/widgets/line.dart';
 import '../../../shared/presentation/widgets/svg_asset.dart';
 import '../models/drawer_item_model.dart';
 
-class HomeDrawerItem extends StatelessWidget {
+class HomeDrawerItem extends ConsumerWidget {
   const HomeDrawerItem({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final List<DrawerItemModel> items = [
       DrawerItemModel(
         name: Lang.of(context).setting,
@@ -35,6 +37,7 @@ class HomeDrawerItem extends StatelessWidget {
                   .map(
                     (item) => _buildItem(
                       context,
+                      ref,
                       icon: item.icon,
                       name: item.name,
                       isLogout: item.isLogout,
@@ -47,13 +50,14 @@ class HomeDrawerItem extends StatelessWidget {
   }
 
   GestureDetector _buildItem(
-    BuildContext context, {
+    BuildContext context,
+    WidgetRef ref, {
     required String icon,
     required String name,
     bool isLogout = false,
   }) {
     return GestureDetector(
-      onTap: () => _handleSelectItem(context, name),
+      onTap: () => _handleSelectItem(context, ref, name),
       child: Column(
         children: [
           if (isLogout)
@@ -95,9 +99,12 @@ class HomeDrawerItem extends StatelessWidget {
     );
   }
 
-  void _handleSelectItem(BuildContext context, String name) {
+  void _handleSelectItem(BuildContext context, WidgetRef ref, String name) {
     if (name == Lang.of(context).setting) {
       Navigator.pushNamed(context, RouteName.setting);
+    } else if (name == Lang.of(context).logout) {
+      ref.read(loginViewModelProvider.notifier).signOut();
+      Navigator.pushReplacementNamed(context, RouteName.login);
     }
   }
 }

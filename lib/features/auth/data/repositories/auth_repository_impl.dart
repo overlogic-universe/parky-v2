@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../../core/constants/failures/exception_message_constant.dart';
@@ -39,7 +41,14 @@ class AuthRepositoryImpl implements AuthRepository {
           await localDataSource.saveAuthToken(userModel.id);
           return userModel.toEntity();
         } on FirebaseAuthException catch (e) {
+          log("loginWithEmailAndPassword FAILED: ${e.message}");
+          log("loginWithEmailAndPassword FAILED code: ${e.code}");
           if (e.code == 'wrong-password') {
+            throw AuthException(
+              message: AuthExceptionMessageConstant.invalidCredentials,
+              type: AuthFailureType.invalidCredentials,
+            );
+          } else if (e.code == 'invalid-credential') {
             throw AuthException(
               message: AuthExceptionMessageConstant.invalidCredentials,
               type: AuthFailureType.invalidCredentials,
@@ -56,8 +65,10 @@ class AuthRepositoryImpl implements AuthRepository {
           );
         } catch (e) {
           if (e is AuthException) {
+            log("loginWithEmailAndPassword FAILED: ${e.message}");
             rethrow;
           } else {
+            log("loginWithEmailAndPassword FAILED: ${e.toString()}");
             throw AuthException(
               message: AuthExceptionMessageConstant.loginFailed,
               type: AuthFailureType.loginFailed,
@@ -78,8 +89,10 @@ class AuthRepositoryImpl implements AuthRepository {
           return userModel.toEntity();
         } catch (e) {
           if (e is AuthException) {
+            log("loginWithGoogle FAILED: ${e.message}");
             rethrow;
           } else {
+            log("loginWithGoogle FAILED: ${e.toString()}");
             throw AuthException(
               message: AuthExceptionMessageConstant.loginWithGoogleFailed,
               type: AuthFailureType.loginWithGoogleFailed,
@@ -128,4 +141,7 @@ class AuthRepositoryImpl implements AuthRepository {
       saveCallResult: (model) => localDataSource.saveUserModel(model),
     ).fetchData();
   }
+
+  @override
+  Future<String?> isLogin() async => localDataSource.getAuthToken();
 }

@@ -27,6 +27,7 @@ abstract class ThemeColor {
         return OrbThemeColor();
     }
   }
+  Brightness get brightness;
 
   // Primary colors
   Color get primary;
