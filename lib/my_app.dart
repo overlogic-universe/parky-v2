@@ -7,15 +7,11 @@ import 'core/constants/common/locale_id_constant.dart';
 import 'core/l10n/generated/app_localizations.dart';
 import 'core/l10n/l10n.dart';
 import 'core/routes/route_generator.dart';
+import 'core/routes/route_name.dart';
 import 'core/styles/colors/theme_color.dart';
 import 'core/styles/fonts/theme_font.dart';
 import 'core/styles/themes/modes/app_theme.dart';
-import 'features/auth/presentation/screens/login_screen.dart';
-import 'features/setting/presentation/view_models/setting_state.dart';
 import 'features/setting/presentation/view_models/setting_view_model.dart';
-import 'features/shared/presentation/screens/splash_screen.dart';
-import 'features/shared/presentation/view_models/init_view_model.dart';
-import 'features/user_parking/presentation/screens/home_screen.dart';
 
 class MyApp extends ConsumerStatefulWidget {
   const MyApp({super.key});
@@ -45,16 +41,6 @@ class _MyAppState extends ConsumerState<MyApp> {
   }
 
   MaterialApp _buildMaterialApp(BuildContext context) {
-    final prevState = ref.read(settingViewModelProvider).valueOrNull;
-
-    final state = ref.watch(settingViewModelProvider);
-
-    final locale = state.maybeWhen(
-      data: (data) => data.localeId,
-      orElse:
-          () => prevState != null ? prevState.localeId : LocaleIdConstant.ID,
-    );
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
@@ -63,29 +49,20 @@ class _MyAppState extends ConsumerState<MyApp> {
         GlobalCupertinoLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
-      builder: (ctx, child) => _buildMaterialAppBuilder(ctx, child, state),
+      builder: (ctx, child) => _buildMaterialAppBuilder(ctx, child),
       onGenerateRoute: RouteGenerator.onGenerateRoute,
-      home: _getInitialScreen(),
+      initialRoute: RouteName.splashScreen,
       supportedLocales: L10n.all,
-      locale: Locale(locale),
+      locale: Locale(_initLocale()),
     );
   }
 
-  Widget _getInitialScreen() {
-    final isLogin = ref.watch(initViewModelProvider);
-    return isLogin.when(
-      data: (data) => data ? HomeScreen() : LoginScreen(),
-      error: (_, _) => LoginScreen(),
-      loading: () => SplashScreen(),
-    );
-  }
+ 
 
-  Widget _buildMaterialAppBuilder(
-    BuildContext ctx,
-    Widget? child,
-    AsyncValue<SettingState> state,
-  ) {
+  Widget _buildMaterialAppBuilder(BuildContext ctx, Widget? child) {
     final prevState = ref.read(settingViewModelProvider).valueOrNull;
+    final state = ref.watch(settingViewModelProvider);
+
     final themeColor = state.maybeWhen(
       data: (data) => ThemeColor.of(data.themeModeType),
       orElse:
@@ -97,9 +74,21 @@ class _MyAppState extends ConsumerState<MyApp> {
 
     ScreenUtil.init(ctx);
     final themeFont = ThemeFont(context: context, color: themeColor);
+
     return Theme(
       data: AppTheme.of(context, themeColor, themeFont),
       child: child!,
+    );
+  }
+
+  String _initLocale() {
+    final prevState = ref.read(settingViewModelProvider).valueOrNull;
+    final state = ref.watch(settingViewModelProvider);
+
+    return state.maybeWhen(
+      data: (data) => data.localeId,
+      orElse:
+          () => prevState != null ? prevState.localeId : LocaleIdConstant.ID,
     );
   }
 }

@@ -7,10 +7,10 @@ import '../../../../core/routes/route_name.dart';
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/lang.dart';
-import '../../../auth/presentation/view_models/login_view_model.dart';
 import '../../../shared/presentation/widgets/line.dart';
 import '../../../shared/presentation/widgets/svg_asset.dart';
 import '../models/drawer_item_model.dart';
+import 'logout_alert_dialog.dart';
 
 class HomeDrawerItem extends ConsumerWidget {
   const HomeDrawerItem({super.key});
@@ -103,8 +103,7 @@ class HomeDrawerItem extends ConsumerWidget {
     if (name == Lang.of(context).setting) {
       Navigator.pushNamed(context, RouteName.setting);
     } else if (name == Lang.of(context).logout) {
-      ref.read(loginViewModelProvider.notifier).signOut();
-      Navigator.pushReplacementNamed(context, RouteName.login);
+      showDialog(context: context, builder: (context) => LogoutAlertDialog());
     }
   }
 }

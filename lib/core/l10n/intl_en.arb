@@ -45,6 +45,7 @@
     "logoutModalDesc": "Are you sure you want to log out?",
 
     "loginSuccess": "Login successful",
+    "logoutSuccess": "Logout successful",
 
     "mustNotBeEmpty" : "{field} must not be empty!",
     "mustUseStudentEmail" : "Please use a student email!",

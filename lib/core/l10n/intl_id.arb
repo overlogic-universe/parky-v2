@@ -45,6 +45,7 @@
   "logoutModalDesc": "Apakah Anda yakin ingin keluar?",
 
   "loginSuccess": "Berhasil masuk",
+  "logoutSuccess": "Berhasil keluar",
   
   "mustNotBeEmpty" : "{field} tidak boleh kosong!",
   "mustUseStudentEmail" : "Gunakan email mahasiswa!",

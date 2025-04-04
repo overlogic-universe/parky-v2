@@ -317,6 +317,12 @@ abstract class AppLocalizations {
   /// **'Berhasil masuk'**
   String get loginSuccess;
 
+  /// No description provided for @logoutSuccess.
+  ///
+  /// In id, this message translates to:
+  /// **'Berhasil keluar'**
+  String get logoutSuccess;
+
   /// No description provided for @mustNotBeEmpty.
   ///
   /// In id, this message translates to:

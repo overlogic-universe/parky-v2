@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/constants/assets/image_asset_constant.dart';
+import '../../../../core/routes/route_name.dart';
+import '../../../../core/utils/get_logo_asset_util.dart';
+import '../view_models/init_view_model.dart';
 import 'base_screen.dart';
 
 class SplashScreen extends ConsumerWidget {
@@ -10,14 +12,11 @@ class SplashScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final imageSize = 100.w;
+    final imageSize = 120.w;
 
-    final brightness = Theme.of(context).brightness;
+    final logoAsset = GetLogoAssetUtil.of(context);
 
-    final logoAsset =
-        brightness == Brightness.dark
-            ? ImageAssetConstant.appLogoWhite
-            : ImageAssetConstant.appLogo;
+    _listenInitialRoute(context, ref);
 
     return BaseScreen(
       horizontalPadding: 0,
@@ -26,5 +25,25 @@ class SplashScreen extends ConsumerWidget {
         child: Image.asset(logoAsset, height: imageSize, width: imageSize),
       ),
     );
+  }
+
+  void _listenInitialRoute(BuildContext context, WidgetRef ref) {
+    ref.listen<AsyncValue<bool>>(initViewModelProvider, (previous, next) {
+      next.when(
+        data: (data) {
+          _goToInitialRoute(context, data ? RouteName.home : RouteName.login);
+        },
+        error: (_, __) {
+          _goToInitialRoute(context, RouteName.login);
+        },
+        loading: () {},
+      );
+    });
+  }
+
+  void _goToInitialRoute(BuildContext context, String routeName) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Navigator.pushReplacementNamed(context, routeName);
+    });
   }
 }

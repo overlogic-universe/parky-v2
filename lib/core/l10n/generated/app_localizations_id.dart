@@ -122,6 +122,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get loginSuccess => 'Berhasil masuk';
 
   @override
+  String get logoutSuccess => 'Berhasil keluar';
+
+  @override
   String mustNotBeEmpty(Object field) {
     return '$field tidak boleh kosong!';
   }

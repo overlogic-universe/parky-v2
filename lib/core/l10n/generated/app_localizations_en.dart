@@ -122,6 +122,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginSuccess => 'Login successful';
 
   @override
+  String get logoutSuccess => 'Logout successful';
+
+  @override
   String mustNotBeEmpty(Object field) {
     return '$field must not be empty!';
   }
