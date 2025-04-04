@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../constants/common/global_constant.dart';
 import '../../colors/theme_color.dart';
 import '../../fonts/app_font.dart';
 
@@ -11,7 +12,10 @@ class AppTextButtonTheme {
         style: ButtonStyle(
           foregroundColor: WidgetStatePropertyAll(color.primary),
           textStyle: WidgetStatePropertyAll(
-            AppFont.text16(context, color).copyWith(color: color.primary),
+            AppFont.labelMedium(context)?.copyWith(
+              color: color.primary,
+              fontFamily: GlobalConstant.mainFontFamily,
+            ),
           ),
         ),
       );

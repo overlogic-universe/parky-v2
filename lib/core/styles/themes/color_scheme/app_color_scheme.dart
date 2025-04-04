@@ -7,7 +7,7 @@ class AppColorScheme {
 
   /// Main color scheme for the app
   static ColorScheme of(ThemeColor color) => ColorScheme(
-    brightness: Brightness.light,
+    brightness: color.brightness,
 
     // Primary colors
     primary: color.primary,

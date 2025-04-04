@@ -7,9 +7,9 @@ class SaveThemeUseCase implements UseCase<void, String> {
   const SaveThemeUseCase({required this.repository});
 
   @override
-  Future<void> call(String theme) async {
+  Future<void> call({required String params}) async {
     try {
-      return repository.saveTheme(theme);
+      return repository.saveTheme(params);
     } catch (e) {
       throw Exception("Failed to save theme: $e");
     }

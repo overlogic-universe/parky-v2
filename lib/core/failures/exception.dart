@@ -1,9 +1,13 @@
-// TODO: Inisialisasi class exception
+class CommonException implements Exception {
+  final String message;
+  final CommonFailureType type;
 
-class ServerException implements Exception{}
+  const CommonException({required this.message, required this.type});
+}
 
-class OfflineException implements Exception{}
-
-class LoginException implements Exception{}
-
-class UnexpectedException implements Exception{}
+enum CommonFailureType {
+  serverError,
+  networkError,
+  unknownError,
+  documentDataIsNull,
+}

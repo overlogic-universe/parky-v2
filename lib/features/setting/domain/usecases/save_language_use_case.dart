@@ -7,9 +7,9 @@ class SaveLanguageUseCase implements UseCase<void, String> {
   const SaveLanguageUseCase({required this.repository});
 
   @override
-  Future<void> call(String language) async {
+  Future<void> call({required String params}) async {
     try {
-      return repository.saveLanguage(language);
+      return repository.saveLanguage(params);
     } catch (e) {
       throw Exception("Failed to save language: $e");
     }

@@ -6,6 +6,7 @@ import '../../../../core/constants/assets/image_asset_constant.dart';
 import '../../../../core/constants/common/margin_constant.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/lang.dart';
+import '../view_models/login_view_model.dart';
 
 class LoginWithStudentEmailButton extends ConsumerWidget {
   const LoginWithStudentEmailButton({super.key});
@@ -19,14 +20,14 @@ class LoginWithStudentEmailButton extends ConsumerWidget {
         horizontal: MarginConstant.horizontalScreen.w,
       ),
       child: OutlinedButton(
-        onPressed: () {},
+        onPressed: () => ref.read(loginViewModelProvider.notifier).loginWithGoogle(),
         child: Row(
           children: [
             Image.asset(ImageAssetConstant.googleLogo, height: 20.h),
-            SizedBox(width: 10.w),
+            SizedBox(width: 12.w),
             Text(
               Lang.of(context).loginWithStudentEmail,
-              style: AppFont.labelMedium(context),
+              style: AppFont.labelSmall(context),
             ),
           ],
         ),

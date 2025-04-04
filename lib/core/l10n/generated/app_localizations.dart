@@ -311,11 +311,29 @@ abstract class AppLocalizations {
   /// **'Apakah Anda yakin ingin keluar?'**
   String get logoutModalDesc;
 
+  /// No description provided for @loginSuccess.
+  ///
+  /// In id, this message translates to:
+  /// **'Berhasil masuk'**
+  String get loginSuccess;
+
+  /// No description provided for @logoutSuccess.
+  ///
+  /// In id, this message translates to:
+  /// **'Berhasil keluar'**
+  String get logoutSuccess;
+
   /// No description provided for @mustNotBeEmpty.
   ///
   /// In id, this message translates to:
   /// **'{field} tidak boleh kosong!'**
   String mustNotBeEmpty(Object field);
+
+  /// No description provided for @mustUseStudentEmail.
+  ///
+  /// In id, this message translates to:
+  /// **'Gunakan email mahasiswa!'**
+  String get mustUseStudentEmail;
 
   /// No description provided for @atLeastLengthCharacters.
   ///
@@ -341,17 +359,83 @@ abstract class AppLocalizations {
   /// **'Jaringan tidak stabil'**
   String get networkError;
 
-  /// No description provided for @unexpectedError.
+  /// No description provided for @unknownError.
   ///
   /// In id, this message translates to:
   /// **'Kesalahan tak terduga'**
-  String get unexpectedError;
+  String get unknownError;
 
-  /// No description provided for @loginError.
+  /// No description provided for @userNotFound.
   ///
   /// In id, this message translates to:
-  /// **'Login gagal. Mohon coba lagi!'**
-  String get loginError;
+  /// **'Pengguna tidak ditemukan. Silakan coba lagi!'**
+  String get userNotFound;
+
+  /// No description provided for @passwordIsNull.
+  ///
+  /// In id, this message translates to:
+  /// **'Kata sandi tidak boleh kosong'**
+  String get passwordIsNull;
+
+  /// No description provided for @emailAlreadyRegistered.
+  ///
+  /// In id, this message translates to:
+  /// **'Email sudah terdaftar'**
+  String get emailAlreadyRegistered;
+
+  /// No description provided for @loginWithGoogleAbortedByUser.
+  ///
+  /// In id, this message translates to:
+  /// **'Masuk dengan Google dibatalkan'**
+  String get loginWithGoogleAbortedByUser;
+
+  /// No description provided for @loginWithGoogleFailed.
+  ///
+  /// In id, this message translates to:
+  /// **'Masuk dengan Google gagal'**
+  String get loginWithGoogleFailed;
+
+  /// No description provided for @invalidCredentials.
+  ///
+  /// In id, this message translates to:
+  /// **'Email atau kata sandi salah'**
+  String get invalidCredentials;
+
+  /// No description provided for @emailAlreadyExists.
+  ///
+  /// In id, this message translates to:
+  /// **'Email ini sudah digunakan'**
+  String get emailAlreadyExists;
+
+  /// No description provided for @signOutFailed.
+  ///
+  /// In id, this message translates to:
+  /// **'Gagal keluar. Silakan coba lagi!'**
+  String get signOutFailed;
+
+  /// No description provided for @loginFailed.
+  ///
+  /// In id, this message translates to:
+  /// **'Gagal masuk. Silakan coba lagi!'**
+  String get loginFailed;
+
+  /// No description provided for @getParkFailed.
+  ///
+  /// In id, this message translates to:
+  /// **'Gagal mendapatkan data parkir'**
+  String get getParkFailed;
+
+  /// No description provided for @getVehicleFailed.
+  ///
+  /// In id, this message translates to:
+  /// **'Gagal mendapatkan data kendaraan'**
+  String get getVehicleFailed;
+
+  /// No description provided for @loading.
+  ///
+  /// In id, this message translates to:
+  /// **'Memuat'**
+  String get loading;
 
   /// No description provided for @and.
   ///

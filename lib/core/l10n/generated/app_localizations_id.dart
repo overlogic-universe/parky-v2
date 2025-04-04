@@ -119,9 +119,18 @@ class AppLocalizationsId extends AppLocalizations {
   String get logoutModalDesc => 'Apakah Anda yakin ingin keluar?';
 
   @override
+  String get loginSuccess => 'Berhasil masuk';
+
+  @override
+  String get logoutSuccess => 'Berhasil keluar';
+
+  @override
   String mustNotBeEmpty(Object field) {
     return '$field tidak boleh kosong!';
   }
+
+  @override
+  String get mustUseStudentEmail => 'Gunakan email mahasiswa!';
 
   @override
   String atLeastLengthCharacters(Object field, Object length) {
@@ -140,10 +149,43 @@ class AppLocalizationsId extends AppLocalizations {
   String get networkError => 'Jaringan tidak stabil';
 
   @override
-  String get unexpectedError => 'Kesalahan tak terduga';
+  String get unknownError => 'Kesalahan tak terduga';
 
   @override
-  String get loginError => 'Login gagal. Mohon coba lagi!';
+  String get userNotFound => 'Pengguna tidak ditemukan. Silakan coba lagi!';
+
+  @override
+  String get passwordIsNull => 'Kata sandi tidak boleh kosong';
+
+  @override
+  String get emailAlreadyRegistered => 'Email sudah terdaftar';
+
+  @override
+  String get loginWithGoogleAbortedByUser => 'Masuk dengan Google dibatalkan';
+
+  @override
+  String get loginWithGoogleFailed => 'Masuk dengan Google gagal';
+
+  @override
+  String get invalidCredentials => 'Email atau kata sandi salah';
+
+  @override
+  String get emailAlreadyExists => 'Email ini sudah digunakan';
+
+  @override
+  String get signOutFailed => 'Gagal keluar. Silakan coba lagi!';
+
+  @override
+  String get loginFailed => 'Gagal masuk. Silakan coba lagi!';
+
+  @override
+  String get getParkFailed => 'Gagal mendapatkan data parkir';
+
+  @override
+  String get getVehicleFailed => 'Gagal mendapatkan data kendaraan';
+
+  @override
+  String get loading => 'Memuat';
 
   @override
   String get and => 'dan';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:parky/core/constants/common/global_constant.dart';
 
+import '../../../constants/common/global_constant.dart';
 import '../../colors/app_color.dart';
 import '../../colors/theme_color.dart';
 import '../../fonts/app_font.dart';
@@ -18,11 +18,15 @@ class AppInputDecorationTheme {
           fontFamily: GlobalConstant.mainFontFamily,
         ),
         helperStyle: AppFont.bodyMedium(context),
-        errorStyle: AppFont.bodySmall(context)?.copyWith(color: color.error),
+        errorStyle: AppFont.labelSmall(context)?.light.copyWith(
+          color: color.error,
+          fontFamily: GlobalConstant.mainFontFamily,
+        ),
         fillColor: color.primaryFixedDim,
-        labelStyle: AppFont.labelMedium(
-          context,
-        )?.copyWith(color: AppColor.textColor(context)),
+        labelStyle: AppFont.labelMedium(context)?.copyWith(
+          color: AppColor.textColor(context),
+          fontFamily: GlobalConstant.mainFontFamily,
+        ),
         filled: true,
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30.r),

@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/constants/assets/icon_asset_constant.dart';
-import '../../../../core/constants/assets/image_asset_constant.dart';
 import '../../../../core/constants/common/margin_constant.dart';
 import '../../../../core/styles/colors/app_color.dart';
-import '../../../../core/styles/colors/theme_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
-import '../../../setting/presentation/view_models/setting_view_model.dart';
+import '../../../../core/utils/get_logo_asset_util.dart';
 import '../../../shared/presentation/widgets/margin_bottom.dart';
 import '../../../shared/presentation/widgets/svg_asset.dart';
 import '../../core/utils/home_util.dart';
@@ -43,7 +40,7 @@ class HomeContent extends StatelessWidget {
                     ),
                   ),
                 ),
-                Consumer(builder: (context, ref, child) => _buildAppLogo(ref)),
+                _buildAppLogo(context),
                 SizedBox(width: menuIconSize),
               ],
             ),
@@ -67,24 +64,8 @@ class HomeContent extends StatelessWidget {
     );
   }
 
-  Widget _buildAppLogo(WidgetRef ref) {
-    final state = ref.watch(settingViewModelProvider);
-    return state.when(
-      data: (data) {
-        switch (data.themeModeType) {
-          case ThemeModeType.main:
-            return _buildAppLogoBlack();
-          case ThemeModeType.orb:
-            return _buildAppLogoWhite();
-        }
-      },
-      error: (_, _) => _buildAppLogoBlack(),
-      loading: () => SizedBox.shrink(),
-    );
+  Widget _buildAppLogo(BuildContext context) {
+    final logoAsset = GetLogoAssetUtil.of(context);
+    return Image.asset(logoAsset, height: 35.h);
   }
-
-  Widget _buildAppLogoBlack() =>
-      Image.asset(ImageAssetConstant.appLogo, height: 35.h);
-  Widget _buildAppLogoWhite() =>
-      Image.asset(ImageAssetConstant.appLogoWhite, height: 35.h);
 }

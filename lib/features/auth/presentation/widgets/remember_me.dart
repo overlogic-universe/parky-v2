@@ -18,7 +18,7 @@ class _RememberMeState extends ConsumerState<RememberMe> {
   void _toggleChechBox() => setState(() => isChecked = !isChecked);
   @override
   Widget build(BuildContext context) {
-    final double checkBoxSize = 20.w;
+    final double checkBoxSize = 18.w;
     return GestureDetector(
       onTap: () => _toggleChechBox(),
       child: Padding(
@@ -49,7 +49,7 @@ class _RememberMeState extends ConsumerState<RememberMe> {
             ),
             Text(
               Lang.of(context).rememberMe,
-              style: AppFont.labelMedium(context),
+              style: AppFont.labelSmall(context),
             ),
           ],
         ),

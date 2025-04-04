@@ -1,7 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/styles/colors/theme_color.dart';
-import '../../core/di/setting_injection.dart';
+import '../../core/di/setting_provider.dart';
 import '../../domain/usecases/get_language_use_case.dart';
 import '../../domain/usecases/get_theme_use_case.dart';
 import '../../domain/usecases/save_language_use_case.dart';
@@ -42,7 +42,7 @@ class SettingViewModel extends _$SettingViewModel {
   Future<void> setTheme(ThemeModeType theme) async {
     state = AsyncValue.loading();
     try {
-      await _saveThemeUseCase.call(theme.name);
+      await _saveThemeUseCase.call(params: theme.name);
       final currentState = state.value;
       if (currentState != null) {
         state = AsyncValue.data(currentState.copyWith(themeModeType: theme));
@@ -68,7 +68,7 @@ class SettingViewModel extends _$SettingViewModel {
   Future<void> setLanguage(String localeId) async {
     state = AsyncValue.loading();
     try {
-      await _saveLanguageUseCase.call(localeId);
+      await _saveLanguageUseCase.call(params: localeId);
       final currentState = state.value;
       if (currentState != null) {
         state = AsyncValue.data(currentState.copyWith(localeId: localeId));
