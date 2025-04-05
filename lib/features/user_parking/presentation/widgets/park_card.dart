@@ -1,18 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shimmer/shimmer.dart';
 
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/lang.dart';
+import '../../../shared/presentation/view_models/init_view_model.dart';
+import '../models/park_ui_model.dart';
+import '../view_models/park_view_model.dart';
+import '../view_models/vehicle_view_model.dart';
+import 'async_user_info_tile.dart';
 import 'dotted_line.dart';
 
-class ParkCard extends ConsumerWidget {
+class ParkCard extends ConsumerStatefulWidget {
   const ParkCard({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _ParkCardState();
+}
+
+class _ParkCardState extends ConsumerState<ParkCard> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() => _initialize());
+  }
+
+  void _initialize() {
+    final state = ref.read(initViewModelProvider);
+    final alreadyHasUser = state.whenOrNull(
+      data: (d) => d.userUiModel.whenOrNull(data: (u) => u != null),
+    );
+
+    if (alreadyHasUser != true) {
+      ref.read(initViewModelProvider.notifier).getUserEntity();
+    }
+
+    ref.read(parkViewModelProvider.notifier).fetch();
+    ref.read(vehicleViewModelProvider.notifier).fetch();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final vehicleState = ref.watch(vehicleViewModelProvider);
+    final parkState = ref.watch(parkViewModelProvider);
+    final initState = ref.watch(initViewModelProvider);
+    final entryExitTimeLabel = Lang.of(context).entryExitTime;
+    final nimLabel = Lang.of(context).nim;
+    final plateLabel = Lang.of(context).plate;
+    final statusLabel = Lang.of(context).status;
+
     return Container(
       width: 1.sw,
       margin: EdgeInsets.symmetric(horizontal: 5.w),
@@ -34,30 +71,58 @@ class ParkCard extends ConsumerWidget {
                 crossAxisCount: 2,
                 childAspectRatio: 2,
                 crossAxisSpacing: 10.h,
-
                 mainAxisSpacing: 10.h,
+                mainAxisExtent: 80.h,
               ),
               children: [
-                _buildUserData(
-                  context,
-                  label: Lang.of(context).entryExitTime,
-                  value: "12:00 WIB",
+                AsyncUserInfoTile(
+                  label: entryExitTimeLabel,
+                  value: parkState.when(
+                    data:
+                        (data) =>
+                            AsyncData(data.parkUiModel?.lastActivityDay ?? ""),
+                    loading: () => const AsyncLoading(),
+                    error: (e, st) => AsyncError(e, st),
+                  ),
+                  value2: parkState.when(
+                    data:
+                        (data) =>
+                            AsyncData(data.parkUiModel?.lastActivityTime ?? ""),
+                    loading: () => const AsyncLoading(),
+                    error: (e, st) => AsyncError(e, st),
+                  ),
                 ),
-                _buildUserData(
-                  context,
-                  label: Lang.of(context).nim,
-                  value: "L200220267",
+                AsyncUserInfoTile(
+                  label: nimLabel,
+                  value: initState.when(
+                    data:
+                        (data) => data.userUiModel.when(
+                          data: (u) => AsyncData(u?.studentId ?? ""),
+                          loading: () => const AsyncLoading(),
+                          error: (e, st) => AsyncError(e, st),
+                        ),
+                    loading: () => const AsyncLoading(),
+                    error: (e, st) => AsyncError(e, st),
+                  ),
                 ),
-                _buildUserData(
-                  context,
-                  label: Lang.of(context).plate,
-                  value: "PS 1234 XY",
+                AsyncUserInfoTile(
+                  label: plateLabel,
+                  value: vehicleState.when(
+                    data: (data) => AsyncData(data.vehicleUiModel?.plate ?? ""),
+                    loading: () => const AsyncLoading(),
+                    error: (e, st) => AsyncError(e, st),
+                  ),
                 ),
-                _buildUserData(
-                  context,
-                  label: Lang.of(context).status,
-                  value: "Sedang parkir",
-                  isStatus: true,
+                AsyncUserInfoTile(
+                  label: statusLabel,
+                  value: parkState.when(
+                    data:
+                        (data) => AsyncData(
+                          data.parkUiModel?.status.displayName(context) ?? "",
+                        ),
+                    loading: () => const AsyncLoading(),
+                    error: (e, st) => AsyncError(e, st),
+                  ),
                 ),
               ],
             ),
@@ -90,64 +155,6 @@ class ParkCard extends ConsumerWidget {
             )?.medium.copyWith(color: AppColor.onPrimary(context)),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildUserData(
-    BuildContext context, {
-    required String label,
-    required String value,
-    bool isStatus = false,
-  }) {
-    return Column(
-      children: [
-        Text(
-          label,
-          style: AppFont.bodySmall(
-            context,
-          )?.medium.copyWith(color: AppColor.onPrimary(context)),
-        ),
-        SizedBox(height: 5.h),
-        // isStatus
-        //     ?
-        _buildLoadingUserDataShimmer(context),
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
-          decoration: BoxDecoration(
-            color: AppColor.containerColorPrimary(context),
-            borderRadius: BorderRadius.circular(5.r),
-          ),
-          child: Text(
-            value,
-            style: AppFont.labelSmall(context)?.medium.copyWith(
-              color: AppColor.onContainerColorPrimary(context),
-            ),
-          ),
-        ),
-        // : Text(
-        //   value,
-        //   style: AppFont.baseText(context).copyWith(
-        //     color: AppColor.onPrimary(context),
-        //     fontWeight: FontWeight.w700,
-        //   ),
-        // ),
-      ],
-    );
-  }
-
-  Widget _buildLoadingUserDataShimmer(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
-      child: Shimmer.fromColors(
-        baseColor: Colors.red,
-        highlightColor: Colors.yellow,
-        child: Text(
-          '',
-          style: AppFont.labelSmall(
-            context,
-          )?.medium.copyWith(color: AppColor.onContainerColorPrimary(context)),
-        ),
       ),
     );
   }

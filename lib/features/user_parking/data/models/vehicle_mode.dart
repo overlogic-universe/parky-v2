@@ -12,26 +12,26 @@ class VehicleModel {
       id: json['id'] as String,
 
       plate: json['plate'] as String,
-      userId: json['userId'] as String,
+      userId: json['user_id'] as String,
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {'id': id, 'plate': plate, 'userId': userId};
+    return {'id': id, 'plate': plate, 'user_id': userId};
   }
 
   factory VehicleModel.fromFirestore(
-    DocumentSnapshot<Map<String, dynamic>> doc,
+    QueryDocumentSnapshot<Map<String, dynamic>> doc,
   ) {
-    final data = doc.data()!;
+    final data = doc.data();
     return VehicleModel(
       id: doc.id,
       plate: data['plate'] as String,
-      userId: data['userId'] as String,
+      userId: data['user_id'] as String,
     );
   }
 
   Map<String, dynamic> toFirestore() {
-    return {'plate': plate, 'userId': userId};
+    return {'plate': plate, 'user_id': userId};
   }
 }

@@ -23,9 +23,9 @@ class ParkModel {
         orElse: () => ParkStatus.parking,
       ),
       lastActivity: Timestamp.fromMillisecondsSinceEpoch(
-        json['lastActivity'] as int,
+        json['last_activity'] as int,
       ),
-      userId: json['userId'] as String,
+      userId: json['user_id'] as String,
     );
   }
 
@@ -33,8 +33,8 @@ class ParkModel {
     return {
       'id': id,
       'status': status.name,
-      'lastActivity': lastActivity.millisecondsSinceEpoch,
-      'userId': userId,
+      'last_activity': lastActivity.millisecondsSinceEpoch,
+      'user_id': userId,
     };
   }
 
@@ -46,16 +46,16 @@ class ParkModel {
         (e) => e.name == data['status'],
         orElse: () => ParkStatus.parking,
       ),
-      lastActivity: data['lastActivity'] as Timestamp,
-      userId: data['userId'] as String,
+      lastActivity: data['last_activity'] as Timestamp,
+      userId: data['user_id'] as String,
     );
   }
 
   Map<String, dynamic> toFirestore() {
     return {
       'status': status.name,
-      'lastActivity': lastActivity,
-      'userId': userId,
+      'last_activity': lastActivity,
+      'user_id': userId,
     };
   }
 }

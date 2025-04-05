@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:parky/features/user_parking/core/extensions/user_parking_data_mapper_extension.dart';
 
 import '../../../../../core/extensions/firebase_extension.dart';
 import '../../../../auth/core/constants/failures/auth_exception_message_constant.dart';
@@ -35,9 +38,13 @@ class UserParkingRemoteDataSourceImpl implements UserParkingRemoteDataSource {
       );
     }
 
-    return ParkModel.fromFirestore(
-      query.docs.first as DocumentSnapshot<Map<String, dynamic>>,
+    final parkModel = ParkModel.fromFirestore(
+      query.docs.first as QueryDocumentSnapshot<Map<String, dynamic>>,
     );
+
+    log("MODEL GET PARK: ${parkModel.toEntity().toString()}");
+
+    return parkModel;
   }
 
   @override
@@ -49,6 +56,7 @@ class UserParkingRemoteDataSourceImpl implements UserParkingRemoteDataSource {
             .limit(1)
             .get();
 
+    log("MODEL GET VEHICLE: ${query.docs}");
     if (query.docs.isEmpty) {
       throw UserParkingException(
         message: UserParkingExceptionMessageConstant.vehicleNotFound(userId),
@@ -56,9 +64,12 @@ class UserParkingRemoteDataSourceImpl implements UserParkingRemoteDataSource {
       );
     }
 
-    return VehicleModel.fromFirestore(
-      query.docs.first as DocumentSnapshot<Map<String, dynamic>>,
+    log("MODEL GET VEHICLE: ${query.docs.first.data()}");
+    final model = VehicleModel.fromFirestore(
+      query.docs.first as QueryDocumentSnapshot<Map<String, dynamic>>,
     );
+    log("MODEL GET VEHICLE: ${model.toEntity().toString()}");
+    return model;
   }
 
   String _getUserId() {

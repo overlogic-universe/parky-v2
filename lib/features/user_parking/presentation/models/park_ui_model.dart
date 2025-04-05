@@ -11,19 +11,19 @@ abstract class ParkUiModel with _$ParkUiModel {
   const factory ParkUiModel({
     required String id,
     required ParkStatus status,
-    required String lastActivity,
+    required String lastActivityTime,
+    required String lastActivityDay,
     required String userId,
   }) = _ParkUiModel;
 }
-
 
 extension ParkStatusExtension on ParkStatus {
   String displayName(BuildContext context) {
     switch (this) {
       case ParkStatus.parked:
-        return Lang.of(context).mainTheme;
+        return Lang.of(context).parked;
       case ParkStatus.parking:
-        return Lang.of(context).orbTheme;
+        return Lang.of(context).parking;
     }
   }
 }

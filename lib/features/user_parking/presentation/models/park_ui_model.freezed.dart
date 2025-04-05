@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ParkUiModel {
 
- String get id; ParkStatus get status; String get lastActivity; String get userId;
+ String get id; ParkStatus get status; String get lastActivityTime; String get lastActivityDay; String get userId;
 /// Create a copy of ParkUiModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $ParkUiModelCopyWith<ParkUiModel> get copyWith => _$ParkUiModelCopyWithImpl<Park
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ParkUiModel&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&(identical(other.lastActivity, lastActivity) || other.lastActivity == lastActivity)&&(identical(other.userId, userId) || other.userId == userId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ParkUiModel&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&(identical(other.lastActivityTime, lastActivityTime) || other.lastActivityTime == lastActivityTime)&&(identical(other.lastActivityDay, lastActivityDay) || other.lastActivityDay == lastActivityDay)&&(identical(other.userId, userId) || other.userId == userId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,status,lastActivity,userId);
+int get hashCode => Object.hash(runtimeType,id,status,lastActivityTime,lastActivityDay,userId);
 
 @override
 String toString() {
-  return 'ParkUiModel(id: $id, status: $status, lastActivity: $lastActivity, userId: $userId)';
+  return 'ParkUiModel(id: $id, status: $status, lastActivityTime: $lastActivityTime, lastActivityDay: $lastActivityDay, userId: $userId)';
 }
 
 
@@ -46,7 +46,7 @@ abstract mixin class $ParkUiModelCopyWith<$Res>  {
   factory $ParkUiModelCopyWith(ParkUiModel value, $Res Function(ParkUiModel) _then) = _$ParkUiModelCopyWithImpl;
 @useResult
 $Res call({
- String id, ParkStatus status, String lastActivity, String userId
+ String id, ParkStatus status, String lastActivityTime, String lastActivityDay, String userId
 });
 
 
@@ -63,11 +63,12 @@ class _$ParkUiModelCopyWithImpl<$Res>
 
 /// Create a copy of ParkUiModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? status = null,Object? lastActivity = null,Object? userId = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? status = null,Object? lastActivityTime = null,Object? lastActivityDay = null,Object? userId = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as ParkStatus,lastActivity: null == lastActivity ? _self.lastActivity : lastActivity // ignore: cast_nullable_to_non_nullable
+as ParkStatus,lastActivityTime: null == lastActivityTime ? _self.lastActivityTime : lastActivityTime // ignore: cast_nullable_to_non_nullable
+as String,lastActivityDay: null == lastActivityDay ? _self.lastActivityDay : lastActivityDay // ignore: cast_nullable_to_non_nullable
 as String,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -80,12 +81,13 @@ as String,
 
 
 class _ParkUiModel implements ParkUiModel {
-  const _ParkUiModel({required this.id, required this.status, required this.lastActivity, required this.userId});
+  const _ParkUiModel({required this.id, required this.status, required this.lastActivityTime, required this.lastActivityDay, required this.userId});
   
 
 @override final  String id;
 @override final  ParkStatus status;
-@override final  String lastActivity;
+@override final  String lastActivityTime;
+@override final  String lastActivityDay;
 @override final  String userId;
 
 /// Create a copy of ParkUiModel
@@ -98,16 +100,16 @@ _$ParkUiModelCopyWith<_ParkUiModel> get copyWith => __$ParkUiModelCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ParkUiModel&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&(identical(other.lastActivity, lastActivity) || other.lastActivity == lastActivity)&&(identical(other.userId, userId) || other.userId == userId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ParkUiModel&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&(identical(other.lastActivityTime, lastActivityTime) || other.lastActivityTime == lastActivityTime)&&(identical(other.lastActivityDay, lastActivityDay) || other.lastActivityDay == lastActivityDay)&&(identical(other.userId, userId) || other.userId == userId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,status,lastActivity,userId);
+int get hashCode => Object.hash(runtimeType,id,status,lastActivityTime,lastActivityDay,userId);
 
 @override
 String toString() {
-  return 'ParkUiModel(id: $id, status: $status, lastActivity: $lastActivity, userId: $userId)';
+  return 'ParkUiModel(id: $id, status: $status, lastActivityTime: $lastActivityTime, lastActivityDay: $lastActivityDay, userId: $userId)';
 }
 
 
@@ -118,7 +120,7 @@ abstract mixin class _$ParkUiModelCopyWith<$Res> implements $ParkUiModelCopyWith
   factory _$ParkUiModelCopyWith(_ParkUiModel value, $Res Function(_ParkUiModel) _then) = __$ParkUiModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, ParkStatus status, String lastActivity, String userId
+ String id, ParkStatus status, String lastActivityTime, String lastActivityDay, String userId
 });
 
 
@@ -135,11 +137,12 @@ class __$ParkUiModelCopyWithImpl<$Res>
 
 /// Create a copy of ParkUiModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? status = null,Object? lastActivity = null,Object? userId = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? status = null,Object? lastActivityTime = null,Object? lastActivityDay = null,Object? userId = null,}) {
   return _then(_ParkUiModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as ParkStatus,lastActivity: null == lastActivity ? _self.lastActivity : lastActivity // ignore: cast_nullable_to_non_nullable
+as ParkStatus,lastActivityTime: null == lastActivityTime ? _self.lastActivityTime : lastActivityTime // ignore: cast_nullable_to_non_nullable
+as String,lastActivityDay: null == lastActivityDay ? _self.lastActivityDay : lastActivityDay // ignore: cast_nullable_to_non_nullable
 as String,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as String,
   ));

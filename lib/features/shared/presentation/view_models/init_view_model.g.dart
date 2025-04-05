@@ -6,12 +6,12 @@ part of 'init_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$initViewModelHash() => r'844876383e33af617ffeaf091c1ee1588f0a6d1d';
+String _$initViewModelHash() => r'f014c7ee3f396023a0f9aec4d007a2f2f927c991';
 
 /// See also [InitViewModel].
 @ProviderFor(InitViewModel)
 final initViewModelProvider =
-    AsyncNotifierProvider<InitViewModel, bool>.internal(
+    AsyncNotifierProvider<InitViewModel, InitState>.internal(
       InitViewModel.new,
       name: r'initViewModelProvider',
       debugGetCreateSourceHash:
@@ -22,6 +22,6 @@ final initViewModelProvider =
       allTransitiveDependencies: null,
     );
 
-typedef _$InitViewModel = AsyncNotifier<bool>;
+typedef _$InitViewModel = AsyncNotifier<InitState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
