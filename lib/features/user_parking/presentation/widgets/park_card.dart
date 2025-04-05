@@ -11,6 +11,7 @@ import '../view_models/park_view_model.dart';
 import '../view_models/vehicle_view_model.dart';
 import 'async_user_info_tile.dart';
 import 'dotted_line.dart';
+import 'park_qr_code.dart';
 
 class ParkCard extends ConsumerStatefulWidget {
   const ParkCard({super.key});
@@ -72,7 +73,7 @@ class _ParkCardState extends ConsumerState<ParkCard> {
                 childAspectRatio: 2,
                 crossAxisSpacing: 10.h,
                 mainAxisSpacing: 10.h,
-                mainAxisExtent: 80.h,
+                mainAxisExtent: 75.h,
               ),
               children: [
                 AsyncUserInfoTile(
@@ -139,14 +140,7 @@ class _ParkCardState extends ConsumerState<ParkCard> {
             ],
           ),
           SizedBox(height: 20.h),
-          Container(
-            height: 200.w,
-            width: 200.w,
-            decoration: BoxDecoration(
-              color: AppColor.containerColorPrimary(context),
-              borderRadius: BorderRadius.circular(15.r),
-            ),
-          ),
+          ParkQrCode(),
           SizedBox(height: 10.h),
           Text(
             Lang.of(context).scanHere,

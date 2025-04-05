@@ -48,16 +48,19 @@ class AsyncUserInfoTile extends StatelessWidget {
 
   Widget _buildBox(BuildContext context, String val) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
+      width: 110.w,
+      height: 25.h,
       decoration: BoxDecoration(
         color: AppColor.containerColorPrimary(context),
         borderRadius: BorderRadius.circular(5.r),
       ),
-      child: Text(
-        val,
-        style: AppFont.labelSmall(context)?.medium.copyWith(
-          color: AppColor.onContainerColorPrimary(context),
-          fontSize: value2 == null ? 12.sp : 11.sp,
+      child: Center(
+        child: Text(
+          val,
+          style: AppFont.labelSmall(context)?.medium.copyWith(
+            color: AppColor.onContainerColorPrimary(context),
+            fontSize: 11.sp,
+          ),
         ),
       ),
     );
@@ -69,7 +72,7 @@ class AsyncUserInfoTile extends StatelessWidget {
       child: Shimmer.fromColors(
         baseColor: Colors.grey.shade300,
         highlightColor: Colors.grey.shade100,
-        child: Container(height: 12.h, width: 60.w, color: Colors.white),
+        child: Container(height: 16.h, width: 80.w, color: Colors.white),
       ),
     );
   }
