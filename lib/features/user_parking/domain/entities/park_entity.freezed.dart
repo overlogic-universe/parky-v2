@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ParkEntity {
 
- String get id; ParkStatus get status; String get lastActivity; String get userId;
+ String get id; ParkStatus get status; Timestamp get lastActivity; String get userId;
 /// Create a copy of ParkEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -46,7 +46,7 @@ abstract mixin class $ParkEntityCopyWith<$Res>  {
   factory $ParkEntityCopyWith(ParkEntity value, $Res Function(ParkEntity) _then) = _$ParkEntityCopyWithImpl;
 @useResult
 $Res call({
- String id, ParkStatus status, String lastActivity, String userId
+ String id, ParkStatus status, Timestamp lastActivity, String userId
 });
 
 
@@ -68,7 +68,7 @@ class _$ParkEntityCopyWithImpl<$Res>
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as ParkStatus,lastActivity: null == lastActivity ? _self.lastActivity : lastActivity // ignore: cast_nullable_to_non_nullable
-as String,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
+as Timestamp,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -85,7 +85,7 @@ class _ParkEntity implements ParkEntity {
 
 @override final  String id;
 @override final  ParkStatus status;
-@override final  String lastActivity;
+@override final  Timestamp lastActivity;
 @override final  String userId;
 
 /// Create a copy of ParkEntity
@@ -118,7 +118,7 @@ abstract mixin class _$ParkEntityCopyWith<$Res> implements $ParkEntityCopyWith<$
   factory _$ParkEntityCopyWith(_ParkEntity value, $Res Function(_ParkEntity) _then) = __$ParkEntityCopyWithImpl;
 @override @useResult
 $Res call({
- String id, ParkStatus status, String lastActivity, String userId
+ String id, ParkStatus status, Timestamp lastActivity, String userId
 });
 
 
@@ -140,7 +140,7 @@ class __$ParkEntityCopyWithImpl<$Res>
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as ParkStatus,lastActivity: null == lastActivity ? _self.lastActivity : lastActivity // ignore: cast_nullable_to_non_nullable
-as String,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
+as Timestamp,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

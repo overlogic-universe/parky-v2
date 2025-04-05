@@ -16,40 +16,28 @@ class UserParkingLocalDataSourceImpl implements UserParkingLocalDataSource {
   static const String _notFoundMessage = "Not found from database";
 
   @override
-  Future<ParkModel> getParkModel() async {
+  Future<ParkModel?> getParkModel() async {
     final List<Map<String, dynamic>> result = await sqfliteDatabase.query(
       _parkTable,
       limit: 1,
     );
 
-    if (result.isEmpty) {
-      throw UserParkingException(
-        message: UserParkingExceptionMessageConstant.parkNotFound(
-          _notFoundMessage,
-        ),
-        type: UserParkingFailureType.parkNotFound,
-      );
-    }
+    if (result.isEmpty) return null;
+
     final data = result.first;
 
     return ParkModel.fromJson(data);
   }
 
   @override
-  Future<VehicleModel> getVehicleModel() async {
+  Future<VehicleModel?> getVehicleModel() async {
     final List<Map<String, dynamic>> result = await sqfliteDatabase.query(
       _vehicleTable,
       limit: 1,
     );
 
-    if (result.isEmpty) {
-      throw UserParkingException(
-        message: UserParkingExceptionMessageConstant.vehicleNotFound(
-          _notFoundMessage,
-        ),
-        type: UserParkingFailureType.vehicleNotFound,
-      );
-    }
+    if (result.isEmpty) return null;
+
     final data = result.first;
 
     return VehicleModel.fromJson(data);

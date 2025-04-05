@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'init_view_model.dart';
+part of 'vehicle_view_model.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$initViewModelHash() => r'f014c7ee3f396023a0f9aec4d007a2f2f927c991';
+String _$vehicleViewModelHash() => r'd4f3b6b74fbd5421a2d82adad0530e38779bac79';
 
-/// See also [InitViewModel].
-@ProviderFor(InitViewModel)
-final initViewModelProvider =
-    AsyncNotifierProvider<InitViewModel, InitState>.internal(
-      InitViewModel.new,
-      name: r'initViewModelProvider',
+/// See also [VehicleViewModel].
+@ProviderFor(VehicleViewModel)
+final vehicleViewModelProvider =
+    AsyncNotifierProvider<VehicleViewModel, VehicleState>.internal(
+      VehicleViewModel.new,
+      name: r'vehicleViewModelProvider',
       debugGetCreateSourceHash:
           const bool.fromEnvironment('dart.vm.product')
               ? null
-              : _$initViewModelHash,
+              : _$vehicleViewModelHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
 
-typedef _$InitViewModel = AsyncNotifier<InitState>;
+typedef _$VehicleViewModel = AsyncNotifier<VehicleState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

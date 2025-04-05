@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import '../../../../core/utils/resource_state.dart';
 import 'network_info.dart';
 
@@ -23,6 +25,8 @@ class NetworkBoundResource<ResultType, RequestType> {
         final RequestType apiResponse = await networkInfo.safeNetworkRequest(
           result: createCall,
         );
+
+        log("API RESPONE ${apiResponse}");
 
         await saveCallResult(apiResponse);
         dbSource = await loadFromDB();

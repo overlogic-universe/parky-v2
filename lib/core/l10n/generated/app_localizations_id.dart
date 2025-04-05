@@ -56,6 +56,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get scanHere => 'PINDAI DI SINI';
 
   @override
+  String get parking => 'Sedang parkir';
+
+  @override
+  String get parked => 'Keluar';
+
+  @override
   String get setting => 'Pengaturan';
 
   @override

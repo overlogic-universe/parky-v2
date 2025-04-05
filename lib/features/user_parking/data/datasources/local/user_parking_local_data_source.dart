@@ -3,7 +3,7 @@ import '../../models/vehicle_mode.dart';
 
 abstract class UserParkingLocalDataSource {
   Future<void> saveVehicleModel(VehicleModel? vehicleModel);
-  Future<VehicleModel> getVehicleModel();
+  Future<VehicleModel?> getVehicleModel();
   Future<void> saveParkModel(ParkModel? parkModel);
-  Future<ParkModel> getParkModel();
+  Future<ParkModel?> getParkModel();
 }

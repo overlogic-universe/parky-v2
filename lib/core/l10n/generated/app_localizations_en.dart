@@ -56,6 +56,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get scanHere => 'SCAN HERE';
 
   @override
+  String get parking => 'Parking';
+
+  @override
+  String get parked => 'Parked';
+
+  @override
   String get setting => 'Setting';
 
   @override

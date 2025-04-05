@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'init_view_model.dart';
+part of 'park_view_model.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$initViewModelHash() => r'f014c7ee3f396023a0f9aec4d007a2f2f927c991';
+String _$parkViewModelHash() => r'ee3352c3f46f35eea3939e1dd353b9a9f37532aa';
 
-/// See also [InitViewModel].
-@ProviderFor(InitViewModel)
-final initViewModelProvider =
-    AsyncNotifierProvider<InitViewModel, InitState>.internal(
-      InitViewModel.new,
-      name: r'initViewModelProvider',
+/// See also [ParkViewModel].
+@ProviderFor(ParkViewModel)
+final parkViewModelProvider =
+    AsyncNotifierProvider<ParkViewModel, ParkState>.internal(
+      ParkViewModel.new,
+      name: r'parkViewModelProvider',
       debugGetCreateSourceHash:
           const bool.fromEnvironment('dart.vm.product')
               ? null
-              : _$initViewModelHash,
+              : _$parkViewModelHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
 
-typedef _$InitViewModel = AsyncNotifier<InitState>;
+typedef _$ParkViewModel = AsyncNotifier<ParkState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
