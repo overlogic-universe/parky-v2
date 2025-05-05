@@ -30,7 +30,6 @@ dependencies:
   firebase_core: ^3.12.1
   cloud_firestore: ^5.6.5
   shared_preferences: ^2.5.3
-  page_transition: ^2.2.1
   animated_custom_dropdown: ^3.1.1
   sqflite: ^2.4.2
   firebase_auth: ^5.5.2
@@ -58,8 +57,10 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/logos/
     - assets/svgs/
     - assets/icons/
+    - assets/icons/logos/
     - assets/fonts/
     - .env
 
