@@ -7,7 +7,7 @@ part of 'bottom_navbar_view_model.dart';
 // **************************************************************************
 
 String _$bottomNavbarViewModelHash() =>
-    r'de4f033bc7fa8a967f053401ec9e90e9cb465907';
+    r'd999d4cd7c55f7e715eecfc37c7017b942ba9fb6';
 
 /// See also [BottomNavbarViewModel].
 @ProviderFor(BottomNavbarViewModel)

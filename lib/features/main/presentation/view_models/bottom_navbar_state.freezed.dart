@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$BottomNavbarState {
 
- int get selectedTabIndex;
+ int get selectedTabIndex; bool get isBottomNavVisible;
 /// Create a copy of BottomNavbarState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $BottomNavbarStateCopyWith<BottomNavbarState> get copyWith => _$BottomNavbarStat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BottomNavbarState&&(identical(other.selectedTabIndex, selectedTabIndex) || other.selectedTabIndex == selectedTabIndex));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BottomNavbarState&&(identical(other.selectedTabIndex, selectedTabIndex) || other.selectedTabIndex == selectedTabIndex)&&(identical(other.isBottomNavVisible, isBottomNavVisible) || other.isBottomNavVisible == isBottomNavVisible));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,selectedTabIndex);
+int get hashCode => Object.hash(runtimeType,selectedTabIndex,isBottomNavVisible);
 
 @override
 String toString() {
-  return 'BottomNavbarState(selectedTabIndex: $selectedTabIndex)';
+  return 'BottomNavbarState(selectedTabIndex: $selectedTabIndex, isBottomNavVisible: $isBottomNavVisible)';
 }
 
 
@@ -46,7 +46,7 @@ abstract mixin class $BottomNavbarStateCopyWith<$Res>  {
   factory $BottomNavbarStateCopyWith(BottomNavbarState value, $Res Function(BottomNavbarState) _then) = _$BottomNavbarStateCopyWithImpl;
 @useResult
 $Res call({
- int selectedTabIndex
+ int selectedTabIndex, bool isBottomNavVisible
 });
 
 
@@ -63,10 +63,11 @@ class _$BottomNavbarStateCopyWithImpl<$Res>
 
 /// Create a copy of BottomNavbarState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? selectedTabIndex = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? selectedTabIndex = null,Object? isBottomNavVisible = null,}) {
   return _then(_self.copyWith(
 selectedTabIndex: null == selectedTabIndex ? _self.selectedTabIndex : selectedTabIndex // ignore: cast_nullable_to_non_nullable
-as int,
+as int,isBottomNavVisible: null == isBottomNavVisible ? _self.isBottomNavVisible : isBottomNavVisible // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 
@@ -77,10 +78,11 @@ as int,
 
 
 class _BottomNavbarState implements BottomNavbarState {
-  const _BottomNavbarState({required this.selectedTabIndex});
+  const _BottomNavbarState({required this.selectedTabIndex, required this.isBottomNavVisible});
   
 
 @override final  int selectedTabIndex;
+@override final  bool isBottomNavVisible;
 
 /// Create a copy of BottomNavbarState
 /// with the given fields replaced by the non-null parameter values.
@@ -92,16 +94,16 @@ _$BottomNavbarStateCopyWith<_BottomNavbarState> get copyWith => __$BottomNavbarS
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BottomNavbarState&&(identical(other.selectedTabIndex, selectedTabIndex) || other.selectedTabIndex == selectedTabIndex));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BottomNavbarState&&(identical(other.selectedTabIndex, selectedTabIndex) || other.selectedTabIndex == selectedTabIndex)&&(identical(other.isBottomNavVisible, isBottomNavVisible) || other.isBottomNavVisible == isBottomNavVisible));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,selectedTabIndex);
+int get hashCode => Object.hash(runtimeType,selectedTabIndex,isBottomNavVisible);
 
 @override
 String toString() {
-  return 'BottomNavbarState(selectedTabIndex: $selectedTabIndex)';
+  return 'BottomNavbarState(selectedTabIndex: $selectedTabIndex, isBottomNavVisible: $isBottomNavVisible)';
 }
 
 
@@ -112,7 +114,7 @@ abstract mixin class _$BottomNavbarStateCopyWith<$Res> implements $BottomNavbarS
   factory _$BottomNavbarStateCopyWith(_BottomNavbarState value, $Res Function(_BottomNavbarState) _then) = __$BottomNavbarStateCopyWithImpl;
 @override @useResult
 $Res call({
- int selectedTabIndex
+ int selectedTabIndex, bool isBottomNavVisible
 });
 
 
@@ -129,10 +131,11 @@ class __$BottomNavbarStateCopyWithImpl<$Res>
 
 /// Create a copy of BottomNavbarState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? selectedTabIndex = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? selectedTabIndex = null,Object? isBottomNavVisible = null,}) {
   return _then(_BottomNavbarState(
 selectedTabIndex: null == selectedTabIndex ? _self.selectedTabIndex : selectedTabIndex // ignore: cast_nullable_to_non_nullable
-as int,
+as int,isBottomNavVisible: null == isBottomNavVisible ? _self.isBottomNavVisible : isBottomNavVisible // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

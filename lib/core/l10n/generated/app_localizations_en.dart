@@ -77,6 +77,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get personalized => 'Personalized';
 
   @override
+  String get authentication => 'Authentication';
+
+  @override
   String get chooseTheme => 'Choose theme';
 
   @override

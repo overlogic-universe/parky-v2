@@ -227,6 +227,12 @@ abstract class AppLocalizations {
   /// **'Personalisasi'**
   String get personalized;
 
+  /// No description provided for @authentication.
+  ///
+  /// In id, this message translates to:
+  /// **'Autentikasi'**
+  String get authentication;
+
   /// No description provided for @chooseTheme.
   ///
   /// In id, this message translates to:

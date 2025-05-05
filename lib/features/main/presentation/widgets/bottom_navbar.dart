@@ -19,36 +19,47 @@ class BottomNavbar extends ConsumerStatefulWidget {
 class _BottomNavbarState extends ConsumerState<BottomNavbar> {
   late List<TabModel> tabModels;
 
+  final botNavWidth = 150;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     tabModels = [
-      TabModel(
-        icon: IconAssetConstant.home,
-      ),
-      TabModel(
-        icon: IconAssetConstant.parkingBuilding,
-      ),
-      TabModel(
-        icon: IconAssetConstant.setting,
-      )
+      TabModel(icon: IconAssetConstant.home),
+      TabModel(icon: IconAssetConstant.parkingBuilding),
+      TabModel(icon: IconAssetConstant.setting),
     ];
   }
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 0,
+    final state = ref.watch(bottomNavbarViewModelProvider);
+    final isVisible = state.isBottomNavVisible;
+    return AnimatedPositioned(
+      duration: Duration(milliseconds: 300),
+      bottom: isVisible ? 10.h : (-SizeConstant.bottomNavbarHeight),
       child: Container(
-        width: MediaQuery.sizeOf(context).width,
+        clipBehavior: Clip.hardEdge,
+        width: 1.sw - botNavWidth.w,
         height: SizeConstant.bottomNavbarHeight,
-        color: AppColor.backgroundApp(context),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100.r),
+          color: AppColor.backgroundApp(context),
+          boxShadow: [
+            BoxShadow(
+              color: AppColor.shadow(context),
+              blurRadius: 10.r,
+              offset: Offset(0, 2),
+            ),
+          ],
+        ),
         child: Row(
           children: List.generate(
             tabModels.length,
             (index) => Consumer(
-              builder: (context, ref, child) =>
-                  _buildBotNavItem(context, index, ref),
+              builder:
+                  (context, ref, child) =>
+                      _buildBotNavItem(context, index, ref),
             ),
           ),
         ),
@@ -65,13 +76,19 @@ class _BottomNavbarState extends ConsumerState<BottomNavbar> {
       onTap: () => viewModel.selectTab(index),
       child: Container(
         height: SizeConstant.bottomNavbarHeight,
-        width: 1.sw / tabModels.length,
+        width: 1.sw / tabModels.length - botNavWidth.w / tabModels.length,
         color: AppColor.backgroundApp(context),
-        child: SvgAsset(
-          asset: item.icon,
-          color: isSelectedIndex
-              ? AppColor.primary(context)
-              : AppColor.disableTextOrIcon(context),
+        child: Center(
+          child: Padding(
+            padding: EdgeInsets.all(10.r),
+            child: SvgAsset(
+              asset: item.icon,
+              color:
+                  isSelectedIndex
+                      ? AppColor.primary(context)
+                      : AppColor.disableTextOrIcon(context),
+            ),
+          ),
         ),
       ),
     );

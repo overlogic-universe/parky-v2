@@ -77,6 +77,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get personalized => 'Personalisasi';
 
   @override
+  String get authentication => 'Autentikasi';
+
+  @override
   String get chooseTheme => 'Pilih tema';
 
   @override

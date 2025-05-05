@@ -3,6 +3,5 @@ class SizeConstant {
 
   // TODO: inisialisasi size (height/width) yang konstan dan sering digunakan
   static const double leadingWidth = 50;
-  static const double bottomNavbarHeight = 65;
-
+  static const double bottomNavbarHeight = 60;
 }

@@ -17,7 +17,7 @@ class ParkViewModel extends _$ParkViewModel {
 
   @override
   Future<ParkState> build() async {
-    getParkByUserIdUseCase = ref.read(getParkByUserIdUseCaseProvider);
+    getParkByUserIdUseCase = ref.watch(getParkByUserIdUseCaseProvider);
     return const ParkState();
   }
 

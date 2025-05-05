@@ -17,7 +17,7 @@ class VehicleViewModel extends _$VehicleViewModel {
 
   @override
   Future<VehicleState> build() async {
-    getVehicleByUserIdUseCase = ref.read(getVehicleByUserIdUseCaseProvider);
+    getVehicleByUserIdUseCase = ref.watch(getVehicleByUserIdUseCaseProvider);
     return VehicleState();
   }
 

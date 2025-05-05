@@ -1,47 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../models/park_ui_model.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/lang.dart';
 import '../../../shared/presentation/view_models/init_view_model.dart';
+import '../models/park_ui_model.dart';
 import '../view_models/park_view_model.dart';
 import '../view_models/vehicle_view_model.dart';
 import 'dotted_line.dart';
 import 'park_qr_code.dart';
 import 'user_info_tile.dart';
 
-class ParkCard extends ConsumerStatefulWidget {
+class ParkCard extends ConsumerWidget {
   const ParkCard({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _ParkCardState();
-}
-
-class _ParkCardState extends ConsumerState<ParkCard> {
-  @override
-  void initState() {
-    super.initState();
-    Future.microtask(() => _initialize());
-  }
-
-  void _initialize() {
-    final state = ref.read(initViewModelProvider);
-    final alreadyHasUser = state.whenOrNull(data: (d) => d.userUiModel != null);
-
-    if (alreadyHasUser != true) {
-      ref.read(initViewModelProvider.notifier).getUserEntity();
-    }
-
-    ref.read(parkViewModelProvider.notifier).fetch();
-    ref.read(vehicleViewModelProvider.notifier).fetch();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final vehicleState = ref.watch(vehicleViewModelProvider);
     final parkState = ref.watch(parkViewModelProvider);
     final initState = ref.watch(initViewModelProvider);
@@ -122,13 +99,13 @@ class _ParkCardState extends ConsumerState<ParkCard> {
           ),
           Row(
             children: [
-              _buildCardDecoration(offsetX: -22.w),
+              _buildCardDecoration(context, offsetX: -22.w),
               Expanded(
                 child: DottedLine(
                   color: AppColor.containerColorPrimary(context),
                 ),
               ),
-              _buildCardDecoration(offsetX: 22.w),
+              _buildCardDecoration(context, offsetX: 22.w),
             ],
           ),
           SizedBox(height: 20.h),
@@ -145,7 +122,7 @@ class _ParkCardState extends ConsumerState<ParkCard> {
     );
   }
 
-  Widget _buildCardDecoration({double offsetX = 0}) {
+  Widget _buildCardDecoration(BuildContext context, {double offsetX = 0}) {
     final size = 45.w;
     return Transform.translate(
       offset: Offset(offsetX, 0),

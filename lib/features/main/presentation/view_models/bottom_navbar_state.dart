@@ -6,5 +6,6 @@ part 'bottom_navbar_state.freezed.dart';
 abstract class BottomNavbarState with _$BottomNavbarState {
   const factory BottomNavbarState({
     required int selectedTabIndex,
+    required bool isBottomNavVisible,
   }) = _BottomNavbarState;
 }

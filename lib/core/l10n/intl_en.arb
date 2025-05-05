@@ -26,6 +26,7 @@
     "account": "Account",
     "updatePassword": "Update your password",
     "personalized": "Personalized",
+    "authentication": "Authentication",
     "chooseTheme": "Choose theme",
     "chooseThemeDesc": "Customize the app's look with your favorite theme!",
     "chooseLanguage": "Choose language",

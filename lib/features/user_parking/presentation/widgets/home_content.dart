@@ -6,18 +6,38 @@ import '../../../../core/constants/common/margin_constant.dart';
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/get_logo_asset_util.dart';
+import '../../../shared/core/utils/scroll_util.dart';
 import '../../../shared/presentation/view_models/init_view_model.dart';
 import '../../../shared/presentation/widgets/margin_bottom.dart';
 import '../../core/utils/home_util.dart';
 import 'park_card.dart';
 
-class HomeContent extends ConsumerWidget {
+class HomeContent extends ConsumerStatefulWidget {
   const HomeContent({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _HomeContentState();
+}
+
+class _HomeContentState extends ConsumerState<HomeContent> {
+  late final ScrollController _scrollController;
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+     Future.microtask(
+      () => ScrollUtil.attachBottomNavbarVisibilityListener(
+        controller: _scrollController,
+        ref: ref,
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final state = ref.watch(initViewModelProvider);
     return SingleChildScrollView(
+      controller: _scrollController,
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: MarginConstant.horizontalScreen.w,
@@ -26,7 +46,7 @@ class HomeContent extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SafeArea(child: SizedBox(height: 10.h)),
-            _buildAppLogo(context),
+            _buildAppLogo(),
             SizedBox(height: 40.h),
             Text(
               HomeUtil.getHomeGreeting(context),
@@ -51,7 +71,7 @@ class HomeContent extends ConsumerWidget {
     );
   }
 
-  Widget _buildAppLogo(BuildContext context) {
+  Widget _buildAppLogo() {
     final logoAsset = GetLogoAssetUtil.of(context);
     return Center(child: Image.asset(logoAsset, height: 35.h));
   }

@@ -9,12 +9,14 @@ import '../models/setting_item_model.dart';
 class BaseSettingCard extends StatelessWidget {
   final List<SettingItemModel> settingItemList;
   final String? label;
+  final Color? textColor;
   final void Function(SettingItemModel item)? onTap;
 
   const BaseSettingCard({
     super.key,
     required this.settingItemList,
     this.label,
+    this.textColor,
     required this.onTap,
   });
 
@@ -60,7 +62,7 @@ class BaseSettingCard extends StatelessWidget {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text(item.name), item.suffixWidget],
+              children: [Text(item.name, style: TextStyle(color: textColor),), item.suffixWidget],
             ),
             SizedBox(height: 5.h),
             Line(),
