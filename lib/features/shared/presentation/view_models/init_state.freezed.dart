@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$InitState {
 
- AsyncValue<bool> get isLogin; AsyncValue<UserUiModel?> get userUiModel;
+ bool get isLogin; UserUiModel? get userUiModel;
 /// Create a copy of InitState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -46,11 +46,11 @@ abstract mixin class $InitStateCopyWith<$Res>  {
   factory $InitStateCopyWith(InitState value, $Res Function(InitState) _then) = _$InitStateCopyWithImpl;
 @useResult
 $Res call({
- AsyncValue<bool> isLogin, AsyncValue<UserUiModel?> userUiModel
+ bool isLogin, UserUiModel? userUiModel
 });
 
 
-
+$UserUiModelCopyWith<$Res>? get userUiModel;
 
 }
 /// @nodoc
@@ -63,14 +63,26 @@ class _$InitStateCopyWithImpl<$Res>
 
 /// Create a copy of InitState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? isLogin = null,Object? userUiModel = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? isLogin = null,Object? userUiModel = freezed,}) {
   return _then(_self.copyWith(
 isLogin: null == isLogin ? _self.isLogin : isLogin // ignore: cast_nullable_to_non_nullable
-as AsyncValue<bool>,userUiModel: null == userUiModel ? _self.userUiModel : userUiModel // ignore: cast_nullable_to_non_nullable
-as AsyncValue<UserUiModel?>,
+as bool,userUiModel: freezed == userUiModel ? _self.userUiModel : userUiModel // ignore: cast_nullable_to_non_nullable
+as UserUiModel?,
   ));
 }
+/// Create a copy of InitState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UserUiModelCopyWith<$Res>? get userUiModel {
+    if (_self.userUiModel == null) {
+    return null;
+  }
 
+  return $UserUiModelCopyWith<$Res>(_self.userUiModel!, (value) {
+    return _then(_self.copyWith(userUiModel: value));
+  });
+}
 }
 
 
@@ -78,11 +90,11 @@ as AsyncValue<UserUiModel?>,
 
 
 class _InitState implements InitState {
-  const _InitState({this.isLogin = const AsyncValue<bool>.data(false), this.userUiModel = const AsyncValue<UserUiModel?>.data(null)});
+  const _InitState({required this.isLogin, this.userUiModel});
   
 
-@override@JsonKey() final  AsyncValue<bool> isLogin;
-@override@JsonKey() final  AsyncValue<UserUiModel?> userUiModel;
+@override final  bool isLogin;
+@override final  UserUiModel? userUiModel;
 
 /// Create a copy of InitState
 /// with the given fields replaced by the non-null parameter values.
@@ -114,11 +126,11 @@ abstract mixin class _$InitStateCopyWith<$Res> implements $InitStateCopyWith<$Re
   factory _$InitStateCopyWith(_InitState value, $Res Function(_InitState) _then) = __$InitStateCopyWithImpl;
 @override @useResult
 $Res call({
- AsyncValue<bool> isLogin, AsyncValue<UserUiModel?> userUiModel
+ bool isLogin, UserUiModel? userUiModel
 });
 
 
-
+@override $UserUiModelCopyWith<$Res>? get userUiModel;
 
 }
 /// @nodoc
@@ -131,15 +143,27 @@ class __$InitStateCopyWithImpl<$Res>
 
 /// Create a copy of InitState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? isLogin = null,Object? userUiModel = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? isLogin = null,Object? userUiModel = freezed,}) {
   return _then(_InitState(
 isLogin: null == isLogin ? _self.isLogin : isLogin // ignore: cast_nullable_to_non_nullable
-as AsyncValue<bool>,userUiModel: null == userUiModel ? _self.userUiModel : userUiModel // ignore: cast_nullable_to_non_nullable
-as AsyncValue<UserUiModel?>,
+as bool,userUiModel: freezed == userUiModel ? _self.userUiModel : userUiModel // ignore: cast_nullable_to_non_nullable
+as UserUiModel?,
   ));
 }
 
+/// Create a copy of InitState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UserUiModelCopyWith<$Res>? get userUiModel {
+    if (_self.userUiModel == null) {
+    return null;
+  }
 
+  return $UserUiModelCopyWith<$Res>(_self.userUiModel!, (value) {
+    return _then(_self.copyWith(userUiModel: value));
+  });
+}
 }
 
 // dart format on

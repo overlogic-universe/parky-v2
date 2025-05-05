@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../../../core/constants/failures/exception_message_constant.dart';
+import '../../../../core/failures/common_failure_type.dart';
 import '../../../../core/failures/exception.dart';
 
 class UserModel {
@@ -21,10 +21,7 @@ class UserModel {
   factory UserModel.fromFirestore(DocumentSnapshot<Map<String, dynamic>> doc) {
     final data = doc.data();
     if (data == null) {
-      throw CommonException(
-        message: ExceptionMessageConstant.documentDataIsNull,
-        type: CommonFailureType.documentDataIsNull,
-      );
+      throw CommonException(type: CommonFailureType.documentDataIsNull);
     }
 
     return UserModel(
@@ -36,21 +33,13 @@ class UserModel {
   }
 
   Map<String, dynamic> toFirestore() {
-    return {
-      'student_id': studentId,
-      'name': name,
-      'email': email,
-    };
+    return {'student_id': studentId, 'name': name, 'email': email};
   }
+
   Map<String, dynamic> toJson() {
-    return {
-        'id': id,
-        'student_id': studentId,
-        'name': name,
-        'email': email,
-      };
+    return {'id': id, 'student_id': studentId, 'name': name, 'email': email};
   }
-  
+
   factory UserModel.fromJson(Map<String, dynamic> map) {
     return UserModel(
       id: map['id'] ?? '',

@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:shimmer/shimmer.dart';
 
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 
-class AsyncUserInfoTile extends StatelessWidget {
+class UserInfoTile extends StatelessWidget {
   final String label;
-  final AsyncValue<String> value;
-  final AsyncValue<String>? value2;
+  final String value;
+  final String? value2;
 
-  const AsyncUserInfoTile({
+  const UserInfoTile({
     super.key,
     required this.label,
     required this.value,
@@ -29,18 +27,11 @@ class AsyncUserInfoTile extends StatelessWidget {
           )?.medium.copyWith(color: AppColor.onPrimary(context)),
         ),
         SizedBox(height: 5.h),
-        value.when(
-          data: (val) => _buildBox(context, val),
-          loading: () => _buildLoadingBox(context),
-          error: (_, __) => _buildBox(context, ""),
-        ),
+        _buildBox(context, value),
+
         if (value2 != null) ...[
           SizedBox(height: 5.h),
-          value2!.when(
-            data: (val) => _buildBox(context, val),
-            loading: () => _buildLoadingBox(context),
-            error: (_, __) => _buildBox(context, ""),
-          ),
+          _buildBox(context, value2!),
         ],
       ],
     );
@@ -62,17 +53,6 @@ class AsyncUserInfoTile extends StatelessWidget {
             fontSize: 11.sp,
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildLoadingBox(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
-      child: Shimmer.fromColors(
-        baseColor: Colors.grey.shade300,
-        highlightColor: Colors.grey.shade100,
-        child: Container(height: 16.h, width: 80.w, color: Colors.white),
       ),
     );
   }

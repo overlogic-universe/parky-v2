@@ -3,8 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../../core/extensions/firebase_extension.dart';
-import '../../../core/constants/failures/auth_exception_message_constant.dart';
 import '../../../core/failures/auth_exception.dart';
+import '../../../core/failures/auth_failure_type.dart';
 import '../../../domain/entities/login_with_email_password_request.dart';
 import '../../models/user_model.dart';
 import 'auth_remote_data_source.dart';
@@ -33,10 +33,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     }
 
     await signOut();
-    throw AuthException(
-      message: AuthExceptionMessageConstant.userNotFound,
-      type: AuthFailureType.userNotFound,
-    );
+    throw AuthException(type: AuthFailureType.userNotFound);
   }
 
   @override
@@ -54,10 +51,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<UserModel> loginWithGoogle() async {
     final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
     if (googleUser == null) {
-      throw AuthException(
-        message: AuthExceptionMessageConstant.loginWithGoogleAbortedByUser,
-        type: AuthFailureType.loginWithGoogleAbortedByUser,
-      );
+      throw AuthException(type: AuthFailureType.loginWithGoogleAbortedByUser);
     }
 
     final GoogleSignInAuthentication googleAuth =
@@ -75,19 +69,13 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     if (user != null) {
       if (!user.email!.endsWith("@student.ums.ac.id")) {
         await signOut();
-        throw AuthException(
-          message: AuthExceptionMessageConstant.invalidEmailDomain,
-          type: AuthFailureType.invalidEmailDomain,
-        );
+        throw AuthException(type: AuthFailureType.invalidEmailDomain);
       }
 
       return getUserModel();
     }
 
-    throw AuthException(
-      message: AuthExceptionMessageConstant.loginWithGoogleFailed,
-      type: AuthFailureType.loginWithGoogleFailed,
-    );
+    throw AuthException(type: AuthFailureType.loginWithGoogleFailed);
   }
 
   @override

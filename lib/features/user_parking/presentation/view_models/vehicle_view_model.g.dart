@@ -6,7 +6,7 @@ part of 'vehicle_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$vehicleViewModelHash() => r'd4f3b6b74fbd5421a2d82adad0530e38779bac79';
+String _$vehicleViewModelHash() => r'9e21077c88d7d85849a10697a5e93bee5c08419d';
 
 /// See also [VehicleViewModel].
 @ProviderFor(VehicleViewModel)

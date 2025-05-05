@@ -2,13 +2,13 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:parky/features/user_parking/core/extensions/user_parking_data_mapper_extension.dart';
 
 import '../../../../../core/extensions/firebase_extension.dart';
-import '../../../../auth/core/constants/failures/auth_exception_message_constant.dart';
 import '../../../../auth/core/failures/auth_exception.dart';
-import '../../../core/constant/failures/user_parking_exception_message_constant.dart';
+import '../../../../auth/core/failures/auth_failure_type.dart';
+import '../../../core/extensions/user_parking_data_mapper_extension.dart';
 import '../../../core/failures/user_parking_exception.dart';
+import '../../../core/failures/user_parking_failure_type.dart';
 import '../../models/park_model.dart';
 import '../../models/vehicle_mode.dart';
 import 'user_parking_remote_data_source.dart';
@@ -33,7 +33,7 @@ class UserParkingRemoteDataSourceImpl implements UserParkingRemoteDataSource {
 
     if (query.docs.isEmpty) {
       throw UserParkingException(
-        message: UserParkingExceptionMessageConstant.parkNotFound(userId),
+        userId: userId,
         type: UserParkingFailureType.parkNotFound,
       );
     }
@@ -59,7 +59,7 @@ class UserParkingRemoteDataSourceImpl implements UserParkingRemoteDataSource {
     log("MODEL GET VEHICLE: ${query.docs}");
     if (query.docs.isEmpty) {
       throw UserParkingException(
-        message: UserParkingExceptionMessageConstant.vehicleNotFound(userId),
+        userId: userId,
         type: UserParkingFailureType.vehicleNotFound,
       );
     }
@@ -75,10 +75,7 @@ class UserParkingRemoteDataSourceImpl implements UserParkingRemoteDataSource {
   String _getUserId() {
     final user = firebaseAuth.currentUser;
     if (user == null) {
-      throw AuthException(
-        message: AuthExceptionMessageConstant.userNotFound,
-        type: AuthFailureType.userNotFound,
-      );
+      throw AuthException(type: AuthFailureType.userNotFound);
     }
     return user.uid;
   }

@@ -2,14 +2,14 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../../../core/constants/failures/exception_message_constant.dart';
+import '../../../../core/failures/common_failure_type.dart';
 import '../../../../core/failures/exception.dart';
 import '../../../../core/utils/resource_state.dart';
 import '../../../shared/data/remote/network_bound_resource.dart';
 import '../../../shared/data/remote/network_info.dart';
-import '../../core/constants/failures/auth_exception_message_constant.dart';
 import '../../core/extensions/auth_data_mapper_extension.dart';
 import '../../core/failures/auth_exception.dart';
+import '../../core/failures/auth_failure_type.dart';
 import '../../domain/entities/login_with_email_password_request.dart';
 import '../../domain/entities/user_entity.dart';
 import '../../domain/repositories/auth_repository.dart';
@@ -44,35 +44,20 @@ class AuthRepositoryImpl implements AuthRepository {
           log("loginWithEmailAndPassword FAILED: ${e.message}");
           log("loginWithEmailAndPassword FAILED code: ${e.code}");
           if (e.code == 'wrong-password') {
-            throw AuthException(
-              message: AuthExceptionMessageConstant.invalidCredentials,
-              type: AuthFailureType.invalidCredentials,
-            );
+            throw AuthException(type: AuthFailureType.invalidCredentials);
           } else if (e.code == 'invalid-credential') {
-            throw AuthException(
-              message: AuthExceptionMessageConstant.invalidCredentials,
-              type: AuthFailureType.invalidCredentials,
-            );
+            throw AuthException(type: AuthFailureType.invalidCredentials);
           } else if (e.code == 'user-not-found') {
-            throw AuthException(
-              message: AuthExceptionMessageConstant.userNotFound,
-              type: AuthFailureType.userNotFound,
-            );
+            throw AuthException(type: AuthFailureType.userNotFound);
           }
-          throw CommonException(
-            message: ExceptionMessageConstant.unknownError,
-            type: CommonFailureType.unknownError,
-          );
+          throw CommonException(type: CommonFailureType.unknownError);
         } catch (e) {
           if (e is AuthException) {
             log("loginWithEmailAndPassword FAILED: ${e.message}");
             rethrow;
           } else {
             log("loginWithEmailAndPassword FAILED: ${e.toString()}");
-            throw AuthException(
-              message: AuthExceptionMessageConstant.loginFailed,
-              type: AuthFailureType.loginFailed,
-            );
+            throw AuthException(type: AuthFailureType.loginFailed);
           }
         }
       },
@@ -93,10 +78,7 @@ class AuthRepositoryImpl implements AuthRepository {
             rethrow;
           } else {
             log("loginWithGoogle FAILED: ${e.toString()}");
-            throw AuthException(
-              message: AuthExceptionMessageConstant.loginWithGoogleFailed,
-              type: AuthFailureType.loginWithGoogleFailed,
-            );
+            throw AuthException(type: AuthFailureType.loginWithGoogleFailed);
           }
         }
       },
@@ -114,10 +96,7 @@ class AuthRepositoryImpl implements AuthRepository {
           if (e is AuthException) {
             rethrow;
           } else {
-            throw AuthException(
-              message: AuthExceptionMessageConstant.signOutFailed,
-              type: AuthFailureType.signOutFailed,
-            );
+            throw AuthException(type: AuthFailureType.signOutFailed);
           }
         }
       },

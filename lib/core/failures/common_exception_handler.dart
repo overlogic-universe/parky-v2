@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/lang.dart';
+import 'common_failure_type.dart';
 import 'exception.dart';
 
 class CommonExceptionHandler {

@@ -17,13 +17,11 @@ class ParkQrCode extends ConsumerWidget {
 
     return initState.when(
       data:
-          (data) => data.userUiModel.when(
-            data:
-                (u) =>
-                    u == null ? _buildError(context) : _buildQrCode(context, u),
-            loading: () => _buildLoading(context),
-            error: (e, st) => _buildError(context),
-          ),
+          (data) =>
+              data.userUiModel == null
+                  ? _buildError(context)
+                  : _buildQrCode(context, data.userUiModel!),
+
       loading: () => _buildLoading(context),
       error: (e, st) => _buildError(context),
     );

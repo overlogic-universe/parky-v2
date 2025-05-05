@@ -1,8 +1,8 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../../../core/constants/failures/auth_exception_message_constant.dart';
 import '../../../core/failures/auth_exception.dart';
+import '../../../core/failures/auth_failure_type.dart';
 import '../../models/user_model.dart';
 import 'auth_local_data_source.dart';
 
@@ -37,10 +37,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   @override
   Future<void> saveUserModel(UserModel? userModel) async {
     if (userModel == null) {
-      throw AuthException(
-        message: AuthExceptionMessageConstant.userNotFound,
-        type: AuthFailureType.userNotFound,
-      );
+      throw AuthException(type: AuthFailureType.userNotFound);
     }
     await sqfliteDatabase.insert(
       _userTable,
@@ -57,10 +54,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
     );
 
     if (result.isEmpty) {
-      throw AuthException(
-        message: AuthExceptionMessageConstant.userNotFound,
-        type: AuthFailureType.userNotFound,
-      );
+      throw AuthException(type: AuthFailureType.userNotFound);
     }
 
     final data = result.first;

@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../models/park_ui_model.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/lang.dart';
 import '../../../shared/presentation/view_models/init_view_model.dart';
-import '../models/park_ui_model.dart';
 import '../view_models/park_view_model.dart';
 import '../view_models/vehicle_view_model.dart';
-import 'async_user_info_tile.dart';
 import 'dotted_line.dart';
 import 'park_qr_code.dart';
+import 'user_info_tile.dart';
 
 class ParkCard extends ConsumerStatefulWidget {
   const ParkCard({super.key});
@@ -29,9 +30,7 @@ class _ParkCardState extends ConsumerState<ParkCard> {
 
   void _initialize() {
     final state = ref.read(initViewModelProvider);
-    final alreadyHasUser = state.whenOrNull(
-      data: (d) => d.userUiModel.whenOrNull(data: (u) => u != null),
-    );
+    final alreadyHasUser = state.whenOrNull(data: (d) => d.userUiModel != null);
 
     if (alreadyHasUser != true) {
       ref.read(initViewModelProvider.notifier).getUserEntity();
@@ -76,67 +75,60 @@ class _ParkCardState extends ConsumerState<ParkCard> {
                 mainAxisExtent: 75.h,
               ),
               children: [
-                AsyncUserInfoTile(
-                  label: entryExitTimeLabel,
-                  value: parkState.when(
-                    data:
-                        (data) =>
-                            AsyncData(data.parkUiModel?.lastActivityDay ?? ""),
-                    loading: () => const AsyncLoading(),
-                    error: (e, st) => AsyncError(e, st),
-                  ),
-                  value2: parkState.when(
-                    data:
-                        (data) =>
-                            AsyncData(data.parkUiModel?.lastActivityTime ?? ""),
-                    loading: () => const AsyncLoading(),
-                    error: (e, st) => AsyncError(e, st),
-                  ),
+                parkState.when(
+                  data:
+                      (data) => UserInfoTile(
+                        label: entryExitTimeLabel,
+                        value: data.parkUiModel?.lastActivityDay ?? "",
+                        value2: data.parkUiModel?.lastActivityTime ?? "",
+                      ),
+
+                  loading: () => _buildLoadingBox(),
+                  error: (e, st) => SizedBox.shrink(),
                 ),
-                AsyncUserInfoTile(
-                  label: nimLabel,
-                  value: initState.when(
-                    data:
-                        (data) => data.userUiModel.when(
-                          data: (u) => AsyncData(u?.studentId ?? ""),
-                          loading: () => const AsyncLoading(),
-                          error: (e, st) => AsyncError(e, st),
-                        ),
-                    loading: () => const AsyncLoading(),
-                    error: (e, st) => AsyncError(e, st),
-                  ),
+
+                initState.when(
+                  data:
+                      (data) => UserInfoTile(
+                        label: nimLabel,
+                        value: data.userUiModel?.studentId ?? "",
+                      ),
+                  loading: () => _buildLoadingBox(),
+                  error: (e, st) => SizedBox.shrink(),
                 ),
-                AsyncUserInfoTile(
-                  label: plateLabel,
-                  value: vehicleState.when(
-                    data: (data) => AsyncData(data.vehicleUiModel?.plate ?? ""),
-                    loading: () => const AsyncLoading(),
-                    error: (e, st) => AsyncError(e, st),
-                  ),
+
+                vehicleState.when(
+                  data:
+                      (data) => UserInfoTile(
+                        label: plateLabel,
+                        value: data.vehicleUiModel?.plate ?? "",
+                      ),
+                  loading: () => _buildLoadingBox(),
+                  error: (e, st) => SizedBox.shrink(),
                 ),
-                AsyncUserInfoTile(
-                  label: statusLabel,
-                  value: parkState.when(
-                    data:
-                        (data) => AsyncData(
-                          data.parkUiModel?.status.displayName(context) ?? "",
-                        ),
-                    loading: () => const AsyncLoading(),
-                    error: (e, st) => AsyncError(e, st),
-                  ),
+
+                parkState.when(
+                  data:
+                      (data) => UserInfoTile(
+                        label: statusLabel,
+                        value:
+                            data.parkUiModel?.status.displayName(context) ?? "",
+                      ),
+                  loading: () => _buildLoadingBox(),
+                  error: (e, st) => SizedBox.shrink(),
                 ),
               ],
             ),
           ),
           Row(
             children: [
-              _buildCardDecoration(context, offsetX: -22.w),
+              _buildCardDecoration(offsetX: -22.w),
               Expanded(
                 child: DottedLine(
                   color: AppColor.containerColorPrimary(context),
                 ),
               ),
-              _buildCardDecoration(context, offsetX: 22.w),
+              _buildCardDecoration(offsetX: 22.w),
             ],
           ),
           SizedBox(height: 20.h),
@@ -153,7 +145,7 @@ class _ParkCardState extends ConsumerState<ParkCard> {
     );
   }
 
-  Widget _buildCardDecoration(BuildContext context, {double offsetX = 0}) {
+  Widget _buildCardDecoration({double offsetX = 0}) {
     final size = 45.w;
     return Transform.translate(
       offset: Offset(offsetX, 0),
@@ -164,6 +156,17 @@ class _ParkCardState extends ConsumerState<ParkCard> {
           color: AppColor.backgroundApp(context),
           shape: BoxShape.circle,
         ),
+      ),
+    );
+  }
+
+  Widget _buildLoadingBox() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
+      child: Shimmer.fromColors(
+        baseColor: Colors.grey.shade300,
+        highlightColor: Colors.grey.shade100,
+        child: Container(height: 16.h, width: 80.w, color: Colors.white),
       ),
     );
   }

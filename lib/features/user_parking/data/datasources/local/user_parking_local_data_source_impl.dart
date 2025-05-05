@@ -2,6 +2,7 @@ import 'package:sqflite/sqflite.dart';
 
 import '../../../core/constant/failures/user_parking_exception_message_constant.dart';
 import '../../../core/failures/user_parking_exception.dart';
+import '../../../core/failures/user_parking_failure_type.dart';
 import '../../models/park_model.dart';
 import '../../models/vehicle_mode.dart';
 import 'user_parking_local_data_source.dart';
@@ -47,9 +48,7 @@ class UserParkingLocalDataSourceImpl implements UserParkingLocalDataSource {
   Future<void> saveParkModel(ParkModel? parkModel) async {
     if (parkModel == null) {
       throw UserParkingException(
-        message: UserParkingExceptionMessageConstant.parkNotFound(
-          _notFoundMessage,
-        ),
+        userId: parkModel?.userId,
         type: UserParkingFailureType.parkNotFound,
       );
     }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/utils/lang.dart';
 import 'auth_exception.dart';
+import 'auth_failure_type.dart';
 
 class AuthExceptionHandler {
   const AuthExceptionHandler._();

@@ -9,7 +9,7 @@ import '../../../../core/routes/route_name.dart';
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/lang.dart';
-import '../../../shared/presentation/screens/base_screen.dart';
+import '../../../shared/presentation/pages/base_screen.dart';
 import '../../../shared/presentation/widgets/custom_toast.dart';
 import '../../../shared/presentation/widgets/dialog_loader.dart';
 import '../../../shared/presentation/widgets/line.dart';
@@ -91,7 +91,7 @@ class LoginScreen extends ConsumerWidget {
           );
           Navigator.pushNamedAndRemoveUntil(
             context,
-            RouteName.home,
+            RouteName.main,
             (Route<dynamic> route) => false,
           );
         },

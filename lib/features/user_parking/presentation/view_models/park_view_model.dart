@@ -2,10 +2,10 @@ import 'dart:developer';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../core/constant/failures/user_parking_exception_message_constant.dart';
 import '../../core/di/user_parking_provider.dart';
 import '../../core/extensions/user_parking_data_mapper_extension.dart';
 import '../../core/failures/user_parking_exception.dart';
+import '../../core/failures/user_parking_failure_type.dart';
 import '../../domain/usecases/get_park_by_user_id_use_case.dart';
 import 'park_state.dart';
 
@@ -32,10 +32,7 @@ class ParkViewModel extends _$ParkViewModel {
 
       final data = result.data;
       if (data == null) {
-        throw UserParkingException(
-          message: UserParkingExceptionMessageConstant.parkNotFound(""),
-          type: UserParkingFailureType.parkNotFound,
-        );
+        throw UserParkingException(type: UserParkingFailureType.parkNotFound);
       }
       final currentState = state.value ?? const ParkState();
       final newState = currentState.copyWith(parkUiModel: data.toUiModel());

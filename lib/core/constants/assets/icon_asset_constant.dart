@@ -17,4 +17,6 @@ class IconAssetConstant {
   static const String setting = "${basePath}setting.svg";
   static const String logout = "${basePath}logout.svg";
   static const String menu = "${basePath}menu.svg";
+  static const String home = "${basePath}home.svg";
+  static const String parkingBuilding = "${basePath}parking-building.svg";
 }

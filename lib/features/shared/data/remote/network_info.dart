@@ -1,6 +1,6 @@
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
-import '../../../../core/constants/failures/exception_message_constant.dart';
+import '../../../../core/failures/common_failure_type.dart';
 import '../../../../core/failures/exception.dart';
 
 abstract class NetworkInfo {
@@ -25,10 +25,7 @@ class NetworkInfoImpl implements NetworkInfo {
     if (await isConnected) {
       return await result();
     } else {
-      throw CommonException(
-        message: ExceptionMessageConstant.networkError,
-        type: CommonFailureType.networkError,
-      );
+      throw CommonException(type: CommonFailureType.networkError);
     }
   }
 }

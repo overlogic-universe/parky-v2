@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/utils/lang.dart';
 import 'user_parking_exception.dart';
+import 'user_parking_failure_type.dart';
 
 class UserParkingExceptionHandler {
   const UserParkingExceptionHandler._();

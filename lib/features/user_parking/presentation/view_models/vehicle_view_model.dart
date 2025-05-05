@@ -2,10 +2,10 @@ import 'dart:developer';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../core/constant/failures/user_parking_exception_message_constant.dart';
 import '../../core/di/user_parking_provider.dart';
 import '../../core/extensions/user_parking_data_mapper_extension.dart';
 import '../../core/failures/user_parking_exception.dart';
+import '../../core/failures/user_parking_failure_type.dart';
 import '../../domain/usecases/get_vehicle_by_user_id.dart';
 import 'vehicle_state.dart';
 
@@ -33,7 +33,6 @@ class VehicleViewModel extends _$VehicleViewModel {
       final data = result.data;
       if (data == null) {
         throw UserParkingException(
-          message: UserParkingExceptionMessageConstant.vehicleNotFound(""),
           type: UserParkingFailureType.vehicleNotFound,
         );
       }

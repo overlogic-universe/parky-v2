@@ -31,15 +31,10 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
         next,
       ) {
         next.when(
-          data: (initState) {
-            initState.isLogin.when(
-              data: (isLogin) {
-                _goToInitialRoute(isLogin ? RouteName.home : RouteName.login);
-              },
-              error: (_, __) => _goToInitialRoute(RouteName.login),
-              loading: () {},
-            );
-          },
+          data:
+              (data) => _goToInitialRoute(
+                data.isLogin ? RouteName.main : RouteName.login,
+              ),
           error: (_, __) => _goToInitialRoute(RouteName.login),
           loading: () {},
         );

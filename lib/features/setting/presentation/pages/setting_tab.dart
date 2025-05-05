@@ -3,14 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/constants/common/margin_constant.dart';
 import '../../../../core/utils/lang.dart';
-import '../../../shared/presentation/screens/base_screen_with_decoration.dart';
+import '../../../shared/presentation/pages/base_screen_with_decoration.dart';
 import '../../../shared/presentation/widgets/app_bar_custom.dart';
 import '../../../shared/presentation/widgets/margin_bottom.dart';
 import '../widgets/account_card.dart';
 import '../widgets/personalized_card.dart';
 
-class SettingScreen extends StatelessWidget {
-  const SettingScreen({super.key});
+class SettingTab extends StatelessWidget {
+  const SettingTab({super.key});
 
   @override
   Widget build(BuildContext context) {

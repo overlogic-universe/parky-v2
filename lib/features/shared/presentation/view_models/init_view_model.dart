@@ -15,68 +15,49 @@ class InitViewModel extends _$InitViewModel {
   late final GetUserEntityUseCase _getUserEntityUseCase;
 
   @override
-  Future<InitState> build() async {
+  FutureOr<InitState> build() async {
     _isLoginUseCase = ref.read(isLoginUseCaseProvider);
     _getUserEntityUseCase = ref.read(getUserEntityUseCaseProvider);
-    return await _checkLoginStatus();
+    return _checkLoginStatus();
   }
 
   Future<InitState> _checkLoginStatus() async {
-    final currentState =
-        state.value ??
-        const InitState(
-          isLogin: AsyncData(false),
-          userUiModel: AsyncData(null),
-        );
-
-    state = AsyncData(currentState.copyWith(isLogin: const AsyncLoading()));
-
     try {
       final firebaseAuth = ref.read(firebaseAuthProvider);
       final user = firebaseAuth.currentUser;
 
       if (user == null) {
-        return const InitState(
-          isLogin: AsyncData(false),
-          userUiModel: AsyncData(null),
-        );
+        return const InitState(isLogin: false, userUiModel: null);
       }
 
-      final isLoginValue = await _isLoginUseCase.call();
+      final isLoginValue = await _isLoginUseCase();
       final isLogin = isLoginValue == user.uid;
 
-      return InitState(
-        isLogin: AsyncData(isLogin),
-        userUiModel: AsyncData(null),
-      );
+      return InitState(isLogin: isLogin, userUiModel: null);
     } catch (e, st) {
-      state = AsyncError(e, st);
-      return const InitState(
-        isLogin: AsyncData(false),
-        userUiModel: AsyncData(null),
-      );
+      throw AsyncError(e, st);
     }
   }
 
   Future<void> getUserEntity() async {
-    final currentState =
-        state.value ??
-        const InitState(
-          isLogin: AsyncData(false),
-          userUiModel: AsyncData(null),
-        );
+    final currentState = state.asData?.value;
+    if (currentState == null) return;
 
-    state = AsyncData(currentState.copyWith(userUiModel: const AsyncLoading()));
+    // Set state ke loading jika kamu ingin tampilkan indikator loading:
+    state = const AsyncLoading();
 
     try {
       final user = await _getUserEntityUseCase();
-      if (user.data == null) return;
+      if (user.data == null) {
+        state = AsyncData(currentState.copyWith(userUiModel: null));
+        return;
+      }
 
       state = AsyncData(
-        currentState.copyWith(userUiModel: AsyncData(user.data!.toUiModel())),
+        currentState.copyWith(userUiModel: user.data!.toUiModel()),
       );
     } catch (e, st) {
-      state = AsyncData(currentState.copyWith(userUiModel: AsyncError(e, st)));
+      state = AsyncError(e, st);
     }
   }
 }
