@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../auth/presentation/models/user_ui_model.dart';
+import '../../../auth/domain/entities/student_entity.dart';
 
 part 'init_state.freezed.dart';
 
@@ -8,6 +8,6 @@ part 'init_state.freezed.dart';
 abstract class InitState with _$InitState {
   const factory InitState({
     required bool isLogin,
-    UserUiModel? userUiModel,
+    StudentEntity? student,
   }) = _InitState;
 }

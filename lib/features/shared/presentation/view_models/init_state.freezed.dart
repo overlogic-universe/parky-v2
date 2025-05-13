@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$InitState {
 
- bool get isLogin; UserUiModel? get userUiModel;
+ bool get isLogin; StudentEntity? get student;
 /// Create a copy of InitState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $InitStateCopyWith<InitState> get copyWith => _$InitStateCopyWithImpl<InitState>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is InitState&&(identical(other.isLogin, isLogin) || other.isLogin == isLogin)&&(identical(other.userUiModel, userUiModel) || other.userUiModel == userUiModel));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is InitState&&(identical(other.isLogin, isLogin) || other.isLogin == isLogin)&&(identical(other.student, student) || other.student == student));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLogin,userUiModel);
+int get hashCode => Object.hash(runtimeType,isLogin,student);
 
 @override
 String toString() {
-  return 'InitState(isLogin: $isLogin, userUiModel: $userUiModel)';
+  return 'InitState(isLogin: $isLogin, student: $student)';
 }
 
 
@@ -46,11 +46,11 @@ abstract mixin class $InitStateCopyWith<$Res>  {
   factory $InitStateCopyWith(InitState value, $Res Function(InitState) _then) = _$InitStateCopyWithImpl;
 @useResult
 $Res call({
- bool isLogin, UserUiModel? userUiModel
+ bool isLogin, StudentEntity? student
 });
 
 
-$UserUiModelCopyWith<$Res>? get userUiModel;
+$StudentEntityCopyWith<$Res>? get student;
 
 }
 /// @nodoc
@@ -63,24 +63,24 @@ class _$InitStateCopyWithImpl<$Res>
 
 /// Create a copy of InitState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? isLogin = null,Object? userUiModel = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? isLogin = null,Object? student = freezed,}) {
   return _then(_self.copyWith(
 isLogin: null == isLogin ? _self.isLogin : isLogin // ignore: cast_nullable_to_non_nullable
-as bool,userUiModel: freezed == userUiModel ? _self.userUiModel : userUiModel // ignore: cast_nullable_to_non_nullable
-as UserUiModel?,
+as bool,student: freezed == student ? _self.student : student // ignore: cast_nullable_to_non_nullable
+as StudentEntity?,
   ));
 }
 /// Create a copy of InitState
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$UserUiModelCopyWith<$Res>? get userUiModel {
-    if (_self.userUiModel == null) {
+$StudentEntityCopyWith<$Res>? get student {
+    if (_self.student == null) {
     return null;
   }
 
-  return $UserUiModelCopyWith<$Res>(_self.userUiModel!, (value) {
-    return _then(_self.copyWith(userUiModel: value));
+  return $StudentEntityCopyWith<$Res>(_self.student!, (value) {
+    return _then(_self.copyWith(student: value));
   });
 }
 }
@@ -90,11 +90,11 @@ $UserUiModelCopyWith<$Res>? get userUiModel {
 
 
 class _InitState implements InitState {
-  const _InitState({required this.isLogin, this.userUiModel});
+  const _InitState({required this.isLogin, this.student});
   
 
 @override final  bool isLogin;
-@override final  UserUiModel? userUiModel;
+@override final  StudentEntity? student;
 
 /// Create a copy of InitState
 /// with the given fields replaced by the non-null parameter values.
@@ -106,16 +106,16 @@ _$InitStateCopyWith<_InitState> get copyWith => __$InitStateCopyWithImpl<_InitSt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _InitState&&(identical(other.isLogin, isLogin) || other.isLogin == isLogin)&&(identical(other.userUiModel, userUiModel) || other.userUiModel == userUiModel));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _InitState&&(identical(other.isLogin, isLogin) || other.isLogin == isLogin)&&(identical(other.student, student) || other.student == student));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLogin,userUiModel);
+int get hashCode => Object.hash(runtimeType,isLogin,student);
 
 @override
 String toString() {
-  return 'InitState(isLogin: $isLogin, userUiModel: $userUiModel)';
+  return 'InitState(isLogin: $isLogin, student: $student)';
 }
 
 
@@ -126,11 +126,11 @@ abstract mixin class _$InitStateCopyWith<$Res> implements $InitStateCopyWith<$Re
   factory _$InitStateCopyWith(_InitState value, $Res Function(_InitState) _then) = __$InitStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool isLogin, UserUiModel? userUiModel
+ bool isLogin, StudentEntity? student
 });
 
 
-@override $UserUiModelCopyWith<$Res>? get userUiModel;
+@override $StudentEntityCopyWith<$Res>? get student;
 
 }
 /// @nodoc
@@ -143,11 +143,11 @@ class __$InitStateCopyWithImpl<$Res>
 
 /// Create a copy of InitState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? isLogin = null,Object? userUiModel = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? isLogin = null,Object? student = freezed,}) {
   return _then(_InitState(
 isLogin: null == isLogin ? _self.isLogin : isLogin // ignore: cast_nullable_to_non_nullable
-as bool,userUiModel: freezed == userUiModel ? _self.userUiModel : userUiModel // ignore: cast_nullable_to_non_nullable
-as UserUiModel?,
+as bool,student: freezed == student ? _self.student : student // ignore: cast_nullable_to_non_nullable
+as StudentEntity?,
   ));
 }
 
@@ -155,13 +155,13 @@ as UserUiModel?,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$UserUiModelCopyWith<$Res>? get userUiModel {
-    if (_self.userUiModel == null) {
+$StudentEntityCopyWith<$Res>? get student {
+    if (_self.student == null) {
     return null;
   }
 
-  return $UserUiModelCopyWith<$Res>(_self.userUiModel!, (value) {
-    return _then(_self.copyWith(userUiModel: value));
+  return $StudentEntityCopyWith<$Res>(_self.student!, (value) {
+    return _then(_self.copyWith(student: value));
   });
 }
 }

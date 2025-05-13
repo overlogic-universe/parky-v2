@@ -1,7 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../core/di/auth_provider.dart';
-import '../../core/extensions/auth_data_mapper_extension.dart';
 import '../../domain/entities/login_with_email_password_request.dart';
 import '../../domain/usecases/login_with_email_and_password_use_case.dart';
 import '../../domain/usecases/login_with_google_use_case.dart';
@@ -24,40 +23,40 @@ class LoginViewModel extends _$LoginViewModel {
     _loginWithGoogleUseCase = ref.watch(loginWithGoogleUseCaseProvider);
     _signOutUseCase = ref.watch(signOutUseCaseProvider);
 
-    return const LoginState(userUiModel: AsyncValue.data(null));
+    return const LoginState(student: AsyncValue.data(null));
   }
 
   Future<void> loginWithEmailAndPassword({
     required LoginWithEmailPasswordRequest loginWithEmailPasswordRequest,
   }) async {
-    state = state.copyWith(userUiModel: const AsyncLoading());
+    state = state.copyWith(student: const AsyncLoading());
     try {
-      final user = await _loginWithEmailAndPasswordUseCase(
+      final student = await _loginWithEmailAndPasswordUseCase(
         params: loginWithEmailPasswordRequest,
       );
-      state = state.copyWith(userUiModel: AsyncData(user.toUiModel()));
+      state = state.copyWith(student: AsyncData(student));
     } catch (e, st) {
-      state = state.copyWith(userUiModel: AsyncError(e, st));
+      state = state.copyWith(student: AsyncError(e, st));
     }
   }
 
   Future<void> loginWithGoogle() async {
-    state = state.copyWith(userUiModel: const AsyncLoading());
+    state = state.copyWith(student: const AsyncLoading());
     try {
-      final user = await _loginWithGoogleUseCase();
-      state = state.copyWith(userUiModel: AsyncData(user.toUiModel()));
+      final student = await _loginWithGoogleUseCase();
+      state = state.copyWith(student: AsyncData(student));
     } catch (e, st) {
-      state = state.copyWith(userUiModel: AsyncError(e, st));
+      state = state.copyWith(student: AsyncError(e, st));
     }
   }
 
   Future<void> signOut() async {
-    state = state.copyWith(userUiModel: const AsyncLoading());
+    state = state.copyWith(student: const AsyncLoading());
     try {
       await _signOutUseCase();
-      state = state.copyWith(userUiModel: const AsyncData(null));
+      state = state.copyWith(student: const AsyncData(null));
     } catch (e, st) {
-      state = state.copyWith(userUiModel: AsyncError(e, st));
+      state = state.copyWith(student: AsyncError(e, st));
     }
   }
 }

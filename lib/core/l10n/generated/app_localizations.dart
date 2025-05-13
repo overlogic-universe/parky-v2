@@ -383,11 +383,11 @@ abstract class AppLocalizations {
   /// **'Kesalahan tak terduga'**
   String get unknownError;
 
-  /// No description provided for @userNotFound.
+  /// No description provided for @studentNotFound.
   ///
   /// In id, this message translates to:
   /// **'Pengguna tidak ditemukan. Silakan coba lagi!'**
-  String get userNotFound;
+  String get studentNotFound;
 
   /// No description provided for @passwordIsNull.
   ///
@@ -401,11 +401,11 @@ abstract class AppLocalizations {
   /// **'Email sudah terdaftar'**
   String get emailAlreadyRegistered;
 
-  /// No description provided for @loginWithGoogleAbortedByUser.
+  /// No description provided for @loginWithGoogleAbortedByStudent.
   ///
   /// In id, this message translates to:
   /// **'Masuk dengan Google dibatalkan'**
-  String get loginWithGoogleAbortedByUser;
+  String get loginWithGoogleAbortedByStudent;
 
   /// No description provided for @loginWithGoogleFailed.
   ///

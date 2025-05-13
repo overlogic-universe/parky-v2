@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../student_parking/presentation/view_models/vehicle_view_model.dart';
 import '../../../shared/presentation/pages/base_screen.dart';
 import '../../../shared/presentation/view_models/init_view_model.dart';
-import '../../../user_parking/presentation/view_models/park_view_model.dart';
-import '../../../user_parking/presentation/view_models/vehicle_view_model.dart';
+import '../../../student_parking/presentation/view_models/park_view_model.dart';
 import '../widgets/bottom_navbar.dart';
 import '../widgets/tab_bar_view_widget.dart';
 
@@ -16,7 +16,7 @@ class MainScreen extends ConsumerStatefulWidget {
 }
 
 class _MainScreenState extends ConsumerState<MainScreen> {
-    @override
+  @override
   void initState() {
     super.initState();
     Future.microtask(() => _initialize());
@@ -24,16 +24,15 @@ class _MainScreenState extends ConsumerState<MainScreen> {
 
   void _initialize() {
     final state = ref.read(initViewModelProvider);
-    final alreadyHasUser = state.whenOrNull(data: (d) => d.userUiModel != null);
+    final alreadyHasStudent = state.whenOrNull(data: (d) => d.student != null);
 
-    if (alreadyHasUser != true) {
-      ref.read(initViewModelProvider.notifier).getUserEntity();
+    if (alreadyHasStudent != true) {
+      ref.read(initViewModelProvider.notifier).getStudentEntity();
     }
 
     ref.read(parkViewModelProvider.notifier).fetch();
     ref.read(vehicleViewModelProvider.notifier).fetch();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +41,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
       child: Stack(
         fit: StackFit.expand,
         alignment: Alignment.center,
-        children: [
-          TabBarViewWidget(),
-          BottomNavbar(),
-        ],
+        children: [TabBarViewWidget(), BottomNavbar()],
       ),
     );
   }

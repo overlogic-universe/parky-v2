@@ -1,8 +1,8 @@
-class UserTableSchema {
+class StudentTableSchema {
   static const String createTable = '''
-    CREATE TABLE users (
+    CREATE TABLE Students (
       id TEXT PRIMARY KEY,
-      student_id TEXT,
+      nim TEXT,
       name TEXT,
       email TEXT,
       password TEXT

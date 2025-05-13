@@ -14,14 +14,14 @@ class AuthException implements Exception {
 
   static String _mapTypeToMessage(AuthFailureType type) {
     switch (type) {
-      case AuthFailureType.userNotFound:
-        return AuthExceptionMessageConstant.userNotFound;
+      case AuthFailureType.studentNotFound:
+        return AuthExceptionMessageConstant.studentNotFound;
       case AuthFailureType.invalidCredentials:
         return AuthExceptionMessageConstant.invalidCredentials;
       case AuthFailureType.passwordIsNull:
         return AuthExceptionMessageConstant.passwordIsNull;
-      case AuthFailureType.loginWithGoogleAbortedByUser:
-        return AuthExceptionMessageConstant.loginWithGoogleAbortedByUser;
+      case AuthFailureType.loginWithGoogleAbortedByStudent:
+        return AuthExceptionMessageConstant.loginWithGoogleAbortedByStudent;
       case AuthFailureType.loginWithGoogleFailed:
         return AuthExceptionMessageConstant.loginWithGoogleFailed;
       case AuthFailureType.invalidEmailDomain:

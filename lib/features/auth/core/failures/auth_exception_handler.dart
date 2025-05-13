@@ -10,14 +10,14 @@ class AuthExceptionHandler {
   static String of(BuildContext context, AuthException error) {
     final lang = Lang.of(context);
     switch (error.type) {
-      case AuthFailureType.userNotFound:
-        return lang.userNotFound;
+      case AuthFailureType.studentNotFound:
+        return lang.studentNotFound;
       case AuthFailureType.invalidCredentials:
         return lang.invalidCredentials;
       case AuthFailureType.passwordIsNull:
         return lang.passwordIsNull;
-      case AuthFailureType.loginWithGoogleAbortedByUser:
-        return lang.loginWithGoogleAbortedByUser;
+      case AuthFailureType.loginWithGoogleAbortedByStudent:
+        return lang.loginWithGoogleAbortedByStudent;
       case AuthFailureType.loginWithGoogleFailed:
         return lang.loginWithGoogleFailed;
       case AuthFailureType.invalidEmailDomain:

@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:parky/features/auth/data/models/student_model.dart';
 
 import '../../../../../core/extensions/firebase_extension.dart';
 import '../../../core/failures/auth_exception.dart';
 import '../../../core/failures/auth_failure_type.dart';
 import '../../../domain/entities/login_with_email_password_request.dart';
-import '../../models/user_model.dart';
 import 'auth_remote_data_source.dart';
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
@@ -21,58 +21,44 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   });
 
   @override
-  Future<UserModel> getUserModel() async {
-    final user = firebaseAuth.currentUser;
-    if (user != null) {
-      final snapshot = await firestore.usersCollection.doc(user.uid).get();
-      if (snapshot.exists) {
-        return UserModel.fromFirestore(
-          snapshot as DocumentSnapshot<Map<String, dynamic>>,
-        );
-      }
-    }
-
-    await signOut();
-    throw AuthException(type: AuthFailureType.userNotFound);
-  }
-
-  @override
-  Future<UserModel> loginWithEmailAndPassword({
+  Future<StudentModel> loginWithEmailAndPassword({
     required LoginWithEmailPasswordRequest loginWithEmailPasswordRequest,
   }) async {
     await firebaseAuth.signInWithEmailAndPassword(
       email: loginWithEmailPasswordRequest.email,
       password: loginWithEmailPasswordRequest.password,
     );
-    return getUserModel();
+    return getStudentModel();
   }
 
   @override
-  Future<UserModel> loginWithGoogle() async {
-    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
-    if (googleUser == null) {
-      throw AuthException(type: AuthFailureType.loginWithGoogleAbortedByUser);
+  Future<StudentModel> loginWithGoogle() async {
+    final GoogleSignInAccount? googleStudent = await googleSignIn.signIn();
+    if (googleStudent == null) {
+      throw AuthException(
+        type: AuthFailureType.loginWithGoogleAbortedByStudent,
+      );
     }
 
     final GoogleSignInAuthentication googleAuth =
-        await googleUser.authentication;
+        await googleStudent.authentication;
 
     final AuthCredential credential = GoogleAuthProvider.credential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
 
-    final UserCredential userCredential = await firebaseAuth
+    final UserCredential studentCredential = await firebaseAuth
         .signInWithCredential(credential);
 
-    final user = userCredential.user;
-    if (user != null) {
-      if (!user.email!.endsWith("@student.ums.ac.id")) {
+    final student = studentCredential.user;
+    if (student != null) {
+      if (!student.email!.endsWith("@student.ums.ac.id")) {
         await signOut();
         throw AuthException(type: AuthFailureType.invalidEmailDomain);
       }
 
-      return getUserModel();
+      return getStudentModel();
     }
 
     throw AuthException(type: AuthFailureType.loginWithGoogleFailed);
@@ -82,5 +68,22 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<void> signOut() async {
     await firebaseAuth.signOut();
     await googleSignIn.signOut();
+  }
+
+  @override
+  Future<StudentModel> getStudentModel() async {
+    final student = firebaseAuth.currentUser;
+    if (student != null) {
+      final snapshot =
+          await firestore.studentsCollection.doc(student.uid).get();
+      if (snapshot.exists) {
+        return StudentModel.fromFirestore(
+          snapshot as DocumentSnapshot<Map<String, dynamic>>,
+        );
+      }
+    }
+
+    await signOut();
+    throw AuthException(type: AuthFailureType.studentNotFound);
   }
 }

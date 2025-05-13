@@ -81,7 +81,7 @@ class LoginScreen extends ConsumerWidget {
     ref.listen<LoginState>(loginViewModelProvider, (previous, next) {
       final loginState = ref.watch(loginViewModelProvider);
 
-      loginState.userUiModel.whenOrNull(
+      loginState.student.whenOrNull(
         data: (data) {
           DialogLoader.stopLoading(context);
           CustomToast.showToast(

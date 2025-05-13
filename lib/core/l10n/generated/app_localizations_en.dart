@@ -161,7 +161,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get unknownError => 'Unknown error';
 
   @override
-  String get userNotFound => 'User not found';
+  String get studentNotFound => 'Student not found';
 
   @override
   String get passwordIsNull => 'Password is null';
@@ -170,7 +170,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emailAlreadyRegistered => 'Email already registered';
 
   @override
-  String get loginWithGoogleAbortedByUser => 'Google sign-in aborted';
+  String get loginWithGoogleAbortedByStudent => 'Google sign-in aborted';
 
   @override
   String get loginWithGoogleFailed => 'Google sign-in failed';

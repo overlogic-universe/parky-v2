@@ -1,8 +1,8 @@
 enum AuthFailureType {
-  userNotFound,
+  studentNotFound,
   invalidCredentials,
   passwordIsNull,
-  loginWithGoogleAbortedByUser,
+  loginWithGoogleAbortedByStudent,
   loginWithGoogleFailed,
   invalidEmailDomain,
   signOutFailed,

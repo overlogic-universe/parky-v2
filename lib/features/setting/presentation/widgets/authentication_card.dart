@@ -5,7 +5,7 @@ import '../../../../core/constants/assets/icon_asset_constant.dart';
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/utils/lang.dart';
 import '../../../shared/presentation/widgets/svg_asset.dart';
-import '../../../user_parking/presentation/widgets/logout_alert_dialog.dart';
+import '../../../student_parking/presentation/widgets/logout_alert_dialog.dart';
 import '../models/setting_item_model.dart';
 import 'base_setting_card.dart';
 

@@ -1,1 +1,0 @@
-enum UserParkingFailureType { parkNotFound, vehicleNotFound }

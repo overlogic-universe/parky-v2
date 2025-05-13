@@ -7,7 +7,7 @@ import '../../data/datasources/remote/auth_remote_data_source.dart';
 import '../../data/datasources/remote/auth_remote_data_source_impl.dart';
 import '../../data/repositories/auth_repository_impl.dart';
 import '../../domain/repositories/auth_repository.dart';
-import '../../domain/usecases/get_user_entity_use_case.dart';
+import '../../domain/usecases/get_sttudent_entity_use_case.dart';
 import '../../domain/usecases/is_login_use_case.dart';
 import '../../domain/usecases/login_with_email_and_password_use_case.dart';
 import '../../domain/usecases/login_with_google_use_case.dart';
@@ -45,9 +45,11 @@ final authRepositoryProvider = Provider<AuthRepository>((ref) {
   );
 });
 
-final getUserEntityUseCaseProvider = Provider<GetUserEntityUseCase>((ref) {
+final getStudentEntityUseCaseProvider = Provider<GetStudentEntityUseCase>((
+  ref,
+) {
   final repository = ref.watch(authRepositoryProvider);
-  return GetUserEntityUseCase(repository: repository);
+  return GetStudentEntityUseCase(repository: repository);
 });
 
 final loginWithEmailAndPasswordUseCaseProvider =

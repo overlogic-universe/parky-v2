@@ -161,7 +161,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get unknownError => 'Kesalahan tak terduga';
 
   @override
-  String get userNotFound => 'Pengguna tidak ditemukan. Silakan coba lagi!';
+  String get studentNotFound => 'Pengguna tidak ditemukan. Silakan coba lagi!';
 
   @override
   String get passwordIsNull => 'Kata sandi tidak boleh kosong';
@@ -170,7 +170,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get emailAlreadyRegistered => 'Email sudah terdaftar';
 
   @override
-  String get loginWithGoogleAbortedByUser => 'Masuk dengan Google dibatalkan';
+  String get loginWithGoogleAbortedByStudent => 'Masuk dengan Google dibatalkan';
 
   @override
   String get loginWithGoogleFailed => 'Masuk dengan Google gagal';

@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../parking_building/presentation/pages/parking_building_tab.dart';
 import '../../../setting/presentation/pages/setting_tab.dart';
-import '../../../user_parking/presentation/pages/home_tab.dart';
+import '../../../student_parking/presentation/pages/home_tab.dart';
 import '../view_models/bottom_navbar_view_model.dart';
 
 class TabBarViewWidget extends ConsumerStatefulWidget {
@@ -21,11 +21,8 @@ class _TabBarViewWidgetState extends ConsumerState<TabBarViewWidget>
   @override
   void initState() {
     super.initState();
-    _tabs =  [HomeTab(), ParkingBuildingTab(), SettingTab()];
-    _tabController = TabController(
-      length: _tabs.length,
-      vsync: this,
-    );
+    _tabs = [HomeTab(), ParkingBuildingTab(), SettingTab()];
+    _tabController = TabController(length: _tabs.length, vsync: this);
   }
 
   @override
@@ -43,10 +40,7 @@ class _TabBarViewWidgetState extends ConsumerState<TabBarViewWidget>
       physics: const NeverScrollableScrollPhysics(),
       viewportFraction: 1,
       controller: _tabController,
-      children: List.generate(
-        _tabs.length,
-        (index) => _tabs[selectedTabIndex],
-      ),
+      children: List.generate(_tabs.length, (index) => _tabs[selectedTabIndex]),
     );
   }
 }

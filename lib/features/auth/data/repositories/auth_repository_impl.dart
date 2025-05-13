@@ -11,11 +11,11 @@ import '../../core/extensions/auth_data_mapper_extension.dart';
 import '../../core/failures/auth_exception.dart';
 import '../../core/failures/auth_failure_type.dart';
 import '../../domain/entities/login_with_email_password_request.dart';
-import '../../domain/entities/user_entity.dart';
+import '../../domain/entities/student_entity.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../datasources/local/auth_local_data_source.dart';
 import '../datasources/remote/auth_remote_data_source.dart';
-import '../models/user_model.dart';
+import '../models/student_model.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource;
@@ -29,17 +29,17 @@ class AuthRepositoryImpl implements AuthRepository {
   });
 
   @override
-  Future<UserEntity> loginWithEmailAndPassword({
+  Future<StudentEntity> loginWithEmailAndPassword({
     required LoginWithEmailPasswordRequest loginWithEmailPasswordRequest,
   }) async {
     return networkInfo.safeNetworkRequest(
       result: () async {
         try {
-          final userModel = await remoteDataSource.loginWithEmailAndPassword(
+          final student = await remoteDataSource.loginWithEmailAndPassword(
             loginWithEmailPasswordRequest: loginWithEmailPasswordRequest,
           );
-          await localDataSource.saveAuthToken(userModel.id);
-          return userModel.toEntity();
+          await localDataSource.saveAuthToken(student.id);
+          return student.toEntity();
         } on FirebaseAuthException catch (e) {
           log("loginWithEmailAndPassword FAILED: ${e.message}");
           log("loginWithEmailAndPassword FAILED code: ${e.code}");
@@ -47,8 +47,8 @@ class AuthRepositoryImpl implements AuthRepository {
             throw AuthException(type: AuthFailureType.invalidCredentials);
           } else if (e.code == 'invalid-credential') {
             throw AuthException(type: AuthFailureType.invalidCredentials);
-          } else if (e.code == 'user-not-found') {
-            throw AuthException(type: AuthFailureType.userNotFound);
+          } else if (e.code == 'Student-not-found') {
+            throw AuthException(type: AuthFailureType.studentNotFound);
           }
           throw CommonException(type: CommonFailureType.unknownError);
         } catch (e) {
@@ -65,13 +65,13 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<UserEntity> loginWithGoogle() async {
+  Future<StudentEntity> loginWithGoogle() async {
     return networkInfo.safeNetworkRequest(
       result: () async {
         try {
-          final userModel = await remoteDataSource.loginWithGoogle();
-          await localDataSource.saveAuthToken(userModel.id);
-          return userModel.toEntity();
+          final student = await remoteDataSource.loginWithGoogle();
+          await localDataSource.saveAuthToken(student.id);
+          return student.toEntity();
         } catch (e) {
           if (e is AuthException) {
             log("loginWithGoogle FAILED: ${e.message}");
@@ -104,20 +104,20 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<ResourceState<UserEntity>> getUserEntity() {
-    return NetworkBoundResource<UserEntity, UserModel?>(
+  Future<ResourceState<StudentEntity>> getStudentEntity() {
+    return NetworkBoundResource<StudentEntity, StudentModel?>(
       networkInfo: networkInfo,
       loadFromDB: () async {
         try {
-          final model = await localDataSource.getUserModel();
+          final model = await localDataSource.getStudentModel();
           return model.toEntity();
         } catch (_) {
           return null;
         }
       },
       shouldFetch: (data) => data == null,
-      createCall: () => remoteDataSource.getUserModel(),
-      saveCallResult: (model) => localDataSource.saveUserModel(model),
+      createCall: () => remoteDataSource.getStudentModel(),
+      saveCallResult: (model) => localDataSource.saveStudentModel(model),
     ).fetchData();
   }
 

@@ -1,12 +1,11 @@
-import '../../data/models/user_model.dart';
-import '../../domain/entities/user_entity.dart';
-import '../../presentation/models/user_ui_model.dart';
+import '../../data/models/student_model.dart';
+import '../../domain/entities/student_entity.dart';
 
-extension UserModelToEntity on UserModel {
-  UserEntity toEntity() {
-    return UserEntity(
+extension StudentModelToEntity on StudentModel {
+  StudentEntity toEntity() {
+    return StudentEntity(
       id: id,
-      studentId: studentId,
+      nim: nim,
       name: name,
       email: email,
       password: password,
@@ -14,25 +13,14 @@ extension UserModelToEntity on UserModel {
   }
 }
 
-extension UserEntityToModel on UserEntity {
-  UserModel toModel() {
-    return UserModel(
+extension StudentEntityToModel on StudentEntity {
+  StudentModel toModel() {
+    return StudentModel(
       id: id,
-      studentId: studentId,
+      nim: nim,
       name: name,
       email: email,
       password: password,
-    );
-  }
-}
-
-extension UserEntityToUserUiModel on UserEntity {
-  UserUiModel toUiModel() {
-    return UserUiModel(
-      id: id,
-      studentId: studentId,
-      name: name,
-      email: email,
     );
   }
 }
