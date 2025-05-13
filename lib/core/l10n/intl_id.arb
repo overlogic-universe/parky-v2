@@ -1,6 +1,5 @@
 {
   "@@locale": "id",
-
   "loginGreetingTitle": "Selamat Datang!",
   "loginGreetingDesc": "Masuk ke akun Anda yang telah terdaftar",
   "email": "Email",
@@ -10,86 +9,70 @@
   "rememberMe": "Ingat saya",
   "forgotYourPassword": "Lupa kata sandi?",
   "loginWithStudentEmail": "Masuk dengan email mahasiswa",
-
   "homeGreeting": "Selamat {time},",
   "entryExitTime": "Waktu Masuk/Keluar",
   "nim": "NIM",
   "status": "Status",
   "plate": "Plat",
   "scanHere": "PINDAI DI SINI",
-
   "parking": "Sedang parkir",
   "parked": "Keluar",
-
   "setting": "Pengaturan",
   "settingDesc": "Sesuaikan pengalamanmu dengan mudah! Pilih bahasa favorit dan atur tema sesuai kenyamananmu",
   "account": "Akun",
   "updatePassword": "Perbarui kata sandi",
   "personalized": "Personalisasi",
+  "authentication": "Autentikasi",
   "chooseTheme": "Pilih tema",
   "chooseThemeDesc": "Sesuaikan tampilan aplikasi dengan tema yang kamu suka!",
   "chooseLanguage": "Pilih bahasa",
   "chooseLanguageDesc": "Pilih bahasa yang paling nyaman untuk pengalaman terbaik",
   "successChangeTheme": "Berhasil mengganti tema",
   "successChangeLanguage": "Berhasil mengganti bahasa",
-
   "mainTheme": "Tema Utama",
   "orbTheme": "Tema Orb",
-
   "indonesia": "Bahasa Indonesia",
   "english": "English",
-
   "noData": "Belum ada data",
-
   "login": "Masuk",
   "orLoginAs": "Atau masuk sebagai",
-  "out" : "Keluar",
-  "logout" : "Keluar Akun",
+  "out": "Keluar",
+  "logout": "Keluar Akun",
   "logoutModalDesc": "Apakah Anda yakin ingin keluar?",
-
   "loginSuccess": "Berhasil masuk",
   "logoutSuccess": "Berhasil keluar",
-  
-  "mustNotBeEmpty" : "{field} tidak boleh kosong!",
-  "mustUseStudentEmail" : "Gunakan email mahasiswa!",
-  "atLeastLengthCharacters" : "{field} minimal {length} karakter!",
-  "invalidFormat" : "{field} yang anda masukkan tidak valid!",
-  
+  "mustNotBeEmpty": "{field} tidak boleh kosong!",
+  "mustUseStudentEmail": "Gunakan email mahasiswa!",
+  "atLeastLengthCharacters": "{field} minimal {length} karakter!",
+  "invalidFormat": "{field} yang anda masukkan tidak valid!",
   "serverError": "Kesalahan server",
   "networkError": "Jaringan tidak stabil",
   "unknownError": "Kesalahan tak terduga",
-
-  "userNotFound": "Pengguna tidak ditemukan. Silakan coba lagi!",
+  "studentNotFound": "Pengguna tidak ditemukan. Silakan coba lagi!",
   "passwordIsNull": "Kata sandi tidak boleh kosong",
   "emailAlreadyRegistered": "Email sudah terdaftar",
-  "loginWithGoogleAbortedByUser": "Masuk dengan Google dibatalkan",
+  "loginWithGoogleAbortedByStudent": "Masuk dengan Google dibatalkan",
   "loginWithGoogleFailed": "Masuk dengan Google gagal",
   "invalidCredentials": "Email atau kata sandi salah",
   "emailAlreadyExists": "Email ini sudah digunakan",
   "signOutFailed": "Gagal keluar. Silakan coba lagi!",
   "loginFailed": "Gagal masuk. Silakan coba lagi!",
-
   "getParkFailed": "Gagal mendapatkan data parkir",
   "getVehicleFailed": "Gagal mendapatkan data kendaraan",
-
-  "loading" : "Memuat",
-  
+  "loading": "Memuat",
   "and": "dan",
   "or": "atau",
-
   "confirm": "Konfirmasi",
-  "save" : "Simpan",
-  "cancel" : "Batal",
-  "back" : "Kembali",
+  "save": "Simpan",
+  "cancel": "Batal",
+  "back": "Kembali",
   "start": "Mulai",
   "search": "Cari",
   "end": "Akhiri",
-
   "morning": "Pagi",
   "afternoon": "Siang",
   "evening": "Sore",
   "night": "Malam",
-
   "january": "Januari",
   "february": "Februari",
   "march": "Maret",

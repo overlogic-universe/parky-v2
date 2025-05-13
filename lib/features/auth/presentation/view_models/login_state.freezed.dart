@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$LoginState {
 
- AsyncValue<UserUiModel?> get userUiModel;
+ AsyncValue<StudentEntity?> get student;
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $LoginStateCopyWith<LoginState> get copyWith => _$LoginStateCopyWithImpl<LoginSt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginState&&(identical(other.userUiModel, userUiModel) || other.userUiModel == userUiModel));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginState&&(identical(other.student, student) || other.student == student));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,userUiModel);
+int get hashCode => Object.hash(runtimeType,student);
 
 @override
 String toString() {
-  return 'LoginState(userUiModel: $userUiModel)';
+  return 'LoginState(student: $student)';
 }
 
 
@@ -46,7 +46,7 @@ abstract mixin class $LoginStateCopyWith<$Res>  {
   factory $LoginStateCopyWith(LoginState value, $Res Function(LoginState) _then) = _$LoginStateCopyWithImpl;
 @useResult
 $Res call({
- AsyncValue<UserUiModel?> userUiModel
+ AsyncValue<StudentEntity?> student
 });
 
 
@@ -63,10 +63,10 @@ class _$LoginStateCopyWithImpl<$Res>
 
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? userUiModel = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? student = null,}) {
   return _then(_self.copyWith(
-userUiModel: null == userUiModel ? _self.userUiModel : userUiModel // ignore: cast_nullable_to_non_nullable
-as AsyncValue<UserUiModel?>,
+student: null == student ? _self.student : student // ignore: cast_nullable_to_non_nullable
+as AsyncValue<StudentEntity?>,
   ));
 }
 
@@ -77,10 +77,10 @@ as AsyncValue<UserUiModel?>,
 
 
 class _LoginState implements LoginState {
-  const _LoginState({required this.userUiModel});
+  const _LoginState({required this.student});
   
 
-@override final  AsyncValue<UserUiModel?> userUiModel;
+@override final  AsyncValue<StudentEntity?> student;
 
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
@@ -92,16 +92,16 @@ _$LoginStateCopyWith<_LoginState> get copyWith => __$LoginStateCopyWithImpl<_Log
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoginState&&(identical(other.userUiModel, userUiModel) || other.userUiModel == userUiModel));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoginState&&(identical(other.student, student) || other.student == student));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,userUiModel);
+int get hashCode => Object.hash(runtimeType,student);
 
 @override
 String toString() {
-  return 'LoginState(userUiModel: $userUiModel)';
+  return 'LoginState(student: $student)';
 }
 
 
@@ -112,7 +112,7 @@ abstract mixin class _$LoginStateCopyWith<$Res> implements $LoginStateCopyWith<$
   factory _$LoginStateCopyWith(_LoginState value, $Res Function(_LoginState) _then) = __$LoginStateCopyWithImpl;
 @override @useResult
 $Res call({
- AsyncValue<UserUiModel?> userUiModel
+ AsyncValue<StudentEntity?> student
 });
 
 
@@ -129,10 +129,10 @@ class __$LoginStateCopyWithImpl<$Res>
 
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? userUiModel = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? student = null,}) {
   return _then(_LoginState(
-userUiModel: null == userUiModel ? _self.userUiModel : userUiModel // ignore: cast_nullable_to_non_nullable
-as AsyncValue<UserUiModel?>,
+student: null == student ? _self.student : student // ignore: cast_nullable_to_non_nullable
+as AsyncValue<StudentEntity?>,
   ));
 }
 

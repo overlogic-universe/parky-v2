@@ -1,9 +1,11 @@
 class IconAssetConstant {
   const IconAssetConstant._();
   static const String basePath = "assets/icons/";
+  static const String logoPath = "${basePath}logos/";
 
   //  TODO: Menambahkan nama icon
   // CONTOH
+  static const String appIcon = "${logoPath}app-icon.png";
   static const String password = "${basePath}password.svg";
   static const String email = "${basePath}email.svg";
   static const String visiblePass = "${basePath}visible-pass.svg";
@@ -15,4 +17,6 @@ class IconAssetConstant {
   static const String setting = "${basePath}setting.svg";
   static const String logout = "${basePath}logout.svg";
   static const String menu = "${basePath}menu.svg";
+  static const String home = "${basePath}home.svg";
+  static const String parkingBuilding = "${basePath}parking-building.svg";
 }

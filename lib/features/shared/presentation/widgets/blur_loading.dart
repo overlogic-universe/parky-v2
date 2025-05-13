@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:parky/core/styles/fonts/app_font.dart';
+import '../../../../core/styles/fonts/app_font.dart';
 
 import '../../../../core/constants/assets/image_asset_constant.dart';
 import '../../../../core/utils/lang.dart';
@@ -54,7 +54,7 @@ class _BlurLoadingState extends State<BlurLoading>
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
-      onPopInvokedWithResult: (_, _) => false,
+      onPopInvokedWithResult: (_, __) => false,
       child: SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,

@@ -1,17 +1,35 @@
+import '../constants/failures/auth_exception_message_constant.dart';
+import 'auth_failure_type.dart';
+
 class AuthException implements Exception {
   final String message;
   final AuthFailureType type;
 
-  const AuthException({required this.message, required this.type});
-}
+  const AuthException._internal({required this.message, required this.type});
 
-enum AuthFailureType {
-  userNotFound,
-  invalidCredentials,
-  passwordIsNull,
-  loginWithGoogleAbortedByUser,
-  loginWithGoogleFailed,
-  invalidEmailDomain,
-  signOutFailed,
-  loginFailed,
+  factory AuthException({required AuthFailureType type, String? message}) {
+    final resolvedMessage = message ?? _mapTypeToMessage(type);
+    return AuthException._internal(message: resolvedMessage, type: type);
+  }
+
+  static String _mapTypeToMessage(AuthFailureType type) {
+    switch (type) {
+      case AuthFailureType.studentNotFound:
+        return AuthExceptionMessageConstant.studentNotFound;
+      case AuthFailureType.invalidCredentials:
+        return AuthExceptionMessageConstant.invalidCredentials;
+      case AuthFailureType.passwordIsNull:
+        return AuthExceptionMessageConstant.passwordIsNull;
+      case AuthFailureType.loginWithGoogleAbortedByStudent:
+        return AuthExceptionMessageConstant.loginWithGoogleAbortedByStudent;
+      case AuthFailureType.loginWithGoogleFailed:
+        return AuthExceptionMessageConstant.loginWithGoogleFailed;
+      case AuthFailureType.invalidEmailDomain:
+        return AuthExceptionMessageConstant.invalidEmailDomain;
+      case AuthFailureType.signOutFailed:
+        return AuthExceptionMessageConstant.signOutFailed;
+      case AuthFailureType.loginFailed:
+        return AuthExceptionMessageConstant.loginFailed;
+    }
+  }
 }

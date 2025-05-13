@@ -1,9 +1,9 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../../../core/constants/failures/auth_exception_message_constant.dart';
 import '../../../core/failures/auth_exception.dart';
-import '../../models/user_model.dart';
+import '../../../core/failures/auth_failure_type.dart';
+import '../../models/student_model.dart';
 import 'auth_local_data_source.dart';
 
 class AuthLocalDataSourceImpl implements AuthLocalDataSource {
@@ -16,7 +16,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   });
 
   static const String _authToken = "auth_token";
-  static const String _userTable = "users";
+  static const String _studentTable = "students";
 
   @override
   Future<void> saveAuthToken(String token) async {
@@ -35,36 +35,30 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   }
 
   @override
-  Future<void> saveUserModel(UserModel? userModel) async {
-    if (userModel == null) {
-      throw AuthException(
-        message: AuthExceptionMessageConstant.userNotFound,
-        type: AuthFailureType.userNotFound,
-      );
+  Future<void> saveStudentModel(StudentModel? student) async {
+    if (student == null) {
+      throw AuthException(type: AuthFailureType.studentNotFound);
     }
     await sqfliteDatabase.insert(
-      _userTable,
-      userModel.toJson(),
+      _studentTable,
+      student.toJson(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
 
   @override
-  Future<UserModel> getUserModel() async {
+  Future<StudentModel> getStudentModel() async {
     final List<Map<String, dynamic>> result = await sqfliteDatabase.query(
-      _userTable,
+      _studentTable,
       limit: 1,
     );
 
     if (result.isEmpty) {
-      throw AuthException(
-        message: AuthExceptionMessageConstant.userNotFound,
-        type: AuthFailureType.userNotFound,
-      );
+      throw AuthException(type: AuthFailureType.studentNotFound);
     }
 
     final data = result.first;
 
-    return UserModel.fromJson(data);
+    return StudentModel.fromJson(data);
   }
 }
