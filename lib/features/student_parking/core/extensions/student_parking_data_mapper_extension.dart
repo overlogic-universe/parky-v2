@@ -4,7 +4,7 @@ import '../../data/models/vehicle_model.dart';
 import '../../domain/entities/park_status.dart';
 import '../../domain/entities/parking_history_entity.dart';
 import '../../domain/entities/vehicle_entity.dart';
-import '../../presentation/models/park_ui_model.dart';
+import '../../presentation/models/park_history_ui_model.dart';
 
 extension ParkingHistoryModelToEntity on ParkingHistoryModel {
   ParkingHistoryEntity toEntity() {

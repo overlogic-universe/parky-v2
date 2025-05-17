@@ -1,5 +1,9 @@
 import 'dart:developer';
 
+import '../../../parking_lot/core/extensions/parking_lot_data_mapper_extension.dart';
+import '../../../parking_lot/data/models/parking_lot_model.dart';
+import '../../../parking_lot/domain/entities/parking_lot_entity.dart';
+
 import '../../../../core/utils/resource_state.dart';
 import '../../../shared/data/datasources/remote/network_bound_resource.dart';
 import '../../../shared/data/datasources/remote/network_info.dart';
@@ -25,21 +29,23 @@ class StudentParkingRepositoryImpl implements StudentParkingRepository {
   });
 
   @override
-  Future<ResourceState<ParkingHistoryEntity>> getCurrentParkingHistoryByStudentId() {
+  Future<ResourceState<ParkingHistoryEntity>>
+  getCurrentParkingHistoryByStudentId() {
     return NetworkBoundResource<ParkingHistoryEntity, ParkingHistoryModel?>(
       networkInfo: networkInfo,
       loadFromDB: () async {
         try {
           final model = await localDataSource.getParkingHistoryModel();
-          log("MODEL GET PARK: $model");
 
           if (model == null) return null;
           return model.toEntity();
         } catch (e) {
           if (e is StudentParkingException) {
-            log("ERROR GET PARK: ${e.message}");
+            log("ERROR getCurrentParkingHistoryByStudentId PARK: ${e.message}");
           }
-          log("ERROR GET PARK: ${e.toString()}");
+          log(
+            "ERROR getCurrentParkingHistoryByStudentId PARK: ${e.toString()}",
+          );
           return null;
         }
       },
@@ -49,9 +55,11 @@ class StudentParkingRepositoryImpl implements StudentParkingRepository {
           return await remoteDataSource.getCurrentParkingHistoryByStudentId();
         } catch (e) {
           if (e is StudentParkingException) {
-            log("ERROR GET Park: ${e.message}");
+            log("ERROR getCurrentParkingHistoryByStudentId Park: ${e.message}");
           }
-          log("ERROR GET Park: ${e.toString()}");
+          log(
+            "ERROR getCurrentParkingHistoryByStudentId Park: ${e.toString()}",
+          );
 
           rethrow;
         }
@@ -98,4 +106,38 @@ class StudentParkingRepositoryImpl implements StudentParkingRepository {
     ).fetchData();
   }
 
+  @override
+  Future<ResourceState<ParkingLotEntity>> getCurrentParkingLotByStudentId() {
+    return NetworkBoundResource<ParkingLotEntity, ParkingLotModel?>(
+      networkInfo: networkInfo,
+      loadFromDB: () async {
+        try {
+          final model = await localDataSource.getParkingLotModel();
+
+          if (model == null) return null;
+          return model.toEntity();
+        } catch (e) {
+          if (e is StudentParkingException) {
+            log("ERROR getCurrentParkingLotByStudentId PARK: ${e.message}");
+          }
+          log("ERROR getCurrentParkingLotByStudentId PARK: ${e.toString()}");
+          return null;
+        }
+      },
+      shouldFetch: (data) => data == null,
+      createCall: () async {
+        try {
+          return await remoteDataSource.getCurrentParkingLotByStudentId();
+        } catch (e) {
+          if (e is StudentParkingException) {
+            log("ERROR getCurrentParkingLotByStudentId Park: ${e.message}");
+          }
+          log("ERROR getCurrentParkingLotByStudentId Park: ${e.toString()}");
+
+          rethrow;
+        }
+      },
+      saveCallResult: (model) => localDataSource.saveParkingLotModel(model),
+    ).fetchData();
+  }
 }

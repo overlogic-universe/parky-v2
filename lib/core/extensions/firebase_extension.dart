@@ -18,4 +18,8 @@ extension QueryX on Query {
   Query whereIsEqualToParkingLotId(Object? parkingLotId) =>where('parking_lot_id', isEqualTo: parkingLotId);
   Query whereIsEqualToParkingScheduleId(Object? parkingScheduleId) =>where('parking_schedule_id', isEqualTo: parkingScheduleId);
   Query whereIsEqualToDayOfWeek(Object? dayOfWeek) =>where('day_of_week', isEqualTo: dayOfWeek);
+
+  Query orderByCreatedAt({required bool descending}) => orderBy('created_at', descending: descending);
 }
+
+

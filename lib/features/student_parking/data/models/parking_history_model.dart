@@ -17,12 +17,14 @@ class ParkingHistoryModel {
     return ParkingHistoryModel(
       id: json['id'] as String,
       status: json['status'] as String?,
-      parkedAt: json['parked_at'] != null
-          ? Timestamp.fromMillisecondsSinceEpoch(json['parked_at'] as int)
-          : null,
-      exitedAt: json['exited_at'] != null
-          ? Timestamp.fromMillisecondsSinceEpoch(json['exited_at'] as int)
-          : null,
+      parkedAt:
+          json['parked_at'] != null
+              ? Timestamp.fromMillisecondsSinceEpoch(json['parked_at'] as int)
+              : null,
+      exitedAt:
+          json['exited_at'] != null
+              ? Timestamp.fromMillisecondsSinceEpoch(json['exited_at'] as int)
+              : null,
     );
   }
 
@@ -45,5 +47,15 @@ class ParkingHistoryModel {
       parkedAt: data?['parked_at'] as Timestamp?,
       exitedAt: data?['exited_at'] as Timestamp?,
     );
+  }
+
+  @override
+  String toString() {
+    return 'ParkingHistoryModel('
+        'id: $id, '
+        'status: $status, '
+        'parkedAt: ${parkedAt?.toDate()}, '
+        'exitedAt: ${exitedAt?.toDate()}'
+        ')';
   }
 }

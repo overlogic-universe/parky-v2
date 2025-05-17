@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ParkState {
 
- ParkingHistoryUiModel? get parkingHistoryUiModel;
+ ParkingHistoryUiModel? get currentParkingHistory; ParkingLotEntity? get currentParkingLot;
 /// Create a copy of ParkState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $ParkStateCopyWith<ParkState> get copyWith => _$ParkStateCopyWithImpl<ParkState>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ParkState&&(identical(other.parkingHistoryUiModel, parkingHistoryUiModel) || other.parkingHistoryUiModel == parkingHistoryUiModel));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ParkState&&(identical(other.currentParkingHistory, currentParkingHistory) || other.currentParkingHistory == currentParkingHistory)&&(identical(other.currentParkingLot, currentParkingLot) || other.currentParkingLot == currentParkingLot));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,parkingHistoryUiModel);
+int get hashCode => Object.hash(runtimeType,currentParkingHistory,currentParkingLot);
 
 @override
 String toString() {
-  return 'ParkState(parkingHistoryUiModel: $parkingHistoryUiModel)';
+  return 'ParkState(currentParkingHistory: $currentParkingHistory, currentParkingLot: $currentParkingLot)';
 }
 
 
@@ -46,11 +46,11 @@ abstract mixin class $ParkStateCopyWith<$Res>  {
   factory $ParkStateCopyWith(ParkState value, $Res Function(ParkState) _then) = _$ParkStateCopyWithImpl;
 @useResult
 $Res call({
- ParkingHistoryUiModel? parkingHistoryUiModel
+ ParkingHistoryUiModel? currentParkingHistory, ParkingLotEntity? currentParkingLot
 });
 
 
-$ParkingHistoryUiModelCopyWith<$Res>? get parkingHistoryUiModel;
+$ParkingHistoryUiModelCopyWith<$Res>? get currentParkingHistory;
 
 }
 /// @nodoc
@@ -63,23 +63,24 @@ class _$ParkStateCopyWithImpl<$Res>
 
 /// Create a copy of ParkState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? parkingHistoryUiModel = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? currentParkingHistory = freezed,Object? currentParkingLot = freezed,}) {
   return _then(_self.copyWith(
-parkingHistoryUiModel: freezed == parkingHistoryUiModel ? _self.parkingHistoryUiModel : parkingHistoryUiModel // ignore: cast_nullable_to_non_nullable
-as ParkingHistoryUiModel?,
+currentParkingHistory: freezed == currentParkingHistory ? _self.currentParkingHistory : currentParkingHistory // ignore: cast_nullable_to_non_nullable
+as ParkingHistoryUiModel?,currentParkingLot: freezed == currentParkingLot ? _self.currentParkingLot : currentParkingLot // ignore: cast_nullable_to_non_nullable
+as ParkingLotEntity?,
   ));
 }
 /// Create a copy of ParkState
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$ParkingHistoryUiModelCopyWith<$Res>? get parkingHistoryUiModel {
-    if (_self.parkingHistoryUiModel == null) {
+$ParkingHistoryUiModelCopyWith<$Res>? get currentParkingHistory {
+    if (_self.currentParkingHistory == null) {
     return null;
   }
 
-  return $ParkingHistoryUiModelCopyWith<$Res>(_self.parkingHistoryUiModel!, (value) {
-    return _then(_self.copyWith(parkingHistoryUiModel: value));
+  return $ParkingHistoryUiModelCopyWith<$Res>(_self.currentParkingHistory!, (value) {
+    return _then(_self.copyWith(currentParkingHistory: value));
   });
 }
 }
@@ -89,10 +90,11 @@ $ParkingHistoryUiModelCopyWith<$Res>? get parkingHistoryUiModel {
 
 
 class _ParkState implements ParkState {
-  const _ParkState({this.parkingHistoryUiModel = null});
+  const _ParkState({this.currentParkingHistory = null, this.currentParkingLot = null});
   
 
-@override@JsonKey() final  ParkingHistoryUiModel? parkingHistoryUiModel;
+@override@JsonKey() final  ParkingHistoryUiModel? currentParkingHistory;
+@override@JsonKey() final  ParkingLotEntity? currentParkingLot;
 
 /// Create a copy of ParkState
 /// with the given fields replaced by the non-null parameter values.
@@ -104,16 +106,16 @@ _$ParkStateCopyWith<_ParkState> get copyWith => __$ParkStateCopyWithImpl<_ParkSt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ParkState&&(identical(other.parkingHistoryUiModel, parkingHistoryUiModel) || other.parkingHistoryUiModel == parkingHistoryUiModel));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ParkState&&(identical(other.currentParkingHistory, currentParkingHistory) || other.currentParkingHistory == currentParkingHistory)&&(identical(other.currentParkingLot, currentParkingLot) || other.currentParkingLot == currentParkingLot));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,parkingHistoryUiModel);
+int get hashCode => Object.hash(runtimeType,currentParkingHistory,currentParkingLot);
 
 @override
 String toString() {
-  return 'ParkState(parkingHistoryUiModel: $parkingHistoryUiModel)';
+  return 'ParkState(currentParkingHistory: $currentParkingHistory, currentParkingLot: $currentParkingLot)';
 }
 
 
@@ -124,11 +126,11 @@ abstract mixin class _$ParkStateCopyWith<$Res> implements $ParkStateCopyWith<$Re
   factory _$ParkStateCopyWith(_ParkState value, $Res Function(_ParkState) _then) = __$ParkStateCopyWithImpl;
 @override @useResult
 $Res call({
- ParkingHistoryUiModel? parkingHistoryUiModel
+ ParkingHistoryUiModel? currentParkingHistory, ParkingLotEntity? currentParkingLot
 });
 
 
-@override $ParkingHistoryUiModelCopyWith<$Res>? get parkingHistoryUiModel;
+@override $ParkingHistoryUiModelCopyWith<$Res>? get currentParkingHistory;
 
 }
 /// @nodoc
@@ -141,10 +143,11 @@ class __$ParkStateCopyWithImpl<$Res>
 
 /// Create a copy of ParkState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? parkingHistoryUiModel = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? currentParkingHistory = freezed,Object? currentParkingLot = freezed,}) {
   return _then(_ParkState(
-parkingHistoryUiModel: freezed == parkingHistoryUiModel ? _self.parkingHistoryUiModel : parkingHistoryUiModel // ignore: cast_nullable_to_non_nullable
-as ParkingHistoryUiModel?,
+currentParkingHistory: freezed == currentParkingHistory ? _self.currentParkingHistory : currentParkingHistory // ignore: cast_nullable_to_non_nullable
+as ParkingHistoryUiModel?,currentParkingLot: freezed == currentParkingLot ? _self.currentParkingLot : currentParkingLot // ignore: cast_nullable_to_non_nullable
+as ParkingLotEntity?,
   ));
 }
 
@@ -152,13 +155,13 @@ as ParkingHistoryUiModel?,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$ParkingHistoryUiModelCopyWith<$Res>? get parkingHistoryUiModel {
-    if (_self.parkingHistoryUiModel == null) {
+$ParkingHistoryUiModelCopyWith<$Res>? get currentParkingHistory {
+    if (_self.currentParkingHistory == null) {
     return null;
   }
 
-  return $ParkingHistoryUiModelCopyWith<$Res>(_self.parkingHistoryUiModel!, (value) {
-    return _then(_self.copyWith(parkingHistoryUiModel: value));
+  return $ParkingHistoryUiModelCopyWith<$Res>(_self.currentParkingHistory!, (value) {
+    return _then(_self.copyWith(currentParkingHistory: value));
   });
 }
 }

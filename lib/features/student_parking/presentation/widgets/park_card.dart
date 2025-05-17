@@ -57,9 +57,9 @@ class ParkCard extends ConsumerWidget {
                       (data) => StudentInfoTile(
                         label: entryExitTimeLabel,
                         value:
-                            data.parkingHistoryUiModel?.lastActivityDay ?? "",
+                            data.currentParkingHistory?.lastActivityDay,
                         value2:
-                            data.parkingHistoryUiModel?.lastActivityTime ?? "",
+                            data.currentParkingHistory?.lastActivityTime,
                       ),
 
                   loading: () => _buildLoadingBox(),
@@ -70,7 +70,7 @@ class ParkCard extends ConsumerWidget {
                   data:
                       (data) => StudentInfoTile(
                         label: nimLabel,
-                        value: data.student?.nim ?? "",
+                        value: data.student?.nim ,
                       ),
                   loading: () => _buildLoadingBox(),
                   error: (e, st) => SizedBox.shrink(),
@@ -80,7 +80,7 @@ class ParkCard extends ConsumerWidget {
                   data:
                       (data) => StudentInfoTile(
                         label: plateLabel,
-                        value: data.vehicle?.plate ?? "",
+                        value: data.vehicle?.plate,
                       ),
                   loading: () => _buildLoadingBox(),
                   error: (e, st) => SizedBox.shrink(),
@@ -91,7 +91,7 @@ class ParkCard extends ConsumerWidget {
                       (data) => StudentInfoTile(
                         label: statusLabel,
                         value:
-                            data.parkingHistoryUiModel?.status?.displayName(
+                            data.currentParkingHistory?.status?.displayName(
                               context,
                             ) ??
                             "",

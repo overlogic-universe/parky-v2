@@ -3,10 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
+import '../../../../core/utils/lang.dart';
 
 class StudentInfoTile extends StatelessWidget {
   final String label;
-  final String value;
+  final String? value;
   final String? value2;
 
   const StudentInfoTile({
@@ -27,8 +28,16 @@ class StudentInfoTile extends StatelessWidget {
           )?.medium.copyWith(color: AppColor.onPrimary(context)),
         ),
         SizedBox(height: 5.h),
-        _buildBox(context, value),
-
+        value != null
+            ? _buildBox(context, value!)
+            : Text(
+              Lang.of(context).noData,
+              style: AppFont.labelSmall(context)?.medium.copyWith(
+                color: AppColor.disableTextOrIcon(context),
+                fontSize: 11.sp,
+              ),
+            ),
+            
         if (value2 != null) ...[
           SizedBox(height: 5.h),
           _buildBox(context, value2!),

@@ -9,6 +9,7 @@ class StudentModel {
   final String name;
   final String email;
   final String? password;
+  final String qrCodeId;
 
   StudentModel({
     required this.id,
@@ -16,9 +17,12 @@ class StudentModel {
     required this.name,
     required this.email,
     this.password,
+    required this.qrCodeId,
   });
 
-  factory StudentModel.fromFirestore(DocumentSnapshot<Map<String, dynamic>> doc) {
+  factory StudentModel.fromFirestore(
+    DocumentSnapshot<Map<String, dynamic>> doc,
+  ) {
     final data = doc.data();
     if (data == null) {
       throw CommonException(type: CommonFailureType.documentDataIsNull);
@@ -29,15 +33,30 @@ class StudentModel {
       nim: data['nim'] ?? '',
       name: data['name'] ?? '',
       email: data['email'] ?? '',
+      password: data['password'],
+      qrCodeId: data['qr_code_id'] ?? '',
     );
   }
 
   Map<String, dynamic> toFirestore() {
-    return {'nim': nim, 'name': name, 'email': email};
+    return {
+      'nim': nim,
+      'name': name,
+      'email': email,
+      'password': password,
+      'qr_code_id': qrCodeId,
+    };
   }
 
   Map<String, dynamic> toJson() {
-    return {'id': id, 'nim': nim, 'name': name, 'email': email};
+    return {
+      'id': id,
+      'nim': nim,
+      'name': name,
+      'email': email,
+      'password': password,
+      'qr_code_id': qrCodeId,
+    };
   }
 
   factory StudentModel.fromJson(Map<String, dynamic> map) {
@@ -46,6 +65,13 @@ class StudentModel {
       nim: map['nim'] ?? '',
       name: map['name'] ?? '',
       email: map['email'] ?? '',
+      password: map['password'],
+      qrCodeId: map['qr_code_id'] ?? '',
     );
+  }
+
+  @override
+  String toString() {
+    return 'StudentModel(id: $id, nim: $nim, name: $name, email: $email, password: $password, qrCodeId: $qrCodeId)';
   }
 }

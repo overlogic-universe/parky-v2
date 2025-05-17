@@ -7,7 +7,8 @@ import '../../../student_parking/data/datasources/remote/student_parking_remote_
 import '../../../student_parking/data/repositories/student_parking_repository_impl.dart';
 import '../../../student_parking/domain/repositories/student_parking_repository.dart';
 import '../../data/datasources/remote/student_parking_remote_data_source.dart';
-import '../../domain/usecases/get_park_history_by_student_id_use_case.dart';
+import '../../domain/usecases/get_current_park_history_by_student_id_use_case.dart';
+import '../../domain/usecases/get_current_parking_lot_by_student_id_use_case.dart';
 import '../../domain/usecases/get_vehicle_by_student_id.dart';
 
 final studentParkingLocalDataSourceProvider =
@@ -51,6 +52,12 @@ final getCurrentParkingHistoryByStudentIdUseCaseProvider =
     Provider<GetCurrentParkingHistoryByStudentIdUseCase>((ref) {
       final repository = ref.watch(studentParkingRepositoryProvider);
       return GetCurrentParkingHistoryByStudentIdUseCase(repository: repository);
+    });
+
+final getCurrentParkingLotByStudentIdUseCaseProvider =
+    Provider<GetCurrentParkingLotByStudentIdUseCase>((ref) {
+      final repository = ref.watch(studentParkingRepositoryProvider);
+      return GetCurrentParkingLotByStudentIdUseCase(repository: repository);
     });
 
 final getVehicleByStudentIdUseCaseProvider =
