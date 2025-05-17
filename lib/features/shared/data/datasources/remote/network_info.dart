@@ -1,7 +1,7 @@
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
-import '../../../../core/failures/common_failure_type.dart';
-import '../../../../core/failures/exception.dart';
+import '../../../../../core/failures/common_failure_type.dart';
+import '../../../../../core/failures/exception.dart';
 
 abstract class NetworkInfo {
   Future<bool> get isConnected;

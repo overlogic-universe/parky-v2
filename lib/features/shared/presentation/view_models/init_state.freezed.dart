@@ -50,7 +50,7 @@ $Res call({
 });
 
 
-$StudentEntityCopyWith<$Res>? get student;
+
 
 }
 /// @nodoc
@@ -70,19 +70,7 @@ as bool,student: freezed == student ? _self.student : student // ignore: cast_nu
 as StudentEntity?,
   ));
 }
-/// Create a copy of InitState
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$StudentEntityCopyWith<$Res>? get student {
-    if (_self.student == null) {
-    return null;
-  }
 
-  return $StudentEntityCopyWith<$Res>(_self.student!, (value) {
-    return _then(_self.copyWith(student: value));
-  });
-}
 }
 
 
@@ -130,7 +118,7 @@ $Res call({
 });
 
 
-@override $StudentEntityCopyWith<$Res>? get student;
+
 
 }
 /// @nodoc
@@ -151,19 +139,7 @@ as StudentEntity?,
   ));
 }
 
-/// Create a copy of InitState
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$StudentEntityCopyWith<$Res>? get student {
-    if (_self.student == null) {
-    return null;
-  }
 
-  return $StudentEntityCopyWith<$Res>(_self.student!, (value) {
-    return _then(_self.copyWith(student: value));
-  });
-}
 }
 
 // dart format on

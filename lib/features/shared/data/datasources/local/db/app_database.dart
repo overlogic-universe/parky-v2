@@ -2,8 +2,8 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../../../../auth/data/datasources/local/db/schema/user_table_schema.dart';
-import '../../../../student_parking/data/datasources/local/db/schema/user_parking_shema.dart';
+import '../../../../../auth/data/datasources/local/db/schema/user_table_schema.dart';
+import '../../../../../student_parking/data/datasources/local/db/schema/user_parking_shema.dart';
 
 class AppDatabase {
   static Database? _instance;

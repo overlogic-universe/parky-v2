@@ -24,10 +24,10 @@ class VehicleViewModel extends _$VehicleViewModel {
 
   Future<void> fetch() async {
     state = const AsyncLoading();
-    state = AsyncData(await _getVehicleBystudentId());
+    state = AsyncData(await _getVehicleByStudentId());
   }
 
-  Future<VehicleState> _getVehicleBystudentId() async {
+  Future<VehicleState> _getVehicleByStudentId() async {
     try {
       final result = await getVehicleByStudentIdUseCase();
 

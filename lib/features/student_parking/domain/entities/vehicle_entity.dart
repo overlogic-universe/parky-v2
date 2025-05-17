@@ -1,12 +1,11 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+class VehicleEntity {
+  final String id;
+  final String plate;
+  final String studentId;
 
-part 'vehicle_entity.freezed.dart';
-
-@freezed
-abstract class VehicleEntity with _$VehicleEntity {
-  const factory VehicleEntity({
-    required String id,
-    required String plate,
-    required String studentId,
-  }) = _VehicleEntity;
+  const VehicleEntity({
+    required this.id,
+    required this.plate,
+    required this.studentId,
+  });
 }

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -8,9 +6,8 @@ import '../../../../auth/core/failures/auth_exception.dart';
 import '../../../../auth/core/failures/auth_failure_type.dart';
 import '../../../../student_parking/core/failures/student_parking_exception.dart';
 import '../../../../student_parking/core/failures/student_parking_failure_type.dart';
-import '../../../core/extensions/student_parking_data_mapper_extension.dart';
-import '../../models/park_model.dart';
-import '../../models/vehicle_mode.dart';
+import '../../models/parking_history_model.dart';
+import '../../models/vehicle_model.dart';
 import 'student_parking_remote_data_source.dart';
 
 class StudentParkingRemoteDataSourceImpl
@@ -24,13 +21,12 @@ class StudentParkingRemoteDataSourceImpl
   });
 
   @override
-  Future<ParkModel> getParkBystudentId() async {
+  Future<ParkingHistoryModel> getParkHistoryByStudentId() async {
     final studentId = _getstudentId();
     final query =
-        await firestore.parksCollection
-            .whereIsEqualToStudentId(studentId)
-            .limit(1)
-            .get();
+        await firestore.parkingActivityCollection.whereIsEqualToStudentId(
+          studentId,
+        ).limit(1).get();
 
     if (query.docs.isEmpty) {
       throw StudentParkingException(
@@ -39,17 +35,15 @@ class StudentParkingRemoteDataSourceImpl
       );
     }
 
-    final parkModel = ParkModel.fromFirestore(
+    final parkingHistoryModel = ParkingHistoryModel.fromFirestore(
       query.docs.first as QueryDocumentSnapshot<Map<String, dynamic>>,
     );
 
-    log("MODEL GET PARK: ${parkModel.toEntity().toString()}");
-
-    return parkModel;
+    return parkingHistoryModel;
   }
 
   @override
-  Future<VehicleModel> getVehicleBystudentId() async {
+  Future<VehicleModel> getVehicleByStudentId() async {
     final studentId = _getstudentId();
     final query =
         await firestore.vehichlesCollection
@@ -57,7 +51,6 @@ class StudentParkingRemoteDataSourceImpl
             .limit(1)
             .get();
 
-    log("MODEL GET VEHICLE: ${query.docs}");
     if (query.docs.isEmpty) {
       throw StudentParkingException(
         studentId: studentId,
@@ -65,11 +58,9 @@ class StudentParkingRemoteDataSourceImpl
       );
     }
 
-    log("MODEL GET VEHICLE: ${query.docs.first.data()}");
     final model = VehicleModel.fromFirestore(
       query.docs.first as QueryDocumentSnapshot<Map<String, dynamic>>,
     );
-    log("MODEL GET VEHICLE: ${model.toEntity().toString()}");
     return model;
   }
 

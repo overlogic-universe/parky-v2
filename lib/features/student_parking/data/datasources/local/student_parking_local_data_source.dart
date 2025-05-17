@@ -1,9 +1,11 @@
-import '../../models/park_model.dart';
-import '../../models/vehicle_mode.dart';
+import '../../models/parking_history_model.dart';
+import '../../models/vehicle_model.dart';
 
 abstract class StudentParkingLocalDataSource {
   Future<void> saveVehicleModel(VehicleModel? vehicleModel);
   Future<VehicleModel?> getVehicleModel();
-  Future<void> saveParkModel(ParkModel? parkModel);
-  Future<ParkModel?> getParkModel();
+  Future<void> saveParkingHistoryModel(
+    ParkingHistoryModel? parkingHistoryModel,
+  );
+  Future<ParkingHistoryModel?> getParkingHistoryModel();
 }

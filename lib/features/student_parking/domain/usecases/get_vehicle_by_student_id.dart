@@ -11,5 +11,5 @@ class GetVehicleByStudentIdUseCase
 
   @override
   Future<ResourceState<VehicleEntity>> call() async =>
-      repository.getVehicleBystudentId();
+      repository.getVehicleByStudentId();
 }

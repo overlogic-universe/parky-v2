@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import '../../../../core/utils/resource_state.dart';
+import '../../../../../core/utils/resource_state.dart';
 import 'network_info.dart';
 
 class NetworkBoundResource<ResultType, RequestType> {

@@ -3,24 +3,24 @@ import 'package:sqflite/sqflite.dart';
 import '../../../../student_parking/core/constant/failures/student_parking_exception_message_constant.dart';
 import '../../../../student_parking/core/failures/student_parking_exception.dart';
 import '../../../../student_parking/core/failures/student_parking_failure_type.dart';
-import '../../models/park_model.dart';
-import '../../models/vehicle_mode.dart';
 import '../../../../student_parking/data/datasources/local/student_parking_local_data_source.dart';
+import '../../models/parking_history_model.dart';
+import '../../models/vehicle_model.dart';
 
 class StudentParkingLocalDataSourceImpl
     implements StudentParkingLocalDataSource {
   final Database sqfliteDatabase;
 
-  StudentParkingLocalDataSourceImpl({required this.sqfliteDatabase});
+  const StudentParkingLocalDataSourceImpl({required this.sqfliteDatabase});
 
-  static const String _parkTable = "parks";
+  static const String _parkingHistoryTable = "parking_histories";
   static const String _vehicleTable = "vehicles";
   static const String _notFoundMessage = "Not found from database";
 
   @override
-  Future<ParkModel?> getParkModel() async {
+  Future<ParkingHistoryModel?> getParkingHistoryModel() async {
     final List<Map<String, dynamic>> result = await sqfliteDatabase.query(
-      _parkTable,
+      _parkingHistoryTable,
       limit: 1,
     );
 
@@ -28,7 +28,7 @@ class StudentParkingLocalDataSourceImpl
 
     final data = result.first;
 
-    return ParkModel.fromJson(data);
+    return ParkingHistoryModel.fromJson(data);
   }
 
   @override
@@ -46,16 +46,17 @@ class StudentParkingLocalDataSourceImpl
   }
 
   @override
-  Future<void> saveParkModel(ParkModel? parkModel) async {
-    if (parkModel == null) {
+  Future<void> saveParkingHistoryModel(
+    ParkingHistoryModel? parkingHistoryModel,
+  ) async {
+    if (parkingHistoryModel == null) {
       throw StudentParkingException(
-        studentId: parkModel?.studentId,
         type: StudentParkingFailureType.parkNotFound,
       );
     }
     await sqfliteDatabase.insert(
-      _parkTable,
-      parkModel.toJson(),
+      _parkingHistoryTable,
+      parkingHistoryModel.toJson(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }

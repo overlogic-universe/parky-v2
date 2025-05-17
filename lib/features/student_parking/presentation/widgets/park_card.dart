@@ -7,12 +7,12 @@ import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/lang.dart';
 import '../../../shared/presentation/view_models/init_view_model.dart';
-import '../models/park_ui_model.dart';
+import '../../../student_parking/presentation/widgets/student_info_tile.dart';
+import '../models/park_status_ui.dart';
 import '../view_models/park_view_model.dart';
 import '../view_models/vehicle_view_model.dart';
 import 'dotted_line.dart';
 import 'park_qr_code.dart';
-import '../../../student_parking/presentation/widgets/student_info_tile.dart';
 
 class ParkCard extends ConsumerWidget {
   const ParkCard({super.key});
@@ -56,8 +56,10 @@ class ParkCard extends ConsumerWidget {
                   data:
                       (data) => StudentInfoTile(
                         label: entryExitTimeLabel,
-                        value: data.parkUiModel?.lastActivityDay ?? "",
-                        value2: data.parkUiModel?.lastActivityTime ?? "",
+                        value:
+                            data.parkingHistoryUiModel?.lastActivityDay ?? "",
+                        value2:
+                            data.parkingHistoryUiModel?.lastActivityTime ?? "",
                       ),
 
                   loading: () => _buildLoadingBox(),
@@ -89,7 +91,10 @@ class ParkCard extends ConsumerWidget {
                       (data) => StudentInfoTile(
                         label: statusLabel,
                         value:
-                            data.parkUiModel?.status.displayName(context) ?? "",
+                            data.parkingHistoryUiModel?.status?.displayName(
+                              context,
+                            ) ??
+                            "",
                       ),
                   loading: () => _buildLoadingBox(),
                   error: (e, st) => SizedBox.shrink(),

@@ -7,6 +7,6 @@ part 'park_state.freezed.dart';
 @freezed
 abstract class ParkState with _$ParkState {
   const factory ParkState({
-    @Default(null) ParkUiModel? parkUiModel,
+    @Default(null) ParkingHistoryUiModel? parkingHistoryUiModel,
   }) = _ParkState;
 }

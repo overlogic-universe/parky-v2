@@ -50,7 +50,7 @@ $Res call({
 });
 
 
-$VehicleEntityCopyWith<$Res>? get vehicle;
+
 
 }
 /// @nodoc
@@ -69,19 +69,7 @@ vehicle: freezed == vehicle ? _self.vehicle : vehicle // ignore: cast_nullable_t
 as VehicleEntity?,
   ));
 }
-/// Create a copy of VehicleState
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$VehicleEntityCopyWith<$Res>? get vehicle {
-    if (_self.vehicle == null) {
-    return null;
-  }
 
-  return $VehicleEntityCopyWith<$Res>(_self.vehicle!, (value) {
-    return _then(_self.copyWith(vehicle: value));
-  });
-}
 }
 
 
@@ -128,7 +116,7 @@ $Res call({
 });
 
 
-@override $VehicleEntityCopyWith<$Res>? get vehicle;
+
 
 }
 /// @nodoc
@@ -148,19 +136,7 @@ as VehicleEntity?,
   ));
 }
 
-/// Create a copy of VehicleState
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$VehicleEntityCopyWith<$Res>? get vehicle {
-    if (_self.vehicle == null) {
-    return null;
-  }
 
-  return $VehicleEntityCopyWith<$Res>(_self.vehicle!, (value) {
-    return _then(_self.copyWith(vehicle: value));
-  });
-}
 }
 
 // dart format on

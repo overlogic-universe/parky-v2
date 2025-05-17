@@ -6,7 +6,7 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../../features/shared/data/remote/network_info.dart';
+import '../../features/shared/data/datasources/remote/network_info.dart';
 
 final internetConnectionCheckerProvider = Provider<InternetConnectionChecker>(
   (ref) => InternetConnectionChecker.instance,

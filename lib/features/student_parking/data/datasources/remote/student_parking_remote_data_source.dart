@@ -1,7 +1,7 @@
-import '../../models/park_model.dart';
-import '../../models/vehicle_mode.dart';
+import '../../models/parking_history_model.dart';
+import '../../models/vehicle_model.dart';
 
 abstract class StudentParkingRemoteDataSource {
-  Future<ParkModel> getParkBystudentId();
-  Future<VehicleModel> getVehicleBystudentId();
+  Future<ParkingHistoryModel> getParkHistoryByStudentId();
+  Future<VehicleModel> getVehicleByStudentId();
 }

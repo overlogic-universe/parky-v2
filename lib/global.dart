@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 
-import 'features/shared/data/local/db/app_database.dart';
+import 'features/shared/data/datasources/local/db/app_database.dart';
 
 class Global {
   final SharedPreferences sharedPreferences;

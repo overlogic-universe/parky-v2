@@ -1,36 +1,36 @@
 import 'dart:developer';
 
 import '../../../../core/utils/resource_state.dart';
-import '../../../shared/data/remote/network_bound_resource.dart';
-import '../../../shared/data/remote/network_info.dart';
+import '../../../shared/data/datasources/remote/network_bound_resource.dart';
+import '../../../shared/data/datasources/remote/network_info.dart';
 import '../../core/extensions/student_parking_data_mapper_extension.dart';
 import '../../../student_parking/core/failures/student_parking_exception.dart';
-import '../../domain/entities/park_entity.dart';
+import '../../domain/entities/parking_history_entity.dart';
 import '../../domain/entities/vehicle_entity.dart';
 import '../../../student_parking/domain/repositories/student_parking_repository.dart';
 import '../../../student_parking/data/datasources/local/student_parking_local_data_source.dart';
 import '../datasources/remote/student_parking_remote_data_source.dart';
-import '../models/park_model.dart';
-import '../models/vehicle_mode.dart';
+import '../models/parking_history_model.dart';
+import '../models/vehicle_model.dart';
 
 class StudentParkingRepositoryImpl implements StudentParkingRepository {
   final StudentParkingRemoteDataSource remoteDataSource;
   final StudentParkingLocalDataSource localDataSource;
   final NetworkInfo networkInfo;
 
-  StudentParkingRepositoryImpl({
+  const StudentParkingRepositoryImpl({
     required this.remoteDataSource,
     required this.localDataSource,
     required this.networkInfo,
   });
 
   @override
-  Future<ResourceState<ParkEntity>> getParkBystudentId() {
-    return NetworkBoundResource<ParkEntity, ParkModel?>(
+  Future<ResourceState<ParkingHistoryEntity>> getParkHistoryByStudentId() {
+    return NetworkBoundResource<ParkingHistoryEntity, ParkingHistoryModel?>(
       networkInfo: networkInfo,
       loadFromDB: () async {
         try {
-          final model = await localDataSource.getParkModel();
+          final model = await localDataSource.getParkingHistoryModel();
           log("MODEL GET PARK: $model");
 
           if (model == null) return null;
@@ -46,7 +46,7 @@ class StudentParkingRepositoryImpl implements StudentParkingRepository {
       shouldFetch: (data) => data == null,
       createCall: () async {
         try {
-          return await remoteDataSource.getParkBystudentId();
+          return await remoteDataSource.getParkHistoryByStudentId();
         } catch (e) {
           if (e is StudentParkingException) {
             log("ERROR GET Park: ${e.message}");
@@ -56,12 +56,12 @@ class StudentParkingRepositoryImpl implements StudentParkingRepository {
           rethrow;
         }
       },
-      saveCallResult: (model) => localDataSource.saveParkModel(model),
+      saveCallResult: (model) => localDataSource.saveParkingHistoryModel(model),
     ).fetchData();
   }
 
   @override
-  Future<ResourceState<VehicleEntity>> getVehicleBystudentId() {
+  Future<ResourceState<VehicleEntity>> getVehicleByStudentId() {
     return NetworkBoundResource<VehicleEntity, VehicleModel?>(
       networkInfo: networkInfo,
       loadFromDB: () async {
@@ -84,7 +84,7 @@ class StudentParkingRepositoryImpl implements StudentParkingRepository {
       shouldFetch: (data) => data == null,
       createCall: () async {
         try {
-          return await remoteDataSource.getVehicleBystudentId();
+          return await remoteDataSource.getVehicleByStudentId();
         } catch (e) {
           if (e is StudentParkingException) {
             log("ERROR GET VEHICLE: ${e.message}");
@@ -96,5 +96,11 @@ class StudentParkingRepositoryImpl implements StudentParkingRepository {
       },
       saveCallResult: (model) => localDataSource.saveVehicleModel(model),
     ).fetchData();
+  }
+
+  @override
+  Future<ResourceState<VehicleEntity>> getParkingLotByStudentId() {
+    // TODO: implement getParkingLotByStudentId
+    throw UnimplementedError();
   }
 }
