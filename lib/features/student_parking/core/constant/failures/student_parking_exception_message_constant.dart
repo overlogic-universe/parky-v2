@@ -5,4 +5,6 @@ class StudentParkingExceptionMessageConstant {
       "park not found for studentId: $studentId.";
   static String vehicleNotFound(String studentId) =>
       "vehichle not found for studentId: $studentId.";
+  static String parkingLotNotFound(String studentId) =>
+      "parking lot not found for studentId: $studentId.";
 }

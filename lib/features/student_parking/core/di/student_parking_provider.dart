@@ -47,10 +47,10 @@ final studentParkingRepositoryProvider = Provider<StudentParkingRepository>((
   );
 });
 
-final getParkHistoryByStudentIdUseCaseProvider =
-    Provider<GetParkHistoryByStudentIdUseCase>((ref) {
+final getCurrentParkingHistoryByStudentIdUseCaseProvider =
+    Provider<GetCurrentParkingHistoryByStudentIdUseCase>((ref) {
       final repository = ref.watch(studentParkingRepositoryProvider);
-      return GetParkHistoryByStudentIdUseCase(repository: repository);
+      return GetCurrentParkingHistoryByStudentIdUseCase(repository: repository);
     });
 
 final getVehicleByStudentIdUseCaseProvider =

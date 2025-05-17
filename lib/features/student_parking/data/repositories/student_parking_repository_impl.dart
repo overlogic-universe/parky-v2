@@ -3,12 +3,12 @@ import 'dart:developer';
 import '../../../../core/utils/resource_state.dart';
 import '../../../shared/data/datasources/remote/network_bound_resource.dart';
 import '../../../shared/data/datasources/remote/network_info.dart';
-import '../../core/extensions/student_parking_data_mapper_extension.dart';
 import '../../../student_parking/core/failures/student_parking_exception.dart';
+import '../../../student_parking/data/datasources/local/student_parking_local_data_source.dart';
+import '../../../student_parking/domain/repositories/student_parking_repository.dart';
+import '../../core/extensions/student_parking_data_mapper_extension.dart';
 import '../../domain/entities/parking_history_entity.dart';
 import '../../domain/entities/vehicle_entity.dart';
-import '../../../student_parking/domain/repositories/student_parking_repository.dart';
-import '../../../student_parking/data/datasources/local/student_parking_local_data_source.dart';
 import '../datasources/remote/student_parking_remote_data_source.dart';
 import '../models/parking_history_model.dart';
 import '../models/vehicle_model.dart';
@@ -25,7 +25,7 @@ class StudentParkingRepositoryImpl implements StudentParkingRepository {
   });
 
   @override
-  Future<ResourceState<ParkingHistoryEntity>> getParkHistoryByStudentId() {
+  Future<ResourceState<ParkingHistoryEntity>> getCurrentParkingHistoryByStudentId() {
     return NetworkBoundResource<ParkingHistoryEntity, ParkingHistoryModel?>(
       networkInfo: networkInfo,
       loadFromDB: () async {
@@ -46,7 +46,7 @@ class StudentParkingRepositoryImpl implements StudentParkingRepository {
       shouldFetch: (data) => data == null,
       createCall: () async {
         try {
-          return await remoteDataSource.getParkHistoryByStudentId();
+          return await remoteDataSource.getCurrentParkingHistoryByStudentId();
         } catch (e) {
           if (e is StudentParkingException) {
             log("ERROR GET Park: ${e.message}");
@@ -98,9 +98,4 @@ class StudentParkingRepositoryImpl implements StudentParkingRepository {
     ).fetchData();
   }
 
-  @override
-  Future<ResourceState<VehicleEntity>> getParkingLotByStudentId() {
-    // TODO: implement getParkingLotByStudentId
-    throw UnimplementedError();
-  }
 }

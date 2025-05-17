@@ -194,6 +194,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get getVehicleFailed => 'Gagal mendapatkan data kendaraan';
 
   @override
+  String get getParkingLotFailed => 'Gagal mendapatkan data tempat parkir';
+
+  @override
   String get loading => 'Memuat';
 
   @override

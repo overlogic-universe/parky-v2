@@ -6,8 +6,8 @@ import '../../../../core/failures/exception.dart';
 class ParkingScheduleModel {
   final String id;
   final String dayOfWeek;
-  final Timestamp openTime;
-  final Timestamp closedTime;
+  final Timestamp? openTime;
+  final Timestamp? closedTime;
   final bool isClosed;
 
   const ParkingScheduleModel({
@@ -29,8 +29,8 @@ class ParkingScheduleModel {
     return ParkingScheduleModel(
       id: doc.id,
       dayOfWeek: data['day_of_week'] ?? '',
-      openTime: data['open_time'] ?? Timestamp(0, 0),
-      closedTime: data['closed_time'] ?? Timestamp(0, 0),
+      openTime: data['open_time'],
+      closedTime: data['closed_time'],
       isClosed: data['is_closed'] ?? false,
     );
   }
@@ -39,8 +39,8 @@ class ParkingScheduleModel {
     return ParkingScheduleModel(
       id: json['id'] ?? '',
       dayOfWeek: json['day_of_week'] ?? '',
-      openTime: json['open_time'] ?? Timestamp(0, 0),
-      closedTime: json['closed_time'] ?? Timestamp(0, 0),
+      openTime: json['open_time'],
+      closedTime: json['closed_time'],
       isClosed: json['is_closed'] ?? false,
     );
   }

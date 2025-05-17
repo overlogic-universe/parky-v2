@@ -14,6 +14,8 @@ class StudentParkingExceptionHandler {
         return lang.getParkFailed;
       case StudentParkingFailureType.vehicleNotFound:
         return lang.getVehicleFailed;
+      case StudentParkingFailureType.paringkLotNotFound:
+        return lang.getParkingLotFailed;
     }
   }
 }

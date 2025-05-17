@@ -194,6 +194,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get getVehicleFailed => 'Failed to retrieve vehicle data';
 
   @override
+  String get getParkingLotFailed => 'Failed to retrieve parking lot data';
+
+  @override
   String get loading => 'Loading';
 
   @override

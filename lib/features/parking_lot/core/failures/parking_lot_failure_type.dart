@@ -1,0 +1,1 @@
+enum ParkingLotFailureType { paringkLotNotFound }

@@ -59,6 +59,7 @@
   "loginFailed": "Gagal masuk. Silakan coba lagi!",
   "getParkFailed": "Gagal mendapatkan data parkir",
   "getVehicleFailed": "Gagal mendapatkan data kendaraan",
+  "getParkingLotFailed": "Gagal mendapatkan data tempat parkir",
   "loading": "Memuat",
   "and": "dan",
   "or": "atau",

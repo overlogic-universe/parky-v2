@@ -13,12 +13,13 @@ part 'park_view_model.g.dart';
 
 @Riverpod(keepAlive: true)
 class ParkViewModel extends _$ParkViewModel {
-  late final GetParkHistoryByStudentIdUseCase getParkHistoryByStudentIdUseCase;
+  late final GetCurrentParkingHistoryByStudentIdUseCase
+  getCurrentParkingHistoryByStudentIdUseCase;
 
   @override
   Future<ParkState> build() async {
-    getParkHistoryByStudentIdUseCase = ref.watch(
-      getParkHistoryByStudentIdUseCaseProvider,
+    getCurrentParkingHistoryByStudentIdUseCase = ref.watch(
+      getCurrentParkingHistoryByStudentIdUseCaseProvider,
     );
     return const ParkState();
   }
@@ -30,7 +31,7 @@ class ParkViewModel extends _$ParkViewModel {
 
   Future<ParkState> _getParkHistoryByStudentId() async {
     try {
-      final result = await getParkHistoryByStudentIdUseCase();
+      final result = await getCurrentParkingHistoryByStudentIdUseCase();
 
       final data = result.data;
       if (data == null) {

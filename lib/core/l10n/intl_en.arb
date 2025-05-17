@@ -59,6 +59,7 @@
   "loginFailed": "Login failed, Please try again!",
   "getParkFailed": "Failed to retrieve parking data",
   "getVehicleFailed": "Failed to retrieve vehicle data",
+  "getParkingLotFailed": "Failed to retrieve parking lot data",
   "loading": "Loading",
   "and": "and",
   "or": "or",

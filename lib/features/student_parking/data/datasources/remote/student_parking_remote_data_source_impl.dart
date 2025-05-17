@@ -15,18 +15,19 @@ class StudentParkingRemoteDataSourceImpl
   final FirebaseAuth firebaseAuth;
   final FirebaseFirestore firestore;
 
-  StudentParkingRemoteDataSourceImpl({
+  const StudentParkingRemoteDataSourceImpl({
     required this.firebaseAuth,
     required this.firestore,
   });
 
   @override
-  Future<ParkingHistoryModel> getParkHistoryByStudentId() async {
-    final studentId = _getstudentId();
+  Future<ParkingHistoryModel> getCurrentParkingHistoryByStudentId() async {
+    final studentId = _getStudentId();
     final query =
-        await firestore.parkingActivityCollection.whereIsEqualToStudentId(
-          studentId,
-        ).limit(1).get();
+        await firestore.parkingActivityCollection
+            .whereIsEqualToStudentId(studentId)
+            .limit(1)
+            .get();
 
     if (query.docs.isEmpty) {
       throw StudentParkingException(
@@ -44,7 +45,7 @@ class StudentParkingRemoteDataSourceImpl
 
   @override
   Future<VehicleModel> getVehicleByStudentId() async {
-    final studentId = _getstudentId();
+    final studentId = _getStudentId();
     final query =
         await firestore.vehichlesCollection
             .whereIsEqualToStudentId(studentId)
@@ -64,7 +65,7 @@ class StudentParkingRemoteDataSourceImpl
     return model;
   }
 
-  String _getstudentId() {
+  String _getStudentId() {
     final student = firebaseAuth.currentUser;
     if (student == null) {
       throw AuthException(type: AuthFailureType.studentNotFound);

@@ -3,13 +3,13 @@ import '../../../shared/domain/usecases/no_params_use_case.dart';
 import '../entities/parking_history_entity.dart';
 import '../../../student_parking/domain/repositories/student_parking_repository.dart';
 
-class GetParkHistoryByStudentIdUseCase
+class GetCurrentParkingHistoryByStudentIdUseCase
     implements NoParamsUseCase<ResourceState<ParkingHistoryEntity>> {
   final StudentParkingRepository repository;
 
-  const GetParkHistoryByStudentIdUseCase({required this.repository});
+  const GetCurrentParkingHistoryByStudentIdUseCase({required this.repository});
 
   @override
   Future<ResourceState<ParkingHistoryEntity>> call() async =>
-      repository.getParkHistoryByStudentId();
+      repository.getCurrentParkingHistoryByStudentId();
 }

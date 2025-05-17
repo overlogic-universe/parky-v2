@@ -82,6 +82,28 @@ class ParkingLotModel {
     };
   }
 
+  ParkingLotModel copyWith({
+    String? id,
+    String? name,
+    int? vehichleInCount,
+    int? maxCapacity,
+    double? latitude,
+    double? longitude,
+    bool? isActive,
+    String? inActiveDescription,
+  }) {
+    return ParkingLotModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      vehichleInCount: vehichleInCount ?? this.vehichleInCount,
+      maxCapacity: maxCapacity ?? this.maxCapacity,
+      latitude: latitude ?? this.latitude,
+      longitude: longitude ?? this.longitude,
+      isActive: isActive ?? this.isActive,
+      inActiveDescription: inActiveDescription ?? this.inActiveDescription,
+    );
+  }
+
   @override
   String toString() {
     return 'ParkingLotModel(id: $id, name: $name, vehicleInCount: $vehichleInCount, maxCapacity: $maxCapacity, latitude: $latitude, longitude: $longitude, isActive: $isActive, inActiveDescription: $inActiveDescription)';

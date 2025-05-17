@@ -1,21 +1,43 @@
 class ParkingLotEntity {
   final String id;
-  final String name;
-  final int vehichleInCount;
-  final int maxCapacity;
+  final String? name;
+  final int? vehichleInCount;
+  final int? maxCapacity;
   final double? latitude;
   final double? longitude;
-  final bool isActive;
+  final bool? isActive;
   final String? inActiveDescription;
 
   const ParkingLotEntity({
     required this.id,
-    required this.name,
-    required this.vehichleInCount,
-    required this.maxCapacity,
+    this.name,
+    this.vehichleInCount,
+    this.maxCapacity,
     this.latitude,
     this.longitude,
-    required this.isActive,
+    this.isActive,
     this.inActiveDescription,
   });
+
+  ParkingLotEntity copyWith({
+    String? id,
+    String? name,
+    int? vehichleInCount,
+    int? maxCapacity,
+    double? latitude,
+    double? longitude,
+    bool? isActive,
+    String? inActiveDescription,
+  }) {
+    return ParkingLotEntity(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      vehichleInCount: vehichleInCount ?? this.vehichleInCount,
+      maxCapacity: maxCapacity ?? this.maxCapacity,
+      latitude: latitude ?? this.latitude,
+      longitude: longitude ?? this.longitude,
+      isActive: isActive ?? this.isActive,
+      inActiveDescription: inActiveDescription ?? this.inActiveDescription,
+    );
+  }
 }

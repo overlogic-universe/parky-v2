@@ -449,6 +449,12 @@ abstract class AppLocalizations {
   /// **'Gagal mendapatkan data kendaraan'**
   String get getVehicleFailed;
 
+  /// No description provided for @getParkingLotFailed.
+  ///
+  /// In id, this message translates to:
+  /// **'Gagal mendapatkan data tempat parkir'**
+  String get getParkingLotFailed;
+
   /// No description provided for @loading.
   ///
   /// In id, this message translates to:

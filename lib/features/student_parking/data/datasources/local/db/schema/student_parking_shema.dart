@@ -1,4 +1,4 @@
-class StudentParkingShema {
+class StudentParkingSchema {
   static const String createVehicleTable = '''
       CREATE TABLE vehicles (
         id TEXT PRIMARY KEY,
@@ -6,8 +6,8 @@ class StudentParkingShema {
         student_id TEXT NOT NULL
       );
     ''';
-  static const String createParkTable = '''
-      CREATE TABLE parks (
+  static const String createParkingHistoryTable = '''
+      CREATE TABLE parking_histories (
         id TEXT PRIMARY KEY,
         status TEXT NOT NULL,
         last_activity INT NOT NULL,

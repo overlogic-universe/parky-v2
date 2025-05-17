@@ -7,7 +7,7 @@ extension FirestoreX on FirebaseFirestore {
   CollectionReference get parkingActivityCollection => collection('parking_activity');
   CollectionReference get parkingLotsCollection => collection('parking_lots');
   CollectionReference get parkingSchedulesCollection => collection('parking_schedules');
-  CollectionReference get parkingLotsHasParkingSchedules => collection('parking_lots_has_parking_schedules');
+  CollectionReference get parkingLotsHasParkingSchedulesCollection => collection('parking_lots_has_parking_schedules');
   CollectionReference get parkingLotsHasParkingAttendantsCollection => collection('parking_lots_has_parking_attendants');
   CollectionReference get parkingAttendantsCollection => collection('parking_attendants');
 }
@@ -17,4 +17,5 @@ extension QueryX on Query {
   Query whereIsEqualToParkingHistoryId(Object? parkingHistoryId) =>where('parking_history_id', isEqualTo: parkingHistoryId);
   Query whereIsEqualToParkingLotId(Object? parkingLotId) =>where('parking_lot_id', isEqualTo: parkingLotId);
   Query whereIsEqualToParkingScheduleId(Object? parkingScheduleId) =>where('parking_schedule_id', isEqualTo: parkingScheduleId);
+  Query whereIsEqualToDayOfWeek(Object? dayOfWeek) =>where('day_of_week', isEqualTo: dayOfWeek);
 }
