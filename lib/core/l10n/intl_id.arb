@@ -10,13 +10,20 @@
   "forgotYourPassword": "Lupa kata sandi?",
   "loginWithStudentEmail": "Masuk dengan email mahasiswa",
   "homeGreeting": "Selamat {time},",
-  "entryExitTime": "Waktu Masuk/Keluar",
+  "parkedDate": "Tanggal Masuk",
+  "exitDate": "Tanggal Keluar",
+  "parkedTime": "Waktu Masuk",
+  "exitTime": "Waktu Keluar",
   "nim": "NIM",
+  "parkingLot": "Tempat Parkir",
   "status": "Status",
   "plate": "Plat",
   "scanHere": "PINDAI DI SINI",
   "parked": "Sedang Parkir",
   "exited": "Keluar",
+
+  "parkingInfo": "Informasi Parkiran",
+
   "setting": "Pengaturan",
   "settingDesc": "Sesuaikan pengalamanmu dengan mudah! Pilih bahasa favorit dan atur tema sesuai kenyamananmu",
   "account": "Akun",
@@ -29,11 +36,13 @@
   "chooseLanguageDesc": "Pilih bahasa yang paling nyaman untuk pengalaman terbaik",
   "successChangeTheme": "Berhasil mengganti tema",
   "successChangeLanguage": "Berhasil mengganti bahasa",
+
   "mainTheme": "Tema Utama",
   "orbTheme": "Tema Orb",
   "indonesia": "Bahasa Indonesia",
   "english": "English",
   "noData": "Belum ada data",
+
   "login": "Masuk",
   "orLoginAs": "Atau masuk sebagai",
   "out": "Keluar",
@@ -41,6 +50,7 @@
   "logoutModalDesc": "Apakah Anda yakin ingin keluar?",
   "loginSuccess": "Berhasil masuk",
   "logoutSuccess": "Berhasil keluar",
+
   "mustNotBeEmpty": "{field} tidak boleh kosong!",
   "mustUseStudentEmail": "Gunakan email mahasiswa!",
   "atLeastLengthCharacters": "{field} minimal {length} karakter!",
@@ -60,6 +70,7 @@
   "getParkFailed": "Gagal mendapatkan data parkir",
   "getVehicleFailed": "Gagal mendapatkan data kendaraan",
   "getParkingLotFailed": "Gagal mendapatkan data tempat parkir",
+
   "loading": "Memuat",
   "and": "dan",
   "or": "atau",
@@ -74,16 +85,12 @@
   "afternoon": "Siang",
   "evening": "Sore",
   "night": "Malam",
-  "january": "Januari",
-  "february": "Februari",
-  "march": "Maret",
-  "april": "April",
-  "may": "Mei",
-  "june": "Juni",
-  "july": "Juli",
-  "august": "Agustus",
-  "september": "September",
-  "october": "Oktober",
-  "november": "November",
-  "december": "Desember"
+
+  "monday": "Senin",
+  "tuesday": "Selasa",
+  "wednesday": "Rabu",
+  "thursday": "Kamis",
+  "friday": "Jumat",
+  "saturday": "Sabtu",
+  "sunday": "Minggu"
 }

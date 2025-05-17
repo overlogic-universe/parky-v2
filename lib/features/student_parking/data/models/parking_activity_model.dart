@@ -6,7 +6,7 @@ class ParkingActivityModel {
   final String id;
   final String studentId;
   final String parkingHistoryId;
-  final String parkingLotId;
+  final String? parkingLotId;
   final Timestamp? createdAt;
 
   const ParkingActivityModel({
@@ -14,7 +14,7 @@ class ParkingActivityModel {
     required this.studentId,
     required this.parkingHistoryId,
     required this.parkingLotId,
-    this.createdAt, 
+    this.createdAt,
   });
 
   factory ParkingActivityModel.fromJson(Map<String, dynamic> json) {
@@ -22,8 +22,12 @@ class ParkingActivityModel {
       id: json['id'] as String,
       studentId: json['student_id'] as String,
       parkingHistoryId: json['parking_history_id'] as String,
-      parkingLotId: json['parking_lot_id'] as String,
-      createdAt: json['created_at'] != null ? json['created_at'] as Timestamp : null,
+      parkingLotId:
+          json['parking_lot_id'] != null
+              ? json['parking_lot_id'] as String
+              : null,
+      createdAt:
+          json['created_at'] != null ? json['created_at'] as Timestamp : null,
     );
   }
 
@@ -33,8 +37,12 @@ class ParkingActivityModel {
       id: doc.id,
       studentId: data['student_id'] as String,
       parkingHistoryId: data['parking_history_id'] as String,
-      parkingLotId: data['parking_lot_id'] as String,
-      createdAt: data['created_at'] != null ? data['created_at'] as Timestamp : null,
+      parkingLotId:
+          data['parking_lot_id'] != null
+              ? data['parking_lot_id'] as String
+              : null,
+      createdAt:
+          data['created_at'] != null ? data['created_at'] as Timestamp : null,
     );
   }
 

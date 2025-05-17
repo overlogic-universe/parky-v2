@@ -75,7 +75,6 @@ class StudentParkingRepositoryImpl implements StudentParkingRepository {
       loadFromDB: () async {
         try {
           final model = await localDataSource.getVehicleModel();
-          log("MODEL GET VEHICLE: $model");
 
           if (model == null) return null;
 

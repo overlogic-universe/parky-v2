@@ -6,7 +6,7 @@ class StudentParkingSchema {
       name TEXT NOT NULL,
       nim TEXT NOT NULL,
       email TEXT NOT NULL,
-      password TEXT NOT NULL
+      password TEXT
     );
   ''';
 

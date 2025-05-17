@@ -1,5 +1,5 @@
 import '../entities/parking_schedule_day_type.dart';
-import '../entities/parking_schedule_list_entity.dart';
+import '../entities/parking_lot_schedule_entity.dart';
 import '../repositories/parking_lot_has_parking_schedule_repository.dart';
 import '../repositories/parking_lot_repository.dart';
 import '../repositories/parking_schedule_repository.dart';
@@ -16,7 +16,7 @@ class GetParkingScheduleListByDayUseCase {
     required this.parkingLotHasParkingScheduleRepository,
   });
 
-  Future<List<ParkingScheduleListEntity>> call({required WeekDay day}) async {
+  Future<List<ParkingLotScheduleEntity>> call({required WeekDay day}) async {
     // Step 1: Ambil daftar jadwal parkir berdasarkan hari
     final parkingScheduleListResult = await parkingScheduleRepository
         .getParkingScheduleListByDay(day);
@@ -47,8 +47,8 @@ class GetParkingScheduleListByDayUseCase {
           hasParkingScheduleList,
         );
 
-    // Step 4: Cocokkan dan gabungkan menjadi ParkingScheduleListEntity
-    final result = <ParkingScheduleListEntity>[];
+    // Step 4: Cocokkan dan gabungkan menjadi ParkingLotScheduleEntity
+    final result = <ParkingLotScheduleEntity>[];
 
     for (final rel in hasParkingScheduleList) {
       final parkingLot = parkingLotList.data!.firstWhere(
@@ -60,7 +60,7 @@ class GetParkingScheduleListByDayUseCase {
       );
 
       result.add(
-        ParkingScheduleListEntity(
+        ParkingLotScheduleEntity(
           parkingLot: parkingLot,
           parkingSchedule: schedule,
         ),

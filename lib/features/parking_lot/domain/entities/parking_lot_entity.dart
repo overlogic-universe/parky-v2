@@ -6,7 +6,7 @@ class ParkingLotEntity {
   final double? latitude;
   final double? longitude;
   final bool? isActive;
-  final String? inActiveDescription;
+  final String? inactiveDescription;
 
   const ParkingLotEntity({
     required this.id,
@@ -16,7 +16,7 @@ class ParkingLotEntity {
     this.latitude,
     this.longitude,
     this.isActive,
-    this.inActiveDescription,
+    this.inactiveDescription,
   });
 
   ParkingLotEntity copyWith({
@@ -27,7 +27,7 @@ class ParkingLotEntity {
     double? latitude,
     double? longitude,
     bool? isActive,
-    String? inActiveDescription,
+    String? inactiveDescription,
   }) {
     return ParkingLotEntity(
       id: id ?? this.id,
@@ -37,7 +37,7 @@ class ParkingLotEntity {
       latitude: latitude ?? this.latitude,
       longitude: longitude ?? this.longitude,
       isActive: isActive ?? this.isActive,
-      inActiveDescription: inActiveDescription ?? this.inActiveDescription,
+      inactiveDescription: inactiveDescription ?? this.inactiveDescription,
     );
   }
 }

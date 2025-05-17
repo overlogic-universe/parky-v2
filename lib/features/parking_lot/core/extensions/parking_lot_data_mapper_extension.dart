@@ -11,7 +11,7 @@ extension ParkingLotModelToEntity on ParkingLotModel {
       latitude: latitude,
       longitude: longitude,
       isActive: isActive,
-      inActiveDescription: inActiveDescription,
+      inactiveDescription: inactiveDescription,
     );
   }
 }
@@ -26,7 +26,7 @@ extension ParkingLotEntityToModel on ParkingLotEntity {
       latitude: latitude,
       longitude: longitude,
       isActive: isActive ?? false,
-      inActiveDescription: inActiveDescription,
+      inactiveDescription: inactiveDescription,
     );
   }
 }

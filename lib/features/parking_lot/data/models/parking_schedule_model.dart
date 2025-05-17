@@ -41,8 +41,17 @@ class ParkingScheduleModel {
       dayOfWeek: json['day_of_week'] ?? '',
       openTime: json['open_time'],
       closedTime: json['closed_time'],
-      isClosed: json['is_closed'] ?? false,
+      isClosed: json['is_closed'] == 1,
     );
+  }
+
+  Map<String, dynamic> toFirestore() {
+    return {
+      'day_of_week': dayOfWeek,
+      'open_time': openTime,
+      'closed_time': closedTime,
+      'is_closed': isClosed,
+    };
   }
 
   Map<String, dynamic> toJson() {
@@ -51,7 +60,7 @@ class ParkingScheduleModel {
       'day_of_week': dayOfWeek,
       'open_time': openTime,
       'closed_time': closedTime,
-      'is_closed': isClosed,
+      'is_closed': isClosed ? 1 : 0,
     };
   }
 

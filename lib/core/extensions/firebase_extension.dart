@@ -4,7 +4,7 @@ extension FirestoreX on FirebaseFirestore {
   CollectionReference get studentsCollection => collection('students');
   CollectionReference get parkingHistoriesCollection => collection('parking_histories');
   CollectionReference get vehichlesCollection => collection('vehicles');
-  CollectionReference get parkingActivityCollection => collection('parking_activity');
+  CollectionReference get parkingActivitiesCollection => collection('parking_activities');
   CollectionReference get parkingLotsCollection => collection('parking_lots');
   CollectionReference get parkingSchedulesCollection => collection('parking_schedules');
   CollectionReference get parkingLotsHasParkingSchedulesCollection => collection('parking_lots_has_parking_schedules');

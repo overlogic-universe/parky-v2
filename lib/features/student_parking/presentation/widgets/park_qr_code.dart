@@ -31,7 +31,7 @@ class ParkQrCode extends ConsumerWidget {
     return _buildContainer(
       context,
       child: QrImageView(
-        data: "${student.id}-${student.nim}",
+        data: student.qrCodeId,
         version: QrVersions.auto,
         size: 200.0.w,
       ),

@@ -7,7 +7,7 @@ class ParkingLotSchema {
       max_capacity INTEGER NOT NULL,
       latitude REAL,
       longitude REAL,
-      is_active BOOLEAN NOT NULL,
+      is_active INTEGER NOT NULL,
       inactive_description TEXT
     );
   ''';
@@ -18,7 +18,7 @@ class ParkingLotSchema {
       day_of_week TEXT NOT NULL,
       open_time TIMESTAMP,
       closed_time TIMESTAMP,
-      is_closed BOOLEAN NOT NULL
+      is_closed INTEGER NOT NULL
     );
   ''';
 

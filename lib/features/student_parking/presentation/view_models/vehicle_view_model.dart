@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../student_parking/core/di/student_parking_provider.dart';
@@ -39,8 +37,6 @@ class VehicleViewModel extends _$VehicleViewModel {
       }
       final currentState = state.value ?? const VehicleState();
       final newState = currentState.copyWith(vehicle: data);
-
-      log("VEHICLE DATA ${data.toString()}");
 
       state = AsyncData(newState);
       return newState;

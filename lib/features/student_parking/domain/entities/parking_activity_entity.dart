@@ -4,14 +4,14 @@ class ParkingActivityEntity {
   final String id;
   final String studentId;
   final String parkingHistoryId;
-  final String parkingLotId;
+  final String? parkingLotId;
   final Timestamp? createdAt;
 
   const ParkingActivityEntity({
     required this.id,
     required this.studentId,
     required this.parkingHistoryId,
-    required this.parkingLotId,
+    this.parkingLotId,
     this.createdAt,
   });
 }

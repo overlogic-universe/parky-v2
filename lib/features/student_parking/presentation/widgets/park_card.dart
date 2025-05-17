@@ -8,6 +8,7 @@ import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/lang.dart';
 import '../../../shared/presentation/view_models/init_view_model.dart';
 import '../../../student_parking/presentation/widgets/student_info_tile.dart';
+import '../../domain/entities/park_status.dart';
 import '../models/park_status_ui.dart';
 import '../view_models/park_view_model.dart';
 import '../view_models/vehicle_view_model.dart';
@@ -22,7 +23,6 @@ class ParkCard extends ConsumerWidget {
     final vehicleState = ref.watch(vehicleViewModelProvider);
     final parkState = ref.watch(parkViewModelProvider);
     final initState = ref.watch(initViewModelProvider);
-    final entryExitTimeLabel = Lang.of(context).entryExitTime;
     final nimLabel = Lang.of(context).nim;
     final plateLabel = Lang.of(context).plate;
     final statusLabel = Lang.of(context).status;
@@ -47,19 +47,17 @@ class ParkCard extends ConsumerWidget {
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 childAspectRatio: 2,
-                crossAxisSpacing: 10.h,
-                mainAxisSpacing: 10.h,
-                mainAxisExtent: 75.h,
               ),
               children: [
                 parkState.when(
                   data:
                       (data) => StudentInfoTile(
-                        label: entryExitTimeLabel,
-                        value:
-                            data.currentParkingHistory?.lastActivityDay,
-                        value2:
-                            data.currentParkingHistory?.lastActivityTime,
+                        label:
+                            data.currentParkingHistory?.status ==
+                                    ParkStatus.parked
+                                ? Lang.of(context).parkedDate
+                                : Lang.of(context).exitDate,
+                        value: data.currentParkingHistory?.lastActivityDay,
                       ),
 
                   loading: () => _buildLoadingBox(),
@@ -70,8 +68,35 @@ class ParkCard extends ConsumerWidget {
                   data:
                       (data) => StudentInfoTile(
                         label: nimLabel,
-                        value: data.student?.nim ,
+                        value: data.student?.nim,
                       ),
+                  loading: () => _buildLoadingBox(),
+                  error: (e, st) => SizedBox.shrink(),
+                ),
+
+                parkState.when(
+                  data:
+                      (data) => StudentInfoTile(
+                        label:
+                            data.currentParkingHistory?.status ==
+                                    ParkStatus.parked
+                                ? Lang.of(context).parkedTime
+                                : Lang.of(context).exitTime,
+                        value: data.currentParkingHistory?.lastActivityTime,
+                      ),
+
+                  loading: () => _buildLoadingBox(),
+                  error: (e, st) => SizedBox.shrink(),
+                ),
+
+                parkState.when(
+                  data:
+                      (data) => StudentInfoTile(
+                        label: Lang.of(context).parkingLot,
+                        value: data.currentParkingLot?.name,
+                        valueFontSize: 10,
+                      ),
+
                   loading: () => _buildLoadingBox(),
                   error: (e, st) => SizedBox.shrink(),
                 ),
@@ -90,11 +115,9 @@ class ParkCard extends ConsumerWidget {
                   data:
                       (data) => StudentInfoTile(
                         label: statusLabel,
-                        value:
-                            data.currentParkingHistory?.status?.displayName(
-                              context,
-                            ) ??
-                            "",
+                        value: data.currentParkingHistory?.status?.displayName(
+                          context,
+                        ),
                       ),
                   loading: () => _buildLoadingBox(),
                   error: (e, st) => SizedBox.shrink(),

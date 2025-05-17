@@ -11,7 +11,7 @@ class ParkingLotModel {
   final double? latitude;
   final double? longitude;
   final bool isActive;
-  final String? inActiveDescription;
+  final String? inactiveDescription;
 
   const ParkingLotModel({
     required this.id,
@@ -21,7 +21,7 @@ class ParkingLotModel {
     this.latitude,
     this.longitude,
     required this.isActive,
-    this.inActiveDescription,
+    this.inactiveDescription,
   });
 
   factory ParkingLotModel.fromFirestore(
@@ -46,7 +46,7 @@ class ParkingLotModel {
               ? (data['longitude'] as num).toDouble()
               : null,
       isActive: data['is_active'] ?? true,
-      inActiveDescription: data['in_active_description'],
+      inactiveDescription: data['inactive_description'],
     );
   }
 
@@ -64,8 +64,8 @@ class ParkingLotModel {
           (json['longitude'] != null)
               ? (json['longitude'] as num).toDouble()
               : null,
-      isActive: json['is_active'] ?? false,
-      inActiveDescription: json['in_active_description'],
+      isActive: json['is_active'] == 1,
+      inactiveDescription: json['inactive_description'],
     );
   }
 
@@ -77,8 +77,8 @@ class ParkingLotModel {
       'max_capacity': maxCapacity,
       'latitude': latitude,
       'longitude': longitude,
-      'is_active': isActive,
-      'in_active_description': inActiveDescription,
+      'is_active': isActive ? 1 : 0,
+      'inactive_description': inactiveDescription,
     };
   }
 
@@ -90,7 +90,7 @@ class ParkingLotModel {
     double? latitude,
     double? longitude,
     bool? isActive,
-    String? inActiveDescription,
+    String? inactiveDescription,
   }) {
     return ParkingLotModel(
       id: id ?? this.id,
@@ -100,12 +100,12 @@ class ParkingLotModel {
       latitude: latitude ?? this.latitude,
       longitude: longitude ?? this.longitude,
       isActive: isActive ?? this.isActive,
-      inActiveDescription: inActiveDescription ?? this.inActiveDescription,
+      inactiveDescription: inactiveDescription ?? this.inactiveDescription,
     );
   }
 
   @override
   String toString() {
-    return 'ParkingLotModel(id: $id, name: $name, vehicleInCount: $vehichleInCount, maxCapacity: $maxCapacity, latitude: $latitude, longitude: $longitude, isActive: $isActive, inActiveDescription: $inActiveDescription)';
+    return 'ParkingLotModel(id: $id, name: $name, vehicleInCount: $vehichleInCount, maxCapacity: $maxCapacity, latitude: $latitude, longitude: $longitude, isActive: $isActive, inactiveDescription: $inactiveDescription)';
   }
 }

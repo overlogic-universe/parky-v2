@@ -34,7 +34,7 @@ class StudentParkingRemoteDataSourceImpl
     final studentId = _getStudentId();
 
     final query =
-        await firestore.parkingActivityCollection
+        await firestore.parkingActivitiesCollection
             .whereIsEqualToStudentId(studentId)
             .orderByCreatedAt(descending: true)
             .limit(1)
@@ -68,7 +68,7 @@ class StudentParkingRemoteDataSourceImpl
     }
 
     final parkingHistoryModel = ParkingHistoryModel.fromFirestore(
-      parkingHistoryDoc as QueryDocumentSnapshot<Map<String, dynamic>>,
+      parkingHistoryDoc as DocumentSnapshot<Map<String, dynamic>>,
     );
 
     return parkingHistoryModel;
@@ -112,7 +112,7 @@ class StudentParkingRemoteDataSourceImpl
     }
 
     final parkingLotModel = ParkingLotModel.fromFirestore(
-      parkingLotDoc as QueryDocumentSnapshot<Map<String, dynamic>>,
+      parkingLotDoc as DocumentSnapshot<Map<String, dynamic>>,
     );
 
     return parkingLotModel;
