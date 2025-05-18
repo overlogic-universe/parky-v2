@@ -6,7 +6,7 @@ import '../../../../core/failures/exception.dart';
 class ParkingLotModel {
   final String id;
   final String name;
-  final int vehichleInCount;
+  final int vehicleInCount;
   final int maxCapacity;
   final double? latitude;
   final double? longitude;
@@ -16,7 +16,7 @@ class ParkingLotModel {
   const ParkingLotModel({
     required this.id,
     required this.name,
-    required this.vehichleInCount,
+    required this.vehicleInCount,
     required this.maxCapacity,
     this.latitude,
     this.longitude,
@@ -35,7 +35,7 @@ class ParkingLotModel {
     return ParkingLotModel(
       id: doc.id,
       name: data['name'] ?? '',
-      vehichleInCount: data['vehicle_in_count'] ?? 0,
+      vehicleInCount: data['vehicle_in_count'] ?? 0,
       maxCapacity: data['max_capacity'] ?? 0,
       latitude:
           (data['latitude'] != null)
@@ -54,7 +54,7 @@ class ParkingLotModel {
     return ParkingLotModel(
       id: json['id'] ?? '',
       name: json['name'] ?? '',
-      vehichleInCount: json['vehicle_in_count'] ?? 0,
+      vehicleInCount: json['vehicle_in_count'] ?? 0,
       maxCapacity: json['max_capacity'] ?? 0,
       latitude:
           (json['latitude'] != null)
@@ -73,7 +73,7 @@ class ParkingLotModel {
     return {
       'id': id,
       'name': name,
-      'vehicle_in_count': vehichleInCount,
+      'vehicle_in_count': vehicleInCount,
       'max_capacity': maxCapacity,
       'latitude': latitude,
       'longitude': longitude,
@@ -85,7 +85,7 @@ class ParkingLotModel {
   ParkingLotModel copyWith({
     String? id,
     String? name,
-    int? vehichleInCount,
+    int? vehicleInCount,
     int? maxCapacity,
     double? latitude,
     double? longitude,
@@ -95,7 +95,7 @@ class ParkingLotModel {
     return ParkingLotModel(
       id: id ?? this.id,
       name: name ?? this.name,
-      vehichleInCount: vehichleInCount ?? this.vehichleInCount,
+      vehicleInCount: vehicleInCount ?? this.vehicleInCount,
       maxCapacity: maxCapacity ?? this.maxCapacity,
       latitude: latitude ?? this.latitude,
       longitude: longitude ?? this.longitude,
@@ -106,6 +106,6 @@ class ParkingLotModel {
 
   @override
   String toString() {
-    return 'ParkingLotModel(id: $id, name: $name, vehicleInCount: $vehichleInCount, maxCapacity: $maxCapacity, latitude: $latitude, longitude: $longitude, isActive: $isActive, inactiveDescription: $inactiveDescription)';
+    return 'ParkingLotModel(id: $id, name: $name, vehicleInCount: $vehicleInCount, maxCapacity: $maxCapacity, latitude: $latitude, longitude: $longitude, isActive: $isActive, inactiveDescription: $inactiveDescription)';
   }
 }

@@ -6,8 +6,8 @@ import '../../../../core/failures/exception.dart';
 class ParkingScheduleModel {
   final String id;
   final String dayOfWeek;
-  final Timestamp? openTime;
-  final Timestamp? closedTime;
+  final String? openTime;
+  final String? closedTime;
   final bool isClosed;
 
   const ParkingScheduleModel({

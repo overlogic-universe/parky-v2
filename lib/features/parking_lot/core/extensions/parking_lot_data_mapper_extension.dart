@@ -6,7 +6,7 @@ extension ParkingLotModelToEntity on ParkingLotModel {
     return ParkingLotEntity(
       id: id,
       name: name,
-      vehichleInCount: vehichleInCount,
+      vehicleInCount: vehicleInCount,
       maxCapacity: maxCapacity,
       latitude: latitude,
       longitude: longitude,
@@ -20,12 +20,12 @@ extension ParkingLotEntityToModel on ParkingLotEntity {
   ParkingLotModel toModel() {
     return ParkingLotModel(
       id: id,
-      name: name ?? '',
-      vehichleInCount: vehichleInCount ?? 0,
-      maxCapacity: maxCapacity ?? 0,
+      name: name,
+      vehicleInCount: vehicleInCount,
+      maxCapacity: maxCapacity,
       latitude: latitude,
       longitude: longitude,
-      isActive: isActive ?? false,
+      isActive: isActive,
       inactiveDescription: inactiveDescription,
     );
   }

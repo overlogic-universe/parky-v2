@@ -21,9 +21,8 @@ class ParkingScheduleRepositoryImpl implements ParkingScheduleRepository {
   });
 
   @override
-  Future<ResourceState<List<ParkingScheduleEntity>>> getParkingScheduleListByDay(
-    WeekDay day,
-  ) async {
+  Future<ResourceState<List<ParkingScheduleEntity>>>
+  getParkingScheduleListByDay(WeekDay day) async {
     return NetworkBoundResource<
       List<ParkingScheduleEntity>,
       List<ParkingScheduleModel>?
@@ -38,7 +37,7 @@ class ParkingScheduleRepositoryImpl implements ParkingScheduleRepository {
         return models.map((e) => e.toEntity()).toList();
       },
 
-      shouldFetch: (data) => data == null,
+      shouldFetch: (data) => data == null || data.isEmpty,
 
       createCall: () async {
         return await remoteDataSource.getParkingScheduleList(day.value);

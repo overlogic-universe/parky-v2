@@ -7,7 +7,7 @@ part of 'parking_lot_view_model.dart';
 // **************************************************************************
 
 String _$parkingLotViewModelHash() =>
-    r'70f36d46f824bd3b0877ae68cf987fdac16349ed';
+    r'13d7182982153efaf4fd5588f9c11475047782b6';
 
 /// See also [ParkingLotViewModel].
 @ProviderFor(ParkingLotViewModel)

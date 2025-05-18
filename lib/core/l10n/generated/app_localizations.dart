@@ -227,6 +227,12 @@ abstract class AppLocalizations {
   /// **'Informasi Parkiran'**
   String get parkingInfo;
 
+  /// No description provided for @full.
+  ///
+  /// In id, this message translates to:
+  /// **'Penuh'**
+  String get full;
+
   /// No description provided for @setting.
   ///
   /// In id, this message translates to:

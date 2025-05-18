@@ -77,6 +77,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get parkingInfo => 'Parking Info';
 
   @override
+  String get full => 'Full';
+
+  @override
   String get setting => 'Setting';
 
   @override

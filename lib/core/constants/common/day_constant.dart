@@ -6,4 +6,14 @@ class DayConstant {
   static const String friday = 'friday';
   static const String saturday = 'saturday';
   static const String sunday = 'sunday';
+
+  static const List<String> values = [
+    monday,
+    tuesday,
+    wednesday,
+    thursday,
+    friday,
+    saturday,
+    sunday,
+  ];
 }

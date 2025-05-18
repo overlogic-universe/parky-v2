@@ -1,12 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'parking_schedule_day_type.dart';
 
 class ParkingScheduleEntity {
   final String id;
   final WeekDay? dayOfWeek;
-  final Timestamp? openTime;
-  final Timestamp? closedTime;
+  final String? openTime;
+  final String? closedTime;
   final bool? isClosed;
 
   const ParkingScheduleEntity({
@@ -20,8 +18,8 @@ class ParkingScheduleEntity {
   ParkingScheduleEntity copyWith({
     String? id,
     WeekDay? dayOfWeek,
-    Timestamp? openTime,
-    Timestamp? closedTime,
+    String? openTime,
+    String? closedTime,
     bool? isClosed,
   }) {
     return ParkingScheduleEntity(

@@ -77,6 +77,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get parkingInfo => 'Informasi Parkiran';
 
   @override
+  String get full => 'Penuh';
+
+  @override
   String get setting => 'Pengaturan';
 
   @override

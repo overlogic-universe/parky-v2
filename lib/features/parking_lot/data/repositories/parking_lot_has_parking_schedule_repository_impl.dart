@@ -1,18 +1,16 @@
 import 'dart:developer';
 
-import 'package:parky/features/parking_lot/data/models/parking_lots_has_parking_schedules_model.dart';
-
-import '../../core/extensions/parking_lot_has_parking_schedule_data_mapper.dart';
-import '../../core/extensions/parking_schedule_data_mapper.dart';
-
 import '../../../../core/utils/resource_state.dart';
 import '../../../shared/data/datasources/remote/network_bound_resource.dart';
 import '../../../shared/data/datasources/remote/network_info.dart';
+import '../../core/extensions/parking_lot_has_parking_schedule_data_mapper.dart';
+import '../../core/extensions/parking_schedule_data_mapper.dart';
 import '../../domain/entities/parking_lot_has_parking_schedule_entity.dart';
 import '../../domain/entities/parking_schedule_entity.dart';
 import '../../domain/repositories/parking_lot_has_parking_schedule_repository.dart';
 import '../datasources/local/parking_lot_has_parking_schedule_local_data_source.dart';
 import '../datasources/remote/parking_lot_has_parking_schedule_remote_data_source.dart';
+import '../models/parking_lots_has_parking_schedules_model.dart';
 
 class ParkingLotHasParkingScheduleRepositoryImpl
     implements ParkingLotHasParkingScheduleRepository {
@@ -52,7 +50,7 @@ class ParkingLotHasParkingScheduleRepositoryImpl
           return null;
         }
       },
-      shouldFetch: (data) => data == null,
+      shouldFetch: (data) => data == null || data.isEmpty,
       createCall: () async {
         try {
           return await remoteDataSource

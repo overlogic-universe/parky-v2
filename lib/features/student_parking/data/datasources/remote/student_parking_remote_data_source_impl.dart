@@ -78,7 +78,7 @@ class StudentParkingRemoteDataSourceImpl
   Future<VehicleModel> getVehicleByStudentId() async {
     final studentId = _getStudentId();
     final query =
-        await firestore.vehichlesCollection
+        await firestore.vehiclesCollection
             .whereIsEqualToStudentId(studentId)
             .limit(1)
             .get();

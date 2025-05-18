@@ -16,8 +16,8 @@ class ParkingLotSchema {
     CREATE TABLE parking_schedules (
       id TEXT PRIMARY KEY,
       day_of_week TEXT NOT NULL,
-      open_time TIMESTAMP,
-      closed_time TIMESTAMP,
+      open_time TEXT,
+      closed_time TEXT,
       is_closed INTEGER NOT NULL
     );
   ''';
