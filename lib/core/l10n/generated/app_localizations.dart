@@ -233,6 +233,12 @@ abstract class AppLocalizations {
   /// **'Penuh'**
   String get full;
 
+  /// No description provided for @viewLocation.
+  ///
+  /// In id, this message translates to:
+  /// **'Lihat Lokasi'**
+  String get viewLocation;
+
   /// No description provided for @setting.
   ///
   /// In id, this message translates to:

@@ -80,6 +80,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get full => 'Penuh';
 
   @override
+  String get viewLocation => 'Lihat Lokasi';
+
+  @override
   String get setting => 'Pengaturan';
 
   @override

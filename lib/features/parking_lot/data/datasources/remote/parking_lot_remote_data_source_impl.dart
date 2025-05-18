@@ -34,7 +34,7 @@ class ParkingLotRemoteDataSourceImpl implements ParkingLotRemoteDataSource {
       return snapshot.docs
           .map(
             (doc) => ParkingLotModel.fromFirestore(
-              doc.data() as DocumentSnapshot<Map<String, dynamic>>,
+              doc as DocumentSnapshot<Map<String, dynamic>>,
             ).copyWith(id: doc.id),
           )
           .toList();

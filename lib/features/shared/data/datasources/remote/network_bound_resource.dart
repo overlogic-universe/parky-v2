@@ -22,6 +22,7 @@ class NetworkBoundResource<ResultType, RequestType> {
     try {
       ResultType? dbSource = await loadFromDB();
       if (shouldFetch(dbSource)) {
+      // if (true) {
         final RequestType apiResponse = await networkInfo.safeNetworkRequest(
           result: createCall,
         );

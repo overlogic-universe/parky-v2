@@ -80,6 +80,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get full => 'Full';
 
   @override
+  String get viewLocation => 'View Location';
+
+  @override
   String get setting => 'Setting';
 
   @override
