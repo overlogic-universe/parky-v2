@@ -60,8 +60,8 @@ class ParkQrCode extends ConsumerWidget {
     return _buildContainer(
       context,
       child: Shimmer.fromColors(
-        baseColor: Colors.grey.shade300,
-        highlightColor: Colors.grey.shade100,
+        baseColor: AppColor.baseShimmerColor(context),
+        highlightColor: AppColor.highlightShimmerColor(context),
         child: Container(
           height: containerSize,
           width: containerSize,

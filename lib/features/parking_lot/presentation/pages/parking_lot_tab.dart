@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:parky/core/styles/colors/app_color.dart';
+import 'package:shimmer/shimmer.dart';
 
+import '../../../../core/constants/common/margin_constant.dart';
+import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/lang.dart';
 import '../../../shared/presentation/pages/base_screen_with_decoration.dart';
@@ -47,57 +49,93 @@ class _ParkingLotTabState extends ConsumerState<ParkingLotTab>
         showBackIcon: false,
         title: Text(Lang.of(context).parkingInfo),
       ),
-      child: state.when(
-        data: (data) => _buildSuccess(context, data),
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, stackTrace) => Center(child: Text('Error: $error')),
+      child: Column(
+        children: [
+          Container(
+            height: 45.h,
+            decoration: BoxDecoration(
+              color: AppColor.backgroundApp(context),
+              borderRadius: BorderRadius.circular(8.r),
+            ),
+            child: Material(
+              color: AppColor.backgroundApp(context),
+              child: TabBar(
+                controller: _tabController,
+                isScrollable: true,
+                indicatorPadding: EdgeInsets.symmetric(horizontal: 8.w),
+                tabAlignment: TabAlignment.start,
+                indicatorSize: TabBarIndicatorSize.tab,
+                tabs:
+                    WeekDay.values
+                        .map(
+                          (day) => Tab(
+                            child: Text(
+                              day.displayName(context),
+                              style: AppFont.bodyMedium(context)?.regular,
+                            ),
+                          ),
+                        )
+                        .toList(),
+              ),
+            ),
+          ),
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children:
+                  WeekDay.values.map<Widget>((day) {
+                    return state.when(
+                      data: (data) => _buildSuccess(context, data, day),
+                      loading: () => _buildLoading(context),
+                      error: (error, stackTrace) => NoDataText(),
+                    );
+                  }).toList(),
+            ),
+          ),
+        ],
       ),
     );
   }
 
-  Column _buildSuccess(BuildContext context, ParkingLotState data) {
+  Widget _buildSuccess(
+    BuildContext context,
+    ParkingLotState data,
+    WeekDay day,
+  ) {
+    final scheduleList = data.parkingLotScheduleMap[day] ?? [];
+    if (scheduleList.isEmpty) return NoDataText();
+    return BaseParkingLotTabBody(parkingLotScheduleList: scheduleList);
+  }
+
+  Column _buildLoading(BuildContext context) {
     return Column(
       children: [
-        Container(
-          height: 45.h,
-          decoration: BoxDecoration(
-            color: AppColor.backgroundApp(context),
-            borderRadius: BorderRadius.circular(8.r),
-          ),
-          child: Material(
-            color: AppColor.backgroundApp(context),
-            child: TabBar(
-              controller: _tabController,
-              isScrollable: true,
-              indicatorPadding: EdgeInsets.symmetric(horizontal: 8.w),
-              tabAlignment: TabAlignment.start,
-              indicatorSize: TabBarIndicatorSize.tab,
-              tabs:
-                  WeekDay.values
-                      .map(
-                        (day) => Tab(
-                          child: Text(
-                            day.displayName(context),
-                            style: AppFont.bodyMedium(context)?.regular,
-                          ),
-                        ),
-                      )
-                      .toList(),
-            ),
-          ),
-        ),
-        Expanded(
-          child: TabBarView(
-            controller: _tabController,
-            children:
-                WeekDay.values.map((day) {
-                  final scheduleList = data.parkingLotScheduleMap[day] ?? [];
-                  if (scheduleList.isEmpty) return NoDataText();
-                  return BaseParkingLotTabBody(
-                    parkingLotScheduleList: scheduleList,
-                  );
-                }).toList(),
-          ),
+        SizedBox(height: 20.h),
+        ListView.separated(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          separatorBuilder: (context, index) => SizedBox(height: 10.h),
+          itemCount: 2,
+          itemBuilder:
+              (context, index) => Shimmer.fromColors(
+                baseColor: AppColor.baseShimmerColor(context),
+                highlightColor: AppColor.highlightShimmerColor(context),
+                child: Container(
+                  height: 100.h,
+                  width: 1.sw,
+                  margin: EdgeInsets.symmetric(
+                    horizontal: MarginConstant.horizontalScreen.w,
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: AppColor.outlineGrey(context),
+                      width: 0.5.w,
+                    ),
+                    color: AppColor.backgroundApp(context),
+                    borderRadius: BorderRadius.circular(20.r),
+                  ),
+                ),
+              ),
         ),
       ],
     );

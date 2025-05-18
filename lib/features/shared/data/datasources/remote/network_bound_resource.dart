@@ -21,8 +21,8 @@ class NetworkBoundResource<ResultType, RequestType> {
   Future<ResourceState<ResultType>> fetchData() async {
     try {
       ResultType? dbSource = await loadFromDB();
-      if (shouldFetch(dbSource)) {
-      // if (true) {
+      // if (shouldFetch(dbSource)) {
+      if (true) {
         final RequestType apiResponse = await networkInfo.safeNetworkRequest(
           result: createCall,
         );

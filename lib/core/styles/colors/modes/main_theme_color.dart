@@ -3,7 +3,7 @@ part of '../theme_color.dart';
 class MainThemeColor implements ThemeColor {
   @override
   Brightness get brightness => Brightness.light;
-  
+
   // ========= Primary colors
   @override
   Color get primary => const Color(0xFF5D87FF); // Warna utama aplikasi (sering digunakan di AppBar atau tombol utama)
@@ -43,7 +43,7 @@ class MainThemeColor implements ThemeColor {
   Color get secondaryFixed => secondaryContainer; // Variasi tetap dari secondary
 
   @override
-  Color get secondaryFixedDim => secondaryContainer.withValues( alpha: 0.8); // Versi redup dari secondaryFixed
+  Color get secondaryFixedDim => secondaryContainer.withValues(alpha: 0.8); // Versi redup dari secondaryFixed
 
   // ========= Tertiary colors
   @override
@@ -114,7 +114,7 @@ class MainThemeColor implements ThemeColor {
   @override
   Color get onErrorContainer => brightnessColor; // Warna teks atau ikon di atas errorContainer
 
-    // ========= Success colors
+  // ========= Success colors
   @override
   Color get success => const Color.fromARGB(255, 19, 222, 131); // Warna untuk status success
 
@@ -129,10 +129,10 @@ class MainThemeColor implements ThemeColor {
   Color get outlineVariant => lightGrey; // Varian garis batas untuk elemen tertentu
 
   @override
-  Color get shadow => onBrightnessColor.withValues(alpha: 0.1); // Warna bayangan elemen
+  Color get shadow => Colors.grey.shade300;
 
   @override
-  Color get scrim => onBrightnessColor.withValues( alpha: 0.5); // Warna overlay semi-transparan, contoh: background dialog
+  Color get scrim => Colors.grey.shade100; // Warna overlay semi-transparan, contoh: background dialog
 
   // ========= Background and neutral colors
   @override
@@ -148,6 +148,5 @@ class MainThemeColor implements ThemeColor {
   Color get onBrightnessColor => const Color(0xFF1D1D1F); // Warna hitam umum
 
   @override
-  Color get text => onBrightnessColor; // Warna teks umum
+  Color get text => onBrightnessColor;
 }
-
