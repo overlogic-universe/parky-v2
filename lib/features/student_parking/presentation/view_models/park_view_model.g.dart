@@ -6,7 +6,7 @@ part of 'park_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$parkViewModelHash() => r'b6c4788d4aa9e9f0e2443513147eae6ac3da6bbc';
+String _$parkViewModelHash() => r'b61e9828dbe7538e7fee280c31912f7ddc1a8a32';
 
 /// See also [ParkViewModel].
 @ProviderFor(ParkViewModel)

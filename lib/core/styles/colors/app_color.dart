@@ -50,4 +50,6 @@ class AppColor {
 
   static Color inputBackground(BuildContext context) => theme(context).primaryFixedDim;
 
+  static Color baseShimmerColor(BuildContext context) => theme(context).shadow;
+  static Color highlightShimmerColor(BuildContext context) => theme(context).scrim;
 }

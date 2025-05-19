@@ -1,14 +1,17 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'student_entity.freezed.dart';
-
-@freezed
-abstract class StudentEntity with _$StudentEntity {
-  const factory StudentEntity({
-    required String id,
-    required String nim,
-    required String name,
-    required String email,
-    @Default(null) String? password,
-  }) = _StudentEntity;
+class StudentEntity {
+  final String id;
+  final String qrCodeId;
+  final String nim;
+  final String name;
+  final String email;
+  final String? password;
+  
+  const StudentEntity({
+    required this.id,
+    required this.qrCodeId,
+    required this.nim,
+    required this.name,
+    required this.email,
+    this.password,
+  });
 }

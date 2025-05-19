@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../student_parking/core/di/student_parking_provider.dart';
@@ -24,10 +22,10 @@ class VehicleViewModel extends _$VehicleViewModel {
 
   Future<void> fetch() async {
     state = const AsyncLoading();
-    state = AsyncData(await _getVehicleBystudentId());
+    state = AsyncData(await _getVehicleByStudentId());
   }
 
-  Future<VehicleState> _getVehicleBystudentId() async {
+  Future<VehicleState> _getVehicleByStudentId() async {
     try {
       final result = await getVehicleByStudentIdUseCase();
 
@@ -39,8 +37,6 @@ class VehicleViewModel extends _$VehicleViewModel {
       }
       final currentState = state.value ?? const VehicleState();
       final newState = currentState.copyWith(vehicle: data);
-
-      log("VEHICLE DATA ${data.toString()}");
 
       state = AsyncData(newState);
       return newState;

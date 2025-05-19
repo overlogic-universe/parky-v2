@@ -19,4 +19,6 @@ class IconAssetConstant {
   static const String menu = "${basePath}menu.svg";
   static const String home = "${basePath}home.svg";
   static const String parkingBuilding = "${basePath}parking-building.svg";
+  static const String clock = "${basePath}clock.svg";
+  static const String vehicleInCount = "${basePath}vehicle-in-count.svg";
 }

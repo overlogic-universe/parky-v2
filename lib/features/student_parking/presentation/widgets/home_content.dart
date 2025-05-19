@@ -3,13 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/constants/common/margin_constant.dart';
-import '../../../../core/styles/colors/app_color.dart';
-import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/get_logo_asset_util.dart';
 import '../../../shared/core/utils/scroll_util.dart';
-import '../../../shared/presentation/view_models/init_view_model.dart';
 import '../../../shared/presentation/widgets/margin_bottom.dart';
-import '../../core/utils/home_util.dart';
+import 'home_greetings.dart';
 import 'park_card.dart';
 
 class HomeContent extends ConsumerStatefulWidget {
@@ -25,7 +22,7 @@ class _HomeContentState extends ConsumerState<HomeContent> {
   void initState() {
     super.initState();
     _scrollController = ScrollController();
-     Future.microtask(
+    Future.microtask(
       () => ScrollUtil.attachBottomNavbarVisibilityListener(
         controller: _scrollController,
         ref: ref,
@@ -35,7 +32,6 @@ class _HomeContentState extends ConsumerState<HomeContent> {
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(initViewModelProvider);
     return SingleChildScrollView(
       controller: _scrollController,
       child: Padding(
@@ -48,20 +44,7 @@ class _HomeContentState extends ConsumerState<HomeContent> {
             SafeArea(child: SizedBox(height: 10.h)),
             _buildAppLogo(),
             SizedBox(height: 40.h),
-            Text(
-              HomeUtil.getHomeGreeting(context),
-              style: AppFont.displaySmall(context),
-            ),
-            state.maybeWhen(
-              data:
-                  (data) => Text(
-                    HomeUtil.getMiddleName(data.student?.name ?? ""),
-                    style: AppFont.displayLarge(
-                      context,
-                    )?.copyWith(color: AppColor.primary(context)),
-                  ),
-              orElse: () => SizedBox.shrink(),
-            ),
+            HomeGreetings(),
             SizedBox(height: 30.h),
             ParkCard(),
             MarginBottom(),

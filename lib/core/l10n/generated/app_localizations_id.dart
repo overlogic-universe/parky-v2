@@ -41,10 +41,22 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get entryExitTime => 'Waktu Masuk/Keluar';
+  String get parkedDate => 'Tanggal Masuk';
+
+  @override
+  String get exitDate => 'Tanggal Keluar';
+
+  @override
+  String get parkedTime => 'Waktu Masuk';
+
+  @override
+  String get exitTime => 'Waktu Keluar';
 
   @override
   String get nim => 'NIM';
+
+  @override
+  String get parkingLot => 'Tempat Parkir';
 
   @override
   String get status => 'Status';
@@ -56,10 +68,19 @@ class AppLocalizationsId extends AppLocalizations {
   String get scanHere => 'PINDAI DI SINI';
 
   @override
-  String get parking => 'Sedang parkir';
+  String get parked => 'Sedang Parkir';
 
   @override
-  String get parked => 'Keluar';
+  String get exited => 'Keluar';
+
+  @override
+  String get parkingInfo => 'Informasi Parkiran';
+
+  @override
+  String get full => 'Penuh';
+
+  @override
+  String get viewLocation => 'Lihat Lokasi';
 
   @override
   String get setting => 'Pengaturan';
@@ -194,6 +215,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get getVehicleFailed => 'Gagal mendapatkan data kendaraan';
 
   @override
+  String get getParkingLotFailed => 'Gagal mendapatkan data tempat parkir';
+
+  @override
   String get loading => 'Memuat';
 
   @override
@@ -236,38 +260,23 @@ class AppLocalizationsId extends AppLocalizations {
   String get night => 'Malam';
 
   @override
-  String get january => 'Januari';
+  String get monday => 'Senin';
 
   @override
-  String get february => 'Februari';
+  String get tuesday => 'Selasa';
 
   @override
-  String get march => 'Maret';
+  String get wednesday => 'Rabu';
 
   @override
-  String get april => 'April';
+  String get thursday => 'Kamis';
 
   @override
-  String get may => 'Mei';
+  String get friday => 'Jumat';
 
   @override
-  String get june => 'Juni';
+  String get saturday => 'Sabtu';
 
   @override
-  String get july => 'Juli';
-
-  @override
-  String get august => 'Agustus';
-
-  @override
-  String get september => 'September';
-
-  @override
-  String get october => 'Oktober';
-
-  @override
-  String get november => 'November';
-
-  @override
-  String get december => 'Desember';
+  String get sunday => 'Minggu';
 }

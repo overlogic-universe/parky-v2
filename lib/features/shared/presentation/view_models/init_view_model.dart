@@ -42,7 +42,6 @@ class InitViewModel extends _$InitViewModel {
     final currentState = state.asData?.value;
     if (currentState == null) return;
 
-    // Set state ke loading jika kamu ingin tampilkan indikator loading:
     state = const AsyncLoading();
 
     try {

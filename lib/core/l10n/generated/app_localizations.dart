@@ -155,17 +155,41 @@ abstract class AppLocalizations {
   /// **'Selamat {time},'**
   String homeGreeting(Object time);
 
-  /// No description provided for @entryExitTime.
+  /// No description provided for @parkedDate.
   ///
   /// In id, this message translates to:
-  /// **'Waktu Masuk/Keluar'**
-  String get entryExitTime;
+  /// **'Tanggal Masuk'**
+  String get parkedDate;
+
+  /// No description provided for @exitDate.
+  ///
+  /// In id, this message translates to:
+  /// **'Tanggal Keluar'**
+  String get exitDate;
+
+  /// No description provided for @parkedTime.
+  ///
+  /// In id, this message translates to:
+  /// **'Waktu Masuk'**
+  String get parkedTime;
+
+  /// No description provided for @exitTime.
+  ///
+  /// In id, this message translates to:
+  /// **'Waktu Keluar'**
+  String get exitTime;
 
   /// No description provided for @nim.
   ///
   /// In id, this message translates to:
   /// **'NIM'**
   String get nim;
+
+  /// No description provided for @parkingLot.
+  ///
+  /// In id, this message translates to:
+  /// **'Tempat Parkir'**
+  String get parkingLot;
 
   /// No description provided for @status.
   ///
@@ -185,17 +209,35 @@ abstract class AppLocalizations {
   /// **'PINDAI DI SINI'**
   String get scanHere;
 
-  /// No description provided for @parking.
-  ///
-  /// In id, this message translates to:
-  /// **'Sedang parkir'**
-  String get parking;
-
   /// No description provided for @parked.
   ///
   /// In id, this message translates to:
-  /// **'Keluar'**
+  /// **'Sedang Parkir'**
   String get parked;
+
+  /// No description provided for @exited.
+  ///
+  /// In id, this message translates to:
+  /// **'Keluar'**
+  String get exited;
+
+  /// No description provided for @parkingInfo.
+  ///
+  /// In id, this message translates to:
+  /// **'Informasi Parkiran'**
+  String get parkingInfo;
+
+  /// No description provided for @full.
+  ///
+  /// In id, this message translates to:
+  /// **'Penuh'**
+  String get full;
+
+  /// No description provided for @viewLocation.
+  ///
+  /// In id, this message translates to:
+  /// **'Lihat Lokasi'**
+  String get viewLocation;
 
   /// No description provided for @setting.
   ///
@@ -449,6 +491,12 @@ abstract class AppLocalizations {
   /// **'Gagal mendapatkan data kendaraan'**
   String get getVehicleFailed;
 
+  /// No description provided for @getParkingLotFailed.
+  ///
+  /// In id, this message translates to:
+  /// **'Gagal mendapatkan data tempat parkir'**
+  String get getParkingLotFailed;
+
   /// No description provided for @loading.
   ///
   /// In id, this message translates to:
@@ -533,77 +581,47 @@ abstract class AppLocalizations {
   /// **'Malam'**
   String get night;
 
-  /// No description provided for @january.
+  /// No description provided for @monday.
   ///
   /// In id, this message translates to:
-  /// **'Januari'**
-  String get january;
+  /// **'Senin'**
+  String get monday;
 
-  /// No description provided for @february.
+  /// No description provided for @tuesday.
   ///
   /// In id, this message translates to:
-  /// **'Februari'**
-  String get february;
+  /// **'Selasa'**
+  String get tuesday;
 
-  /// No description provided for @march.
+  /// No description provided for @wednesday.
   ///
   /// In id, this message translates to:
-  /// **'Maret'**
-  String get march;
+  /// **'Rabu'**
+  String get wednesday;
 
-  /// No description provided for @april.
+  /// No description provided for @thursday.
   ///
   /// In id, this message translates to:
-  /// **'April'**
-  String get april;
+  /// **'Kamis'**
+  String get thursday;
 
-  /// No description provided for @may.
+  /// No description provided for @friday.
   ///
   /// In id, this message translates to:
-  /// **'Mei'**
-  String get may;
+  /// **'Jumat'**
+  String get friday;
 
-  /// No description provided for @june.
+  /// No description provided for @saturday.
   ///
   /// In id, this message translates to:
-  /// **'Juni'**
-  String get june;
+  /// **'Sabtu'**
+  String get saturday;
 
-  /// No description provided for @july.
+  /// No description provided for @sunday.
   ///
   /// In id, this message translates to:
-  /// **'Juli'**
-  String get july;
-
-  /// No description provided for @august.
-  ///
-  /// In id, this message translates to:
-  /// **'Agustus'**
-  String get august;
-
-  /// No description provided for @september.
-  ///
-  /// In id, this message translates to:
-  /// **'September'**
-  String get september;
-
-  /// No description provided for @october.
-  ///
-  /// In id, this message translates to:
-  /// **'Oktober'**
-  String get october;
-
-  /// No description provided for @november.
-  ///
-  /// In id, this message translates to:
-  /// **'November'**
-  String get november;
-
-  /// No description provided for @december.
-  ///
-  /// In id, this message translates to:
-  /// **'Desember'**
-  String get december;
+  /// **'Minggu'**
+  String get sunday;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

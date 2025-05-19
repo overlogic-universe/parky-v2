@@ -7,6 +7,7 @@ extension StudentModelToEntity on StudentModel {
       id: id,
       nim: nim,
       name: name,
+      qrCodeId: qrCodeId,
       email: email,
       password: password,
     );
@@ -18,6 +19,7 @@ extension StudentEntityToModel on StudentEntity {
     return StudentModel(
       id: id,
       nim: nim,
+      qrCodeId: qrCodeId,
       name: name,
       email: email,
       password: password,

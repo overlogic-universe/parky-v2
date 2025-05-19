@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../parking_building/presentation/pages/parking_building_tab.dart';
+import '../../../parking_lot/presentation/pages/parking_lot_tab.dart';
 import '../../../setting/presentation/pages/setting_tab.dart';
 import '../../../student_parking/presentation/pages/home_tab.dart';
 import '../view_models/bottom_navbar_view_model.dart';
@@ -21,7 +21,7 @@ class _TabBarViewWidgetState extends ConsumerState<TabBarViewWidget>
   @override
   void initState() {
     super.initState();
-    _tabs = [HomeTab(), ParkingBuildingTab(), SettingTab()];
+    _tabs = [HomeTab(), ParkingLotTab(), SettingTab()];
     _tabController = TabController(length: _tabs.length, vsync: this);
   }
 

@@ -35,6 +35,10 @@ class StudentParkingException implements Exception {
         return StudentParkingExceptionMessageConstant.vehicleNotFound(
           studentId ?? "-",
         );
+      case StudentParkingFailureType.paringkLotNotFound:
+       return StudentParkingExceptionMessageConstant.parkingLotNotFound(
+          studentId ?? "-",
+        );
     }
   }
 }

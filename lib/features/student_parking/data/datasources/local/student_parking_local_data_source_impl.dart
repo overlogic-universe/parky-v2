@@ -1,26 +1,27 @@
 import 'package:sqflite/sqflite.dart';
 
+import '../../../../parking_lot/data/models/parking_lot_model.dart';
 import '../../../../student_parking/core/constant/failures/student_parking_exception_message_constant.dart';
 import '../../../../student_parking/core/failures/student_parking_exception.dart';
 import '../../../../student_parking/core/failures/student_parking_failure_type.dart';
-import '../../models/park_model.dart';
-import '../../models/vehicle_mode.dart';
 import '../../../../student_parking/data/datasources/local/student_parking_local_data_source.dart';
+import '../../models/parking_history_model.dart';
+import '../../models/vehicle_model.dart';
 
-class StudentParkingLocalDataSourceImpl
-    implements StudentParkingLocalDataSource {
+class StudentParkingLocalDataSourceImpl implements StudentParkingLocalDataSource {
   final Database sqfliteDatabase;
 
-  StudentParkingLocalDataSourceImpl({required this.sqfliteDatabase});
+  const StudentParkingLocalDataSourceImpl({required this.sqfliteDatabase});
 
-  static const String _parkTable = "parks";
+  static const String _parkingHistoryTable = "parking_histories";
   static const String _vehicleTable = "vehicles";
+  static const String _parkingLotTable = "parking_lots";
   static const String _notFoundMessage = "Not found from database";
 
   @override
-  Future<ParkModel?> getParkModel() async {
+  Future<ParkingHistoryModel?> getParkingHistoryModel() async {
     final List<Map<String, dynamic>> result = await sqfliteDatabase.query(
-      _parkTable,
+      _parkingHistoryTable,
       limit: 1,
     );
 
@@ -28,7 +29,7 @@ class StudentParkingLocalDataSourceImpl
 
     final data = result.first;
 
-    return ParkModel.fromJson(data);
+    return ParkingHistoryModel.fromJson(data);
   }
 
   @override
@@ -46,16 +47,16 @@ class StudentParkingLocalDataSourceImpl
   }
 
   @override
-  Future<void> saveParkModel(ParkModel? parkModel) async {
-    if (parkModel == null) {
+  Future<void> saveParkingHistoryModel(ParkingHistoryModel? parkingHistoryModel) async {
+    if (parkingHistoryModel == null) {
       throw StudentParkingException(
-        studentId: parkModel?.studentId,
         type: StudentParkingFailureType.parkNotFound,
       );
     }
+
     await sqfliteDatabase.insert(
-      _parkTable,
-      parkModel.toJson(),
+      _parkingHistoryTable,
+      parkingHistoryModel.toJson(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
@@ -70,10 +71,43 @@ class StudentParkingLocalDataSourceImpl
         type: StudentParkingFailureType.vehicleNotFound,
       );
     }
+
     await sqfliteDatabase.insert(
       _vehicleTable,
       vehicleModel.toJson(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+  }
+
+  @override
+  Future<void> saveParkingLotModel(ParkingLotModel? parkingLotModel) async {
+    if (parkingLotModel == null) {
+      throw StudentParkingException(
+        message: StudentParkingExceptionMessageConstant.parkingLotNotFound(
+          _notFoundMessage,
+        ),
+        type: StudentParkingFailureType.paringkLotNotFound,
+      );
+    }
+
+    await sqfliteDatabase.insert(
+      _parkingLotTable,
+      parkingLotModel.toJson(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  @override
+  Future<ParkingLotModel?> getParkingLotModel() async {
+    final List<Map<String, dynamic>> result = await sqfliteDatabase.query(
+      _parkingLotTable,
+      limit: 1,
+    );
+
+    if (result.isEmpty) return null;
+
+    final data = result.first;
+
+    return ParkingLotModel.fromJson(data);
   }
 }

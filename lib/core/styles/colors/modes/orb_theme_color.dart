@@ -129,10 +129,10 @@ class OrbThemeColor implements ThemeColor {
   Color get outlineVariant => lightGrey; // Varian garis batas untuk elemen tertentu
 
   @override
-  Color get shadow => onBrightnessColor.withValues(alpha: 0.1); // Warna bayangan elemen
+  Color get shadow => Colors.grey.shade900;
 
   @override
-  Color get scrim => onBrightnessColor.withValues(alpha: 0.5); // Warna overlay semi-transparan, contoh: background dialog
+  Color get scrim => Colors.grey.shade700; // Warna overlay semi-transparan, contoh: background dialog
 
   // ========= Background and neutral colors
   @override

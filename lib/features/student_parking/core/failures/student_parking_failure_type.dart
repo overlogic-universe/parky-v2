@@ -1,1 +1,1 @@
-enum StudentParkingFailureType { parkNotFound, vehicleNotFound }
+enum StudentParkingFailureType { parkNotFound, vehicleNotFound, paringkLotNotFound }

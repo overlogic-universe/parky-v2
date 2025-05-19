@@ -1,45 +1,63 @@
-import 'dart:developer';
-
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../student_parking/core/di/student_parking_provider.dart';
-import '../../core/extensions/student_parking_data_mapper_extension.dart';
 import '../../../student_parking/core/failures/student_parking_exception.dart';
 import '../../../student_parking/core/failures/student_parking_failure_type.dart';
-import '../../domain/usecases/get_park_by_student_id_use_case.dart';
+import '../../core/extensions/student_parking_data_mapper_extension.dart';
+import '../../domain/usecases/get_current_park_history_by_student_id_use_case.dart';
+import '../../domain/usecases/get_current_parking_lot_by_student_id_use_case.dart';
 import 'park_state.dart';
 
 part 'park_view_model.g.dart';
 
 @Riverpod(keepAlive: true)
 class ParkViewModel extends _$ParkViewModel {
-  late final GetParkByStudentIdUseCase getParkByStudentIdUseCase;
+  late final GetCurrentParkingHistoryByStudentIdUseCase
+  getCurrentParkingHistoryByStudentIdUseCase;
+  late final GetCurrentParkingLotByStudentIdUseCase
+  getCurrentParkingLotByStudentIdUseCase;
 
   @override
   Future<ParkState> build() async {
-    getParkByStudentIdUseCase = ref.watch(getParkByStudentIdUseCaseProvider);
+    getCurrentParkingHistoryByStudentIdUseCase = ref.watch(
+      getCurrentParkingHistoryByStudentIdUseCaseProvider,
+    );
+    getCurrentParkingLotByStudentIdUseCase = ref.watch(
+      getCurrentParkingLotByStudentIdUseCaseProvider,
+    );
     return const ParkState();
   }
 
   Future<void> fetch() async {
     state = const AsyncLoading();
-    state = AsyncData(await _getParkBystudentId());
+    state = AsyncData(await _getParkHistoryByStudentId());
   }
 
-  Future<ParkState> _getParkBystudentId() async {
+  Future<ParkState> _getParkHistoryByStudentId() async {
     try {
-      final result = await getParkByStudentIdUseCase();
+      final currentParkingHistoryResult =
+          await getCurrentParkingHistoryByStudentIdUseCase();
+      final currentParkingLotResult =
+          await getCurrentParkingLotByStudentIdUseCase();
 
-      final data = result.data;
-      if (data == null) {
+      final currentParkingHistoryData = currentParkingHistoryResult.data;
+      final currentParkingLotData = currentParkingLotResult.data;
+      if (currentParkingHistoryData == null) {
         throw StudentParkingException(
           type: StudentParkingFailureType.parkNotFound,
         );
       }
-      final currentState = state.value ?? const ParkState();
-      final newState = currentState.copyWith(parkUiModel: data.toUiModel());
+      if (currentParkingLotData == null) {
+        throw StudentParkingException(
+          type: StudentParkingFailureType.paringkLotNotFound,
+        );
+      }
 
-      log("PARK DATA ${data.toUiModel().toString()}");
+      final currentState = state.value ?? const ParkState();
+      final newState = currentState.copyWith(
+        currentParkingHistory: currentParkingHistoryData.toUiModel(),
+        currentParkingLot: currentParkingLotData,
+      );
 
       state = AsyncData(newState);
       return newState;
@@ -51,6 +69,6 @@ class ParkViewModel extends _$ParkViewModel {
 
   Future<void> refresh() async {
     state = const AsyncLoading();
-    state = AsyncData(await _getParkBystudentId());
+    state = AsyncData(await _getParkHistoryByStudentId());
   }
 }

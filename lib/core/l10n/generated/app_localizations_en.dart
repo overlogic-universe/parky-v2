@@ -41,10 +41,22 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get entryExitTime => 'Entry/Exit Time';
+  String get parkedDate => 'Parked Date';
+
+  @override
+  String get exitDate => 'Exit Date';
+
+  @override
+  String get parkedTime => 'Parked Time';
+
+  @override
+  String get exitTime => 'Exit Time';
 
   @override
   String get nim => 'NIM';
+
+  @override
+  String get parkingLot => 'Parking Lot';
 
   @override
   String get status => 'Status';
@@ -56,10 +68,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get scanHere => 'SCAN HERE';
 
   @override
-  String get parking => 'Parking';
+  String get parked => 'Parked';
 
   @override
-  String get parked => 'Parked';
+  String get exited => 'Exited';
+
+  @override
+  String get parkingInfo => 'Parking Info';
+
+  @override
+  String get full => 'Full';
+
+  @override
+  String get viewLocation => 'View Location';
 
   @override
   String get setting => 'Setting';
@@ -194,6 +215,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get getVehicleFailed => 'Failed to retrieve vehicle data';
 
   @override
+  String get getParkingLotFailed => 'Failed to retrieve parking lot data';
+
+  @override
   String get loading => 'Loading';
 
   @override
@@ -236,38 +260,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get night => 'Night';
 
   @override
-  String get january => 'January';
+  String get monday => 'Monday';
 
   @override
-  String get february => 'February';
+  String get tuesday => 'Tuesday';
 
   @override
-  String get march => 'March';
+  String get wednesday => 'Wednesday';
 
   @override
-  String get april => 'April';
+  String get thursday => 'Thursday';
 
   @override
-  String get may => 'May';
+  String get friday => 'Friday';
 
   @override
-  String get june => 'June';
+  String get saturday => 'Saturday';
 
   @override
-  String get july => 'July';
-
-  @override
-  String get august => 'August';
-
-  @override
-  String get september => 'September';
-
-  @override
-  String get october => 'October';
-
-  @override
-  String get november => 'November';
-
-  @override
-  String get december => 'December';
+  String get sunday => 'Sunday';
 }
