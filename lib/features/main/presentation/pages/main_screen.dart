@@ -30,8 +30,8 @@ class _MainScreenState extends ConsumerState<MainScreen> {
       ref.read(initViewModelProvider.notifier).getStudentEntity();
     }
 
-    ref.read(parkViewModelProvider.notifier).fetch();
-    ref.read(vehicleViewModelProvider.notifier).fetch();
+    ref.read(parkViewModelProvider.notifier).refresh();
+    ref.read(vehicleViewModelProvider.notifier).refresh();
   }
 
   @override

@@ -11,20 +11,27 @@ class ParkingLotLocalDataSourceImpl implements ParkingLotLocalDataSource {
 
   static const String _parkingLotTable = "parking_lots";
 
-@override
+  @override
   Future<void> saveParkingLotModelList(List<ParkingLotModel>? models) async {
-  if (models == null) {
-    // TODO: ADD CUSTOM EXCEPTION
+    if (models == null) return;
 
-      return;
-      // throw StudentParkingException(
-      //   message: StudentParkingExceptionMessageConstant.parkingLotHasScheduleNotFound(
-      //     _notFoundMessage,
-      //   ),
-      //   type: StudentParkingFailureType.parkingLotHasScheduleNotFound,
-      // );
-    }
+    final existingRows = await sqfliteDatabase.query(_parkingLotTable);
+    final existingIds = existingRows.map((e) => e['id'] as String).toSet();
+    final incomingIds = models.map((e) => e.id).toSet();
+
     final batch = sqfliteDatabase.batch();
+
+    // Hapus data yang ada di database tapi tidak ada di data baru
+    final idsToDelete = existingIds.difference(incomingIds);
+    if (idsToDelete.isNotEmpty) {
+      batch.delete(
+        _parkingLotTable,
+        where: 'id IN (${List.filled(idsToDelete.length, '?').join(',')})',
+        whereArgs: idsToDelete.toList(),
+      );
+    }
+
+    // Simpan (replace) semua data baru
     for (final model in models) {
       batch.insert(
         _parkingLotTable,
@@ -37,15 +44,17 @@ class ParkingLotLocalDataSourceImpl implements ParkingLotLocalDataSource {
   }
 
   @override
-  Future<List<ParkingLotModel>> getParkingLotListByParkingLotHasParkingScheduleId(
+  Future<List<ParkingLotModel>>
+  getParkingLotListByParkingLotHasParkingScheduleId(
     List<ParkingLotHasParkingScheduleModel> parkingLotHasParkingScheduleList,
   ) async {
     if (parkingLotHasParkingScheduleList.isEmpty) return [];
 
-    final parkingLotIds = parkingLotHasParkingScheduleList
-        .map((e) => e.parkingLotId)
-        .toSet()
-        .toList();
+    final parkingLotIds =
+        parkingLotHasParkingScheduleList
+            .map((e) => e.parkingLotId)
+            .toSet()
+            .toList();
 
     final result = await sqfliteDatabase.query(
       _parkingLotTable,

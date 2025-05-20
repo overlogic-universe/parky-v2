@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:sqflite/sqflite.dart';
 
 import '../../models/parking_lots_has_parking_schedules_model.dart';
@@ -18,13 +20,29 @@ class ParkingLotHasParkingScheduleLocalDataSourceImpl
   Future<void> saveParkingLotHasParkingScheduleModelList(
     List<ParkingLotHasParkingScheduleModel>? models,
   ) async {
-    if (models == null) {
-      // TODO: ADD EXCEPTION
-      return;
-    }
+    log("MODELLL: $models");
+
+    if (models == null) return;
+
+    final existingRows = await sqfliteDatabase.query(_junctionTable);
+    final existingIds = existingRows.map((e) => e['id'] as String).toSet();
+    final incomingIds = models.map((e) => e.id).toSet();
+
     final batch = sqfliteDatabase.batch();
 
+    // Hapus yang tidak ada di data baru
+    final idsToDelete = existingIds.difference(incomingIds);
+    if (idsToDelete.isNotEmpty) {
+      batch.delete(
+        _junctionTable,
+        where: 'id IN (${List.filled(idsToDelete.length, '?').join(',')})',
+        whereArgs: idsToDelete.toList(),
+      );
+    }
+
+    // Simpan (replace) semua data baru
     for (final model in models) {
+      log("MODELLL: $model");
       batch.insert(
         _junctionTable,
         model.toJson(),

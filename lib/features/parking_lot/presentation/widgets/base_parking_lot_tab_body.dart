@@ -10,20 +10,28 @@ import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/lang.dart';
 import '../../../shared/presentation/widgets/svg_asset.dart';
 import '../../domain/entities/parking_lot_schedule_entity.dart';
+import '../view_models/parking_lot_view_model.dart';
 
 class BaseParkingLotTabBody extends ConsumerWidget {
   final List<ParkingLotScheduleEntity> parkingLotScheduleList;
+  final bool isToday;
   const BaseParkingLotTabBody({
     super.key,
     required this.parkingLotScheduleList,
+    this.isToday = false,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ListView.separated(
-      itemCount: parkingLotScheduleList.length,
-      separatorBuilder: (context, index) => SizedBox(height: 10.h),
-      itemBuilder: (context, index) => _buildCard(context, ref, index),
+    return RefreshIndicator(
+      onRefresh:
+          () => ref.read(parkingLotViewModelProvider.notifier).refreshAll(),
+      child: ListView.separated(
+        physics: AlwaysScrollableScrollPhysics(),
+        itemCount: parkingLotScheduleList.length,
+        separatorBuilder: (context, index) => SizedBox(height: 10.h),
+        itemBuilder: (context, index) => _buildCard(context, ref, index),
+      ),
     );
   }
 
@@ -79,17 +87,19 @@ class BaseParkingLotTabBody extends ConsumerWidget {
                           "${parkingSchedule.openTime} - ${parkingSchedule.closedTime} WIB",
                     ),
                     SizedBox(height: 5.h),
-                    _buildParkingLotDetailInfo(
-                      context,
-                      icon: IconAssetConstant.vehicleInCount,
-                      description:
-                          "${parkingLot.vehicleInCount}/${parkingLot.maxCapacity}",
-                    ),
+                    if (isToday) ...[
+                      _buildParkingLotDetailInfo(
+                        context,
+                        icon: IconAssetConstant.vehicleInCount,
+                        description:
+                            "${parkingLot.vehicleInCount}/${parkingLot.maxCapacity}",
+                      ),
+                    ],
                     SizedBox(height: 10.h),
                   ],
                 ),
               ),
-              isFull
+              isToday && isFull
                   ? Container(
                     padding: EdgeInsets.symmetric(
                       vertical: 8.h,

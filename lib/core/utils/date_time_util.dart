@@ -10,4 +10,16 @@ class DateTimeUtil {
     if (dateTime == null) return null;
     return DateFormat('d MMM yyyy', 'id_ID').format(dateTime);
   }
+
+  static bool isToday(String? dayNameEnglish) {
+    if (dayNameEnglish == null) return false;
+
+    final now = DateTime.now();
+    final todayName = DateFormat(
+      'EEEE',
+      'en_US',
+    ).format(now);
+
+    return dayNameEnglish.toLowerCase() == todayName.toLowerCase();
+  }
 }

@@ -29,6 +29,8 @@ extension QueryX on Query {
       where('parking_schedule_id', isEqualTo: parkingScheduleId);
   Query whereIsEqualToDayOfWeek(Object? dayOfWeek) =>
       where('day_of_week', isEqualTo: dayOfWeek);
+  Query whereIsNotClosed() =>
+      where('is_closed', isEqualTo: false);
 
   Query orderByCreatedAt({required bool descending}) =>
       orderBy('created_at', descending: descending);

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:sqflite/sqflite.dart';
 
 import '../../models/parking_schedule_model.dart';
@@ -28,13 +30,35 @@ class ParkingScheduleLocalDataSourceImpl
   Future<void> saveParkingScheduleModelList(
     List<ParkingScheduleModel>? modelList,
   ) async {
+    log("MODELLL: $modelList");
+
+    if (modelList == null) return;
+
+    final existingRows = await sqfliteDatabase.query(_parkingScheduleTable);
+    log("MODELLL: existingRows $existingRows");
+    final existingIds = existingRows.map((e) => e['id'] as String).toSet();
+    log("MODELLL: existingIds $existingIds");
+    final incomingIds = modelList.map((e) => e.id).toSet();
+    log("MODELLL: incomingIds $incomingIds");
+
     final batch = sqfliteDatabase.batch();
-    if (modelList == null) {
-      // TODO: ADD EXCEPTION
-      return;
+    log("MODELLL: batch $batch");
+
+    // Hapus data yang tidak ada di data baru
+    final idsToDelete = existingIds.difference(incomingIds);
+    log("MODELLL: idsToDelete $idsToDelete");
+    if (idsToDelete.isNotEmpty) {
+      batch.delete(
+        _parkingScheduleTable,
+        where: 'id IN (${List.filled(idsToDelete.length, '?').join(',')})',
+        whereArgs: idsToDelete.toList(),
+      );
     }
 
+    // Replace semua data baru
     for (final model in modelList) {
+      log("MODELLL MENNN: $model");
+
       batch.insert(
         _parkingScheduleTable,
         model.toJson(),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:parky/features/shared/presentation/view_models/init_view_model.dart';
+import 'package:parky/features/student_parking/presentation/view_models/park_view_model.dart';
+import 'package:parky/features/student_parking/presentation/view_models/vehicle_view_model.dart';
 
 import '../../../../core/constants/common/margin_constant.dart';
 import '../../../../core/utils/get_logo_asset_util.dart';
@@ -31,24 +34,40 @@ class _HomeContentState extends ConsumerState<HomeContent> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _scrollController.dispose();
+  }
+
+  Future<void> _onRefresh() async {
+    await ref.read(initViewModelProvider.notifier).getStudentEntity();
+    await ref.read(parkViewModelProvider.notifier).refresh();
+    await ref.read(vehicleViewModelProvider.notifier).refresh();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      controller: _scrollController,
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: MarginConstant.horizontalScreen.w,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SafeArea(child: SizedBox(height: 10.h)),
-            _buildAppLogo(),
-            SizedBox(height: 40.h),
-            HomeGreetings(),
-            SizedBox(height: 30.h),
-            ParkCard(),
-            MarginBottom(),
-          ],
+    return RefreshIndicator(
+      onRefresh: () => _onRefresh(),
+      child: SingleChildScrollView(
+        physics: AlwaysScrollableScrollPhysics(),
+        controller: _scrollController,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: MarginConstant.horizontalScreen.w,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SafeArea(child: SizedBox(height: 10.h)),
+              _buildAppLogo(),
+              SizedBox(height: 40.h),
+              HomeGreetings(),
+              SizedBox(height: 30.h),
+              ParkCard(),
+              MarginBottom(),
+            ],
+          ),
         ),
       ),
     );
