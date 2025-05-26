@@ -134,6 +134,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noData => 'No data';
 
   @override
+  String get noScheduleToday => 'No schedule today';
+
+  @override
   String get login => 'Login';
 
   @override

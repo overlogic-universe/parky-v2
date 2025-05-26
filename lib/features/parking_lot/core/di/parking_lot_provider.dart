@@ -38,11 +38,11 @@ final parkingScheduleLocalDataSourceProvider =
       );
     });
 
-final parkingLotHasParkingScheduleLocalDataSourceProvider =
-    Provider<ParkingLotHasParkingScheduleLocalDataSource>((ref) {
+final parkingAssignmentLocalDataSourceProvider =
+    Provider<ParkingAssignmentLocalDataSource>((ref) {
       final sqfliteDatabase = ref.watch(sqfliteDatabaseProvider);
 
-      return ParkingLotHasParkingScheduleLocalDataSourceImpl(
+      return ParkingAssignmentLocalDataSourceImpl(
         sqfliteDatabase: sqfliteDatabase,
       );
     });
@@ -60,12 +60,10 @@ final parkingScheduleRemoteDataSourceProvider =
       return ParkingScheduleRemoteDataSourceImpl(firestore: firestore);
     });
 
-final parkingLotHasParkingScheduleRemoteDataSourceProvider =
-    Provider<ParkingLotHasParkingScheduleRemoteDataSource>((ref) {
+final parkingAssignmentRemoteDataSourceProvider =
+    Provider<ParkingAssignmentRemoteDataSource>((ref) {
       final firestore = ref.watch(firestoreProvider);
-      return ParkingLotHasParkingScheduleRemoteDataSourceImpl(
-        firestore: firestore,
-      );
+      return ParkingAssignmentRemoteDataSourceImpl(firestore: firestore);
     });
 
 final parkingLotRepositoryProvider = Provider<ParkingLotRepository>((ref) {
@@ -100,18 +98,18 @@ final parkingScheduleRepositoryProvider = Provider<ParkingScheduleRepository>((
   );
 });
 
-final parkingLotHasParkingScheduleRepositoryProvider =
-    Provider<ParkingLotHasParkingScheduleRepository>((ref) {
-      final parkingLotHasParkingScheduleLocalDataSource = ref.watch(
-        parkingLotHasParkingScheduleLocalDataSourceProvider,
+final parkingAssignmentRepositoryProvider =
+    Provider<ParkingAssignmentRepository>((ref) {
+      final parkingAssignmentLocalDataSource = ref.watch(
+        parkingAssignmentLocalDataSourceProvider,
       );
-      final parkingLotHasParkingScheduleRemoteDataSource = ref.watch(
-        parkingLotHasParkingScheduleRemoteDataSourceProvider,
+      final parkingAssignmentRemoteDataSource = ref.watch(
+        parkingAssignmentRemoteDataSourceProvider,
       );
       final networkInfo = ref.watch(networkInfoProvider);
-      return ParkingLotHasParkingScheduleRepositoryImpl(
-        localDataSource: parkingLotHasParkingScheduleLocalDataSource,
-        remoteDataSource: parkingLotHasParkingScheduleRemoteDataSource,
+      return ParkingAssignmentRepositoryImpl(
+        localDataSource: parkingAssignmentLocalDataSource,
+        remoteDataSource: parkingAssignmentRemoteDataSource,
         networkInfo: networkInfo,
       );
     });
@@ -122,13 +120,12 @@ final getParkingScheduleListByDayUseCaseProvider =
       final parkingScheduleRepository = ref.watch(
         parkingScheduleRepositoryProvider,
       );
-      final parkingLotHasParkingScheduleRepository = ref.watch(
-        parkingLotHasParkingScheduleRepositoryProvider,
+      final parkingAssignmentRepository = ref.watch(
+        parkingAssignmentRepositoryProvider,
       );
       return GetParkingScheduleListByDayUseCase(
         parkingLotRepository: parkingLotRepository,
         parkingScheduleRepository: parkingScheduleRepository,
-        parkingLotHasParkingScheduleRepository:
-            parkingLotHasParkingScheduleRepository,
+        parkingAssignmentRepository: parkingAssignmentRepository,
       );
     });

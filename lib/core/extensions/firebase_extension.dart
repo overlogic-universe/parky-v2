@@ -10,8 +10,8 @@ extension FirestoreX on FirebaseFirestore {
   CollectionReference get parkingLotsCollection => collection('parking_lots');
   CollectionReference get parkingSchedulesCollection =>
       collection('parking_schedules');
-  CollectionReference get parkingLotsHasParkingSchedulesCollection =>
-      collection('parking_lots_has_parking_schedules');
+  CollectionReference get parkingAssignmentsCollection =>
+      collection('parking_assignments');
   CollectionReference get parkingLotsHasParkingAttendantsCollection =>
       collection('parking_lots_has_parking_attendants');
   CollectionReference get parkingAttendantsCollection =>
@@ -29,9 +29,11 @@ extension QueryX on Query {
       where('parking_schedule_id', isEqualTo: parkingScheduleId);
   Query whereIsEqualToDayOfWeek(Object? dayOfWeek) =>
       where('day_of_week', isEqualTo: dayOfWeek);
-
+  Query whereIsNotClosed() => where('is_closed', isEqualTo: false);
   Query orderByCreatedAt({required bool descending}) =>
       orderBy('created_at', descending: descending);
+  Query orderByUpdatedAt({required bool descending}) =>
+      orderBy('updated_at', descending: descending);
 
   Query whereParkingScheduleIdIn(List<Object?> scheduleIds) {
     return where('parking_schedule_id', whereIn: scheduleIds);

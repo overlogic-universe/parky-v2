@@ -39,6 +39,11 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
     if (student == null) {
       throw AuthException(type: AuthFailureType.studentNotFound);
     }
+
+    // Hapus semua data lama
+    await sqfliteDatabase.delete(_studentTable);
+
+    // Simpan data student baru
     await sqfliteDatabase.insert(
       _studentTable,
       student.toJson(),

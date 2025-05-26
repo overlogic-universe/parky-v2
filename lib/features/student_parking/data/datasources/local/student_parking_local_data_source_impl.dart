@@ -8,7 +8,8 @@ import '../../../../student_parking/data/datasources/local/student_parking_local
 import '../../models/parking_history_model.dart';
 import '../../models/vehicle_model.dart';
 
-class StudentParkingLocalDataSourceImpl implements StudentParkingLocalDataSource {
+class StudentParkingLocalDataSourceImpl
+    implements StudentParkingLocalDataSource {
   final Database sqfliteDatabase;
 
   const StudentParkingLocalDataSourceImpl({required this.sqfliteDatabase});
@@ -47,18 +48,28 @@ class StudentParkingLocalDataSourceImpl implements StudentParkingLocalDataSource
   }
 
   @override
-  Future<void> saveParkingHistoryModel(ParkingHistoryModel? parkingHistoryModel) async {
+  Future<void> saveParkingHistoryModel(
+    ParkingHistoryModel? parkingHistoryModel,
+  ) async {
     if (parkingHistoryModel == null) {
       throw StudentParkingException(
         type: StudentParkingFailureType.parkNotFound,
       );
     }
 
-    await sqfliteDatabase.insert(
+    final batch = sqfliteDatabase.batch();
+
+    // Hapus semua dulu
+    batch.delete(_parkingHistoryTable);
+
+    // Simpan data baru
+    batch.insert(
       _parkingHistoryTable,
       parkingHistoryModel.toJson(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+
+    await batch.commit(noResult: true);
   }
 
   @override
@@ -72,11 +83,19 @@ class StudentParkingLocalDataSourceImpl implements StudentParkingLocalDataSource
       );
     }
 
-    await sqfliteDatabase.insert(
+    final batch = sqfliteDatabase.batch();
+
+    // Hapus semua dulu
+    batch.delete(_vehicleTable);
+
+    // Simpan data baru
+    batch.insert(
       _vehicleTable,
       vehicleModel.toJson(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+
+    await batch.commit(noResult: true);
   }
 
   @override
@@ -90,11 +109,19 @@ class StudentParkingLocalDataSourceImpl implements StudentParkingLocalDataSource
       );
     }
 
-    await sqfliteDatabase.insert(
+    final batch = sqfliteDatabase.batch();
+
+    // Hapus semua dulu
+    batch.delete(_parkingLotTable);
+
+    // Simpan data baru
+    batch.insert(
       _parkingLotTable,
       parkingLotModel.toJson(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+
+    await batch.commit(noResult: true);
   }
 
   @override

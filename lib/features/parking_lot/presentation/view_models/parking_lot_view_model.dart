@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../core/di/parking_lot_provider.dart';
@@ -36,12 +38,19 @@ class ParkingLotViewModel extends _$ParkingLotViewModel {
 
       for (final day in WeekDay.values) {
         final list = await getParkingScheduleListByDayUseCase(day: day);
+        log("DATAAAAA: ${list}, ${day}");
+
         parkingLotScheduleMap[day] = list;
+        log("DATAAAAA: ${parkingLotScheduleMap[day]}");
       }
+      log(
+        "Final Map: ${parkingLotScheduleMap.map((k, v) => MapEntry(k.name, v.toString()))}",
+      );
 
       return ParkingLotState(parkingLotScheduleMap: parkingLotScheduleMap);
     } catch (e, st) {
       state = AsyncError(e, st);
+      log("ERRRORRRRR: ${e}, STTTT: ${st}");
       return const ParkingLotState(parkingLotScheduleMap: {});
     }
   }

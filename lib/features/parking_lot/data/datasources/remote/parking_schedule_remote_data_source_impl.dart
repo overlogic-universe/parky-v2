@@ -16,7 +16,7 @@ class ParkingScheduleRemoteDataSourceImpl
 
     final scheduleSnapshot =
         await firestore.parkingSchedulesCollection
-            .whereIsEqualToDayOfWeek(day)
+            .whereIsEqualToDayOfWeek(day).whereIsNotClosed()
             .get();
 
     return scheduleSnapshot.docs

@@ -11,5 +11,7 @@ abstract class ParkingHistoryUiModel with _$ParkingHistoryUiModel {
     required ParkStatus? status,
     required String? lastActivityTime,
     required String? lastActivityDay,
+    required DateTime? createdAt,
+    required DateTime? updatedAt,
   }) = _ParkingHistoryUiModel;
 }

@@ -19,7 +19,7 @@ class AppDatabase {
         await db.execute(StudentParkingSchema.createStudentsTable);
         await db.execute(StudentParkingSchema.createParkingHistoriesTable);
         await db.execute(StudentParkingSchema.createVehiclesTable);
-        await db.execute(ParkingLotSchema.createParkingLotsHasParkingSchedulesTable);
+        await db.execute(ParkingLotSchema.createParkingAssignmentsTable);
         await db.execute(ParkingLotSchema.createParkingLotsTable);
         await db.execute(ParkingLotSchema.createParkingSchedulesTable);
       },

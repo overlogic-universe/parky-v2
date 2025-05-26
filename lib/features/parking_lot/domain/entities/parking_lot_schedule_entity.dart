@@ -5,8 +5,13 @@ class ParkingLotScheduleEntity {
   final ParkingLotEntity parkingLot;
   final ParkingScheduleEntity parkingSchedule;
 
-  const ParkingLotScheduleEntity({
+  ParkingLotScheduleEntity({
     required this.parkingLot,
     required this.parkingSchedule,
   });
+
+  @override
+  String toString() {
+    return 'ParkingLotScheduleEntity(lot: ${parkingLot.name}, schedule: ${parkingSchedule.dayOfWeek})';
+  }
 }

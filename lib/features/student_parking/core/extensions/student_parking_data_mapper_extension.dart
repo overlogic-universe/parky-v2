@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../../core/utils/date_time_util.dart';
 import '../../data/models/parking_history_model.dart';
 import '../../data/models/vehicle_model.dart';
@@ -11,8 +12,10 @@ extension ParkingHistoryModelToEntity on ParkingHistoryModel {
     return ParkingHistoryEntity(
       id: id,
       status: ParkStatus.fromString(status),
-      parkedAt: parkedAt,
-      exitedAt: exitedAt,
+      parkedAt: parkedAt?.toDate(),
+      exitedAt: exitedAt?.toDate(),
+      createdAt: createdAt?.toDate(),
+      updatedAt: updatedAt?.toDate(),
     );
   }
 }
@@ -22,36 +25,49 @@ extension ParkingHistoryEntityToModel on ParkingHistoryEntity {
     return ParkingHistoryModel(
       id: id,
       status: status?.value,
-      parkedAt: parkedAt,
-      exitedAt: exitedAt,
+      parkedAt: parkedAt != null ? Timestamp.fromDate(parkedAt!) : null,
+      exitedAt: exitedAt != null ? Timestamp.fromDate(exitedAt!) : null,
+      createdAt: createdAt != null ? Timestamp.fromDate(createdAt!) : null,
+      updatedAt: updatedAt != null ? Timestamp.fromDate(updatedAt!) : null,
     );
   }
 }
 
 extension VehicleModelToEntity on VehicleModel {
   VehicleEntity toEntity() {
-    return VehicleEntity(id: id, plate: plate, studentId: studentId);
+    return VehicleEntity(
+      id: id,
+      plate: plate,
+      studentId: studentId,
+      createdAt: createdAt?.toDate(),
+      updatedAt: updatedAt?.toDate(),
+    );
   }
 }
 
 extension VehicleEntityToModel on VehicleEntity {
   VehicleModel toModel() {
-    return VehicleModel(id: id, plate: plate, studentId: studentId);
+    return VehicleModel(
+      id: id,
+      plate: plate,
+      studentId: studentId,
+      createdAt: createdAt != null ? Timestamp.fromDate(createdAt!) : null,
+      updatedAt: updatedAt != null ? Timestamp.fromDate(updatedAt!) : null,
+    );
   }
 }
 
 extension ParkingHistoryEntityToParkingHistoryUiModel on ParkingHistoryEntity {
   ParkingHistoryUiModel toUiModel() {
-    final parkedAtFormatted = parkedAt?.toDate();
-    final exitedAtFormatted = exitedAt?.toDate();
-    final lastActivity =
-        status == ParkStatus.parked ? parkedAtFormatted : exitedAtFormatted;
+    final lastActivity = status == ParkStatus.parked ? parkedAt : exitedAt;
 
     return ParkingHistoryUiModel(
       id: id,
       lastActivityTime: DateTimeUtil.formatTimeWIB(lastActivity),
       lastActivityDay: DateTimeUtil.formatDayID(lastActivity),
       status: status,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
     );
   }
 }

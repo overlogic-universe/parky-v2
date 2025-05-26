@@ -44,6 +44,7 @@
   "indonesia": "Bahasa Indonesia",
   "english": "English",
   "noData": "No data",
+  "noScheduleToday": "No schedule today",
 
   "login": "Login",
   "orLoginAs": "Or login as",

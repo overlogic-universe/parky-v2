@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:parky/core/utils/date_time_util.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../core/constants/common/margin_constant.dart';
@@ -38,6 +39,9 @@ class _ParkingLotTabState extends ConsumerState<ParkingLotTab>
     _tabController.dispose();
     super.dispose();
   }
+
+  Future<void> _onRefresh() async =>
+      await ref.read(parkingLotViewModelProvider.notifier).refreshAll();
 
   @override
   Widget build(BuildContext context) {
@@ -81,13 +85,18 @@ class _ParkingLotTabState extends ConsumerState<ParkingLotTab>
           ),
           Expanded(
             child: TabBarView(
+              physics: NeverScrollableScrollPhysics(),
               controller: _tabController,
               children:
                   WeekDay.values.map<Widget>((day) {
                     return state.when(
                       data: (data) => _buildSuccess(context, data, day),
                       loading: () => _buildLoading(context),
-                      error: (error, stackTrace) => NoDataText(),
+                      error:
+                          (error, stackTrace) => NoDataText(
+                            onRefresh: () => _onRefresh(),
+                            message: Lang.of(context).noScheduleToday,
+                          ),
                     );
                   }).toList(),
             ),
@@ -103,8 +112,12 @@ class _ParkingLotTabState extends ConsumerState<ParkingLotTab>
     WeekDay day,
   ) {
     final scheduleList = data.parkingLotScheduleMap[day] ?? [];
-    if (scheduleList.isEmpty) return NoDataText();
-    return BaseParkingLotTabBody(parkingLotScheduleList: scheduleList);
+    if (scheduleList.isEmpty) return NoDataText(onRefresh: () => _onRefresh());
+    final isToday = DateTimeUtil.isToday(day.value);
+    return BaseParkingLotTabBody(
+      parkingLotScheduleList: scheduleList,
+      isToday: isToday,
+    );
   }
 
   Column _buildLoading(BuildContext context) {

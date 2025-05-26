@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ParkingHistoryUiModel {
 
- String get id; ParkStatus? get status; String? get lastActivityTime; String? get lastActivityDay;
+ String get id; ParkStatus? get status; String? get lastActivityTime; String? get lastActivityDay; DateTime? get createdAt; DateTime? get updatedAt;
 /// Create a copy of ParkingHistoryUiModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $ParkingHistoryUiModelCopyWith<ParkingHistoryUiModel> get copyWith => _$ParkingH
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ParkingHistoryUiModel&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&(identical(other.lastActivityTime, lastActivityTime) || other.lastActivityTime == lastActivityTime)&&(identical(other.lastActivityDay, lastActivityDay) || other.lastActivityDay == lastActivityDay));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ParkingHistoryUiModel&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&(identical(other.lastActivityTime, lastActivityTime) || other.lastActivityTime == lastActivityTime)&&(identical(other.lastActivityDay, lastActivityDay) || other.lastActivityDay == lastActivityDay)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,status,lastActivityTime,lastActivityDay);
+int get hashCode => Object.hash(runtimeType,id,status,lastActivityTime,lastActivityDay,createdAt,updatedAt);
 
 @override
 String toString() {
-  return 'ParkingHistoryUiModel(id: $id, status: $status, lastActivityTime: $lastActivityTime, lastActivityDay: $lastActivityDay)';
+  return 'ParkingHistoryUiModel(id: $id, status: $status, lastActivityTime: $lastActivityTime, lastActivityDay: $lastActivityDay, createdAt: $createdAt, updatedAt: $updatedAt)';
 }
 
 
@@ -46,7 +46,7 @@ abstract mixin class $ParkingHistoryUiModelCopyWith<$Res>  {
   factory $ParkingHistoryUiModelCopyWith(ParkingHistoryUiModel value, $Res Function(ParkingHistoryUiModel) _then) = _$ParkingHistoryUiModelCopyWithImpl;
 @useResult
 $Res call({
- String id, ParkStatus? status, String? lastActivityTime, String? lastActivityDay
+ String id, ParkStatus? status, String? lastActivityTime, String? lastActivityDay, DateTime? createdAt, DateTime? updatedAt
 });
 
 
@@ -63,13 +63,15 @@ class _$ParkingHistoryUiModelCopyWithImpl<$Res>
 
 /// Create a copy of ParkingHistoryUiModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? status = freezed,Object? lastActivityTime = freezed,Object? lastActivityDay = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? status = freezed,Object? lastActivityTime = freezed,Object? lastActivityDay = freezed,Object? createdAt = freezed,Object? updatedAt = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as ParkStatus?,lastActivityTime: freezed == lastActivityTime ? _self.lastActivityTime : lastActivityTime // ignore: cast_nullable_to_non_nullable
 as String?,lastActivityDay: freezed == lastActivityDay ? _self.lastActivityDay : lastActivityDay // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as DateTime?,updatedAt: freezed == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+as DateTime?,
   ));
 }
 
@@ -80,13 +82,15 @@ as String?,
 
 
 class _ParkingHistoryUiModel implements ParkingHistoryUiModel {
-  const _ParkingHistoryUiModel({required this.id, required this.status, required this.lastActivityTime, required this.lastActivityDay});
+  const _ParkingHistoryUiModel({required this.id, required this.status, required this.lastActivityTime, required this.lastActivityDay, required this.createdAt, required this.updatedAt});
   
 
 @override final  String id;
 @override final  ParkStatus? status;
 @override final  String? lastActivityTime;
 @override final  String? lastActivityDay;
+@override final  DateTime? createdAt;
+@override final  DateTime? updatedAt;
 
 /// Create a copy of ParkingHistoryUiModel
 /// with the given fields replaced by the non-null parameter values.
@@ -98,16 +102,16 @@ _$ParkingHistoryUiModelCopyWith<_ParkingHistoryUiModel> get copyWith => __$Parki
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ParkingHistoryUiModel&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&(identical(other.lastActivityTime, lastActivityTime) || other.lastActivityTime == lastActivityTime)&&(identical(other.lastActivityDay, lastActivityDay) || other.lastActivityDay == lastActivityDay));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ParkingHistoryUiModel&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&(identical(other.lastActivityTime, lastActivityTime) || other.lastActivityTime == lastActivityTime)&&(identical(other.lastActivityDay, lastActivityDay) || other.lastActivityDay == lastActivityDay)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,status,lastActivityTime,lastActivityDay);
+int get hashCode => Object.hash(runtimeType,id,status,lastActivityTime,lastActivityDay,createdAt,updatedAt);
 
 @override
 String toString() {
-  return 'ParkingHistoryUiModel(id: $id, status: $status, lastActivityTime: $lastActivityTime, lastActivityDay: $lastActivityDay)';
+  return 'ParkingHistoryUiModel(id: $id, status: $status, lastActivityTime: $lastActivityTime, lastActivityDay: $lastActivityDay, createdAt: $createdAt, updatedAt: $updatedAt)';
 }
 
 
@@ -118,7 +122,7 @@ abstract mixin class _$ParkingHistoryUiModelCopyWith<$Res> implements $ParkingHi
   factory _$ParkingHistoryUiModelCopyWith(_ParkingHistoryUiModel value, $Res Function(_ParkingHistoryUiModel) _then) = __$ParkingHistoryUiModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, ParkStatus? status, String? lastActivityTime, String? lastActivityDay
+ String id, ParkStatus? status, String? lastActivityTime, String? lastActivityDay, DateTime? createdAt, DateTime? updatedAt
 });
 
 
@@ -135,13 +139,15 @@ class __$ParkingHistoryUiModelCopyWithImpl<$Res>
 
 /// Create a copy of ParkingHistoryUiModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? status = freezed,Object? lastActivityTime = freezed,Object? lastActivityDay = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? status = freezed,Object? lastActivityTime = freezed,Object? lastActivityDay = freezed,Object? createdAt = freezed,Object? updatedAt = freezed,}) {
   return _then(_ParkingHistoryUiModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as ParkStatus?,lastActivityTime: freezed == lastActivityTime ? _self.lastActivityTime : lastActivityTime // ignore: cast_nullable_to_non_nullable
 as String?,lastActivityDay: freezed == lastActivityDay ? _self.lastActivityDay : lastActivityDay // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as DateTime?,updatedAt: freezed == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+as DateTime?,
   ));
 }
 

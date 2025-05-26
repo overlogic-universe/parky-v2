@@ -4,21 +4,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../../../../core/extensions/firebase_extension.dart';
 import '../../../../../core/extensions/list_extension.dart';
-import '../../models/parking_lots_has_parking_schedules_model.dart';
+import '../../models/parking_assignment.dart';
 import '../../models/parking_schedule_model.dart';
 import 'parking_lot_has_parking_schedule_remote_data_source.dart';
 
-class ParkingLotHasParkingScheduleRemoteDataSourceImpl
-    implements ParkingLotHasParkingScheduleRemoteDataSource {
+class ParkingAssignmentRemoteDataSourceImpl
+    implements ParkingAssignmentRemoteDataSource {
   final FirebaseFirestore firestore;
 
-  const ParkingLotHasParkingScheduleRemoteDataSourceImpl({
-    required this.firestore,
-  });
+  const ParkingAssignmentRemoteDataSourceImpl({required this.firestore});
 
   @override
-  Future<List<ParkingLotHasParkingScheduleModel>>
-  getParkingLotHasParkingScheduleListByScheduleIds(
+  Future<List<ParkingAssignmentModel>> getParkingAssignmentListByScheduleIds(
     List<ParkingScheduleModel> parkingScheduleList,
   ) async {
     // TODO: Add pagination
@@ -32,7 +29,7 @@ class ParkingLotHasParkingScheduleRemoteDataSourceImpl
 
     for (final chunk in chunks) {
       final snapshot =
-          await firestore.parkingLotsHasParkingSchedulesCollection
+          await firestore.parkingAssignmentsCollection
               .whereParkingScheduleIdIn(chunk)
               .get();
       allDocs.addAll(snapshot.docs);
@@ -41,13 +38,13 @@ class ParkingLotHasParkingScheduleRemoteDataSourceImpl
     final data =
         allDocs
             .map(
-              (doc) => ParkingLotHasParkingScheduleModel.fromFirestore(
+              (doc) => ParkingAssignmentModel.fromFirestore(
                 doc as DocumentSnapshot<Map<String, dynamic>>,
               ).copyWith(id: doc.id),
             )
             .toList();
 
-    log("ParkingLotHasParkingScheduleModel $data");
+    log("ParkingAssignment $data");
     return data;
   }
 }

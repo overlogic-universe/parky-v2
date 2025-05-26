@@ -6,7 +6,7 @@ import '../../../shared/data/datasources/remote/network_info.dart';
 import '../../core/extensions/parking_lot_data_mapper_extension.dart';
 import '../../core/extensions/parking_lot_has_parking_schedule_data_mapper.dart';
 import '../../domain/entities/parking_lot_entity.dart';
-import '../../domain/entities/parking_lot_has_parking_schedule_entity.dart';
+import '../../domain/entities/parking_assignment_entity.dart';
 import '../../domain/repositories/parking_lot_repository.dart';
 import '../datasources/local/parking_lot_local_data_source.dart';
 import '../datasources/remote/parking_lot_remote_data_source.dart';
@@ -25,26 +25,22 @@ class ParkingLotRepositoryImpl implements ParkingLotRepository {
 
   @override
   Future<ResourceState<List<ParkingLotEntity>>>
-  getParkingLotListByParkingLotHasParkingScheduleId(
-    List<ParkingLotHasParkingScheduleEntity> parkingLotHasParkingScheduleList,
+  getParkingLotListByParkingAssignmentId(
+    List<ParkingAssignmentEntity> parkingAssignmentList,
   ) async {
-    final parkingLotHasParkingScheduleModelList =
-        parkingLotHasParkingScheduleList
-            .map((entity) => entity.toModel())
-            .toList();
+    final parkingAssignments =
+        parkingAssignmentList.map((entity) => entity.toModel()).toList();
     return NetworkBoundResource<List<ParkingLotEntity>, List<ParkingLotModel>?>(
       networkInfo: networkInfo,
       loadFromDB: () async {
         try {
           final localList = await localDataSource
-              .getParkingLotListByParkingLotHasParkingScheduleId(
-                parkingLotHasParkingScheduleModelList,
-              );
+              .getParkingLotListByParkingAssignmentId(parkingAssignments);
 
           return localList.map((e) => e.toEntity()).toList();
         } catch (e) {
           log(
-            "ERROR loadFromDB getParkingLotListByParkingLotHasParkingScheduleId: ${e.toString()}",
+            "ERROR loadFromDB getParkingLotListByParkingAssignmentId: ${e.toString()}",
           );
           return [];
         }
@@ -52,13 +48,12 @@ class ParkingLotRepositoryImpl implements ParkingLotRepository {
       shouldFetch: (data) => data == null || data.isEmpty,
       createCall: () async {
         try {
-          return await remoteDataSource
-              .getParkingLotListByParkingLotHasParkingScheduleId(
-                parkingLotHasParkingScheduleModelList,
-              );
+          return await remoteDataSource.getParkingLotListByParkingAssignmentId(
+            parkingAssignments,
+          );
         } catch (e) {
           log(
-            "ERROR createCall getParkingLotListByParkingLotHasParkingScheduleId: ${e.toString()}",
+            "ERROR createCall getParkingLotListByParkingAssignmentId: ${e.toString()}",
           );
           rethrow;
         }

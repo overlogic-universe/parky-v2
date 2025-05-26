@@ -1,24 +1,28 @@
-import '../../data/models/parking_lots_has_parking_schedules_model.dart';
-import '../../domain/entities/parking_lot_has_parking_schedule_entity.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-extension ParkingLotHasParkingScheduleModelToEntity
-    on ParkingLotHasParkingScheduleModel {
-  ParkingLotHasParkingScheduleEntity toEntity() {
-    return ParkingLotHasParkingScheduleEntity(
+import '../../data/models/parking_assignment.dart';
+import '../../domain/entities/parking_assignment_entity.dart';
+
+extension ParkingAssignmentToEntity on ParkingAssignmentModel {
+  ParkingAssignmentEntity toEntity() {
+    return ParkingAssignmentEntity(
       id: id,
       parkingLotId: parkingLotId,
       parkingScheduleId: parkingScheduleId,
+      createdAt: createdAt?.toDate(),
+      updatedAt: updatedAt?.toDate(),
     );
   }
 }
 
-extension ParkingLotHasParkingScheduleEntityToModel
-    on ParkingLotHasParkingScheduleEntity {
-  ParkingLotHasParkingScheduleModel toModel() {
-    return ParkingLotHasParkingScheduleModel(
+extension ParkingAssignmentEntityToModel on ParkingAssignmentEntity {
+  ParkingAssignmentModel toModel() {
+    return ParkingAssignmentModel(
       id: id,
       parkingLotId: parkingLotId,
       parkingScheduleId: parkingScheduleId,
+      createdAt: createdAt != null ? Timestamp.fromDate(createdAt!) : null,
+      updatedAt: updatedAt != null ? Timestamp.fromDate(updatedAt!) : null,
     );
   }
 }

@@ -4,9 +4,9 @@ enum ParkStatus {
 
   static ParkStatus fromString(String? value) {
     switch (value?.toLowerCase()) {
-      case 'parked':
+      case 'in':
         return ParkStatus.parked;
-      case 'exited':
+      case 'out':
         return ParkStatus.exited;
       default:
         return ParkStatus.exited;
@@ -16,9 +16,9 @@ enum ParkStatus {
   String get value {
     switch (this) {
       case ParkStatus.parked:
-        return 'parked';
+        return 'in';
       case ParkStatus.exited:
-        return 'exited';
+        return 'out';
     }
   }
 

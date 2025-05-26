@@ -6,6 +6,8 @@ class ParkingScheduleEntity {
   final String? openTime;
   final String? closedTime;
   final bool? isClosed;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
 
   const ParkingScheduleEntity({
     required this.id,
@@ -13,6 +15,8 @@ class ParkingScheduleEntity {
     this.openTime,
     this.closedTime,
     this.isClosed,
+    this.createdAt,
+    this.updatedAt,
   });
 
   ParkingScheduleEntity copyWith({
@@ -21,6 +25,8 @@ class ParkingScheduleEntity {
     String? openTime,
     String? closedTime,
     bool? isClosed,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) {
     return ParkingScheduleEntity(
       id: id ?? this.id,
@@ -28,6 +34,8 @@ class ParkingScheduleEntity {
       openTime: openTime ?? this.openTime,
       closedTime: closedTime ?? this.closedTime,
       isClosed: isClosed ?? this.isClosed,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
     );
   }
 }

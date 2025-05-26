@@ -28,11 +28,6 @@ class ParkViewModel extends _$ParkViewModel {
     return const ParkState();
   }
 
-  Future<void> fetch() async {
-    state = const AsyncLoading();
-    state = AsyncData(await _getParkHistoryByStudentId());
-  }
-
   Future<ParkState> _getParkHistoryByStudentId() async {
     try {
       final currentParkingHistoryResult =
