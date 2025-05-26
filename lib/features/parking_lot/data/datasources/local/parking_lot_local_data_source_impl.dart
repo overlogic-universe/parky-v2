@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 
 import '../../models/parking_lot_model.dart';
-import '../../models/parking_lots_has_parking_schedules_model.dart';
+import '../../models/parking_assignment.dart';
 import 'parking_lot_local_data_source.dart';
 
 class ParkingLotLocalDataSourceImpl implements ParkingLotLocalDataSource {
@@ -44,17 +44,13 @@ class ParkingLotLocalDataSourceImpl implements ParkingLotLocalDataSource {
   }
 
   @override
-  Future<List<ParkingLotModel>>
-  getParkingLotListByParkingLotHasParkingScheduleId(
-    List<ParkingLotHasParkingScheduleModel> parkingLotHasParkingScheduleList,
+  Future<List<ParkingLotModel>> getParkingLotListByParkingAssignmentId(
+    List<ParkingAssignmentModel> parkingAssignmentList,
   ) async {
-    if (parkingLotHasParkingScheduleList.isEmpty) return [];
+    if (parkingAssignmentList.isEmpty) return [];
 
     final parkingLotIds =
-        parkingLotHasParkingScheduleList
-            .map((e) => e.parkingLotId)
-            .toSet()
-            .toList();
+        parkingAssignmentList.map((e) => e.parkingLotId).toSet().toList();
 
     final result = await sqfliteDatabase.query(
       _parkingLotTable,

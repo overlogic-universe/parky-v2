@@ -5,7 +5,9 @@ class StudentEntity {
   final String name;
   final String email;
   final String? password;
-  
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+
   const StudentEntity({
     required this.id,
     required this.qrCodeId,
@@ -13,5 +15,7 @@ class StudentEntity {
     required this.name,
     required this.email,
     this.password,
+    this.createdAt,
+    this.updatedAt,
   });
 }

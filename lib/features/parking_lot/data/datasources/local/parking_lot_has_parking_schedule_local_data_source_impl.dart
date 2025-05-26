@@ -2,23 +2,21 @@ import 'dart:developer';
 
 import 'package:sqflite/sqflite.dart';
 
-import '../../models/parking_lots_has_parking_schedules_model.dart';
+import '../../models/parking_assignment.dart';
 import '../../models/parking_schedule_model.dart';
 import 'parking_lot_has_parking_schedule_local_data_source.dart';
 
-class ParkingLotHasParkingScheduleLocalDataSourceImpl
-    implements ParkingLotHasParkingScheduleLocalDataSource {
+class ParkingAssignmentLocalDataSourceImpl
+    implements ParkingAssignmentLocalDataSource {
   final Database sqfliteDatabase;
 
-  const ParkingLotHasParkingScheduleLocalDataSourceImpl({
-    required this.sqfliteDatabase,
-  });
+  const ParkingAssignmentLocalDataSourceImpl({required this.sqfliteDatabase});
 
-  static const String _junctionTable = "parking_lots_has_parking_schedules";
+  static const String _junctionTable = "parking_assignments";
 
   @override
-  Future<void> saveParkingLotHasParkingScheduleModelList(
-    List<ParkingLotHasParkingScheduleModel>? models,
+  Future<void> saveParkingAssignmentList(
+    List<ParkingAssignmentModel>? models,
   ) async {
     log("MODELLL: $models");
 
@@ -54,8 +52,7 @@ class ParkingLotHasParkingScheduleLocalDataSourceImpl
   }
 
   @override
-  Future<List<ParkingLotHasParkingScheduleModel>>
-  getParkingLotHasParkingScheduleListByScheduleIds(
+  Future<List<ParkingAssignmentModel>> getParkingAssignmentListByScheduleIds(
     List<ParkingScheduleModel> scheduleList,
   ) async {
     if (scheduleList.isEmpty) return [];
@@ -69,8 +66,6 @@ class ParkingLotHasParkingScheduleLocalDataSourceImpl
       whereArgs: scheduleIds,
     );
 
-    return result
-        .map((e) => ParkingLotHasParkingScheduleModel.fromJson(e))
-        .toList();
+    return result.map((e) => ParkingAssignmentModel.fromJson(e)).toList();
   }
 }

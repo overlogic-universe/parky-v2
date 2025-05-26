@@ -6,7 +6,9 @@ class StudentParkingSchema {
       name TEXT NOT NULL,
       nim TEXT NOT NULL,
       email TEXT NOT NULL,
-      password TEXT
+      password TEXT,
+      created_at INTEGER,
+      updated_at INTEGER
     );
   ''';
 
@@ -14,7 +16,9 @@ class StudentParkingSchema {
     CREATE TABLE vehicles (
       id TEXT PRIMARY KEY,
       plate TEXT NOT NULL,
-      student_id TEXT NOT NULL REFERENCES students(id)
+      student_id TEXT NOT NULL REFERENCES students(id),
+      created_at INTEGER,
+      updated_at INTEGER
     );
   ''';
 
@@ -23,8 +27,9 @@ class StudentParkingSchema {
       id TEXT PRIMARY KEY,
       status TEXT NOT NULL,
       parked_at TIMESTAMP,
-      exited_at TIMESTAMP
+      exited_at TIMESTAMP,
+      created_at INTEGER,
+      updated_at INTEGER
     );
   ''';
-
 }

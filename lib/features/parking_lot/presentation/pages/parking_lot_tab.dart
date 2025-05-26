@@ -93,8 +93,10 @@ class _ParkingLotTabState extends ConsumerState<ParkingLotTab>
                       data: (data) => _buildSuccess(context, data, day),
                       loading: () => _buildLoading(context),
                       error:
-                          (error, stackTrace) =>
-                              NoDataText(onRefresh: () => _onRefresh()),
+                          (error, stackTrace) => NoDataText(
+                            onRefresh: () => _onRefresh(),
+                            message: Lang.of(context).noScheduleToday,
+                          ),
                     );
                   }).toList(),
             ),

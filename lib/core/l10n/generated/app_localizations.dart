@@ -341,6 +341,12 @@ abstract class AppLocalizations {
   /// **'Belum ada data'**
   String get noData;
 
+  /// No description provided for @noScheduleToday.
+  ///
+  /// In id, this message translates to:
+  /// **'Tidak ada jadwal hari ini'**
+  String get noScheduleToday;
+
   /// No description provided for @login.
   ///
   /// In id, this message translates to:

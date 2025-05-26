@@ -44,6 +44,7 @@
   "indonesia": "Bahasa Indonesia",
   "english": "English",
   "noData": "Belum ada data",
+  "noScheduleToday": "Tidak ada jadwal hari ini",
 
   "login": "Masuk",
   "orLoginAs": "Atau masuk sebagai",

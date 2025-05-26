@@ -10,6 +10,8 @@ class StudentModel {
   final String email;
   final String? password;
   final String qrCodeId;
+  final Timestamp? createdAt;
+  final Timestamp? updatedAt;
 
   StudentModel({
     required this.id,
@@ -18,6 +20,8 @@ class StudentModel {
     required this.email,
     this.password,
     required this.qrCodeId,
+    this.createdAt,
+    this.updatedAt,
   });
 
   factory StudentModel.fromFirestore(
@@ -35,6 +39,8 @@ class StudentModel {
       email: data['email'] ?? '',
       password: data['password'],
       qrCodeId: data['qr_code_id'] ?? '',
+      createdAt: data['created_at'],
+      updatedAt: data['updated_at'],
     );
   }
 
@@ -45,6 +51,8 @@ class StudentModel {
       'email': email,
       'password': password,
       'qr_code_id': qrCodeId,
+      'created_at': createdAt,
+      'updated_at': updatedAt,
     };
   }
 
@@ -56,6 +64,8 @@ class StudentModel {
       'email': email,
       'password': password,
       'qr_code_id': qrCodeId,
+      'created_at': createdAt?.millisecondsSinceEpoch,
+      'updated_at': updatedAt?.millisecondsSinceEpoch,
     };
   }
 
@@ -67,11 +77,19 @@ class StudentModel {
       email: map['email'] ?? '',
       password: map['password'],
       qrCodeId: map['qr_code_id'] ?? '',
+      createdAt:
+          map['created_at'] != null
+              ? Timestamp.fromMillisecondsSinceEpoch(map['created_at'] as int)
+              : null,
+      updatedAt:
+          map['updated_at'] != null
+              ? Timestamp.fromMillisecondsSinceEpoch(map['updated_at'] as int)
+              : null,
     );
   }
 
   @override
   String toString() {
-    return 'StudentModel(id: $id, nim: $nim, name: $name, email: $email, password: $password, qrCodeId: $qrCodeId)';
+    return 'StudentModel(id: $id, nim: $nim, name: $name, email: $email, password: $password, qrCodeId: $qrCodeId, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 }

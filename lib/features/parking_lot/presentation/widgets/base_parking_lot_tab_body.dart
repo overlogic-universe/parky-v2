@@ -91,8 +91,7 @@ class BaseParkingLotTabBody extends ConsumerWidget {
                       _buildParkingLotDetailInfo(
                         context,
                         icon: IconAssetConstant.vehicleInCount,
-                        description:
-                            "${parkingLot.vehicleInCount}/${parkingLot.maxCapacity}",
+                        description: "${vehicleInCount}/${maxCapacity}",
                       ),
                     ],
                     SizedBox(height: 10.h),

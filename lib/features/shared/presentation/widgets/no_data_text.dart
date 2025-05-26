@@ -7,7 +7,8 @@ import '../../../../core/utils/lang.dart';
 
 class NoDataText extends StatelessWidget {
   final Future<void> Function() onRefresh;
-  const NoDataText({super.key, required this.onRefresh});
+  final String? message;
+  const NoDataText({super.key, required this.onRefresh, this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class NoDataText extends StatelessWidget {
                 ),
                 child: IntrinsicHeight(
                   child: Text(
-                    Lang.of(context).noData,
+                    message ?? Lang.of(context).noData,
                     textAlign: TextAlign.center,
                     style: AppFont.labelMedium(
                       context,

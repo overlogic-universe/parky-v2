@@ -13,13 +13,12 @@ import '../repositories/parking_schedule_repository.dart';
 class GetParkingScheduleListByDayUseCase {
   final ParkingLotRepository parkingLotRepository;
   final ParkingScheduleRepository parkingScheduleRepository;
-  final ParkingLotHasParkingScheduleRepository
-  parkingLotHasParkingScheduleRepository;
+  final ParkingAssignmentRepository parkingAssignmentRepository;
 
   const GetParkingScheduleListByDayUseCase({
     required this.parkingLotRepository,
     required this.parkingScheduleRepository,
-    required this.parkingLotHasParkingScheduleRepository,
+    required this.parkingAssignmentRepository,
   });
 
   Future<List<ParkingLotScheduleEntity>> call({required WeekDay day}) async {
@@ -39,11 +38,8 @@ class GetParkingScheduleListByDayUseCase {
       log("parkingScheduleListResult ${i.toModel()}");
     }
     // Step 2: Ambil data relasi antara jadwal dan tempat parkir
-    final hasParkingScheduleListResult =
-        await parkingLotHasParkingScheduleRepository
-            .getParkingLotHasParkingScheduleListByScheduleIds(
-              parkingScheduleList,
-            );
+    final hasParkingScheduleListResult = await parkingAssignmentRepository
+        .getParkingAssignmentListByScheduleIds(parkingScheduleList);
 
     final hasParkingScheduleList = hasParkingScheduleListResult.data;
     if (hasParkingScheduleList == null || hasParkingScheduleList.isEmpty) {
@@ -58,9 +54,7 @@ class GetParkingScheduleListByDayUseCase {
 
     // Step 3: Ambil daftar tempat parkir dari relasi tersebut
     final parkingLotList = await parkingLotRepository
-        .getParkingLotListByParkingLotHasParkingScheduleId(
-          hasParkingScheduleList,
-        );
+        .getParkingLotListByParkingAssignmentId(hasParkingScheduleList);
 
     // Step 4: Cocokkan dan gabungkan menjadi ParkingLotScheduleEntity
     final result = <ParkingLotScheduleEntity>[];
@@ -85,6 +79,8 @@ class GetParkingScheduleListByDayUseCase {
         ),
       );
     }
+
+    log("RESULTTT: ${result}");
 
     return result;
   }

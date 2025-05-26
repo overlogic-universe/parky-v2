@@ -33,7 +33,6 @@ class ParkingScheduleRepositoryImpl implements ParkingScheduleRepository {
         final models = await localDataSource.getParkingScheduleModelByDay(
           day.name,
         );
-        if (models.isEmpty) return null;
         return models.map((e) => e.toEntity()).toList();
       },
 

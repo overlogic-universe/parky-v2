@@ -134,6 +134,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get noData => 'Belum ada data';
 
   @override
+  String get noScheduleToday => 'Tidak ada jadwal hari ini';
+
+  @override
   String get login => 'Masuk';
 
   @override
