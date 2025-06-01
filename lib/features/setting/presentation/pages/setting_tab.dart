@@ -38,8 +38,7 @@ class _SettingTabState extends ConsumerState<SettingTab> {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
+  void _settingActionListener(BuildContext context, WidgetRef ref) {
     ref.listen(settingViewModelProvider, (previous, next) {
       next.when(
         data: (data) {
@@ -78,6 +77,11 @@ class _SettingTabState extends ConsumerState<SettingTab> {
         loading: () => DialogLoader.startLoading(context),
       );
     });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    _settingActionListener(context, ref);
 
     return BaseScreenWithDecoration(
       horizontalPadding: 0,
