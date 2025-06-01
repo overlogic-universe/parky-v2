@@ -30,6 +30,14 @@ class AuthException implements Exception {
         return AuthExceptionMessageConstant.signOutFailed;
       case AuthFailureType.loginFailed:
         return AuthExceptionMessageConstant.loginFailed;
+      case AuthFailureType.updatePasswordFailed:
+        return AuthExceptionMessageConstant.updatePasswordFailed;
+      case AuthFailureType.passwordUnchanged:
+        return AuthExceptionMessageConstant.passwordUnchanged;
+      case AuthFailureType.requiresRecentLogin:
+        return AuthExceptionMessageConstant.requiresRecentLogin;
+      case AuthFailureType.wrongOldPassword:
+        return AuthExceptionMessageConstant.wrongOldPassword;
     }
   }
 }

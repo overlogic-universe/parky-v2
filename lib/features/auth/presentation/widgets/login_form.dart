@@ -9,7 +9,7 @@ import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/input_validator.dart';
 import '../../../../core/utils/lang.dart';
-import '../../../shared/presentation/widgets/svg_asset.dart';
+import '../../../shared/presentation/widgets/text_field_icon.dart';
 import '../../core/utils/auth_input_validator.dart';
 import '../../domain/entities/login_with_email_password_request.dart';
 import '../view_models/login_view_model.dart';
@@ -61,7 +61,6 @@ class _LoginFormState extends ConsumerState<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-
     return Form(
       key: _formKey,
       child: Padding(
@@ -79,8 +78,8 @@ class _LoginFormState extends ConsumerState<LoginForm> {
               style: StyleConstant.inputStyle(context),
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
-                prefixIcon: _buildIcon(IconAssetConstant.email),
-                hintText: Lang.of(context).enterYourEmail,
+                prefixIcon: TextFieldIcon(icon: IconAssetConstant.email),
+                hintText:  Lang.of(context).enterYour(Lang.of(context).email),
               ),
             ),
             TextFormField(
@@ -96,15 +95,17 @@ class _LoginFormState extends ConsumerState<LoginForm> {
               keyboardType: TextInputType.visiblePassword,
               obscureText: !isPassVisible,
               decoration: InputDecoration(
-                prefixIcon: _buildIcon(IconAssetConstant.password),
+                prefixIcon: TextFieldIcon(icon: IconAssetConstant.password),
                 suffixIcon: GestureDetector(
                   onTap: () => _togglePassword(),
                   child:
                       isPassVisible
-                          ? _buildIcon(IconAssetConstant.visiblePass)
-                          : _buildIcon(IconAssetConstant.invisiblePass),
+                          ? TextFieldIcon(icon: IconAssetConstant.visiblePass)
+                          : TextFieldIcon(
+                            icon: IconAssetConstant.invisiblePass,
+                          ),
                 ),
-                hintText: Lang.of(context).enterYourPassword,
+                hintText: Lang.of(context).enterYour(Lang.of(context).password),
               ),
             ),
             Row(
@@ -128,9 +129,5 @@ class _LoginFormState extends ConsumerState<LoginForm> {
         ),
       ),
     );
-  }
-
-  Padding _buildIcon(String icon) {
-    return Padding(padding: EdgeInsets.all(13.r), child: SvgAsset(asset: icon));
   }
 }

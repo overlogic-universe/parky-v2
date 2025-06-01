@@ -17,7 +17,6 @@ import '../../../shared/presentation/widgets/margin_bottom.dart';
 import '../view_models/login_state.dart';
 import '../view_models/login_view_model.dart';
 import '../widgets/login_form.dart';
-import '../widgets/login_with_student_email_button.dart';
 
 class LoginScreen extends ConsumerWidget {
   const LoginScreen({super.key});
@@ -69,7 +68,7 @@ class LoginScreen extends ConsumerWidget {
               ),
             ),
             SizedBox(height: 15.h),
-            LoginWithStudentEmailButton(),
+            // LoginWithStudentEmailButton(),
             MarginBottom(),
           ],
         ),

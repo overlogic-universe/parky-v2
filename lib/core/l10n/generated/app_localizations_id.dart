@@ -21,10 +21,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get password => 'Kata Sandi';
 
   @override
-  String get enterYourEmail => 'Masukkan email Anda';
-
-  @override
-  String get enterYourPassword => 'Masukkan kata sandi Anda';
+  String enterYour(Object field) {
+    return 'Masukkan $field Anda';
+  }
 
   @override
   String get rememberMe => 'Ingat saya';
@@ -95,10 +94,22 @@ class AppLocalizationsId extends AppLocalizations {
   String get updatePassword => 'Perbarui kata sandi';
 
   @override
+  String get updatePasswordDesc => 'Ubah kata sandi Anda untuk menjaga keamanan akun.';
+
+  @override
   String get personalized => 'Personalisasi';
 
   @override
   String get authentication => 'Autentikasi';
+
+  @override
+  String get update => 'Ubah';
+
+  @override
+  String get oldPassword => 'Kata Sandi Lama';
+
+  @override
+  String get newPassword => 'Kata Sandi Baru';
 
   @override
   String get chooseTheme => 'Pilih tema';
@@ -117,6 +128,9 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get successChangeLanguage => 'Berhasil mengganti bahasa';
+
+  @override
+  String get successUpdatePassword => 'Berhasil memperbarui kata sandi';
 
   @override
   String get mainTheme => 'Tema Utama';
@@ -210,6 +224,18 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get loginFailed => 'Gagal masuk. Silakan coba lagi!';
+
+  @override
+  String get updatePasswordFailed => 'Gagal memperbarui kata sandi. Silakan coba lagi!';
+
+  @override
+  String get passwordUnchanged => 'Kata sandi baru tidak boleh sama dengan yang lama.';
+
+  @override
+  String get wrongOldPassword => 'Kata sandi lama salah.';
+
+  @override
+  String get requiresRecentLogin => 'Untuk alasan keamanan, harap masuk kembali sebelum mengganti kata sandi.';
 
   @override
   String get getParkFailed => 'Gagal mendapatkan data parkir';

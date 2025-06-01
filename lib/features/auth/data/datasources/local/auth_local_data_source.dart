@@ -6,4 +6,5 @@ abstract class AuthLocalDataSource {
   Future<void> clearAuthToken();
   Future<StudentModel> getStudentModel();
   Future<void> saveStudentModel(StudentModel? student);
+  Future<void> deleteAllStudents();
 }

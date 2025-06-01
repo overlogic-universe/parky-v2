@@ -10,4 +10,5 @@ abstract class AuthRepository {
   Future<StudentEntity> loginWithGoogle();
   Future<ResourceState<StudentEntity>> getStudentEntity();
   Future<String?> isLogin();
+  Future<void> updatePassword({required String oldPassword, required String newPassword});
 }

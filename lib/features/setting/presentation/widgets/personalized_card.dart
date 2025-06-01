@@ -9,7 +9,6 @@ import '../../../../core/styles/colors/app_color.dart';
 import '../../../../core/styles/colors/theme_color.dart';
 import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/lang.dart';
-import '../../../shared/presentation/widgets/custom_toast.dart';
 import '../../../shared/presentation/widgets/svg_asset.dart';
 import '../models/setting_item_model.dart';
 import '../view_models/setting_view_model.dart';
@@ -20,31 +19,6 @@ class PersonalizedCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(settingViewModelProvider, (previous, next) {
-      next.maybeWhen(
-        data: (data) {
-          if (previous != null) {
-            final prevData = previous.valueOrNull;
-            if (prevData != null) {
-              if (prevData.themeModeType != data.themeModeType) {
-                CustomToast.showToast(
-                  context,
-                  message: Lang.of(context).successChangeTheme,
-                  backgroundColor: AppColor.success(context),
-                );
-              } else if (prevData.localeId != data.localeId) {
-                CustomToast.showToast(
-                  context,
-                  message: Lang.of(context).successChangeLanguage,
-                  backgroundColor: AppColor.success(context),
-                );
-              }
-            }
-          }
-        },
-        orElse: () {},
-      );
-    });
 
     List<SettingItemModel> settingItemList = [
       SettingItemModel(name: Lang.of(context).chooseTheme),

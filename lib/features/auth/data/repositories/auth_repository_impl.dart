@@ -92,6 +92,7 @@ class AuthRepositoryImpl implements AuthRepository {
         try {
           await remoteDataSource.signOut();
           await localDataSource.clearAuthToken();
+          await localDataSource.deleteAllStudents();
         } catch (e) {
           if (e is AuthException) {
             rethrow;
@@ -123,4 +124,36 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<String?> isLogin() async => localDataSource.getAuthToken();
+
+  @override
+  Future<void> updatePassword({
+    required String oldPassword,
+    required String newPassword,
+  }) async {
+    await networkInfo.safeNetworkRequest(
+      result: () async {
+        try {
+          await remoteDataSource.updatePassword(
+            oldPassword: oldPassword,
+            newPassword: newPassword,
+          );
+        } on FirebaseAuthException catch (e) {
+          switch (e.code) {
+            case 'wrong-password':
+              throw AuthException(type: AuthFailureType.wrongOldPassword);
+            case 'requires-recent-login':
+              throw AuthException(type: AuthFailureType.requiresRecentLogin);
+            case 'user-not-found':
+              throw AuthException(type: AuthFailureType.studentNotFound);
+            case 'invalid-credential':
+              throw AuthException(type: AuthFailureType.wrongOldPassword);
+            default:
+              throw AuthException(type: AuthFailureType.updatePasswordFailed);
+          }
+        } catch (_) {
+          throw AuthException(type: AuthFailureType.updatePasswordFailed);
+        }
+      },
+    );
+  }
 }

@@ -26,6 +26,14 @@ class AuthExceptionHandler {
         return lang.signOutFailed;
       case AuthFailureType.loginFailed:
         return lang.loginFailed;
+      case AuthFailureType.updatePasswordFailed:
+        return lang.updatePasswordFailed;
+      case AuthFailureType.passwordUnchanged:
+        return lang.passwordUnchanged;
+      case AuthFailureType.requiresRecentLogin:
+        return lang.requiresRecentLogin;
+      case AuthFailureType.wrongOldPassword:
+        return lang.wrongOldPassword;
     }
   }
 }

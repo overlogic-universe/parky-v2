@@ -8,4 +8,5 @@ abstract class AuthRemoteDataSource {
    required LoginWithEmailPasswordRequest loginWithEmailPasswordRequest,
   });
   Future<StudentModel?> getStudentModel();
+  Future<void> updatePassword({required String oldPassword, required String newPassword});
 }
