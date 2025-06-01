@@ -61,12 +61,22 @@ class StudentInfoTile extends StatelessWidget {
           textAlign: TextAlign.center,
           overflow: TextOverflow.ellipsis,
           style: AppFont.labelSmall(context)?.medium.copyWith(
-            color: AppColor.onContainerColorPrimary(context),
+            color: _getValueTextColor(context),
             fontSize: (valueFontSize ?? 11).sp,
           ),
         ),
       ),
     );
+  }
+
+  Color _getValueTextColor(BuildContext context) {
+    if (value == Lang.of(context).parked) {
+      return AppColor.success(context);
+    } else if (value == Lang.of(context).exited) {
+      return AppColor.error(context);
+    } else {
+      return AppColor.onContainerColorPrimary(context);
+    }
   }
 
   Widget _buildShimmer(BuildContext context) {

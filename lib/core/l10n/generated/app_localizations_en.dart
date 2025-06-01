@@ -21,10 +21,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get password => 'Password';
 
   @override
-  String get enterYourEmail => 'Enter Your email';
-
-  @override
-  String get enterYourPassword => 'Enter Your password';
+  String enterYour(Object field) {
+    return 'Enter Your $field';
+  }
 
   @override
   String get rememberMe => 'Remember me';
@@ -95,10 +94,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get updatePassword => 'Update your password';
 
   @override
+  String get updatePasswordDesc => 'Change your current password to keep your account secure.';
+
+  @override
   String get personalized => 'Personalized';
 
   @override
   String get authentication => 'Authentication';
+
+  @override
+  String get update => 'Update';
+
+  @override
+  String get oldPassword => 'Old Password';
+
+  @override
+  String get newPassword => 'New Password';
 
   @override
   String get chooseTheme => 'Choose theme';
@@ -117,6 +128,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get successChangeLanguage => 'Successfully change language';
+
+  @override
+  String get successUpdatePassword => 'Successfully update password';
 
   @override
   String get mainTheme => 'Main Theme';
@@ -210,6 +224,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get loginFailed => 'Login failed, Please try again!';
+
+  @override
+  String get updatePasswordFailed => 'Update password failed, Please try again!';
+
+  @override
+  String get passwordUnchanged => 'New password must be different from the old password.';
+
+  @override
+  String get wrongOldPassword => 'Old password is incorrect.';
+
+  @override
+  String get requiresRecentLogin => 'For security reasons, please sign in again before changing your password.';
 
   @override
   String get getParkFailed => 'Failed to retrieve parking data';

@@ -66,4 +66,8 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
 
     return StudentModel.fromJson(data);
   }
+  @override
+    Future<void> deleteAllStudents() async {
+    await sqfliteDatabase.delete(_studentTable);
+  }
 }

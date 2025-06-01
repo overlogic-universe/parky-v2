@@ -12,6 +12,7 @@ import '../../domain/usecases/is_login_use_case.dart';
 import '../../domain/usecases/login_with_email_and_password_use_case.dart';
 import '../../domain/usecases/login_with_google_use_case.dart';
 import '../../domain/usecases/sign_out_use_case.dart';
+import '../../domain/usecases/update_password_use_case.dart';
 
 final authLocalDataSourceProvider = Provider<AuthLocalDataSource>((ref) {
   final sharedPreferences = ref.watch(sharedPreferencesProvider);
@@ -66,6 +67,11 @@ final loginWithGoogleUseCaseProvider = Provider<LoginWithGoogleUseCase>((ref) {
 final signOutUseCaseProvider = Provider<SignOutUseCase>((ref) {
   final repository = ref.watch(authRepositoryProvider);
   return SignOutUseCase(repository: repository);
+});
+
+final updatePasswordUseCaseProvider = Provider<UpdatePasswordUseCase>((ref) {
+  final repository = ref.watch(authRepositoryProvider);
+  return UpdatePasswordUseCase(repository: repository);
 });
 
 final isLoginUseCaseProvider = Provider<IsLoginUseCase>((ref) {

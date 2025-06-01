@@ -119,17 +119,11 @@ abstract class AppLocalizations {
   /// **'Kata Sandi'**
   String get password;
 
-  /// No description provided for @enterYourEmail.
+  /// No description provided for @enterYour.
   ///
   /// In id, this message translates to:
-  /// **'Masukkan email Anda'**
-  String get enterYourEmail;
-
-  /// No description provided for @enterYourPassword.
-  ///
-  /// In id, this message translates to:
-  /// **'Masukkan kata sandi Anda'**
-  String get enterYourPassword;
+  /// **'Masukkan {field} Anda'**
+  String enterYour(Object field);
 
   /// No description provided for @rememberMe.
   ///
@@ -263,6 +257,12 @@ abstract class AppLocalizations {
   /// **'Perbarui kata sandi'**
   String get updatePassword;
 
+  /// No description provided for @updatePasswordDesc.
+  ///
+  /// In id, this message translates to:
+  /// **'Ubah kata sandi Anda untuk menjaga keamanan akun.'**
+  String get updatePasswordDesc;
+
   /// No description provided for @personalized.
   ///
   /// In id, this message translates to:
@@ -274,6 +274,24 @@ abstract class AppLocalizations {
   /// In id, this message translates to:
   /// **'Autentikasi'**
   String get authentication;
+
+  /// No description provided for @update.
+  ///
+  /// In id, this message translates to:
+  /// **'Ubah'**
+  String get update;
+
+  /// No description provided for @oldPassword.
+  ///
+  /// In id, this message translates to:
+  /// **'Kata Sandi Lama'**
+  String get oldPassword;
+
+  /// No description provided for @newPassword.
+  ///
+  /// In id, this message translates to:
+  /// **'Kata Sandi Baru'**
+  String get newPassword;
 
   /// No description provided for @chooseTheme.
   ///
@@ -310,6 +328,12 @@ abstract class AppLocalizations {
   /// In id, this message translates to:
   /// **'Berhasil mengganti bahasa'**
   String get successChangeLanguage;
+
+  /// No description provided for @successUpdatePassword.
+  ///
+  /// In id, this message translates to:
+  /// **'Berhasil memperbarui kata sandi'**
+  String get successUpdatePassword;
 
   /// No description provided for @mainTheme.
   ///
@@ -484,6 +508,30 @@ abstract class AppLocalizations {
   /// In id, this message translates to:
   /// **'Gagal masuk. Silakan coba lagi!'**
   String get loginFailed;
+
+  /// No description provided for @updatePasswordFailed.
+  ///
+  /// In id, this message translates to:
+  /// **'Gagal memperbarui kata sandi. Silakan coba lagi!'**
+  String get updatePasswordFailed;
+
+  /// No description provided for @passwordUnchanged.
+  ///
+  /// In id, this message translates to:
+  /// **'Kata sandi baru tidak boleh sama dengan yang lama.'**
+  String get passwordUnchanged;
+
+  /// No description provided for @wrongOldPassword.
+  ///
+  /// In id, this message translates to:
+  /// **'Kata sandi lama salah.'**
+  String get wrongOldPassword;
+
+  /// No description provided for @requiresRecentLogin.
+  ///
+  /// In id, this message translates to:
+  /// **'Untuk alasan keamanan, harap masuk kembali sebelum mengganti kata sandi.'**
+  String get requiresRecentLogin;
 
   /// No description provided for @getParkFailed.
   ///

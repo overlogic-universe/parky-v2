@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SettingState {
 
- ThemeModeType get themeModeType; String get localeId;
+ ThemeModeType get themeModeType; String get localeId; bool get isUpdatingPassword;
 /// Create a copy of SettingState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $SettingStateCopyWith<SettingState> get copyWith => _$SettingStateCopyWithImpl<S
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SettingState&&(identical(other.themeModeType, themeModeType) || other.themeModeType == themeModeType)&&(identical(other.localeId, localeId) || other.localeId == localeId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SettingState&&(identical(other.themeModeType, themeModeType) || other.themeModeType == themeModeType)&&(identical(other.localeId, localeId) || other.localeId == localeId)&&(identical(other.isUpdatingPassword, isUpdatingPassword) || other.isUpdatingPassword == isUpdatingPassword));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,themeModeType,localeId);
+int get hashCode => Object.hash(runtimeType,themeModeType,localeId,isUpdatingPassword);
 
 @override
 String toString() {
-  return 'SettingState(themeModeType: $themeModeType, localeId: $localeId)';
+  return 'SettingState(themeModeType: $themeModeType, localeId: $localeId, isUpdatingPassword: $isUpdatingPassword)';
 }
 
 
@@ -46,7 +46,7 @@ abstract mixin class $SettingStateCopyWith<$Res>  {
   factory $SettingStateCopyWith(SettingState value, $Res Function(SettingState) _then) = _$SettingStateCopyWithImpl;
 @useResult
 $Res call({
- ThemeModeType themeModeType, String localeId
+ ThemeModeType themeModeType, String localeId, bool isUpdatingPassword
 });
 
 
@@ -63,11 +63,12 @@ class _$SettingStateCopyWithImpl<$Res>
 
 /// Create a copy of SettingState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? themeModeType = null,Object? localeId = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? themeModeType = null,Object? localeId = null,Object? isUpdatingPassword = null,}) {
   return _then(_self.copyWith(
 themeModeType: null == themeModeType ? _self.themeModeType : themeModeType // ignore: cast_nullable_to_non_nullable
 as ThemeModeType,localeId: null == localeId ? _self.localeId : localeId // ignore: cast_nullable_to_non_nullable
-as String,
+as String,isUpdatingPassword: null == isUpdatingPassword ? _self.isUpdatingPassword : isUpdatingPassword // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 
@@ -78,11 +79,12 @@ as String,
 
 
 class _SettingState implements SettingState {
-  const _SettingState({this.themeModeType = ThemeModeType.main, this.localeId = LocaleIdConstant.ID});
+  const _SettingState({this.themeModeType = ThemeModeType.main, this.localeId = LocaleIdConstant.ID, this.isUpdatingPassword = false});
   
 
 @override@JsonKey() final  ThemeModeType themeModeType;
 @override@JsonKey() final  String localeId;
+@override@JsonKey() final  bool isUpdatingPassword;
 
 /// Create a copy of SettingState
 /// with the given fields replaced by the non-null parameter values.
@@ -94,16 +96,16 @@ _$SettingStateCopyWith<_SettingState> get copyWith => __$SettingStateCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SettingState&&(identical(other.themeModeType, themeModeType) || other.themeModeType == themeModeType)&&(identical(other.localeId, localeId) || other.localeId == localeId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SettingState&&(identical(other.themeModeType, themeModeType) || other.themeModeType == themeModeType)&&(identical(other.localeId, localeId) || other.localeId == localeId)&&(identical(other.isUpdatingPassword, isUpdatingPassword) || other.isUpdatingPassword == isUpdatingPassword));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,themeModeType,localeId);
+int get hashCode => Object.hash(runtimeType,themeModeType,localeId,isUpdatingPassword);
 
 @override
 String toString() {
-  return 'SettingState(themeModeType: $themeModeType, localeId: $localeId)';
+  return 'SettingState(themeModeType: $themeModeType, localeId: $localeId, isUpdatingPassword: $isUpdatingPassword)';
 }
 
 
@@ -114,7 +116,7 @@ abstract mixin class _$SettingStateCopyWith<$Res> implements $SettingStateCopyWi
   factory _$SettingStateCopyWith(_SettingState value, $Res Function(_SettingState) _then) = __$SettingStateCopyWithImpl;
 @override @useResult
 $Res call({
- ThemeModeType themeModeType, String localeId
+ ThemeModeType themeModeType, String localeId, bool isUpdatingPassword
 });
 
 
@@ -131,11 +133,12 @@ class __$SettingStateCopyWithImpl<$Res>
 
 /// Create a copy of SettingState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? themeModeType = null,Object? localeId = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? themeModeType = null,Object? localeId = null,Object? isUpdatingPassword = null,}) {
   return _then(_SettingState(
 themeModeType: null == themeModeType ? _self.themeModeType : themeModeType // ignore: cast_nullable_to_non_nullable
 as ThemeModeType,localeId: null == localeId ? _self.localeId : localeId // ignore: cast_nullable_to_non_nullable
-as String,
+as String,isUpdatingPassword: null == isUpdatingPassword ? _self.isUpdatingPassword : isUpdatingPassword // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

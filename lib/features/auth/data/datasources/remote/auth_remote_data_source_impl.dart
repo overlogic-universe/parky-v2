@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:parky/features/auth/data/models/student_model.dart';
 
 import '../../../../../core/extensions/firebase_extension.dart';
 import '../../../core/failures/auth_exception.dart';
 import '../../../core/failures/auth_failure_type.dart';
 import '../../../domain/entities/login_with_email_password_request.dart';
+import '../../models/student_model.dart';
 import 'auth_remote_data_source.dart';
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
@@ -85,5 +85,32 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
     await signOut();
     throw AuthException(type: AuthFailureType.studentNotFound);
+  }
+
+  @override
+  Future<void> updatePassword({
+    required String oldPassword,
+    required String newPassword,
+  }) async {
+    final currentUser = firebaseAuth.currentUser;
+
+    if (currentUser == null || currentUser.email == null) {
+      throw AuthException(type: AuthFailureType.studentNotFound);
+    }
+
+    final credential = EmailAuthProvider.credential(
+      email: currentUser.email!,
+      password: oldPassword,
+    );
+
+    await currentUser.reauthenticateWithCredential(credential);
+
+    // Check if old and new password are the same
+    if (oldPassword == newPassword) {
+      throw AuthException(type: AuthFailureType.passwordUnchanged);
+    }
+
+    // Update to new password
+    await currentUser.updatePassword(newPassword);
   }
 }

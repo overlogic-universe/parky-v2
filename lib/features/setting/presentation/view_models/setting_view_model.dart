@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/styles/colors/theme_color.dart';
+import '../../../auth/core/di/auth_provider.dart';
+import '../../../auth/domain/usecases/update_password_use_case.dart';
 import '../../core/di/setting_provider.dart';
 import '../../domain/usecases/get_language_use_case.dart';
 import '../../domain/usecases/get_theme_use_case.dart';
@@ -16,6 +20,7 @@ class SettingViewModel extends _$SettingViewModel {
   late final SaveLanguageUseCase _saveLanguageUseCase;
   late final GetThemeUseCase _getThemeUseCase;
   late final SaveThemeUseCase _saveThemeUseCase;
+  late final UpdatePasswordUseCase _updatePasswordUseCase;
 
   @override
   Future<SettingState> build() async {
@@ -23,6 +28,7 @@ class SettingViewModel extends _$SettingViewModel {
     _saveLanguageUseCase = ref.watch(saveLanguageUseCaseProvider);
     _getThemeUseCase = ref.watch(getThemeUseCaseProvider);
     _saveThemeUseCase = ref.watch(saveThemeUseCaseProvider);
+    _updatePasswordUseCase = ref.watch(updatePasswordUseCaseProvider);
 
     return await _loadSettings();
   }
@@ -93,5 +99,23 @@ class SettingViewModel extends _$SettingViewModel {
       (theme) => theme.name == themeStr,
       orElse: () => ThemeModeType.main,
     );
+  }
+
+  Future<void> updatePassword({
+    required String oldPassword,
+    required String newPassword,
+  }) async {
+    state = AsyncValue.loading();
+
+    try {
+      await _updatePasswordUseCase(
+        oldPassword: oldPassword,
+        newPassword: newPassword,
+      );
+      state = AsyncValue.data(state.value!);
+    } catch (e, stackTrace) {
+      log("UPDATE PASSWORD ERROR: ${e}");
+      state = AsyncValue.error(e, stackTrace);
+    }
   }
 }
