@@ -47,7 +47,7 @@ class AuthRepositoryImpl implements AuthRepository {
             throw AuthException(type: AuthFailureType.invalidCredentials);
           } else if (e.code == 'invalid-credential') {
             throw AuthException(type: AuthFailureType.invalidCredentials);
-          } else if (e.code == 'Student-not-found') {
+          } else if (e.code == 'user-not-found') {
             throw AuthException(type: AuthFailureType.studentNotFound);
           }
           throw CommonException(type: CommonFailureType.unknownError);

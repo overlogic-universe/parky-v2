@@ -193,7 +193,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get serverError => 'Kesalahan server';
 
   @override
-  String get networkError => 'Jaringan tidak stabil';
+  String get networkError => 'Tidak ada koneksi internet';
 
   @override
   String get unknownError => 'Kesalahan tak terduga';

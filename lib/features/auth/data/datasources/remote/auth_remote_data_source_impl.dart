@@ -72,19 +72,23 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<StudentModel> getStudentModel() async {
-    final student = firebaseAuth.currentUser;
-    if (student != null) {
+    try {
+      final student = firebaseAuth.currentUser;
+      if (student == null) {
+        throw AuthException(type: AuthFailureType.studentNotFound);
+      }
       final snapshot =
           await firestore.studentsCollection.doc(student.uid).get();
       if (snapshot.exists) {
         return StudentModel.fromFirestore(
           snapshot as DocumentSnapshot<Map<String, dynamic>>,
         );
+      } else {
+        throw AuthException(type: AuthFailureType.studentNotFound);
       }
+    } catch (e) {
+      throw AuthException(type: AuthFailureType.studentNotFound);
     }
-
-    await signOut();
-    throw AuthException(type: AuthFailureType.studentNotFound);
   }
 
   @override

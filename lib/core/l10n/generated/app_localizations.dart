@@ -446,7 +446,7 @@ abstract class AppLocalizations {
   /// No description provided for @networkError.
   ///
   /// In id, this message translates to:
-  /// **'Jaringan tidak stabil'**
+  /// **'Tidak ada koneksi internet'**
   String get networkError;
 
   /// No description provided for @unknownError.
