@@ -5,15 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/assets/icon_asset_constant.dart';
 import '../../../../core/constants/common/margin_constant.dart';
 import '../../../../core/constants/styles/style_constant.dart';
-import '../../../../core/styles/colors/app_color.dart';
-import '../../../../core/styles/fonts/app_font.dart';
 import '../../../../core/utils/input_validator.dart';
 import '../../../../core/utils/lang.dart';
 import '../../../shared/presentation/widgets/text_field_icon.dart';
 import '../../core/utils/auth_input_validator.dart';
 import '../../domain/entities/login_with_email_password_request.dart';
 import '../view_models/login_view_model.dart';
-import 'remember_me.dart';
 
 class LoginForm extends ConsumerStatefulWidget {
   const LoginForm({super.key});
@@ -108,18 +105,18 @@ class _LoginFormState extends ConsumerState<LoginForm> {
                 hintText: Lang.of(context).enterYour(Lang.of(context).password),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                RememberMe(),
-                Text(
-                  Lang.of(context).forgotYourPassword,
-                  style: AppFont.labelMedium(
-                    context,
-                  )?.copyWith(color: AppColor.primary(context)),
-                ),
-              ],
-            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   children: [
+            //     RememberMe(),
+            //     Text(
+            //       Lang.of(context).forgotYourPassword,
+            //       style: AppFont.labelMedium(
+            //         context,
+            //       )?.copyWith(color: AppColor.primary(context)),
+            //     ),
+            //   ],
+            // ),
             SizedBox.shrink(),
             ElevatedButton(
               onPressed: () => _handleLoginButton(),

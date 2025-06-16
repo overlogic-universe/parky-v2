@@ -23,7 +23,7 @@ class ParkingLotRemoteDataSourceImpl implements ParkingLotRemoteDataSource {
       // Ambil semua data parking lot
       final snapshot =
           await firestore.parkingLotsCollection
-              .where(FieldPath.documentId, whereIn: parkingLotIds)
+              .where(FieldPath.documentId, whereIn: parkingLotIds).whereIsNotDeleted()
               .get();
 
       final parkingLotModels =
@@ -41,7 +41,7 @@ class ParkingLotRemoteDataSourceImpl implements ParkingLotRemoteDataSource {
 
       for (final parkingLot in parkingLotModels) {
         final future = firestore.parkingActivitiesCollection
-            .whereIsEqualToParkingLotId(parkingLot.id)
+            .whereIsEqualToParkingLotId(parkingLot.id).whereIsNotDeleted()
             .orderByUpdatedAt(descending: true)
             .limit(1)
             .get()

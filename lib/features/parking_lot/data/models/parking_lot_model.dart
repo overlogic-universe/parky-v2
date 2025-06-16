@@ -14,6 +14,7 @@ class ParkingLotModel {
   final int vehicleInCount;
   final Timestamp? createdAt;
   final Timestamp? updatedAt;
+  final Timestamp? deletedAt;
 
   const ParkingLotModel({
     required this.id,
@@ -26,6 +27,7 @@ class ParkingLotModel {
     required this.vehicleInCount,
     this.createdAt,
     this.updatedAt,
+    this.deletedAt,
   });
 
   factory ParkingLotModel.fromFirestore(
@@ -53,6 +55,7 @@ class ParkingLotModel {
       vehicleInCount: data['vehicle_in_count'] ?? 0,
       createdAt: data['created_at'] as Timestamp?,
       updatedAt: data['updated_at'] as Timestamp?,
+      deletedAt: data['deleted_at'] as Timestamp?,
     );
   }
 
@@ -80,6 +83,10 @@ class ParkingLotModel {
           json['updated_at'] != null
               ? Timestamp.fromMillisecondsSinceEpoch(json['updated_at'] as int)
               : null,
+      deletedAt:
+          json['deleted_at'] != null
+              ? Timestamp.fromMillisecondsSinceEpoch(json['deleted_at'] as int)
+              : null,
     );
   }
 
@@ -95,6 +102,7 @@ class ParkingLotModel {
       'vehicle_in_count': vehicleInCount,
       'created_at': createdAt?.millisecondsSinceEpoch,
       'updated_at': updatedAt?.millisecondsSinceEpoch,
+      'deleted_at': deletedAt?.millisecondsSinceEpoch,
     };
   }
 
@@ -109,6 +117,7 @@ class ParkingLotModel {
     int? vehicleInCount,
     Timestamp? createdAt,
     Timestamp? updatedAt,
+    Timestamp? deletedAt,
   }) {
     return ParkingLotModel(
       id: id ?? this.id,
@@ -121,6 +130,7 @@ class ParkingLotModel {
       vehicleInCount: vehicleInCount ?? this.vehicleInCount,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
+      deletedAt: deletedAt ?? this.deletedAt,
     );
   }
 

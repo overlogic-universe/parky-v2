@@ -38,4 +38,7 @@ extension QueryX on Query {
   Query whereParkingScheduleIdIn(List<Object?> scheduleIds) {
     return where('parking_schedule_id', whereIn: scheduleIds);
   }
+
+  Query whereIsNotDeleted() => where('deleted_at', isNull: true);
+
 }

@@ -30,7 +30,7 @@ class ParkingAssignmentRemoteDataSourceImpl
     for (final chunk in chunks) {
       final snapshot =
           await firestore.parkingAssignmentsCollection
-              .whereParkingScheduleIdIn(chunk)
+              .whereParkingScheduleIdIn(chunk).whereIsNotDeleted()
               .get();
       allDocs.addAll(snapshot.docs);
     }

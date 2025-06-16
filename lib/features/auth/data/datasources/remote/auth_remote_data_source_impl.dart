@@ -28,7 +28,20 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       email: loginWithEmailPasswordRequest.email,
       password: loginWithEmailPasswordRequest.password,
     );
-    return getStudentModel();
+
+    // Ambil data student
+    final studentModel = await getStudentModel();
+
+    // Cek apakah student sudah "dihapus"
+    if (studentModel.deletedAt != null) {
+      // Logout langsung agar token tidak tersimpan
+      await signOut();
+
+      // Lempar exception karena akun sudah dihapus
+      throw AuthException(type: AuthFailureType.studentNotFound);
+    }
+
+    return studentModel;
   }
 
   @override

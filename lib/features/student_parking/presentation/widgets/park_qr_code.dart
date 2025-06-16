@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:shimmer/shimmer.dart';
 
 import '../../../../core/styles/colors/app_color.dart';
 import '../../../auth/domain/entities/student_entity.dart';

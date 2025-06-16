@@ -8,7 +8,8 @@ class StudentParkingSchema {
       email TEXT NOT NULL,
       password TEXT,
       created_at INTEGER,
-      updated_at INTEGER
+      updated_at INTEGER,
+      deleted_at INTEGER
     );
   ''';
 

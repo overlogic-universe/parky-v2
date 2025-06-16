@@ -11,6 +11,7 @@ class ParkingScheduleModel {
   final bool isClosed;
   final Timestamp? createdAt;
   final Timestamp? updatedAt;
+  final Timestamp? deletedAt;
 
   const ParkingScheduleModel({
     required this.id,
@@ -20,6 +21,7 @@ class ParkingScheduleModel {
     required this.isClosed,
     this.createdAt,
     this.updatedAt,
+    this.deletedAt,
   });
 
   factory ParkingScheduleModel.fromFirestore(
@@ -38,6 +40,7 @@ class ParkingScheduleModel {
       isClosed: data['is_closed'] ?? false,
       createdAt: data['created_at'],
       updatedAt: data['updated_at'],
+      deletedAt: data['deleted_at'],
     );
   }
 
@@ -56,6 +59,10 @@ class ParkingScheduleModel {
           json['updated_at'] != null
               ? Timestamp.fromMillisecondsSinceEpoch(json['updated_at'] as int)
               : null,
+      deletedAt:
+          json['deleted_at'] != null
+              ? Timestamp.fromMillisecondsSinceEpoch(json['deleted_at'] as int)
+              : null,
     );
   }
 
@@ -67,6 +74,7 @@ class ParkingScheduleModel {
       'is_closed': isClosed,
       'created_at': createdAt,
       'updated_at': updatedAt,
+      'deleted_at': deletedAt,
     };
   }
 
@@ -79,11 +87,12 @@ class ParkingScheduleModel {
       'is_closed': isClosed ? 1 : 0,
       'created_at': createdAt?.millisecondsSinceEpoch,
       'updated_at': updatedAt?.millisecondsSinceEpoch,
+      'deleted_at': deletedAt?.millisecondsSinceEpoch,
     };
   }
 
   @override
   String toString() {
-    return 'ParkingScheduleModel(id: $id, dayOfWeek: $dayOfWeek, openTime: $openTime, closedTime: $closedTime, isClosed: $isClosed, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'ParkingScheduleModel(id: $id, dayOfWeek: $dayOfWeek, openTime: $openTime, closedTime: $closedTime, isClosed: $isClosed, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
   }
 }

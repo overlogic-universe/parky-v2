@@ -12,6 +12,7 @@ class StudentModel {
   final String qrCodeId;
   final Timestamp? createdAt;
   final Timestamp? updatedAt;
+  final Timestamp? deletedAt;
 
   StudentModel({
     required this.id,
@@ -22,6 +23,7 @@ class StudentModel {
     required this.qrCodeId,
     this.createdAt,
     this.updatedAt,
+    this.deletedAt,
   });
 
   factory StudentModel.fromFirestore(
@@ -41,6 +43,7 @@ class StudentModel {
       qrCodeId: data['qr_code_id'] ?? '',
       createdAt: data['created_at'],
       updatedAt: data['updated_at'],
+      deletedAt: data['deleted_at'],
     );
   }
 
@@ -53,6 +56,7 @@ class StudentModel {
       'qr_code_id': qrCodeId,
       'created_at': createdAt,
       'updated_at': updatedAt,
+      'deleted_at': deletedAt,
     };
   }
 
@@ -66,6 +70,7 @@ class StudentModel {
       'qr_code_id': qrCodeId,
       'created_at': createdAt?.millisecondsSinceEpoch,
       'updated_at': updatedAt?.millisecondsSinceEpoch,
+      'deleted_at': deletedAt?.millisecondsSinceEpoch,
     };
   }
 
@@ -85,11 +90,15 @@ class StudentModel {
           map['updated_at'] != null
               ? Timestamp.fromMillisecondsSinceEpoch(map['updated_at'] as int)
               : null,
+      deletedAt:
+          map['deleted_at'] != null
+              ? Timestamp.fromMillisecondsSinceEpoch(map['deleted_at'] as int)
+              : null,
     );
   }
 
   @override
   String toString() {
-    return 'StudentModel(id: $id, nim: $nim, name: $name, email: $email, password: $password, qrCodeId: $qrCodeId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'StudentModel(id: $id, nim: $nim, name: $name, email: $email, password: $password, qrCodeId: $qrCodeId, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
   }
 }

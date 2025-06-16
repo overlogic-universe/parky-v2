@@ -10,7 +10,8 @@ class ParkingLotSchema {
       is_active INTEGER NOT NULL,
       inactive_description TEXT,
       created_at INTEGER,
-      updated_at INTEGER
+      updated_at INTEGER,
+      deleted_at INTEGER
     );
   ''';
 
@@ -22,7 +23,8 @@ class ParkingLotSchema {
       closed_time TEXT,
       is_closed INTEGER NOT NULL,
       created_at INTEGER,
-      updated_at INTEGER
+      updated_at INTEGER,
+      deleted_at INTEGER
     );
   ''';
 
@@ -33,6 +35,7 @@ class ParkingLotSchema {
       parking_schedule_id TEXT NOT NULL,
       created_at INTEGER,
       updated_at INTEGER,
+      deleted_at INTEGER,
       FOREIGN KEY (parking_lot_id) REFERENCES parking_lots(id) ON DELETE CASCADE,
       FOREIGN KEY (parking_schedule_id) REFERENCES parking_schedules(id) ON DELETE CASCADE
     );
